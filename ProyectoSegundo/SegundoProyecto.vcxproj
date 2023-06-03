@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{f70a1e38-d398-401c-a2dc-fddc5181d9ee}</ProjectGuid>
-    <RootNamespace>ProyectoSegundo</RootNamespace>
+    <ProjectGuid>{be3c8a09-b823-4804-8fdc-f5cec3738c5a}</ProjectGuid>
+    <RootNamespace>SegundoProyecto</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,42 +127,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Cliente.h" />
-    <ClInclude Include="Componente.h" />
-    <ClInclude Include="ComponenteProcesador.h" />
-    <ClInclude Include="Sistema.h" />
-    <ClInclude Include="Destino.h" />
+    <ClInclude Include="AbstractFactory.h" />
     <ClInclude Include="Dispositivo.h" />
-    <ClInclude Include="Empresa.h" />
-    <ClInclude Include="Exepciones.h" />
+    <ClInclude Include="FacBasico.h" />
+    <ClInclude Include="FacProfesional.h" />
+    <ClInclude Include="FacSemiPro.h" />
     <ClInclude Include="Factura.h" />
-    <ClInclude Include="Fecha.h" />
-    <ClInclude Include="FuenteDeAudio.h" />
     <ClInclude Include="Kit.h" />
+    <ClInclude Include="Componente.h" />
+    <ClInclude Include="Composite.h" />
+    <ClInclude Include="FuenteDeAudio.h" />
     <ClInclude Include="Lista.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Parlante.h" />
-    <ClInclude Include="Persona.h" />
     <ClInclude Include="ProcesadorDeSenal.h" />
-    <ClInclude Include="Tienda.h" />
-    <ClInclude Include="Utiles.h" />
+    <ClInclude Include="Sistema.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Cliente.cpp" />
-    <ClCompile Include="Sistema.cpp" />
-    <ClCompile Include="Destino.cpp" />
+    <ClCompile Include="Composite.cpp" />
     <ClCompile Include="Dispositivo.cpp" />
-    <ClCompile Include="Empresa.cpp" />
-    <ClCompile Include="Excepciones.cpp" />
+    <ClCompile Include="FacBasico.cpp" />
+    <ClCompile Include="FacProfesional.cpp" />
+    <ClCompile Include="FacSemiPro.cpp" />
     <ClCompile Include="Factura.cpp" />
-    <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="FuenteDeAudio.cpp" />
     <ClCompile Include="Kit.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Parlante.cpp" />
-    <ClCompile Include="Persona.cpp" />
     <ClCompile Include="ProcesadorDeSenal.cpp" />
-    <ClCompile Include="Tienda.cpp" />
+    <ClCompile Include="Sistema.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
