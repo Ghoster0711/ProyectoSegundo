@@ -18,9 +18,6 @@
     <ClInclude Include="Componente.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ComponenteProcesador.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Sistema.h">
       <Filter>Header Files</Filter>
     </ClInclude>
