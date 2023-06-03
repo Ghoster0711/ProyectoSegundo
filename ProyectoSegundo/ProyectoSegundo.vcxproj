@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="Componente.h" />
-    <ClInclude Include="ComponenteProcesador.h" />
     <ClInclude Include="Directo.h" />
     <ClInclude Include="EnLinea.h" />
     <ClInclude Include="Sistema.h" />
