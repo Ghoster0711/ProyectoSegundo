@@ -11,27 +11,26 @@
 
 
 class Factura {
-private:
+protected:
 	Fecha* fecha;
-	string codigo;
+	string numFactura;
 	Cliente* cliente;
 	Destino* destino;
 	Componente* combo;
 public:
-	Factura(string, Cliente*, Destino*, Componente*);
+	Factura(string, Cliente*, Componente*);
 	virtual ~Factura();
 
-	string getCodigo();
-	Cliente* getCliente();
-	Destino* getDestino();
-	Componente* getCombo();
+	virtual string getNumFactura() = 0;
+	virtual Cliente* getCliente() = 0;
+	virtual Componente* getCombo() = 0;
+	virtual void setNumFactura(string) = 0;
+	virtual void setCliente(Cliente*) = 0;
+	virtual void setCombo(Componente*) = 0;
 
-	void setCodigo(string);
-	void setCliente(Cliente*);
-	void setDestino(Destino*);
-	void setCombo(Componente*);
-
-	string toString();
+	virtual Destino* getDestino() = 0;
+	virtual void setDestino(Destino*) = 0;
+	virtual string toString() = 0;
 
 };
 

@@ -43,10 +43,10 @@ Destino* Destino::recuperarDatos(ifstream& entrada) {
 	getline(entrada, pais, DELIMITA_CAMPO);
 	getline(entrada, ciudad, DELIMITA_CAMPO);
 	getline(entrada, costo, DELIMITA_REGISTRO);
-	double cost = convertirDouble(costo);
+	//double cost = convertirDouble(costo);
 	destino->setCodigo(cod);
 	destino->setPais(pais);
 	destino->setCiudad(ciudad);
-	destino->setCostoTraslado(cost);
+	//destino->setCostoTraslado(cost);
 	return destino;
 }
