@@ -1,7 +1,7 @@
 #pragma once
-#include "Composite.h"
+#include "Sistema.h"
 
-class Kit : public Composite {
+class Kit : public Sistema {
 protected:
 
 public:

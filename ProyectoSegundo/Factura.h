@@ -1,20 +1,18 @@
 #pragma once
 #include <iostream>
 #include <sstream>
-//#include "Persona.h"
-//#include "Empresa.h"
-//#include "Destino.h"
+#include "Persona.h"
+#include "Empresa.h"
+#include "Destino.h"
+#include "Fecha.h"
 #include "Kit.h"
 #include "Dispositivo.h"
 
-class Persona;
-class Empresa;
-class Cliente;
-class Destino;
+
 
 class Factura {
 private:
-	// Fecha* fecha;
+	Fecha* fecha;
 	string codigo;
 	Cliente* cliente;
 	Destino* destino;
