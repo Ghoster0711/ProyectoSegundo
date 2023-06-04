@@ -3,6 +3,7 @@
 #include<sstream>
 #include<string>
 #include<fstream>
+#include<Windows.h>
 #include"Utiles.h"
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'

@@ -46,10 +46,10 @@ void Factura::setCombo(Componente* com){ combo = com; }
 string Factura::toString() {
 	stringstream show;
 	show << "--------------FACTURA---------------" << endl
-		<< "| Numero de Factura: " << codigo << endl << endl 
-		<< "| Fecha: "<< endl << fecha->toString() << endl
-		<< "| Cliente: " << endl << cliente->toString() << endl
-		<< "| Destino: " << endl << destino->toString() << endl
+		<< "| Numero de Factura: " << codigo << endl << endl
+		<< "| Fecha: "<< fecha->toString() << endl << endl
+		<< "| Cliente: " << endl << cliente->toString() << endl << endl
+		<< "| Destino: " << endl << destino->toString() << endl << endl
 		<< "-------INFORMACION DE LA COMPRA------" << endl
 		//<< combo->toString() << endl
 		<< "-------------------------------------" << endl;
@@ -79,7 +79,6 @@ Destino* Factura::clonarDestino(Destino* dest) {
 	cost = dest->getCostoTraslado();
 	return new Destino(cod, pais, ciud, cost);
 }
-
 
 void Factura::guardarDatos(ostream& salida) {
 	string type = typeid(*(cliente)).name();

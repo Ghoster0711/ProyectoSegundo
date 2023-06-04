@@ -23,8 +23,7 @@ void Destino::setCiudad(string ciud) { ciudad = ciud; }
 void Destino::setCostoTraslado(double cost) { costoTraslado = cost; }
 string Destino::toString() {
 	stringstream s;
-	s << "----Informacion del Destino----" << endl
-		<< "Codigo: " << codigo << endl
+	s   << "Codigo: " << codigo << endl
 		<< "Pais: " << pais << endl
 		<< "Ciudad: " << ciudad << endl
 		<< "Costo de Traslado: " << costoTraslado << endl;

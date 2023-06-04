@@ -18,5 +18,5 @@ Lista<Cliente>* Tienda::getSuscriptores() { return Suscriptores; }
 
 Lista<Factura>* Tienda::getVentas() { return Ventas; }
 
-void Tienda::guardarFacturas()  {}
-Factura* Tienda::recuperarFacturas(istream& entrada) {}
+//void Tienda::guardarFacturas()  {}
+//Factura* Tienda::recuperarFacturas(istream& entrada) {}
