@@ -1,5 +1,9 @@
 #pragma once
+#include <fstream>
 #include "Componente.h"
+
+
+
 
 class Parlante : public Componente {
 private:
@@ -13,4 +17,7 @@ public:
 	void agregar(Componente*);
 	void setPrecio(double);
 	string toString();
+	
+	void guardar(ostream&);
+	static Componente* recuperar(istream&);
 };

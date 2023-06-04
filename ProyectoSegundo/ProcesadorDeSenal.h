@@ -1,4 +1,5 @@
 #pragma once
+#include <fstream>
 #include "Componente.h"
 
 class ProcesadorDeSenal : public Componente {
@@ -13,4 +14,7 @@ public:
 	void agregar(Componente*);
 	void setPrecio(double);
 	string toString();
+
+	void guardar(ostream&);
+	static Componente* recuperar(istream&);
 };

@@ -1,13 +1,25 @@
 #pragma once
+//#include "Lista.h"
+//#include "Factura.h"
+//#include "Kit.h"
+//#include "Dispositivo.h"
+//#include "FuenteDeAudio.h"
+//#include "Parlante.h"
+//#include "ProcesadorDeSenal.h"
+//#include "Cliente.h"
+//#include <fstream>
+
 #include "Lista.h"
-#include "Factura.h"
 #include "Kit.h"
 #include "Dispositivo.h"
 #include "FuenteDeAudio.h"
-#include "Parlante.h"
 #include "ProcesadorDeSenal.h"
-#include "Cliente.h"
-
+#include "Parlante.h"
+#include "Directo.h"
+#include "EnLinea.h"
+//#include "Utiles.h"
+#include <fstream>
+#include "Tienda.h"
 
 class Tienda {
 private:
@@ -21,5 +33,9 @@ public:
 	Lista<Componente>* getCatalago();
 	Lista<Cliente>* getSuscriptores();
 	Lista<Factura>* getVentas();
+
+
+
+	void recuperarArchivoCatalogo();
 
 };
