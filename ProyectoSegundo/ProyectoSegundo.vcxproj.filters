@@ -18,9 +18,6 @@
     <ClInclude Include="Componente.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ComponenteProcesador.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Sistema.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -72,6 +69,12 @@
     <ClInclude Include="Utiles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Directo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnLinea.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sistema.cpp">
@@ -120,6 +123,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Directo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnLinea.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

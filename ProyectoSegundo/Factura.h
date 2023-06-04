@@ -9,7 +9,7 @@
 #include "Dispositivo.h"
 
 class Factura {
-private:
+protected:
 	string codigo;
 	Fecha* fecha;
 	Cliente* cliente;
@@ -33,6 +33,7 @@ public:
 	void setCombo(Componente*);
 
 	string toString();
+
 
 	Cliente* clonarCliente(Cliente*);
 	Destino* clonarDestino(Destino*);

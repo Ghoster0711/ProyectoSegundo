@@ -129,7 +129,8 @@
   <ItemGroup>
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="Componente.h" />
-    <ClInclude Include="ComponenteProcesador.h" />
+    <ClInclude Include="Directo.h" />
+    <ClInclude Include="EnLinea.h" />
     <ClInclude Include="Sistema.h" />
     <ClInclude Include="Destino.h" />
     <ClInclude Include="Dispositivo.h" />
@@ -149,6 +150,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cliente.cpp" />
+    <ClCompile Include="Directo.cpp" />
+    <ClCompile Include="EnLinea.cpp" />
     <ClCompile Include="Sistema.cpp" />
     <ClCompile Include="Destino.cpp" />
     <ClCompile Include="Dispositivo.cpp" />

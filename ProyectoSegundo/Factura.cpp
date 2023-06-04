@@ -1,5 +1,6 @@
 #include "Factura.h"
 
+
 Factura::Factura() {
 	codigo = "";
 	fecha = NULL;
@@ -23,7 +24,7 @@ Factura::~Factura(){
 	if (combo != NULL) delete combo;
 }
 
-string Factura::getCodigo() { return codigo; }
+
 
 Fecha* Factura::getFecha() { return fecha; }
 
@@ -112,3 +113,4 @@ Factura* Factura::recuperarDatos(istream& entrada) {
 	//Recuperar el combo 
 	return factura;
 }
+
