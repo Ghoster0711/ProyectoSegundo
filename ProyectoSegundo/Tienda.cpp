@@ -18,6 +18,7 @@ Lista<Cliente>* Tienda::getSuscriptores() { return Suscriptores; }
 
 Lista<Factura>* Tienda::getVentas() { return Ventas; }
 
+
 void Tienda::recuperarArchivoCatalogo(){
 	string rutaCatalogo = "../catalogo.txt";
 	ifstream file;
@@ -38,3 +39,7 @@ void Tienda::recuperarArchivoCatalogo(){
 	}
 	file.close();
 }
+
+//void Tienda::guardarFacturas()  {}
+//Factura* Tienda::recuperarFacturas(istream& entrada) {}
+

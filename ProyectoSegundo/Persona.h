@@ -8,6 +8,6 @@ public:
 	Persona(string, string, string, string);
 	virtual~Persona();
 	string toString();
-	virtual void guardarDatos(ofstream&);
-	static Cliente* recuperarDatos(string, string, string, string);
+	void guardarDatos(ostream&);
+	static Persona* recuperarDatos(istream&);
 };

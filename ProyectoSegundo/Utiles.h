@@ -1,10 +1,9 @@
 #pragma once
 #include <iostream>
 #include<sstream>
-#include<string>
+#include<string.h>
 
 using namespace std;
 
-double convertirDouble(string);
-void ignorar();
-
+int convierteInt(std::string);
+double convierteDouble(std::string);
