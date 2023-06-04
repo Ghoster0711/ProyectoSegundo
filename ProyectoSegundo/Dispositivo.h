@@ -1,4 +1,5 @@
 #pragma once
+#include <fstream>
 #include "Sistema.h"
 
 class Dispositivo : public Sistema {
@@ -12,4 +13,7 @@ public:
 	double getPrecio();
 	void agregar(Componente*);
 	void setPrecio(double);
+
+	void guardar(ostream&);
+	static Componente* recuperar(istream&);
 };
