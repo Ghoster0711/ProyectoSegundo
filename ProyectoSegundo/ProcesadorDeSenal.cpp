@@ -40,14 +40,13 @@ void ProcesadorDeSenal::guardar(ostream& salida) {
 
 Componente* ProcesadorDeSenal::recuperar(istream& entrada)
 {
-	string clase, tipo, model, carac, precio;
-	//getline(entrada, clase, DELIMITA_CAMPO);
+	string  tipo, model, carac, precio;
 	getline(entrada, tipo, DELIMITA_CAMPO);
 	getline(entrada, model, DELIMITA_CAMPO);
 	getline(entrada, carac, DELIMITA_CAMPO);
 	getline(entrada, precio, DELIMITA_REGISTRO);
 
-	double valorPrecio = convertirDouble(precio);
+	double valorPrecio = convierteDouble(precio);
 
 	return new ProcesadorDeSenal(tipo, model, carac, valorPrecio);
 }

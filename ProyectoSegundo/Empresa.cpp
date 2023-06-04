@@ -12,23 +12,20 @@ string Empresa::toString() {
 		<< "Telefono: " << telefono << endl;
 	return s.str();
 }
-void Empresa::guardarDatos(ostream& salida) {
-	salida << nombre << DELIMITA_CAMPO
+void Empresa::guardar(ostream& salida) {
+	salida << "Empresa" << DELIMITA_CAMPO
+		<< nombre << DELIMITA_CAMPO
 		<< cedula << DELIMITA_CAMPO
 		<< correo << DELIMITA_CAMPO
 		<< telefono << DELIMITA_REGISTRO;
 }
-Empresa* Empresa::recuperarDatos(istream& entrada) {
-	Empresa* empresa = new Empresa();
+Empresa* Empresa::recuperar(istream& entrada) {
+	
 	string nom, ced, cor, tel;
 	getline(entrada, nom, DELIMITA_CAMPO);
 	getline(entrada, ced, DELIMITA_CAMPO);
 	getline(entrada, cor, DELIMITA_CAMPO);
 	getline(entrada, tel, DELIMITA_REGISTRO);
-	empresa->setNombre(nom);
-	empresa->setCedula(ced);
-	empresa->setCorreo(cor);
-	empresa->setTelefono(tel);
 
-	return empresa;
+	return new Empresa(nom, ced, cor, tel); 
 }

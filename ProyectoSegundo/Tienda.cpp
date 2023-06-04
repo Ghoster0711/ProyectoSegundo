@@ -1,22 +1,28 @@
 #include "Tienda.h"
 
+
 Tienda::Tienda() {
 	Catalogo = new Lista<Componente>();
 	Suscriptores = new Lista<Cliente>();
-	Ventas = new Lista<Factura>();
+	//Ventas = new Lista<Factura>();
 }
 
 Tienda::~Tienda(){
 	if (Catalogo != NULL) delete Catalogo;
 	if (Suscriptores != NULL) delete Suscriptores;
-	if (Ventas != NULL) delete Ventas;
+	//if (Ventas != NULL) delete Ventas;
 }
 
 Lista<Componente>* Tienda::getCatalago() { return Catalogo; }
 
 Lista<Cliente>* Tienda::getSuscriptores() { return Suscriptores; }
 
-Lista<Factura>* Tienda::getVentas() { return Ventas; }
+//Lista<Factura>* Tienda::getVentas() { return Ventas; }
+
+void Tienda::guardarCatalogo()
+{
+	Catalogo->guardarCatalogo();
+}
 
 
 void Tienda::recuperarArchivoCatalogo(){
@@ -36,6 +42,26 @@ void Tienda::recuperarArchivoCatalogo(){
 			Catalogo->ingresar(Kit::recuperar(file)); 
 		if (op == "Dispositivo")
 			Catalogo->ingresar(Dispositivo::recuperar(file));
+	}
+	file.close();
+}
+
+void Tienda::guardarSuscriptores()
+{
+	Suscriptores->guardarSuscriptores();
+}
+
+void Tienda::recuperarArchivoSuscriptores(){
+	string rutaSuscriptores = "../suscriptores.txt";
+	ifstream file;
+	string op;
+	file.open(rutaSuscriptores);
+	while (file.good()) {
+		getline(file, op, DELIMITA_CAMPO);
+		if (op == "Empresa")
+			Suscriptores->ingresar(Empresa::recuperar(file));
+		if (op == "Persona")
+			Suscriptores->ingresar(Persona::recuperar(file));
 	}
 	file.close();
 }
