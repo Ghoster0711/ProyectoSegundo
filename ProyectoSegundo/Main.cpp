@@ -61,7 +61,6 @@ int main() {
 		Factura* f = Factura::recuperarDatos(entrada);
 		vec1[k] = f;
 		k++;
-		system("pause");
 	}
 	entrada.close();
 	for (int i = 0; i < 2; i++) {
