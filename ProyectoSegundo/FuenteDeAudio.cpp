@@ -39,14 +39,13 @@ void FuenteDeAudio::guardar(ostream& salida) {
 }
 
 Componente* FuenteDeAudio::recuperar(istream& entrada){
-	string clase, tipo, model, carac, precio;
-	//(entrada, clase, DELIMITA_CAMPO);
+	string tipo, model, carac, precio;
 	getline(entrada, tipo, DELIMITA_CAMPO);
 	getline(entrada, model, DELIMITA_CAMPO);
 	getline(entrada, carac, DELIMITA_CAMPO);
 	getline(entrada, precio, DELIMITA_REGISTRO);
 
-	double valorPrecio = convertirDouble(precio);
+	double valorPrecio = convierteDouble(precio);
 
 	return new FuenteDeAudio(tipo, model, carac, valorPrecio);
 

@@ -13,13 +13,14 @@ string Persona::toString() {
 	return s.str();
 }
 
-void Persona::guardarDatos(ostream& salida) {
-	salida << nombre << DELIMITA_CAMPO
+void Persona::guardar(ostream& salida) {
+	salida << "Persona" << DELIMITA_CAMPO
+		<< nombre << DELIMITA_CAMPO
 		<< cedula << DELIMITA_CAMPO
 		<< correo << DELIMITA_CAMPO
 		<< telefono << DELIMITA_REGISTRO;
 }
-Persona* Persona::recuperarDatos(istream& entrada){
+Persona* Persona::recuperar(istream& entrada){
 	Persona* per = new Persona();
 	string nom, ced, cor, tel;
 	getline(entrada, nom, DELIMITA_CAMPO);

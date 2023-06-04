@@ -1,42 +1,40 @@
 #pragma once
-//#include "Lista.h"
-//#include "Factura.h"
-//#include "Kit.h"
-//#include "Dispositivo.h"
-//#include "FuenteDeAudio.h"
-//#include "Parlante.h"
-//#include "ProcesadorDeSenal.h"
-//#include "Cliente.h"
-//#include <fstream>
-
+#include <fstream>
 #include "Lista.h"
-#include "Kit.h"
-#include "Dispositivo.h"
+//#include "Cliente.h"
+//#include "Factura.h"
+// Componentes
 #include "FuenteDeAudio.h"
 #include "ProcesadorDeSenal.h"
 #include "Parlante.h"
-#include "Directo.h"
-#include "EnLinea.h"
-//#include "Utiles.h"
-#include <fstream>
-#include "Tienda.h"
+#include "Kit.h"
+#include "Dispositivo.h"
+// Clientes
+#include "Empresa.h"
+#include "Persona.h"
+
 
 class Tienda {
 private:
 	Lista<Componente>* Catalogo;
 	Lista<Cliente>* Suscriptores;
-	Lista<Factura>* Ventas;
+	//Lista<Factura>* Ventas;
 public:
 	Tienda();
 	virtual ~Tienda();
 
 	Lista<Componente>* getCatalago();
 	Lista<Cliente>* getSuscriptores();
-	Lista<Factura>* getVentas();
-
+	//Lista<Factura>* getVentas();
+	
+	
+	void guardarCatalogo();
 	void recuperarArchivoCatalogo();
 
+	void guardarSuscriptores();
+	void recuperarArchivoSuscriptores();
+
 	void guardarFacturas();
-	static Factura* recuperarFacturas(istream&);
+	//static Factura* recuperarFacturas(istream&);
 
 };

@@ -18,6 +18,7 @@ public:
 	void ingresar(T*);
 
 	void guardarCatalogo();
+	void guardarSuscriptores();
 
 	string toString();
 };
@@ -73,6 +74,23 @@ inline void Lista<T>::guardarCatalogo(){
 		e = e->getSiguiente();
 	}
 	file.close();
+}
+
+template<class T>
+inline void Lista<T>::guardarSuscriptores(){
+	string rutaSuscriptores = "../suscriptores.txt";
+	Nodo<T>* e = primero;
+	string tipo;
+	ofstream file;
+	file.open(rutaSuscriptores);
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			e->getDato()->guardar(file);
+		}
+		e = e->getSiguiente();
+	}
+	file.close();
+
 }
 
 
