@@ -34,6 +34,6 @@ public:
 	void setCostoTraslado(double);
 
 	string toString();
-	void guardarDatos(ofstream&); 
-	static Destino* recuperarDatos(ifstream&);
+	void guardarDatos(ostream&); 
+	static Destino* recuperarDatos(istream&);
 };

@@ -8,6 +8,6 @@ public:
 	Empresa(string, string, string, string);
 	virtual~Empresa();
 	string toString();
-	virtual void guardarDatos(ofstream&);
-	static Cliente* recuperarDatos(string,string,string,string);
+	void guardarDatos(ostream&);
+	static Empresa* recuperarDatos(istream&);
 };

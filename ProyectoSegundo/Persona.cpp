@@ -6,21 +6,29 @@ Persona::Persona(string nom, string ced, string correo, string tel) : Cliente(no
 Persona::~Persona(){}
 string Persona::toString() {
 	stringstream s;
-	s << "Nombre: " << nombre << endl
+	s   << "Nombre: " << nombre << endl
 		<< "Cedula: " << cedula << endl
 		<< "Correo: " << correo << endl
-		<< "Telefono: " << telefono << endl;
+		<< "Telefono: " << telefono;
 	return s.str();
 }
 
-void Persona::guardarDatos(ofstream& salida) {
-	string clase = "Persona";
-	salida << clase << DELIMITA_REGISTRO
-		<< nombre << DELIMITA_CAMPO
+void Persona::guardarDatos(ostream& salida) {
+	salida << nombre << DELIMITA_CAMPO
 		<< cedula << DELIMITA_CAMPO
 		<< correo << DELIMITA_CAMPO
 		<< telefono << DELIMITA_REGISTRO;
 }
-static Cliente* recuperarDatos(string nom,string ced,string correo,string tel) {
-	return new Persona(nom, ced, correo, tel);
+Persona* Persona::recuperarDatos(istream& entrada){
+	Persona* per = new Persona();
+	string nom, ced, cor, tel;
+	getline(entrada, nom, DELIMITA_CAMPO);
+	getline(entrada, ced, DELIMITA_CAMPO);
+	getline(entrada, cor, DELIMITA_CAMPO);
+	getline(entrada, tel, DELIMITA_REGISTRO);
+	per->setNombre(nom);
+	per->setCedula(ced);
+	per->setCorreo(cor);
+	per->setTelefono(tel);
+	return per;
 }

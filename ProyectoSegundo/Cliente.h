@@ -33,6 +33,5 @@ public:
 
 	virtual string toString() = 0;
 
-	virtual void guardarDatos(ofstream&) = 0;
-
+	virtual void guardarDatos(ostream&) = 0;
 };

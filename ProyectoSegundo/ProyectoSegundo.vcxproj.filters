@@ -122,6 +122,9 @@
     <ClCompile Include="Persona.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Utiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Directo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

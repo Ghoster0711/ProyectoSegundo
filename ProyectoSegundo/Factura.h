@@ -8,29 +8,38 @@
 #include "Kit.h"
 #include "Dispositivo.h"
 
-
-
 class Factura {
 protected:
+	string codigo;
 	Fecha* fecha;
-	string numFactura;
 	Cliente* cliente;
 	Destino* destino;
 	Componente* combo;
 public:
-	Factura(string, Cliente*, Componente*);
+	Factura();
+	Factura(string, Fecha*, Cliente*, Destino*, Componente*);
 	virtual ~Factura();
 
-	virtual string getNumFactura() = 0;
-	virtual Cliente* getCliente() = 0;
-	virtual Componente* getCombo() = 0;
-	virtual void setNumFactura(string) = 0;
-	virtual void setCliente(Cliente*) = 0;
-	virtual void setCombo(Componente*) = 0;
+	string getCodigo();
+	Fecha* getFecha();
+	Cliente* getCliente();
+	Destino* getDestino();
+	Componente* getCombo();
 
-	virtual Destino* getDestino() = 0;
-	virtual void setDestino(Destino*) = 0;
-	virtual string toString() = 0;
+	void setCodigo(string);
+	void setFecha(Fecha*);
+	void setCliente(Cliente*);
+	void setDestino(Destino*);
+	void setCombo(Componente*);
+
+	string toString();
+
+
+	Cliente* clonarCliente(Cliente*);
+	Destino* clonarDestino(Destino*);
+
+	void guardarDatos(ostream&);
+	static Factura* recuperarDatos(istream&);
 
 };
 
