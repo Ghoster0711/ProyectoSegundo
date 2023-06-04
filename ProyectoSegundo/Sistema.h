@@ -14,4 +14,6 @@ public:
 	virtual double getPrecio() = 0;
 	virtual void agregar(Componente*) = 0;
 	virtual void setPrecio(double) = 0;
+
+	virtual void guardar(ostream&) = 0;
 };

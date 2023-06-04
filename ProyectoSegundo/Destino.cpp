@@ -46,6 +46,6 @@ Destino* Destino::recuperarDatos(istream& entrada) {
 	destino->setCodigo(cod);
 	destino->setPais(pais);
 	destino->setCiudad(ciudad);
-	//destino->setCostoTraslado(cost);
+	destino->setCostoTraslado(cost);
 	return destino;
 }
