@@ -30,20 +30,20 @@ string Destino::toString() {
 		<< "Costo de Traslado: " << costoTraslado << endl;
 	return s.str();
 }
-void Destino::guardarDatos(ofstream& salida) {
+void Destino::guardarDatos(ostream& salida) {
 	salida << codigo << DELIMITA_CAMPO 
 		<< pais << DELIMITA_CAMPO 
 		<< ciudad << DELIMITA_CAMPO 
 		<< costoTraslado << DELIMITA_REGISTRO;
 }
-Destino* Destino::recuperarDatos(ifstream& entrada) {
+Destino* Destino::recuperarDatos(istream& entrada) {
 	Destino* destino = new Destino();
 	string cod, pais, ciudad, costo;
 	getline(entrada, cod, DELIMITA_CAMPO);
 	getline(entrada, pais, DELIMITA_CAMPO);
 	getline(entrada, ciudad, DELIMITA_CAMPO);
 	getline(entrada, costo, DELIMITA_REGISTRO);
-	double cost = convertirDouble(costo);
+	double cost = convierteDouble(costo);
 	destino->setCodigo(cod);
 	destino->setPais(pais);
 	destino->setCiudad(ciudad);

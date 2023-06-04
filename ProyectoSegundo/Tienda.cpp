@@ -17,3 +17,6 @@ Lista<Componente>* Tienda::getCatalago() { return Catalogo; }
 Lista<Cliente>* Tienda::getSuscriptores() { return Suscriptores; }
 
 Lista<Factura>* Tienda::getVentas() { return Ventas; }
+
+void Tienda::guardarFacturas()  {}
+Factura* Tienda::recuperarFacturas(istream& entrada) {}

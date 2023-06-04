@@ -2,6 +2,10 @@
 #include<iostream>
 #include<sstream>
 #include<string>
+#include<fstream>
+#include"Utiles.h"
+#define DELIMITA_CAMPO '\t'
+#define DELIMITA_REGISTRO '\n'
 
 using namespace std;
 
@@ -26,5 +30,8 @@ public:
 	void setAnio(int);
 
 	string toString();
+
+	void guardarDatos(ostream&);
+	static Fecha* recuperarDatos(istream&);
 
 };

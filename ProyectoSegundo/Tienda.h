@@ -22,4 +22,6 @@ public:
 	Lista<Cliente>* getSuscriptores();
 	Lista<Factura>* getVentas();
 
+	void guardarFacturas();
+	static Factura* recuperarFacturas(istream&);
 };

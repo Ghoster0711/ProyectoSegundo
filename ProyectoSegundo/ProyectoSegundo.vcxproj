@@ -163,6 +163,7 @@
     <ClCompile Include="Persona.cpp" />
     <ClCompile Include="ProcesadorDeSenal.cpp" />
     <ClCompile Include="Tienda.cpp" />
+    <ClCompile Include="Utiles.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
