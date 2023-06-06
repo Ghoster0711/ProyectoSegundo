@@ -63,7 +63,7 @@ inline bool Lista<T>::eliminar(string cod){
 	// Elimina el primero si el que se busca es el primero
 	if (nExt != NULL && nExt->getDato() != NULL) {
 		if (nExt->getDato()->getID() == cod) {
-			primero = primero->getSiguiente();
+			primero->setSiguiente(primero->getSiguiente());
 			delete nExt;
 			return true;
 		}

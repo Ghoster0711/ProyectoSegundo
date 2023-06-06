@@ -28,6 +28,7 @@ int menuReportes();
 
 void mostrarClientes(Tienda*);
 
+void ingresoSuscriptores(Tienda*);
 Cliente* crearCliente();
 Cliente* crearPersona();
 Cliente* crearEmpresa();
@@ -36,6 +37,7 @@ void eliminarCliente(Tienda*);
 
 void verCatalogo(Tienda*);
 
+void ingresoProductos(Tienda*);
 Componente* crearProducto(Tienda*);
 Componente* crearComponente();
 Componente* crearSistemaPreconfigurado(Tienda*);

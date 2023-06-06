@@ -78,6 +78,14 @@ void mostrarClientes(Tienda* tienda) {
 	cout << tienda->mostrarClientes();
 	system("pause");
 }
+
+void ingresoSuscriptores(Tienda* tienda) {
+	if (tienda->ingresarCliente(crearCliente()) == true)
+		cout << "Se ingreso con exito!!" << endl;
+	else
+		cout << "No se pudo ingresar por favor intentelo de nuevo" << endl;
+}
+
 Cliente* crearCliente(){
 	int op;
 	cout << "----------------------------------" << endl
@@ -130,6 +138,14 @@ void verCatalogo(Tienda* tienda) {
 	system("pause");
 }
 
+void ingresoProductos(Tienda* tienda){
+
+	if (tienda->ingresarProductosAlCatalogo(crearProducto(tienda)) == true)
+		cout << "Se ingreso con exito!!" << endl;
+	else
+		cout << "No se pudo ingresar por favor intentelo de nuevo!!" << endl;
+}
+
 Componente* crearProducto(Tienda* tienda) {
 	int op;
 	cout << "-------------------------------------" << endl
@@ -138,10 +154,8 @@ Componente* crearProducto(Tienda* tienda) {
 		<< "--------------------------------------" << endl
 		<< "| Que desea ingresar ->"; cin >> op;
 	if (op == 1)
-		if (crearComponente() != NULL)
 			return crearComponente();
 	if (op == 2)
-		if (crearSistemaPreconfigurado(tienda) != NULL)
 			return crearSistemaPreconfigurado(tienda);
 	return NULL;
 }
@@ -149,40 +163,38 @@ Componente* crearComponente() {
 	string tipo, model, carac, cod;
 	double precio;
 	int op;
-	do {
-		system("cls");
-		cout << "------------------------------------" << endl
-			<< "| (1) Fuente de audio               |" << endl
-			<< "| (2) Procesador de senal           |" << endl
-			<< "| (3) Parlante                      |" << endl
-			<< "-------------------------------------" << endl
-			<< "| Que desea agregar al sistema -> "; cin >> op;
+	system("cls");
+	cout << "------------------------------------" << endl
+		<< "| (1) Fuente de audio               |" << endl
+		<< "| (2) Procesador de senal           |" << endl
+		<< "| (3) Parlante                      |" << endl
+		<< "-------------------------------------" << endl
+		<< "| Que desea agregar al sistema -> "; cin >> op;
 
-		if (op == 1) {
-			cout << "| Ingrese el codigo del componente -> "; cin >> cod;
-			cout << "| Ingrese el tipo de componente -> "; cin >> tipo;
-			cout << "| Ingrese el modelo del componente -> "; cin >> model;
-			cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
-			cout << "| Ingresel el precio del componente -> "; cin >> precio;
-			return new FuenteDeAudio(cod,tipo, model, carac, precio);
-		}
-		if (op == 2) {
-			cout << "| Ingrese el codigo del componente -> "; cin >> cod;
-			cout << "| Ingrese el tipo de componente -> "; cin >> tipo;
-			cout << "| Ingrese el modelo del componente -> "; cin >> model;
-			cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
-			cout << "| Ingresel el precio del componente -> "; cin >> precio;
-			return new ProcesadorDeSenal(cod, tipo, model, carac, precio);
-		}
-		if (op == 3) {
-			cout << "| Ingrese el codigo del componente -> "; cin >> cod;
-			cout << "| Ingrese el tipo de componente -> "; cin >> tipo;
-			cout << "| Ingrese el modelo del componente -> "; cin >> model;
-			cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
-			cout << "| Ingresel el precio del componente -> "; cin >> precio;
-			return new Parlante(cod, tipo, model, carac, precio);
-		}
-	} while (op > 3);
+	if (op == 1) {
+		cout << "| Ingrese el codigo del componente -> "; cin >> cod;
+		cout << "| Ingrese el tipo de componente -> "; cin >> tipo;
+		cout << "| Ingrese el modelo del componente -> "; cin >> model;
+		cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
+		cout << "| Ingresel el precio del componente -> "; cin >> precio;
+		return new FuenteDeAudio(cod,tipo, model, carac, precio);
+	}
+	if (op == 2) {
+		cout << "| Ingrese el codigo del componente -> "; cin >> cod;
+		cout << "| Ingrese el tipo de componente -> "; cin >> tipo;
+		cout << "| Ingrese el modelo del componente -> "; cin >> model;
+		cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
+		cout << "| Ingresel el precio del componente -> "; cin >> precio;
+		return new ProcesadorDeSenal(cod, tipo, model, carac, precio);
+	}
+	if (op == 3) {
+		cout << "| Ingrese el codigo del componente -> "; cin >> cod;
+		cout << "| Ingrese el tipo de componente -> "; cin >> tipo;
+		cout << "| Ingrese el modelo del componente -> "; cin >> model;
+		cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
+		cout << "| Ingresel el precio del componente -> "; cin >> precio;
+		return new Parlante(cod, tipo, model, carac, precio);
+	}
 	
 	return NULL;
 }
