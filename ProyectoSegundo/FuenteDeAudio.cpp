@@ -13,9 +13,7 @@ FuenteDeAudio::FuenteDeAudio(string cod, string tipo, string model, string carac
 	precio = pre;
 }
 
-FuenteDeAudio::~FuenteDeAudio(){
-
-}
+FuenteDeAudio::~FuenteDeAudio() {}
 
 string FuenteDeAudio::getCodigo()
 {

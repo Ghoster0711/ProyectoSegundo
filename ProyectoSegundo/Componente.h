@@ -12,7 +12,6 @@ protected:
 public:
 	virtual ~Componente(){}
 	
-	
 	virtual string getNombre() = 0;
 	virtual string getCodigo() = 0;
 	virtual string getCaracteristica() = 0;

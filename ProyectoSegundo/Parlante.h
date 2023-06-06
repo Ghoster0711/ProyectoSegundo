@@ -3,8 +3,6 @@
 #include "Componente.h"
 
 
-
-
 class Parlante : public Componente {
 private:
 	string tipoComponente;

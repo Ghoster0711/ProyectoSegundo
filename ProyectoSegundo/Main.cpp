@@ -102,8 +102,6 @@ int main() {
 
 
 
-
-
 /// Prueba archivos clientes
 //int main() {
 //	string rutaSuscriptores = "../suscriptores.txt";
@@ -148,19 +146,6 @@ int main() {
 //	system("pause");
 //	return 0;
 //}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
