@@ -49,7 +49,7 @@ int main() {
 					mostrarClientes(tienda);
 					break;
 				case 2:
-					tienda->ingresarCliente(crearCliente());					
+					ingresoSuscriptores(tienda);
 					break;
 				case 3:
 					eliminarCliente(tienda);
@@ -58,7 +58,7 @@ int main() {
 					verCatalogo(tienda);
 					break;
 				case 5:
-					tienda->ingresarProductosAlCatalogo(crearProducto(tienda));
+					ingresoProductos(tienda);
 					break;
 				case 6:
 					eliminarProducto(tienda);
