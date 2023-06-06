@@ -6,6 +6,11 @@ Persona::Persona(string nom, string ced, string pais, string ciudad, string corr
 	: Cliente(nom, ced, pais, ciudad) {}
 Persona::~Persona() {}
 
+string Persona::getID()
+{
+	return cedula;
+}
+
 string Persona::getNombre() { return nombre; }
 
 string Persona::getCedula() { return cedula; }

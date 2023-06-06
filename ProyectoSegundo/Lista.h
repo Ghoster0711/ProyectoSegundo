@@ -62,7 +62,7 @@ inline bool Lista<T>::eliminar(string cod){
 	Nodo<T>* aux = NULL;
 	// Elimina el primero si el que se busca es el primero
 	if (nExt != NULL && nExt->getDato() != NULL) {
-		if (nExt->getDato()->getCodigo() == cod) {
+		if (nExt->getDato()->getID() == cod) {
 			primero = primero->getSiguiente();
 			delete nExt;
 			return true;
@@ -74,7 +74,7 @@ inline bool Lista<T>::eliminar(string cod){
 	while (nExt != NULL) {
 		if (nExt->getDato() != NULL) {
 			// Si el elemento existe lo elimina
-			if (nExt->getDato()->getCodigo() == cod) {
+			if (nExt->getDato()->getID() == cod) {
 				// Se le setea a aux el siguiente de nExt
 				aux->setSiguiente(nExt->getSiguiente());
 				// Se elimina nExt

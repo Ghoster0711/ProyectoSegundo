@@ -5,6 +5,11 @@ Empresa::Empresa(string nom, string ced, string pais, string ciudad) : Cliente(n
 
 Empresa::~Empresa() {}
 
+string Empresa::getID()
+{
+	return cedula;
+}
+
 string Empresa::getNombre() { return nombre; }
 
 string Empresa::getCedula() { return cedula; }

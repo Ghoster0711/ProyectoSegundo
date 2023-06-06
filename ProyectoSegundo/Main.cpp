@@ -49,18 +49,21 @@ int main() {
 					mostrarClientes(tienda);
 					break;
 				case 2:
-					tienda->ingresarCliente(crearCliente());
+					tienda->ingresarCliente(crearCliente());					
 					break;
 				case 3:
-					verCatalogo(tienda);
+					eliminarCliente(tienda);
 					break;
 				case 4:
-					tienda->ingresarProductosAlCatalogo(crearProducto(tienda));
+					verCatalogo(tienda);
 					break;
 				case 5:
-					eliminarProducto(tienda);
+					tienda->ingresarProductosAlCatalogo(crearProducto(tienda));
 					break;
 				case 6:
+					eliminarProducto(tienda);
+					break;
+				case 7:
 					break;
 				}
 			} while (op4 != 6);

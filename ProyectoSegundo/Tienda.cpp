@@ -67,6 +67,18 @@ string Tienda::mostrarSoloComponentes() {
 	return show.str();
 }
 
+bool Tienda::buscarCliente(string cod){
+	Nodo<Componente>* e = Catalogo->getPrimero();
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			if (e->getDato()->getCodigo() == cod)
+				return true;
+		}
+		e = e->getSiguiente();
+	}
+	return false;;
+}
+
 Componente* Tienda::retornarSoloComponentes(string cod) {
 	string tipo;
 	Nodo<Componente>* e = Catalogo->getPrimero();
@@ -114,6 +126,11 @@ bool Tienda::ingresarCliente(Cliente* cli){
 	return false;
 }
 
+bool Tienda::eliminarCliente(string cod)
+{
+	return Suscriptores->eliminar(cod);
+}
+
 string Tienda::verCatalogo(){
 	stringstream show;
 	show << Catalogo->toString();
@@ -128,7 +145,7 @@ bool Tienda::ingresarProductosAlCatalogo(Componente* compo){
 	return false;
 }
 
-bool Tienda::EliminarProducto(string cod) {
+bool Tienda::eliminarProducto(string cod) {
 	return Catalogo->eliminar(cod);
 
 }

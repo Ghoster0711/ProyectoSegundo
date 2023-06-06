@@ -16,6 +16,11 @@ ProcesadorDeSenal::~ProcesadorDeSenal() {
 
 }
 
+string ProcesadorDeSenal::getID()
+{
+	return codigo;
+}
+
 string ProcesadorDeSenal::getNombre()
 {
 	return "";

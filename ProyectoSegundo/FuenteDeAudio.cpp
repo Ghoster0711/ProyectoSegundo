@@ -15,6 +15,11 @@ FuenteDeAudio::FuenteDeAudio(string cod, string tipo, string model, string carac
 
 FuenteDeAudio::~FuenteDeAudio() {}
 
+string FuenteDeAudio::getID()
+{
+	return codigo;
+}
+
 string FuenteDeAudio::getCodigo()
 {
 	return codigo;

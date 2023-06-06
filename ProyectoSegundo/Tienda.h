@@ -35,6 +35,9 @@ public:
 	Componente* retornarSoloComponentes(string);
 	string mostrarSoloComponentes();
 
+	bool buscarCliente(string);
+
+
 // -------------Directo---------------
 
 // -------------En Linea--------------
@@ -43,9 +46,10 @@ public:
 
 	string mostrarClientes();
 	bool ingresarCliente(Cliente*);
+	bool eliminarCliente(string);
 	string verCatalogo();
 	bool ingresarProductosAlCatalogo(Componente*);
-	bool EliminarProducto(string);
+	bool eliminarProducto(string);
 
 	// ------------Reportes---------------
 

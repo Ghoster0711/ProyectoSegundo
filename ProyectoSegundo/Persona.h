@@ -11,6 +11,7 @@ public:
 	Persona(string, string, string, string, string, string);
 	virtual~Persona();
 
+	string getID();
 	string getNombre();
 	string getCedula();
 	string getNombrePais();

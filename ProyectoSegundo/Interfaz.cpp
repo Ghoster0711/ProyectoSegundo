@@ -44,10 +44,11 @@ int menuMantenimiento(){
 	cout << "-----------------------------------------" << endl
 		<< "| (1) Ver Lista de clientes.             |" << endl
 		<< "| (2) Ingreso de nuevos clientes         |" << endl
-		<< "| (3) Ver lista del catalogo             |" << endl
-		<< "| (4) Ingresar productos al catalogo     |" << endl
-		<< "| (5) Eliminar productos del catálogo    |" << endl
-		<< "| (6) Volver.                            |" << endl
+		<< "| (3) Eliminar Cliente                   |" << endl
+		<< "| (4) Ver lista del catalogo             |" << endl
+		<< "| (5) Ingresar productos al catalogo     |" << endl
+		<< "| (6) Eliminar productos del catálogo    |" << endl
+		<< "| (7) Volver.                            |" << endl
 		<< "------------------------------------------" << endl
 		<< "| Ingrese una opcion -> "; cin >> op;
 	return op;
@@ -108,6 +109,21 @@ Cliente* crearEmpresa(){
 	cout << "Ingrese la ciudad de ubicacion-> "; cin >> ciudad;
 	return new Empresa(nom, ced, pais, ciudad);
 }
+
+void eliminarCliente(Tienda* tienda) {
+	string cod;
+	cout << tienda->mostrarClientes();
+	cout << "-------------------------------------------------------" << endl
+		<< "| Ingrese la cedula del cliente a eliminar -> "; cin >> cod;
+	if (tienda->buscarProductoDelCatalogo(cod) == true) {
+		tienda->eliminarCliente(cod);
+		cout << "El cliente se elimino con exito!!" << endl;
+	}
+	else
+		cout << "La cedula que se ingreso no coincide con ningun con los que se encuentran!!" << endl;
+	system("pause");
+}
+
 
 void verCatalogo(Tienda* tienda) {
 	cout << tienda->verCatalogo();
@@ -222,7 +238,7 @@ void eliminarProducto(Tienda* tienda) {
 	cout << "-------------------------------------------------------" << endl
 		<< "| Ingrese el codigo del producto a eliminar -> "; cin >> cod;
 	if (tienda->buscarProductoDelCatalogo(cod) == true) {
-		tienda->EliminarProducto(cod);
+		tienda->eliminarProducto(cod);
 		cout << "El producto se elimino con exito!!" << endl;
 	}
 	else
@@ -237,5 +253,5 @@ void eliminarProducto(Tienda* tienda) {
 
 void salir(Tienda* tienda){
 	cout << "Muchas Gracias por visitarnos" << endl;
-
+	delete tienda;
 }

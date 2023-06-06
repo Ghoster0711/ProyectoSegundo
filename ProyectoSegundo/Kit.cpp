@@ -56,6 +56,11 @@ string Kit::toString(){
 	return show.str();
 }
 
+string Kit::getID()
+{
+	return codigo;
+}
+
 string Kit::getNombre()
 {
 	return nombre;

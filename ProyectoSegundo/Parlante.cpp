@@ -16,6 +16,11 @@ Parlante::~Parlante() {
 
 }
 
+string Parlante::getID()
+{
+	return codigo;
+}
+
 string Parlante::getCodigo()
 {
 	return codigo;

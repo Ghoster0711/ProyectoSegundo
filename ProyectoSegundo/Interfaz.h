@@ -32,6 +32,8 @@ Cliente* crearCliente();
 Cliente* crearPersona();
 Cliente* crearEmpresa();
 
+void eliminarCliente(Tienda*);
+
 void verCatalogo(Tienda*);
 
 Componente* crearProducto(Tienda*);
