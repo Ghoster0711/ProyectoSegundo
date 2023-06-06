@@ -134,7 +134,6 @@
     <ClInclude Include="Interfaz.h" />
     <ClInclude Include="Sistema.h" />
     <ClInclude Include="Destino.h" />
-    <ClInclude Include="Dispositivo.h" />
     <ClInclude Include="Empresa.h" />
     <ClInclude Include="Exepciones.h" />
     <ClInclude Include="Factura.h" />
@@ -156,7 +155,6 @@
     <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="Sistema.cpp" />
     <ClCompile Include="Destino.cpp" />
-    <ClCompile Include="Dispositivo.cpp" />
     <ClCompile Include="Empresa.cpp" />
     <ClCompile Include="Excepciones.cpp" />
     <ClCompile Include="Factura.cpp" />

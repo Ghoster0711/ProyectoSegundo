@@ -12,24 +12,28 @@ class Cliente {
 protected:
 	string nombre;
 	string cedula;
-	string correo;
-	string telefono;
+	string nombrePais;
+	string ciudadUbicacion;
 public:
 	Cliente();
 	Cliente(string, string, string, string);
 	virtual ~Cliente();
 
 	//Get's 
-	string getNombre();
-	string getCedula();
-	string getCorreo();
-	string getTelefono();
+	virtual string getNombre() = 0;
+	virtual string getCedula() = 0;
+	virtual string getNombrePais() = 0;
+	virtual string getCiudadUbicacion() = 0;
+	virtual string getCorreo() = 0;
+	virtual string getNacionalidad() = 0;
 
 	//Set's 
-	void setNombre(string);
-	void setCedula(string);
-	void setCorreo(string);
-	void setTelefono(string);
+	virtual void setNombre(string) = 0;
+	virtual void setCedula(string) = 0;
+	virtual void setNombrePais(string) = 0;
+	virtual void setCiudadUbicacion(string) = 0;
+	virtual void setCorreo(string) = 0;
+	virtual void setNacionalidad(string) = 0;
 
 	virtual string toString() = 0;
 
