@@ -9,7 +9,6 @@
 
 using namespace std;
 
-
 class Destino {
 private:
 	string codigo;

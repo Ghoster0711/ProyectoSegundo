@@ -133,7 +133,7 @@
     <ClInclude Include="EnLinea.h" />
     <ClInclude Include="Sistema.h" />
     <ClInclude Include="Destino.h" />
-    <ClInclude Include="Dispositivo.h" />
+    <ClInclude Include="Dispositivos.h" />
     <ClInclude Include="Empresa.h" />
     <ClInclude Include="Exepciones.h" />
     <ClInclude Include="Factura.h" />
@@ -154,7 +154,7 @@
     <ClCompile Include="EnLinea.cpp" />
     <ClCompile Include="Sistema.cpp" />
     <ClCompile Include="Destino.cpp" />
-    <ClCompile Include="Dispositivo.cpp" />
+    <ClCompile Include="Dispositivos.cpp" />
     <ClCompile Include="Empresa.cpp" />
     <ClCompile Include="Excepciones.cpp" />
     <ClCompile Include="Factura.cpp" />

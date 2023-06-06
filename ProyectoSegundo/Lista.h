@@ -1,5 +1,8 @@
 #pragma once
 #include "Nodo.h"
+#include"Utiles.h"
+#include"Cliente.h"
+#include<fstream>
 
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'
@@ -14,10 +17,12 @@ public:
 	virtual ~Lista();
 	Nodo<T>* getPrimero();
 	int getCantidad();
+	void setCantidad(int);
 
 	void ingresar(T*);
 
-	void guardarCatalogo();
+	void guardarDatos(ostream&);
+	static Lista<T>* recuperarDatos(istream&);
 
 	string toString();
 };
@@ -46,35 +51,78 @@ inline int Lista<T>::getCantidad()
 }
 
 template<class T>
+inline void Lista<T>::setCantidad(int c)
+{
+	cantidad = c;
+}
+
+template<class T>
 inline void Lista<T>::ingresar(T* dato){
 	primero = new Nodo<T>(dato, primero);
 	cantidad++;
 }
 
 template<class T>
-inline void Lista<T>::guardarCatalogo(){
-	Nodo<T>* e = primero;
+inline void Lista<T>::guardarDatos(ostream& salida){
+	Nodo<T>* elemento = primero;
 	string tipo;
-	string rutaCatalogo = "../catalogo.txt";
-	ofstream file;
-	file.open(rutaCatalogo);
-
-	while (e != NULL) {
-		if (e->getDato() != NULL) {
+	salida << cantidad << DELIMITA_REGISTRO;
+	while (elemento != NULL) {
+		if (elemento->getDato() != NULL) {
 			tipo = typeid(*e->getDato()).name();
-			if (tipo == "class Dispositivo") {
-				e->getDato()->guardar(file);
-			}
-			if (tipo == "class Kit") {
-				e->getDato()->guardar(file);
-			}else
-				e->getDato()->guardar(file);
+			salida << tipo << DELIMITA_REGISTRO;
+			elemento->getDato()->guardarDatos(salida);
 		}
-		e = e->getSiguiente();
+		elemento = elemento->getSiguiente();
 	}
-	file.close();
+	//file.close();
 }
-
+/*tipo = typeid(e->getDato()*).name();
+if (tipo == "class Dispositivos") {
+	e->getDato()->guardar(file);
+}
+if (tipo == "class Kit") {
+    e->getDato()->guardar(file);
+}else
+	e->getDato()->guardar(file);*/
+template<class T>
+inline Lista<T>* Lista<T>::recuperarDatos(istream& entrada) {
+	Lista<T>* lista = new Lista<T>;
+	Cliente* cliente = NULL;
+	Componente* componente = NULL;
+	Factura* factura = NULL;
+	string cantidad, tipo;
+	int cant;
+	getline(entrada, cantidad, DELIMITA_REGISTRO);
+	getline(entrada, tipo, DELIMITA_REGISTRO);
+	if (tipo == "class Persona") {
+		cliente = Persona::recuperarDatos(entrada);
+		lista->ingresar(cliente);
+	}
+	if (tipo == "class Empresa") {
+		cliente = Empresa::recuperarDatos(entrada);
+		lista->ingresar(cliente);
+	}
+	if (tipo == "class Kit") {
+		componente = Kit::recuperarDatos(entrada);
+		lista->ingresar(componente);
+	}
+	if (tipo == "class Dispositivos") {
+		componente = Dispositivos::recuperarDatos(entrada);
+		lista->ingresar(componente);
+	}
+	if (tipo == "class EnLinea") {
+		factura = EnLinea::recuperarDatos(entrada);
+		lista->ingresar(factura);
+	}
+	if (tipo == "class Directo") {
+		factura = Directo::recuperarDatos(entrada);
+		lista->ingresar(factura);
+	}
+	cant = convierteInt(cantidad);
+	lista->setCantidad(cant);
+	return lista;
+}
 
 template<class T>
 inline string Lista<T>::toString(){

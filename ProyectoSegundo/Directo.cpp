@@ -1,32 +1,53 @@
 #include "Directo.h"
 
-Directo::Directo(string num, Cliente* cli, Componente* com): Factura(num, cli, com){}
+Directo::Directo() {
+	codigo = "";
+	fecha = NULL;
+	cliente = NULL;
+	carritoDeCompras = NULL;
+}
+Directo::Directo(string cod, Fecha* fecha, Cliente* cli): Factura(cod, fecha, cli){}
 Directo::~Directo(){}
-
-string Directo::getNumFactura() { return numFactura; }
-
-Cliente* Directo::getCliente() { return cliente; }
-
-Destino* Directo::getDestino() { return destino; }
-
-Componente* Directo::getCombo() { return combo; }
-
-void Directo::setNumFactura(string num) { numFactura = num; }
-
-void Directo::setCliente(Cliente* cli) { cliente = cli; }
-
-void Directo::setDestino(Destino* des) { destino = des; }
-
-void Directo::setCombo(Componente* com) { combo = com; }
 
 string Directo::toString() {
 	stringstream show;
 	show << "--------------Factura---------------" << endl
-		<< "| Numero de factura: " << numFactura << endl
+		<< "| Codigo de factura: " << codigo << endl
+		<< "| Fecha: " << fecha->toString() << endl
 		<< "| Cliente: " << cliente->toString() << endl
-		<< "| Destino: " << destino->toString() << endl
 		<< "-------INFORMACION DE LA COMPRA------" << endl
-		<< combo->toString() << endl
+		<< carritoDeCompras->toString() << endl
 		<< "-------------------------------------" << endl;
 	return show.str();
+}
+
+void Directo::guardarDatos(ostream& salida) {
+	string typeCliente;
+	typeCliente = typeid((cliente)).name();
+	salida << codigo << DELIMITA_REGISTRO
+		<< typeCliente << DELIMITA_REGISTRO;
+	cliente->guardarDatos(salida);
+	fecha->guardarDatos(salida);
+	carritoDeCompras->guardarDatos(salida);
+}
+
+Directo* Directo::recuperarDatos(istream& entrada) {
+	string typeCliente, codigo;
+	Directo* factura = new Directo();
+	Cliente* cliente = NULL;
+	getline(entrada, codigo, DELIMITA_REGISTRO);
+	getline(entrada, typeCliente, DELIMITA_REGISTRO);
+	if (typeCliente == "class Persona") {
+		cliente = Persona::recuperarDatos(entrada);
+	}
+	if (typeCliente == "class Empresa") {
+		cliente = Empresa::recuperarDatos(entrada);
+	}
+	Fecha* fecha = Fecha::recuperarDatos(entrada);
+	Lista<Factura>* ventas = Lista<Factura>::recuperarDatos(entrada);
+	factura->setCodigo(codigo);
+	factura->setCliente(cliente);
+	factura->setFecha(fecha);
+	factura->setLista(ventas);
+	return factura;
 }

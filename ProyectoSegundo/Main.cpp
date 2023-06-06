@@ -14,12 +14,8 @@ int main() {
 
 	c5->agregar(new FuenteDeAudio("Tornamesa", "HT59J", "AJLJSDLA", 150));
 	c5->agregar(new Parlante("Audio", "HT59J", "AJLJSDLA", 150));
-	c5->agregar(new ProcesadorDeSenal("Parlante", "HT59J", "AJLJSDLA", 150) );
-	c5->agregar(new FuenteDeAudio("Microfono", "HT59J", "AJLJSDLA", 150));
+	c5->agregar(new ProcesadorDeSenal("Parlante", "HT59J", "AJLJSDLA", 150));
 
-	
-	system("pause");
-	system("cls");
 
 	tienda->getCatalago()->ingresar(c5);
 	tienda->getCatalago()->ingresar(c1);
@@ -28,23 +24,29 @@ int main() {
 	tienda->getCatalago()->ingresar(c4);
 
 
+	Cliente* cliente = new Persona("Sia", "1111", "sia.com", "61319120", "cfcewf", "vrefe");
+	Destino* destino = new Destino("010", "Brasil", "Brasilia", 17500);
+	Factura* factura = new EnLinea("14141", new Fecha(), cliente, destino);
 
-	cout << endl << endl << endl;
-	cout << tienda->getCatalago()->toString();
+	factura->ingresarCompra(c5);
+	cout << factura->toString() << endl;
+	tienda->getVentas()->ingresar(factura);
+	cout << tienda->getVentas()->toString();
 
-	system("pause");
-	cout << "guardando en archivos" << endl;
-	tienda->getCatalago()->guardarCatalogo();
+	cout << endl;
+	cout << "Guardar Datos" << endl;
+	tienda->guardarFacturas();
 
-	delete tienda;
 
-	tienda = new Tienda();
+	//delete tienda;
 
-	tienda->recuperarArchivoCatalogo();
+	/*tienda = new Tienda();*/
 
-	cout << endl << endl << endl;
+	//tienda->recuperarArchivoCatalogo();
+
+	/*cout << endl << endl << endl;
 	cout << "Imprimiendo con datos recuperados" << endl 
-		<<	tienda->getCatalago()->toString();
+		<<	tienda->getCatalago()->toString();*/
 	
 
 

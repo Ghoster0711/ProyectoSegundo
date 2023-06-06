@@ -5,34 +5,27 @@ Factura::Factura() {
 	codigo = "";
 	fecha = NULL;
 	cliente = NULL;
-	destino = NULL;
-	combo = NULL;
+	carritoDeCompras = NULL;
 }
 
-Factura::Factura(string cod, Fecha* fec, Cliente* cli, Destino* des, Componente* com){
+Factura::Factura(string cod, Fecha* fec, Cliente* cli){
 	codigo = cod;
 	fecha = fec;
 	cliente = clonarCliente(cli);
-	destino = clonarDestino(des);
-	combo = com;
+	carritoDeCompras = new Lista<Componente>();
 }
 
 Factura::~Factura(){
 	if (fecha != NULL)delete fecha;
 	if (cliente != NULL) delete cliente;
-	if (destino != NULL) delete destino;
-	if (combo != NULL) delete combo;
+	//Eliminar el carrito de compras 
 }
 
-
+string Factura::getCodigo() { return codigo; }
 
 Fecha* Factura::getFecha() { return fecha; }
 
 Cliente* Factura::getCliente() { return cliente; }
-
-Destino* Factura::getDestino() { return destino; }
-
-Componente* Factura::getCombo() { return combo; }
 
 void Factura::setCodigo(string cod){ codigo = cod; }
 
@@ -40,77 +33,101 @@ void Factura::setFecha(Fecha* fec) { fecha = fec; }
 
 void Factura::setCliente(Cliente* cli){ cliente = cli; }
 
-void Factura::setDestino(Destino* des){ destino = des; }
-
-void Factura::setCombo(Componente* com){ combo = com; }
-
-string Factura::toString() {
-	stringstream show;
-	show << "--------------FACTURA---------------" << endl
-		<< "| Numero de Factura: " << codigo << endl << endl
-		<< "| Fecha: "<< fecha->toString() << endl << endl
-		<< "| Cliente: " << endl << cliente->toString() << endl << endl
-		<< "| Destino: " << endl << destino->toString() << endl << endl
-		<< "-------INFORMACION DE LA COMPRA------" << endl
-		//<< combo->toString() << endl
-		<< "-------------------------------------" << endl;
-	return show.str();
+void Factura::setLista(Lista<Componente>* carrito) {
+	carritoDeCompras = carrito;
 }
 
 Cliente* Factura::clonarCliente(Cliente* client) {
-	string type,nom, ced, cor, tel;
+	string type, nom, ced, pais, ciudad, correo, naciona;
 	type= typeid(*(client)).name();
 	nom = client->getNombre();
 	ced = client->getCedula();
-	cor = client->getCorreo();
-	tel = client->getTelefono();
+	pais = client->getNombrePais();
+	ciudad = client->getCiudadUbicacion();
 	if (type == "class Persona") {
-		return new Persona(nom, ced, cor, tel);
+		Persona* persona = dynamic_cast<Persona*>(client);
+		if (persona != NULL) {
+			correo = persona->getCorreo();
+			naciona = persona->getNacionalidad();
+			return new Persona(nom, ced, pais, ciudad, correo, naciona);
+		}
 	}
 	if (type == "class Empresa") {
-		return new Empresa(nom, ced, cor, tel);
+		return new Empresa(nom, ced, pais, ciudad);
 	}
-}
-Destino* Factura::clonarDestino(Destino* dest) {
-	string cod, pais, ciud;
-	double cost;
-	cod = dest->getCodigo();
-	pais = dest->getPais();
-	ciud = dest->getCiudad();
-	cost = dest->getCostoTraslado();
-	return new Destino(cod, pais, ciud, cost);
 }
 
-void Factura::guardarDatos(ostream& salida) {
-	string type = typeid(*(cliente)).name();
-	salida << codigo << DELIMITA_REGISTRO
-		<< type << DELIMITA_REGISTRO;
-	cliente->guardarDatos(salida);
-	fecha->guardarDatos(salida);
-	destino->guardarDatos(salida);
-	//Guardar el combo 
+Componente* Factura::clonarComponente(Componente* componente) {
+	string type, tipo, modelo, caracteristica;
+	double precio;
+	Componente* componenteClonado = NULL;
+	type = typeid(*(componente)).name();
+	tipo = componente->getTipoComponente();
+	modelo = componente->getModelo();
+	caracteristica = componente->getCaracteristica();
+	precio = componente->getPrecio();
+	if (type == "class FuenteDeAudio") {
+		componenteClonado = new FuenteDeAudio(tipo, modelo, caracteristica, precio);
+	}
+	if (type == "class ProcesadorDeSenal") {
+		componenteClonado = new ProcesadorDeSenal(tipo, modelo, caracteristica, precio);
+	}
+	if (type == "class Parlante") {
+		componenteClonado = new Parlante(tipo, modelo, caracteristica, precio);
+	}
+	return componenteClonado;
+}
 
-}
-Factura* Factura::recuperarDatos(istream& entrada) {
-	Factura* factura = new Factura();
-	string cod, type, nom, ced, cor, tel;
-	getline(entrada, cod, DELIMITA_REGISTRO);
-	getline(entrada, type, DELIMITA_REGISTRO);
-	if (type == "class Persona") {
-		Cliente* cliente = Persona::recuperarDatos(entrada);
-		factura->setCliente(cliente);
+void Factura::ingresarCompra(Componente* compra) {
+	Componente* compraClonada = NULL;
+	string type = typeid(*(compra)).name();
+	Nodo<Componente>* aux = NULL;
+	if (type == "class Kit") {
+		Kit* kit = dynamic_cast<Kit*>(compra);
+		if (kit != NULL) {
+			compraClonada = new Kit();
+			aux = kit->getEmpaquetado()->getPrimero();
+			while (aux != NULL) {
+				compraClonada->agregar(clonarComponente(aux->getDato()));
+				carritoDeCompras->ingresar(compraClonada);
+				aux->getSiguiente();
+			}
+		}
 	}
-	if (type == "class Empresa") {
-		Cliente* cliente = Empresa::recuperarDatos(entrada);
-		factura->setCliente(cliente);
+	if (type == "class Dispositivos") {
+		Dispositivos* dispositivos = dynamic_cast<Dispositivos*>(compra);
+		if (dispositivos != NULL) {
+			compraClonada = new Dispositivos();
+			aux = dispositivos->getEmpaquetado()->getPrimero();
+			while (aux != NULL) {
+				compraClonada->agregar(clonarComponente(aux->getDato()));
+				carritoDeCompras->ingresar(compraClonada);
+				aux->getSiguiente();
+			}
+		}
 	}
-	Fecha* fec = Fecha::recuperarDatos(entrada);
-	Destino* destino = Destino::recuperarDatos(entrada);
-	factura->setCodigo(cod);
-	factura->setFecha(fec);
-	factura->setDestino(destino);
-	
-	//Recuperar el combo 
-	return factura;
 }
+
+//Factura* Factura::recuperarDatos(istream& entrada) {
+//	Factura* factura = NULL;
+//	string cod, type, nom, ced, cor, tel;
+//	getline(entrada, cod, DELIMITA_REGISTRO);
+//	getline(entrada, type, DELIMITA_REGISTRO);
+//	if (type == "class Persona") {
+//		Cliente* cliente = Persona::recuperarDatos(entrada);
+//		factura->setCliente(cliente);
+//	}
+//	if (type == "class Empresa") {
+//		Cliente* cliente = Empresa::recuperarDatos(entrada);
+//		factura->setCliente(cliente);
+//	}
+//	Fecha* fec = Fecha::recuperarDatos(entrada);
+//	Destino* destino = Destino::recuperarDatos(entrada);
+//	factura->setCodigo(cod);
+//	factura->setFecha(fec);
+//	factura->setDestino(destino);
+//	
+//	//Recuperar el combo 
+//	return factura;
+//}
 

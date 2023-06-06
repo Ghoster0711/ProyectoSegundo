@@ -12,8 +12,8 @@ class Cliente {
 protected:
 	string nombre;
 	string cedula;
-	string correo;
-	string telefono;
+	string nombrePais;
+	string ciudadUbicacion;
 public:
 	Cliente();
 	Cliente(string, string, string, string);
@@ -22,14 +22,14 @@ public:
 	//Get's 
 	string getNombre();
 	string getCedula();
-	string getCorreo();
-	string getTelefono();
+	string getNombrePais();
+	string getCiudadUbicacion();
 
 	//Set's 
 	void setNombre(string);
 	void setCedula(string);
-	void setCorreo(string);
-	void setTelefono(string);
+	void setNombrePais(string);
+	void setCiudadUbicacion(string);
 
 	virtual string toString() = 0;
 

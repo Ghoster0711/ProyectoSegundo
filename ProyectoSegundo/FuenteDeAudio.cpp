@@ -5,24 +5,32 @@
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'
 
-FuenteDeAudio::FuenteDeAudio(string tipo, string model, string carac, double pre) {
+FuenteDeAudio::FuenteDeAudio(string tipo, string mod,string carac, double pre) {
 	tipoComponente = tipo;
-	modelo = model;
+	modelo = mod;
 	caracteristica = carac;
 	precio = pre;
 }
 
-FuenteDeAudio::~FuenteDeAudio(){
+FuenteDeAudio::~FuenteDeAudio(){}
 
-}
+string FuenteDeAudio::getTipoComponente() { return tipoComponente; }
+
+string FuenteDeAudio::getModelo() { return modelo; }
 
 string FuenteDeAudio::getCaracteristica() { return caracteristica; }
 
 double FuenteDeAudio::getPrecio() { return precio; }
 
-void FuenteDeAudio::agregar(Componente*){}
+void FuenteDeAudio::setTipoComponente(string tipo) { tipoComponente = tipo; }
+
+void FuenteDeAudio::setModelo(string mod) { modelo = mod; }
+
+void FuenteDeAudio::setCaracteristica(string carac) { caracteristica = carac; }
 
 void FuenteDeAudio::setPrecio(double pre) { precio = pre; }
+
+void FuenteDeAudio::agregar(Componente*){}
 
 string FuenteDeAudio::toString() {
 	stringstream show;
@@ -30,7 +38,9 @@ string FuenteDeAudio::toString() {
 	return show.str();
 }
 
-void FuenteDeAudio::guardar(ostream& salida) {
+void agregar(Componente*) {}
+
+void FuenteDeAudio::guardarDatos(ostream& salida) {
 	salida << "Fuente de audio" << DELIMITA_CAMPO;
 	salida << tipoComponente << DELIMITA_CAMPO;
 	salida << modelo << DELIMITA_CAMPO;
@@ -38,15 +48,15 @@ void FuenteDeAudio::guardar(ostream& salida) {
 	salida << precio << DELIMITA_REGISTRO;
 }
 
-Componente* FuenteDeAudio::recuperar(istream& entrada){
+Componente* FuenteDeAudio::recuperarDatos(istream& entrada){
 	string clase, tipo, model, carac, precio;
-	//(entrada, clase, DELIMITA_CAMPO);
+	getline(entrada, clase, DELIMITA_CAMPO);
 	getline(entrada, tipo, DELIMITA_CAMPO);
 	getline(entrada, model, DELIMITA_CAMPO);
 	getline(entrada, carac, DELIMITA_CAMPO);
 	getline(entrada, precio, DELIMITA_REGISTRO);
 
-	double valorPrecio = convertirDouble(precio);
+	double valorPrecio = convierteDouble(precio);
 
 	return new FuenteDeAudio(tipo, model, carac, valorPrecio);
 

@@ -11,17 +11,25 @@ Parlante::Parlante(string tipo, string model, string carac, double pre) {
 	precio = pre;
 }
 
-Parlante::~Parlante() {
+Parlante::~Parlante() {}
 
-}
+string Parlante::getTipoComponente() { return tipoComponente; }
+
+string Parlante::getModelo() { return modelo; }
 
 string Parlante::getCaracteristica() { return caracteristica; }
 
 double Parlante::getPrecio() { return precio; }
 
-void Parlante::agregar(Componente*) {}
+void Parlante::setTipoComponente(string tipo) { tipoComponente = tipo; }
+
+void Parlante::setModelo(string mod) { modelo = mod; }
+
+void Parlante::setCaracteristica(string carac) { caracteristica = carac; }
 
 void Parlante::setPrecio(double pre) { precio = pre; }
+
+void Parlante::agregar(Componente*) {}
 
 string Parlante::toString() {
 	stringstream show;
@@ -29,7 +37,9 @@ string Parlante::toString() {
 	return show.str();
 }
 
-void Parlante::guardar(ostream& salida){
+void agregar(Componente*) {}
+
+void Parlante::guardarDatos(ostream& salida){
 	salida << "Parlante" << DELIMITA_CAMPO;
 	salida << tipoComponente << DELIMITA_CAMPO;
 	salida << modelo << DELIMITA_CAMPO;
@@ -37,7 +47,7 @@ void Parlante::guardar(ostream& salida){
 	salida << precio << DELIMITA_REGISTRO;
 }
 
-Componente* Parlante::recuperar(istream& entrada)
+Componente* Parlante::recuperarDatos(istream& entrada)
 {
 	string clase, tipo, model, carac, precio;
 	//(entrada, clase, DELIMITA_CAMPO);
@@ -46,7 +56,7 @@ Componente* Parlante::recuperar(istream& entrada)
 	getline(entrada, carac, DELIMITA_CAMPO);
 	getline(entrada, precio, DELIMITA_REGISTRO);
 
-	double valorPrecio = convertirDouble(precio);
+	double valorPrecio = convierteDouble(precio);
 
 	return new Parlante(tipo, model, carac, valorPrecio);
 }

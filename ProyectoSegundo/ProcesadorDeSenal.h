@@ -6,15 +6,25 @@ class ProcesadorDeSenal : public Componente {
 private:
 	string tipoComponente;
 	string modelo;
+	string caracteristica;
 public:
 	ProcesadorDeSenal(string, string, string, double);
 	virtual ~ProcesadorDeSenal();
+
+	string getTipoComponente();
+	string getModelo();
 	string getCaracteristica();
 	double getPrecio();
-	void agregar(Componente*);
+
+	void setTipoComponente(string);
+	void setModelo(string);
+	void setCaracteristica(string);
 	void setPrecio(double);
+
+	void agregar(Componente*);
+
 	string toString();
 
-	void guardar(ostream&);
-	static Componente* recuperar(istream&);
+	void guardarDatos(ostream&);
+	static Componente* recuperarDatos(istream&);
 };

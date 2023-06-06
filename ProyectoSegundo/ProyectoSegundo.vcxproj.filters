@@ -21,7 +21,7 @@
     <ClInclude Include="Sistema.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Dispositivo.h">
+    <ClInclude Include="Dispositivos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Factura.h">
@@ -80,7 +80,7 @@
     <ClCompile Include="Sistema.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Dispositivo.cpp">
+    <ClCompile Include="Dispositivos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Factura.cpp">

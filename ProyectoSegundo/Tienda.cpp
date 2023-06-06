@@ -18,28 +18,48 @@ Lista<Cliente>* Tienda::getSuscriptores() { return Suscriptores; }
 
 Lista<Factura>* Tienda::getVentas() { return Ventas; }
 
-
+void Tienda::guardarCatalogo() {
+	string rutaCatalogo = "../catalogo.txt";
+	ofstream salida;
+	salida.open(rutaCatalogo);
+	Catalogo->guardarDatos(salida);
+}
 void Tienda::recuperarArchivoCatalogo(){
 	string rutaCatalogo = "../catalogo.txt";
 	ifstream file;
 	string op;
 	file.open(rutaCatalogo);
 	while (file.good()) {
-		getline(file, op, DELIMITA_CAMPO);
+		Catalogo->recuperarDatos(file);
+		/*getline(file, op, DELIMITA_CAMPO);
 		if (op == "Fuente de audio")
-			Catalogo->ingresar(FuenteDeAudio::recuperar(file));
+			Catalogo->ingresar(FuenteDeAudio::recuperarDatos(file));
 		if (op == "Procesador de senal")
-			Catalogo->ingresar(ProcesadorDeSenal::recuperar(file));
+			Catalogo->ingresar(ProcesadorDeSenal::recuperarDatos(file));
 		if (op == "Parlante")
-			Catalogo->ingresar(Parlante::recuperar(file));
+			Catalogo->ingresar(Parlante::recuperarDatos(file));
 		if (op == "Kit")
-			Catalogo->ingresar(Kit::recuperar(file)); 
-		if (op == "Dispositivo")
-			Catalogo->ingresar(Dispositivo::recuperar(file));
+			Catalogo->ingresar(Kit::recuperarDatos(file)); 
+		if (op == "Dispositivos")
+			Catalogo->ingresar(Dispositivos::recuperarDatos(file));*/
 	}
 	file.close();
 }
 
-//void Tienda::guardarFacturas()  {}
-//Factura* Tienda::recuperarFacturas(istream& entrada) {}
+void Tienda::guardarFacturas()  {
+	string rutaFacturas = "../facturas.txt";
+	ofstream salida;
+	salida.open(rutaFacturas);
+	Ventas->guardarDatos(salida);
+	salida.close();
+}
+void Tienda::recuperarArchivoFacturas() {
+	string rutaFacturas = "../facturas.txt";
+	ifstream entrada;
+	entrada.open(rutaFacturas);
+	while (entrada.good()) {
+		Ventas->recuperarDatos(entrada);
+	}
+	entrada.close();
+}
 

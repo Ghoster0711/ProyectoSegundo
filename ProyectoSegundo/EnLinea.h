@@ -6,17 +6,17 @@ class EnLinea : public Factura {
 private:
 	Destino* destino;
 public:
-	EnLinea(string, Cliente*, Componente*, Destino*);
+	EnLinea();
+	EnLinea(string, Fecha*, Cliente*, Destino*);
 	virtual ~EnLinea();
 
-	string getNumFactura();
-	Cliente* getCliente();
-	Componente* getCombo();
-	void setNumFactura(string);
-	void setCliente(Cliente*);
-	void setCombo(Componente*);
 	Destino* getDestino();
 	void setDestino(Destino*);
+
 	string toString();
 
+	Destino* clonarDestino(Destino*);
+
+	void guardarDatos(ostream&);
+	static EnLinea* recuperarDatos(istream&);
 };

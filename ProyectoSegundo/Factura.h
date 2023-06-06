@@ -1,45 +1,45 @@
 #pragma once
 #include <iostream>
 #include <sstream>
+#include"Lista.h"
 #include "Persona.h"
 #include "Empresa.h"
 #include "Destino.h"
 #include "Fecha.h"
 #include "Kit.h"
-#include "Dispositivo.h"
+#include "Dispositivos.h"
+#include"FuenteDeAudio.h"
+#include"Parlante.h"
+#include"ProcesadorDeSenal.h"
 
 class Factura {
 protected:
 	string codigo;
 	Fecha* fecha;
 	Cliente* cliente;
-	Destino* destino;
-	Componente* combo;
+	Lista<Componente>* carritoDeCompras;
 public:
 	Factura();
-	Factura(string, Fecha*, Cliente*, Destino*, Componente*);
+	Factura(string, Fecha*, Cliente*);
 	virtual ~Factura();
 
 	string getCodigo();
 	Fecha* getFecha();
 	Cliente* getCliente();
-	Destino* getDestino();
-	Componente* getCombo();
+	//Lista<Componente>* getCarritoDeCompras();
 
 	void setCodigo(string);
 	void setFecha(Fecha*);
 	void setCliente(Cliente*);
-	void setDestino(Destino*);
-	void setCombo(Componente*);
+	void setLista(Lista<Componente>*);
 
-	string toString();
-
+	virtual string toString() = 0;
 
 	Cliente* clonarCliente(Cliente*);
-	Destino* clonarDestino(Destino*);
-
-	void guardarDatos(ostream&);
-	static Factura* recuperarDatos(istream&);
+	Componente* clonarComponente(Componente*);
+	void ingresarCompra(Componente*);
+	
+	virtual void guardarDatos(ostream&) = 0;
 
 };
 
