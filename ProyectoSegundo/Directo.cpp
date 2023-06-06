@@ -6,7 +6,11 @@ Directo::Directo() {
 	cliente = NULL;
 	carritoDeCompras = NULL;
 }
-Directo::Directo(string cod, Fecha* fecha, Cliente* cli) : Factura(cod, fecha, cli) {}
+Directo::Directo(string cod, Fecha* fecha, Cliente* cli) {
+	codigo = cod;
+	this->fecha = fecha;
+	cliente = clonarCliente(cli);
+}
 Directo::~Directo() {}
 
 string Directo::getCodigo() { return codigo; }
@@ -29,23 +33,20 @@ void Directo::setLista(Lista<Componente>* carrito) { carritoDeCompras = carrito;
 
 void Directo::setDestino(Destino* dest) {}
 
-Destino* Directo::clonarDestino(Destino* dest) {}
+Destino* Directo::clonarDestino(Destino* dest) {
+	return NULL;
+}
 
 Cliente* Directo::clonarCliente(Cliente* cliente) {
-	string type, nom, ced, pais, ciudad, correo, nacionalidad;
-	type = typeid((cliente)).name();
-	nom = cliente->getNombre();
-	ced = cliente->getCedula();
-	pais = cliente->getNombrePais();
-	ciudad = cliente->getCiudadUbicacion();
-	if (type == "class Empresa") {
-		return new Empresa(nom, ced, pais, ciudad);
+	string tipo;
+	tipo = typeid(*cliente).name();
+	if (tipo == "class Empresa") {
+		return (Cliente*)new Empresa(*(Empresa*)cliente);
 	}
-	if (type == "class Persona") {
-		correo = cliente->getCorreo();
-		nacionalidad = cliente->getNacionalidad();
-		return new Persona(nom, ced, pais, ciudad, correo, nacionalidad);
+	if (tipo == "class Persona") {
+		return (Cliente*)new Persona(*(Persona*)cliente);
 	}
+	return NULL;
 }
 Componente* Directo::clonarComponente(Componente* compo) {
 	string tipo;
@@ -62,7 +63,7 @@ Componente* Directo::clonarComponente(Componente* compo) {
 	if (tipo == "class Parlante") {
 		return (Componente*)new Parlante(*(Parlante*)compo);
 	}
-
+	return NULL;
 }
 void Directo::ingresarCompra(Componente* componente) {
 	carritoDeCompras->ingresar(clonarComponente(componente));
@@ -80,7 +81,7 @@ string Directo::toString() {
 	return show.str();
 }
 
-void Directo::guardarDatos(ostream& salida) {
+void Directo::guardar(ostream& salida) {
 	string type = typeid((cliente)).name();
 	salida << "Factura En Linea" << DELIMITA_CAMPO;
 	salida << codigo << DELIMITA_CAMPO;

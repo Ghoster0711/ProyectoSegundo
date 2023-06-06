@@ -29,6 +29,6 @@ public:
 
 	string toString();
 
-	void guardarDatos(ostream&);
-	static EnLinea* recuperarDatos(istream&);
+	void guardar(ostream&);
+	static EnLinea* recuperar(istream&);
 };

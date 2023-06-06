@@ -75,13 +75,14 @@ int menuReportes() {
 
 void mostrarClientes(Tienda* tienda) {
 	cout << tienda->mostrarClientes();
+	system("pause");
 }
 Cliente* crearCliente(){
 	int op;
 	cout << "----------------------------------" << endl
 		<< "| (1) Empresa.                    |" << endl
 		<< "| (2) Persona.                    |" << endl
-		<< "-----------------------------------"
+		<< "-----------------------------------" << endl
 		<< "| Que desea ingresar ->"; cin >> op;
 	if (op == 1)
 		return crearEmpresa();
@@ -90,24 +91,27 @@ Cliente* crearCliente(){
 	return NULL;
 }
 Cliente* crearPersona() {
-	string nom, ced, correo, tel;
+	string nom, ced, correo, ciudadUbicacion, nacionalidad, pais;
 	cout << "Ingrese el nombre -> "; cin >> nom;
 	cout << "Ingrese la cedula -> "; cin >> ced;
-	cout << "Ingrese el correo -> "; cin >> correo;
-	cout << "Ingrese el telefono -> "; cin >> tel;
-	return new Persona(nom, ced, correo, tel);
+	cout << "Ingrese el Pais -> "; cin >> pais;
+	cout << "Ingrese la Ciudad de Ubicacion: "; cin >> ciudadUbicacion;
+	cout << "Ingrese el Correo: "; cin >> correo;
+	cout << "Ingrese la Nacionalidad: "; cin >> nacionalidad;
+	return new Persona(nom, ced, pais, ciudadUbicacion, correo, nacionalidad);
 }
 Cliente* crearEmpresa(){
-	string nom, ced, correo, tel;
+	string nom, ced, pais, ciudad;
 	cout << "Ingrese el nombre de la empresa -> "; cin >> nom;
 	cout << "Ingrese la cedula juridica-> "; cin >> ced;
-	cout << "Ingrese el correo de la empresa-> "; cin >> correo;
-	cout << "Ingrese el telefono de la empresa-> "; cin >> tel;
-	return new Empresa(nom, ced, correo, tel);
+	cout << "Ingrese el pais de la empresa-> "; cin >> pais;
+	cout << "Ingrese la ciudad de ubicacion-> "; cin >> ciudad;
+	return new Empresa(nom, ced, pais, ciudad);
 }
 
 void verCatalogo(Tienda* tienda) {
 	cout << tienda->verCatalogo();
+	system("pause");
 }
 
 Componente* crearProducto(Tienda* tienda) {

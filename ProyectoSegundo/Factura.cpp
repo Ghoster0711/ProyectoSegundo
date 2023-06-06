@@ -11,7 +11,7 @@ Factura::Factura() {
 Factura::Factura(string cod, Fecha* fec, Cliente* cli) {
 	codigo = cod;
 	fecha = fec;
-	cliente = clonarCliente(cli);
+	cliente = cli;
 	carritoDeCompras = new Lista<Componente>();
 }
 

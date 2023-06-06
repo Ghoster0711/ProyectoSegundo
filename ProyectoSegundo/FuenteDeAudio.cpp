@@ -41,7 +41,7 @@ void FuenteDeAudio::setPrecio(double pre) { precio = pre; }
 
 string FuenteDeAudio::toString() {
 	stringstream show;
-	show << codigo << "\t" << tipoComponente << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "Fuente de audio\t" << codigo << "\t" << tipoComponente << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

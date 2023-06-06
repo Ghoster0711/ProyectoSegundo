@@ -152,7 +152,7 @@ inline void Lista<T>::guardarCarritoDeCompras(ostream& salida) {
 	Nodo<T>* e = primero;
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
-			e->getDato().guardar(salida);
+			e->getDato()->guardar(salida);
 		}
 		e = e->getSiguiente();
 	}

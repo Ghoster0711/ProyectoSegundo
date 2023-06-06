@@ -106,8 +106,12 @@ string Tienda::mostrarClientes(){
 	return show.str();;
 }
 
-void Tienda::ingresarCliente(Cliente* cli){
-	Suscriptores->ingresar(cli);
+bool Tienda::ingresarCliente(Cliente* cli){
+	if (cli != NULL) {
+		Suscriptores->ingresar(cli);
+		return true;
+	}
+	return false;
 }
 
 string Tienda::verCatalogo(){
@@ -116,12 +120,17 @@ string Tienda::verCatalogo(){
 	return show.str();
 }
 
-void Tienda::ingresarProductosAlCatalogo(Componente* compo){
-	Catalogo->ingresar(compo);
+bool Tienda::ingresarProductosAlCatalogo(Componente* compo){
+	if (compo != NULL) {
+		Catalogo->ingresar(compo);
+		return true;
+	}
+	return false;
 }
 
-void Tienda::EliminarProducto(string cod) {
-	Catalogo->eliminar(cod);
+bool Tienda::EliminarProducto(string cod) {
+	return Catalogo->eliminar(cod);
+
 }
 
 // ------------Reportes---------------

@@ -42,10 +42,10 @@ public:
 // -----------Mantenimiento-----------
 
 	string mostrarClientes();
-	void ingresarCliente(Cliente*);
+	bool ingresarCliente(Cliente*);
 	string verCatalogo();
-	void ingresarProductosAlCatalogo(Componente*);
-	void EliminarProducto(string);
+	bool ingresarProductosAlCatalogo(Componente*);
+	bool EliminarProducto(string);
 
 	// ------------Reportes---------------
 

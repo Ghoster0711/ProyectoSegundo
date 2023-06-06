@@ -6,6 +6,7 @@
 int main() {
 	Tienda* tienda = new Tienda();
 	int op, op2, op3, op4, op5;
+	tienda->recuperarDeArchivos();
 	do {
 		system("cls");
 		op = menu();
@@ -48,18 +49,13 @@ int main() {
 					mostrarClientes(tienda);
 					break;
 				case 2:
-					if (crearCliente() != NULL) {
-						tienda->ingresarCliente(crearCliente());
-					}
+					tienda->ingresarCliente(crearCliente());
 					break;
 				case 3:
 					verCatalogo(tienda);
 					break;
 				case 4:
-					if (crearProducto(tienda) != NULL) {
-						tienda->ingresarProductosAlCatalogo(crearProducto(tienda));
-					}else
-						//excepcion de no se pudo agregar
+					tienda->ingresarProductosAlCatalogo(crearProducto(tienda));
 					break;
 				case 5:
 					eliminarProducto(tienda);
