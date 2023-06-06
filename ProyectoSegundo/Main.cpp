@@ -6,6 +6,7 @@
 int main() {
 	Tienda* tienda = new Tienda();
 	int op, op2, op3, op4, op5;
+	tienda->recuperarDeArchivos();
 	do {
 		system("cls");
 		op = menu();
@@ -48,23 +49,21 @@ int main() {
 					mostrarClientes(tienda);
 					break;
 				case 2:
-					if (crearCliente() != NULL) {
-						tienda->ingresarCliente(crearCliente());
-					}
+					tienda->ingresarCliente(crearCliente());					
 					break;
 				case 3:
-					verCatalogo(tienda);
+					eliminarCliente(tienda);
 					break;
 				case 4:
-					if (crearProducto(tienda) != NULL) {
-						tienda->ingresarProductosAlCatalogo(crearProducto(tienda));
-					}else
-						//excepcion de no se pudo agregar
+					verCatalogo(tienda);
 					break;
 				case 5:
-					eliminarProducto(tienda);
+					tienda->ingresarProductosAlCatalogo(crearProducto(tienda));
 					break;
 				case 6:
+					eliminarProducto(tienda);
+					break;
+				case 7:
 					break;
 				}
 			} while (op4 != 6);
@@ -96,8 +95,6 @@ int main() {
 	system("pause");
 	return 0;
 }
-
-
 
 
 
@@ -148,19 +145,6 @@ int main() {
 //	system("pause");
 //	return 0;
 //}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

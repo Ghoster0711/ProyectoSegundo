@@ -21,9 +21,6 @@
     <ClInclude Include="Sistema.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Dispositivo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Factura.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -81,9 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sistema.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Dispositivo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Factura.cpp">

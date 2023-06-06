@@ -3,8 +3,6 @@
 #include "Componente.h"
 
 
-
-
 class Parlante : public Componente {
 private:
 	string tipoComponente;
@@ -13,6 +11,7 @@ public:
 	Parlante(string, string, string, string, double);
 	virtual ~Parlante();
 
+	string getID();
 	string getNombre() { return ""; }
 	string getCodigo();
 	string getCaracteristica();

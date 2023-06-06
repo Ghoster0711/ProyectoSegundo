@@ -16,6 +16,11 @@ ProcesadorDeSenal::~ProcesadorDeSenal() {
 
 }
 
+string ProcesadorDeSenal::getID()
+{
+	return codigo;
+}
+
 string ProcesadorDeSenal::getNombre()
 {
 	return "";
@@ -48,7 +53,7 @@ void ProcesadorDeSenal::setPrecio(double pre) { precio = pre; }
 
 string ProcesadorDeSenal::toString() {
 	stringstream show;
-	show << codigo << "\t" << tipoComponente << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "Procesador de senal\t" << codigo << "\t" << tipoComponente << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

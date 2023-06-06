@@ -8,7 +8,6 @@
 #include "ProcesadorDeSenal.h"
 #include "Parlante.h"
 #include "Kit.h"
-#include "Dispositivo.h"
 using namespace std;
 
 
@@ -32,6 +31,8 @@ void mostrarClientes(Tienda*);
 Cliente* crearCliente();
 Cliente* crearPersona();
 Cliente* crearEmpresa();
+
+void eliminarCliente(Tienda*);
 
 void verCatalogo(Tienda*);
 

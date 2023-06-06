@@ -10,6 +10,7 @@ public:
 	ProcesadorDeSenal(string, string, string, string, double);
 	virtual ~ProcesadorDeSenal();
 	
+	string getID();
 	string getNombre();
 	string getCodigo();
 	string getCaracteristica();

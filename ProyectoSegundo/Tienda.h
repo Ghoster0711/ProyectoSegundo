@@ -1,14 +1,13 @@
 #pragma once
 #include <fstream>
 #include "Lista.h"
-//#include "Cliente.h"
-//#include "Factura.h"
+//Factura
+#include "Factura.h"
 // Componentes
 #include "FuenteDeAudio.h"
 #include "ProcesadorDeSenal.h"
 #include "Parlante.h"
 #include "Kit.h"
-#include "Dispositivo.h"
 // Clientes
 #include "Empresa.h"
 #include "Persona.h"
@@ -18,14 +17,14 @@ class Tienda {
 private:
 	Lista<Componente>* Catalogo;
 	Lista<Cliente>* Suscriptores;
-	//Lista<Factura>* Ventas;
+	Lista<Factura>* Ventas;
 public:
 	Tienda();
 	virtual ~Tienda();
 
 	Lista<Componente>* getCatalago();
 	Lista<Cliente>* getSuscriptores();
-	//Lista<Factura>* getVentas();
+	Lista<Factura>* getVentas();
 
 	string mostrarElCatalogo();
 	//string mostrarLosSuscriptores();
@@ -36,6 +35,9 @@ public:
 	Componente* retornarSoloComponentes(string);
 	string mostrarSoloComponentes();
 
+	bool buscarCliente(string);
+
+
 // -------------Directo---------------
 
 // -------------En Linea--------------
@@ -43,10 +45,11 @@ public:
 // -----------Mantenimiento-----------
 
 	string mostrarClientes();
-	void ingresarCliente(Cliente*);
+	bool ingresarCliente(Cliente*);
+	bool eliminarCliente(string);
 	string verCatalogo();
-	void ingresarProductosAlCatalogo(Componente*);
-	void EliminarProducto(string);
+	bool ingresarProductosAlCatalogo(Componente*);
+	bool eliminarProducto(string);
 
 	// ------------Reportes---------------
 
@@ -60,7 +63,7 @@ public:
 	void recuperarArchivoSuscriptores();
 
 	void guardarFacturas();
-	//static Factura* recuperarFacturas(istream&);
+	void recuperarFacturas();
 
 	void recuperarDeArchivos();
 
