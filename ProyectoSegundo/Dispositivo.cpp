@@ -7,7 +7,17 @@
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'
 
-Dispositivo::Dispositivo() {
+Dispositivo::Dispositivo()
+{
+nombre = "Sistema a la medida";
+codigo = "";
+caracteristica = "";
+precio = 0;
+}
+
+Dispositivo::Dispositivo(string nom, string cod) {
+	nombre = nom;
+	codigo = cod;
 	caracteristica = "";
 	precio = 0;
 }
@@ -25,18 +35,46 @@ void Dispositivo::agregar(Componente* com) {
 	cantItems++;
 }
 
+void Dispositivo::setNombre(string nom)
+{
+	nombre = nom;
+}
+
+void Dispositivo::setCodigo(string cod)
+{
+	codigo = cod;
+}
+
+void Dispositivo::setCaracteristica(string carac)
+{
+	caracteristica = carac;
+}
+
 void Dispositivo::setPrecio(double pre) { precio = pre; }
 
 string Dispositivo::toString() {
 	stringstream show;
-	show << "Kit" << endl;
+	show << "Nombre : " << nombre 
+		<< "\tCodigo: " << codigo << endl;
 	show << empaquetado->toString();
 	return show.str();
+}
+
+string Dispositivo::getNombre()
+{
+	return nombre;
+}
+
+string Dispositivo::getCodigo()
+{
+	return codigo;
 }
 
 void Dispositivo::guardar(ostream& salida) {
 	Nodo<Componente>* e = empaquetado->getPrimero();
 	salida << "Dispositivo" << DELIMITA_CAMPO;
+	salida << nombre << DELIMITA_CAMPO;
+	salida << codigo << DELIMITA_CAMPO;
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
 			e->getDato()->guardar(salida);
@@ -48,8 +86,12 @@ void Dispositivo::guardar(ostream& salida) {
 
 Componente* Dispositivo::recuperar(istream& entrada)
 {
-	string findispositivo;
+	string findispositivo, nombre, codigo;
 	Componente* dispositivo = new Dispositivo();
+	getline(entrada, nombre, DELIMITA_CAMPO);
+	getline(entrada, codigo, DELIMITA_CAMPO);
+	dispositivo->setCodigo(codigo);
+	dispositivo->setNombre(nombre);
 	while (findispositivo != "findispositivo") {
 		getline(entrada, findispositivo, DELIMITA_REGISTRO);
 		if (findispositivo == "Fuente de audio") {

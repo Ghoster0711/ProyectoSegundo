@@ -7,14 +7,21 @@ private:
 	string tipoComponente;
 	string modelo;
 public:
-	ProcesadorDeSenal(string, string, string, double);
+	ProcesadorDeSenal(string, string, string, string, double);
 	virtual ~ProcesadorDeSenal();
+	
+	string getNombre();
+	string getCodigo();
 	string getCaracteristica();
 	double getPrecio();
-	void agregar(Componente*);
-	void setPrecio(double);
-	string toString();
 
+	void setNombre(string){}
+	void setCodigo(string);
+	void setCaracteristica(string);
+	void setPrecio(double);
+	
+	string toString();
+	void agregar(Componente*);
 	void guardar(ostream&);
 	static Componente* recuperar(istream&);
 };
