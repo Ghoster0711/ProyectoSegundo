@@ -6,10 +6,11 @@ Persona::Persona(string nom, string ced, string correo, string tel) : Cliente(no
 Persona::~Persona(){}
 string Persona::toString() {
 	stringstream s;
-	s   << "Nombre: " << nombre << endl
-		<< "Cedula: " << cedula << endl
-		<< "Correo: " << correo << endl
-		<< "Telefono: " << telefono;
+	s << "-----------------------------------------" << endl;
+	s << "| Nombre: " << nombre << endl
+	  << "| Cedula: " << cedula << endl
+	  << "| Correo: " << correo << endl
+	  << "| Telefono: " << telefono << endl;
 	return s.str();
 }
 

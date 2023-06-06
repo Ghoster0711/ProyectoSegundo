@@ -16,6 +16,7 @@ public:
 	int getCantidad();
 
 	void ingresar(T*);
+	bool eliminar(string);
 
 	void guardarCatalogo();
 	void guardarSuscriptores();
@@ -50,6 +51,41 @@ template<class T>
 inline void Lista<T>::ingresar(T* dato){
 	primero = new Nodo<T>(dato, primero);
 	cantidad++;
+}
+
+template<class T>
+inline bool Lista<T>::eliminar(string cod){
+	Nodo<T>* nExt = primero;
+	Nodo<T>* aux = NULL;
+	// Elimina el primero si el que se busca es el primero
+	if (nExt != NULL && nExt->getDato() != NULL) {
+		if (nExt->getDato()->getCodigo() == cod) {
+			primero = primero->getSiguiente();
+			delete nExt;
+			return true;
+		}
+	}
+	// Se le asigna nExt a aux
+	aux = nExt;
+	// Empieza el ciclo para buscar el elemento
+	while (nExt != NULL) {
+		if (nExt->getDato() != NULL) {
+			// Si el elemento existe lo elimina
+			if (nExt->getDato()->getCodigo() == cod) {
+				// Se le setea a aux el siguiente de nExt
+				aux->setSiguiente(nExt->getSiguiente());
+				// Se elimina nExt
+				delete nExt;
+
+				return true;
+			}
+		}
+		// Se le asigna nExt a aux
+		aux = nExt;
+		// nExt pasa al siguiente nodo
+		nExt = nExt->getSiguiente();
+	}
+	return false;
 }
 
 template<class T>

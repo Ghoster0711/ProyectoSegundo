@@ -1,8 +1,101 @@
 #include "Tienda.h"
+#include "Interfaz.h"
+
+
+
+int main() {
+	Tienda* tienda = new Tienda();
+	int op, op2, op3, op4, op5;
+	do {
+		system("cls");
+		op = menu();
+		switch (op) {
+		case 1:
+			do {
+				system("cls");
+				op2 = menudirecto();
+				switch (op2){
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				}
+			} while (op2 != 4);
+			break;
+		case 2:
+			do {
+				system("cls");
+				op3 = menuEnLinea();
+				switch (op3)
+				{
+				case 1:
+					break;
+				case 2:
+					break;
+				}
+			} while (op3 != 2);
+			break;
+		case 3:
+			do {
+				system("cls");
+				op4 = menuMantenimiento();
+				switch (op4){
+				case 1:
+					mostrarClientes(tienda);
+					break;
+				case 2:
+					if (crearCliente() != NULL) {
+						tienda->ingresarCliente(crearCliente());
+					}
+					break;
+				case 3:
+					verCatalogo(tienda);
+					break;
+				case 4:
+					if (crearProducto(tienda) != NULL) {
+						tienda->ingresarProductosAlCatalogo(crearProducto(tienda));
+					}else
+						//excepcion de no se pudo agregar
+					break;
+				case 5:
+					eliminarProducto(tienda);
+					break;
+				case 6:
+					break;
+				}
+			} while (op4 != 6);
+			break;
+		case 4:
+			do {
+				system("cls");
+				op5 = menuReportes();
+				switch (op5) {
+				case 1:
+					
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				}
+			} while (op5 != 3);
+			break;
+		case 5:
+			salir(tienda);
+			break;
+		}
+	} while (op != 5);
 
 
 
 
+	system("pause");
+	return 0;
+}
 
 
 
@@ -77,19 +170,21 @@
 //	Tienda* tienda = new Tienda();
 //	Lista<Componente>* catalogo = new Lista<Componente>();
 //
-//	Componente* c1 = new FuenteDeAudio("Tornamesa", "HT59J", "AJLJSDLA", 150);
-//	Componente* c2 = new Parlante("Audio", "HT59J", "AJLJSDLA", 150);
-//	Componente* c3 = new ProcesadorDeSenal("Parlante", "HT59J", "AJLJSDLA", 150);
-//	Componente* c4 = new FuenteDeAudio("Microfono", "HT59J", "AJLJSDLA", 150);
+//	Componente* c1 = new FuenteDeAudio("1010", "Tornamesa", "HT59J", "AJLJSDLA", 150);
+//	Componente* c2 = new Parlante("1010", "Audio", "HT59J", "AJLJSDLA", 150);
+//	Componente* c3 = new ProcesadorDeSenal("1010", "Parlante", "HT59J", "AJLJSDLA", 150);
+//	Componente* c4 = new FuenteDeAudio("1010", "Microfono", "HT59J", "AJLJSDLA", 150);
 //
 //	Componente* c5 = new Kit();
 //
-//	c5->agregar(new FuenteDeAudio("Tornamesa", "HT59J", "AJLJSDLA", 150));
-//	c5->agregar(new Parlante("Audio", "HT59J", "AJLJSDLA", 150));
-//	c5->agregar(new ProcesadorDeSenal("Parlante", "HT59J", "AJLJSDLA", 150) );
-//	c5->agregar(new FuenteDeAudio("Microfono", "HT59J", "AJLJSDLA", 150));
+//	c5->agregar(new FuenteDeAudio("1010", "Tornamesa", "HT59J", "AJLJSDLA", 150));
+//	c5->agregar(new Parlante("1010", "Audio", "HT59J", "AJLJSDLA", 150));
+//	c5->agregar(new ProcesadorDeSenal("1010", "Parlante", "HT59J", "AJLJSDLA", 150) );
+//	c5->agregar(new FuenteDeAudio("1010", "Microfono", "HT59J", "AJLJSDLA", 150));
 //
-//	
+//	c5->setCodigo("30303");
+//	c5->setNombre("Pro");
+//
 //	system("pause");
 //	system("cls");
 //
@@ -123,3 +218,5 @@
 //	system("pause");
 //	return 0;
 //}
+
+

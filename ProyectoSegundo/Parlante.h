@@ -10,14 +10,21 @@ private:
 	string tipoComponente;
 	string modelo;
 public:
-	Parlante(string, string, string, double);
+	Parlante(string, string, string, string, double);
 	virtual ~Parlante();
+
+	string getNombre() { return ""; }
+	string getCodigo();
 	string getCaracteristica();
 	double getPrecio();
-	void agregar(Componente*);
+
+	void setNombre(string){}
+	void setCodigo(string);
+	void setCaracteristica(string);
 	void setPrecio(double);
-	string toString();
 	
+	string toString();
+	void agregar(Componente*);
 	void guardar(ostream&);
 	static Componente* recuperar(istream&);
 };

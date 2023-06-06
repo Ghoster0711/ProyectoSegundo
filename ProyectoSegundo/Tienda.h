@@ -26,8 +26,33 @@ public:
 	Lista<Componente>* getCatalago();
 	Lista<Cliente>* getSuscriptores();
 	//Lista<Factura>* getVentas();
+
+	string mostrarElCatalogo();
+	//string mostrarLosSuscriptores();
+	//string mostrarLasVentas();
 	
-	
+	bool buscarProductoDelCatalogo(string);
+	bool buscarComponente(string);
+	Componente* retornarSoloComponentes(string);
+	string mostrarSoloComponentes();
+
+// -------------Directo---------------
+
+// -------------En Linea--------------
+
+// -----------Mantenimiento-----------
+
+	string mostrarClientes();
+	void ingresarCliente(Cliente*);
+	string verCatalogo();
+	void ingresarProductosAlCatalogo(Componente*);
+	void EliminarProducto(string);
+
+	// ------------Reportes---------------
+
+	// ------------Archivos---------------
+
+
 	void guardarCatalogo();
 	void recuperarArchivoCatalogo();
 
@@ -36,5 +61,7 @@ public:
 
 	void guardarFacturas();
 	//static Factura* recuperarFacturas(istream&);
+
+	void recuperarDeArchivos();
 
 };
