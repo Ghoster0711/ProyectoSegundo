@@ -5,6 +5,11 @@ Empresa::Empresa(string nom, string ced, string pais, string ciudad) : Cliente(n
 
 Empresa::~Empresa() {}
 
+string Empresa::getID()
+{
+	return cedula;
+}
+
 string Empresa::getNombre() { return nombre; }
 
 string Empresa::getCedula() { return cedula; }
@@ -38,17 +43,18 @@ string Empresa::toString() {
 	return s.str();
 }
 void Empresa::guardar(ostream& salida) {
-	salida << nombre << DELIMITA_CAMPO
+	salida << "Empresa" << DELIMITA_CAMPO
+		<< nombre << DELIMITA_CAMPO
 		<< cedula << DELIMITA_CAMPO
 		<< nombrePais << DELIMITA_CAMPO
-		<< ciudadUbicacion << DELIMITA_CAMPO;
+		<< ciudadUbicacion << DELIMITA_REGISTRO;
 }
 Empresa* Empresa::recuperar(istream& entrada) {
 	string nom, ced, pais, ciudad;
 	getline(entrada, nom, DELIMITA_CAMPO);
 	getline(entrada, ced, DELIMITA_CAMPO);
 	getline(entrada, pais, DELIMITA_CAMPO);
-	getline(entrada, ciudad, DELIMITA_CAMPO);
+	getline(entrada, ciudad, DELIMITA_REGISTRO);
 
 	return new Empresa(nom, ced, pais, ciudad);
 }

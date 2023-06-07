@@ -1,5 +1,6 @@
 #pragma once
 #include "Nodo.h"
+#include "Componente.h"
 
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'
@@ -15,8 +16,8 @@ public:
 	Nodo<T>* getPrimero();
 	int getCantidad();
 
-	void ingresar(T*);
-	bool eliminar(string);
+	void ingresar(T&);
+	void eliminar(string);
 
 	void guardarCatalogo();
 	void guardarSuscriptores();
@@ -51,44 +52,35 @@ inline int Lista<T>::getCantidad()
 }
 
 template<class T>
-inline void Lista<T>::ingresar(T* dato){
-	primero = new Nodo<T>(dato, primero);
+inline void Lista<T>::ingresar(T& dato){
+	primero = new Nodo<T>((T*)&dato, primero);
 	cantidad++;
 }
 
 template<class T>
-inline bool Lista<T>::eliminar(string cod){
-	Nodo<T>* nExt = primero;
-	Nodo<T>* aux = NULL;
-	// Elimina el primero si el que se busca es el primero
-	if (nExt != NULL && nExt->getDato() != NULL) {
-		if (nExt->getDato()->getCodigo() == cod) {
+inline void Lista<T>::eliminar(string cod) {
+	if (this->primero != NULL) {
+		Nodo<T>* current = this->primero;
+		Nodo<T>* prev;
+		if (current->getDato()->getID() == cod && this->primero == current) {
 			primero = primero->getSiguiente();
-			delete nExt;
-			return true;
+			current->setSiguiente(NULL);
+			delete current;
+			return;
 		}
-	}
-	// Se le asigna nExt a aux
-	aux = nExt;
-	// Empieza el ciclo para buscar el elemento
-	while (nExt != NULL) {
-		if (nExt->getDato() != NULL) {
-			// Si el elemento existe lo elimina
-			if (nExt->getDato()->getCodigo() == cod) {
-				// Se le setea a aux el siguiente de nExt
-				aux->setSiguiente(nExt->getSiguiente());
-				// Se elimina nExt
-				delete nExt;
-
-				return true;
+		prev = current;
+		current = current->getSiguiente();
+		while (current) {
+			if (current->getDato()->getID() == cod) {
+				prev->setSiguiente(current->getSiguiente());
+				current->setSiguiente(NULL);
+				delete current;
+				return;
 			}
+			prev = current;
+			current = current->getSiguiente();
 		}
-		// Se le asigna nExt a aux
-		aux = nExt;
-		// nExt pasa al siguiente nodo
-		nExt = nExt->getSiguiente();
 	}
-	return false;
 }
 
 template<class T>
@@ -152,7 +144,7 @@ inline void Lista<T>::guardarCarritoDeCompras(ostream& salida) {
 	Nodo<T>* e = primero;
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
-			e->getDato().guardar(salida);
+			e->getDato()->guardar(salida);
 		}
 		e = e->getSiguiente();
 	}

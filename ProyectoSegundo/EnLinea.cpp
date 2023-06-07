@@ -43,20 +43,15 @@ Destino* EnLinea::clonarDestino(Destino* dest) {
 }
 
 Cliente* EnLinea::clonarCliente(Cliente* cliente) {
-	string type, nom, ced, pais, ciudad, correo, nacionalidad;
-	type = typeid((cliente)).name();
-	nom = cliente->getNombre();
-	ced = cliente->getCedula();
-	pais = cliente->getNombrePais();
-	ciudad = cliente->getCiudadUbicacion();
-	if (type == "class Empresa") {
-		return new Empresa(nom, ced, pais, ciudad);
+	string tipo;
+	tipo = typeid(*cliente).name();
+	if (tipo == "class Empresa") {
+		return (Cliente*)new Empresa(*(Empresa*)cliente);
 	}
-	if (type == "class Persona") {
-		correo = cliente->getCorreo();
-		nacionalidad = cliente->getNacionalidad();
-		return new Persona(nom, ced, pais, ciudad, correo, nacionalidad);
+	if (tipo == "class Persona") {
+		return (Cliente*)new Persona(*(Persona*)cliente);
 	}
+	return NULL;
 }
 Componente* EnLinea::clonarComponente(Componente* compo) {
 	string tipo;
@@ -73,9 +68,10 @@ Componente* EnLinea::clonarComponente(Componente* compo) {
 	if (tipo == "class Parlante") {
 		return (Componente*)new Parlante(*(Parlante*)compo);
 	}
+	return NULL;
 }
 void EnLinea::ingresarCompra(Componente* componente) {
-	carritoDeCompras->ingresar(clonarComponente(componente));
+	carritoDeCompras->ingresar(*clonarComponente(componente));
 }
 
 
@@ -92,7 +88,7 @@ string EnLinea::toString() {
 	return show.str();
 }
 
-void EnLinea::guardarDatos(ostream& salida) {
+void EnLinea::guardar(ostream& salida) {
 	string type = typeid((cliente)).name();
 	salida << "Factura En Linea" << DELIMITA_CAMPO;
 	salida	<< codigo << DELIMITA_CAMPO;
@@ -103,7 +99,7 @@ void EnLinea::guardarDatos(ostream& salida) {
 	destino->guardarDatos(salida);
 }
 
-EnLinea* EnLinea::recuperarDatos(istream& entrada) {
+EnLinea* EnLinea::recuperar(istream& entrada) {
 	string typeCliente, codigo;
 	EnLinea* factura = new EnLinea();
 	Cliente* cliente = NULL;

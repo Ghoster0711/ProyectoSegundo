@@ -26,7 +26,7 @@ public:
 
 	string toString();
 
-	void guardarDatos(ostream&);
-	static Directo* recuperarDatos(istream&);
+	void guardar(ostream&);
+	static Directo* recuperar(istream&);
 
 };

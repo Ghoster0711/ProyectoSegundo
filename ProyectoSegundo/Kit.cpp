@@ -32,7 +32,7 @@ string Kit::getCaracteristica() { return caracteristica; }
 double Kit::getPrecio() { return precio; }
 
 void Kit::agregar(Componente* com){ 
-	empaquetado->ingresar(com);
+	empaquetado->ingresar(*com);
 	cantItems++;
 }
 
@@ -54,6 +54,11 @@ string Kit::toString(){
 		<< "\tCodigo: " << codigo << endl; 
 	show << empaquetado->toString();
 	return show.str();
+}
+
+string Kit::getID()
+{
+	return codigo;
 }
 
 string Kit::getNombre()

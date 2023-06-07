@@ -11,6 +11,7 @@ public:
 	Parlante(string, string, string, string, double);
 	virtual ~Parlante();
 
+	string getID();
 	string getNombre() { return ""; }
 	string getCodigo();
 	string getCaracteristica();

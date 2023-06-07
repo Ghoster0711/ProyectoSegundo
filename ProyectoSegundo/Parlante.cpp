@@ -16,6 +16,11 @@ Parlante::~Parlante() {
 
 }
 
+string Parlante::getID()
+{
+	return codigo;
+}
+
 string Parlante::getCodigo()
 {
 	return codigo;
@@ -43,7 +48,7 @@ void Parlante::setPrecio(double pre) { precio = pre; }
 
 string Parlante::toString() {
 	stringstream show;
-	show << codigo << "\t" << tipoComponente << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "Parlante\t\t" << codigo << "\t" << tipoComponente << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

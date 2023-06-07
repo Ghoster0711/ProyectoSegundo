@@ -8,6 +8,7 @@ public:
 	Empresa(string, string, string, string);
 	virtual~Empresa();
 
+	string getID();
 	string getNombre();
 	string getCedula();
 	string getNombrePais();

@@ -30,10 +30,17 @@ public:
 	//string mostrarLosSuscriptores();
 	//string mostrarLasVentas();
 	
+	bool buscarSuscriptor(string);
 	bool buscarProductoDelCatalogo(string);
 	bool buscarComponente(string);
+	bool buscarKit(string);
 	Componente* retornarSoloComponentes(string);
 	string mostrarSoloComponentes();
+	Componente* retornarSoloKits(string);
+	string mostrarSoloKits();
+
+	bool buscarCliente(string);
+
 
 // -------------Directo---------------
 
@@ -42,10 +49,11 @@ public:
 // -----------Mantenimiento-----------
 
 	string mostrarClientes();
-	void ingresarCliente(Cliente*);
+	bool ingresarCliente(Cliente*);
+	void eliminarCliente(string);
 	string verCatalogo();
-	void ingresarProductosAlCatalogo(Componente*);
-	void EliminarProducto(string);
+	bool ingresarProductosAlCatalogo(Componente*);
+	void eliminarProducto(string);
 
 	// ------------Reportes---------------
 
@@ -61,6 +69,10 @@ public:
 	void guardarFacturas();
 	void recuperarFacturas();
 
+
+	void guardarArchivos();
 	void recuperarDeArchivos();
+
+
 
 };

@@ -10,6 +10,7 @@ public:
 	FuenteDeAudio(string, string, string, string, double);
 	virtual ~FuenteDeAudio();
 
+	string getID();
 	string getNombre() { return ""; }
 	string getCodigo();
 	string getCaracteristica();

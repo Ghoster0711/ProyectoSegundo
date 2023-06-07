@@ -5,69 +5,20 @@
 
 int main() {
 	Tienda* tienda = new Tienda();
-	int op, op2, op3, op4, op5;
+	int op, op5;
+	tienda->recuperarDeArchivos();
 	do {
 		system("cls");
 		op = menu();
 		switch (op) {
 		case 1:
-			do {
-				system("cls");
-				op2 = menudirecto();
-				switch (op2){
-				case 1:
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-				case 4:
-					break;
-				}
-			} while (op2 != 4);
+			generarVentaDirecta(tienda);
 			break;
 		case 2:
-			do {
-				system("cls");
-				op3 = menuEnLinea();
-				switch (op3)
-				{
-				case 1:
-					break;
-				case 2:
-					break;
-				}
-			} while (op3 != 2);
+			generarVentaEnLinea(tienda);
 			break;
 		case 3:
-			do {
-				system("cls");
-				op4 = menuMantenimiento();
-				switch (op4){
-				case 1:
-					mostrarClientes(tienda);
-					break;
-				case 2:
-					if (crearCliente() != NULL) {
-						tienda->ingresarCliente(crearCliente());
-					}
-					break;
-				case 3:
-					verCatalogo(tienda);
-					break;
-				case 4:
-					if (crearProducto(tienda) != NULL) {
-						tienda->ingresarProductosAlCatalogo(crearProducto(tienda));
-					}else
-						//excepcion de no se pudo agregar
-					break;
-				case 5:
-					eliminarProducto(tienda);
-					break;
-				case 6:
-					break;
-				}
-			} while (op4 != 6);
+			mantenimiento(tienda);
 			break;
 		case 4:
 			do {
@@ -105,16 +56,17 @@ int main() {
 /// Prueba archivos clientes
 //int main() {
 //	string rutaSuscriptores = "../suscriptores.txt";
-//	Cliente* p1 = new Persona("Joshua Amador Lara", "604830349", "josh@gmail.com", "83599692");
-//	Cliente* p2 = new Persona("Jefferson Amador Lara", "119310170", "jeff@gmail.com", "83838674");
-//	Cliente* e1 = new Empresa("Soporte Real", "2039-1240-123", "sreal@gmail.com", "27734146");
-//	Cliente* e2 = new Empresa("Microsoft", "1022-1245-567", "micro@gmail.com", "22118080");
+//	Cliente* p1 = new Persona("Joshua Amador Lara", "604830349", "Costa Rica", "Heredia", "josh@gmail.com", "Costarricense");
+//	Cliente* p2 = new Persona("Jefferson Amador Lara", "119310170", "Costa Rica", "Heredia", "jeff@gmail.com", "Costarricense");
+//	//Cliente* p2 = new Persona("Jefferson Amador Lara", "119310170", "jeff@gmail.com", "83838674");
+//	Cliente* e1 = new Empresa("Soporte Real", "2039-1240-123", "USA", "New York");
+//	Cliente* e2 = new Empresa("Microsoft", "1022-1245-567", "Rusia", "Tokyo");
 //	Tienda* tienda = new Tienda();
 //
-//	tienda->getSuscriptores()->ingresar(p1);
-//	tienda->getSuscriptores()->ingresar(p2);
-//	tienda->getSuscriptores()->ingresar(e1);
-//	tienda->getSuscriptores()->ingresar(e2);
+//	tienda->getSuscriptores()->ingresar(*p1);
+//	tienda->getSuscriptores()->ingresar(*p2);
+//	tienda->getSuscriptores()->ingresar(*e1);
+//	tienda->getSuscriptores()->ingresar(*e2);
 //
 //	cout << tienda->getSuscriptores()->toString();
 //	cout << endl << endl << endl;

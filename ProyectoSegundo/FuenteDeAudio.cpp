@@ -15,6 +15,11 @@ FuenteDeAudio::FuenteDeAudio(string cod, string tipo, string model, string carac
 
 FuenteDeAudio::~FuenteDeAudio() {}
 
+string FuenteDeAudio::getID()
+{
+	return codigo;
+}
+
 string FuenteDeAudio::getCodigo()
 {
 	return codigo;
@@ -41,7 +46,7 @@ void FuenteDeAudio::setPrecio(double pre) { precio = pre; }
 
 string FuenteDeAudio::toString() {
 	stringstream show;
-	show << codigo << "\t" << tipoComponente << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "Fuente de audio\t\t" << codigo << "\t" << tipoComponente << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

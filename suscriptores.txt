@@ -1,4 +1,4 @@
-Empresa	Microsoft	1022-1245-567	micro@gmail.com	22118080
-Empresa	Soporte Real	2039-1240-123	sreal@gmail.com	27734146
-Persona	Jefferson Amador Lara	119310170	jeff@gmail.com	83838674
-Persona	Joshua Amador Lara	604830349	josh@gmail.com	83599692
+Persona	Joshua Amador Lara	604830349	Costa Rica	Heredia	josh@gmail.com	Costarricense
+Persona	Jefferson Amador Lara	119310170	Costa Rica	Heredia	jeff@gmail.com	Costarricense
+Empresa	Soporte Real	2039-1240-123	USA	New York
+Empresa	Microsoft	1022-1245-567	Rusia	Tokyo

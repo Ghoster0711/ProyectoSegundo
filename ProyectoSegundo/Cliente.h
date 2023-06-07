@@ -20,6 +20,7 @@ public:
 	virtual ~Cliente();
 
 	//Get's 
+	virtual string getID() = 0;
 	virtual string getNombre() = 0;
 	virtual string getCedula() = 0;
 	virtual string getNombrePais() = 0;
