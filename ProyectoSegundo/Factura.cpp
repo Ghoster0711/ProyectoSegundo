@@ -8,13 +8,6 @@ Factura::Factura() {
 	carritoDeCompras = NULL;
 }
 
-Factura::Factura(string cod, Fecha* fec, Cliente* cli) {
-	codigo = cod;
-	fecha = fec;
-	cliente = cli;
-	carritoDeCompras = new Lista<Componente>();
-}
-
 Factura::~Factura() {
 	if (fecha != NULL)delete fecha;
 	if (cliente != NULL) delete cliente;

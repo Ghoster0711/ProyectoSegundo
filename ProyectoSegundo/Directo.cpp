@@ -11,8 +11,9 @@ Directo::Directo() {
 // Desarrollo del constructor parametrizado
 Directo::Directo(string cod, Fecha* fecha, Cliente* cli) {
 	codigo = cod;
-	this->fecha = fecha;
+	fecha = fec;
 	cliente = clonarCliente(cli);
+	carritoDeCompras = new Lista<Componente>();
 }
 
 // Desarrollo destructor
@@ -91,7 +92,7 @@ string Directo::toString() {
 // Desarrollo del metodo guardar 
 void Directo::guardar(ostream& salida) {
 	string type = typeid((cliente)).name();
-	salida << "Factura En Linea" << DELIMITA_CAMPO;
+	salida << "Factura Directo" << DELIMITA_CAMPO;
 	salida << codigo << DELIMITA_CAMPO;
 	fecha->guardarDatos(salida);
 	salida << type << DELIMITA_CAMPO;
@@ -99,7 +100,28 @@ void Directo::guardar(ostream& salida) {
 	carritoDeCompras->guardarCarritoDeCompras(salida);
 }
 
+
 // Desarrollo del metodo recuperar
 Directo* Directo::recuperar(istream& entrada) {
 	return NULL;
+}
+Factura* Directo::recuperar(istream& entrada) {
+	string typeCliente, codigo;
+	Factura* factura = new Directo();
+	Cliente* cliente = NULL;
+	getline(entrada, codigo, DELIMITA_CAMPO);
+	getline(entrada, typeCliente, DELIMITA_CAMPO);
+	if (typeCliente == "class Persona") {
+		cliente = Persona::recuperar(entrada);
+	}
+	if (typeCliente == "class Empresa") {
+		cliente = Empresa::recuperar(entrada);
+	}
+	Fecha* fecha = Fecha::recuperarDatos(entrada);
+	//Lista<Componente>* ventas = Lista<Componente>::recuperarCarritoDeCompras(entrada);
+	factura->setCodigo(codigo);
+	factura->setCliente(cliente);
+	factura->setFecha(fecha);
+	//factura->setLista(ventas);
+	return factura;
 }

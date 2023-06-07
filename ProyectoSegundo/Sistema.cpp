@@ -8,5 +8,5 @@ Sistema::Sistema(){
 
 // Desarrollo del destructor
 Sistema::~Sistema(){
-	if (empaquetado != NULL) delete empaquetado;
+	if (Empaquetado != NULL) delete Empaquetado;
 }

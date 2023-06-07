@@ -39,6 +39,6 @@ public:
 	// Metodo para guardar en archivo
 	void guardar(ostream&);
 
-	// Metodo para recuperar de archivo
+  // Metodo para recuperar de archivo
 	static Componente* recuperar(istream&);
 };

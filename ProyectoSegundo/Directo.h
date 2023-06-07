@@ -42,8 +42,11 @@ public:
 
 	// Metodo que se encarga de guardar en archivo
 	void guardar(ostream&);
-
-	// Metodo que se encarga de recuperar de archivo
+  
+	// Metodo que se encarga de recuperar de archivo !Revisar si se usa!
 	static Directo* recuperar(istream&);
+
+	static Factura* recuperar(istream&);
+
 
 };

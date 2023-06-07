@@ -45,5 +45,5 @@ public:
 	void guardar(ostream&);
 
 	// Metodo que se encarga de recuperar de archivo
-	static EnLinea* recuperar(istream&);
+	static Factura* recuperar(istream&);
 };

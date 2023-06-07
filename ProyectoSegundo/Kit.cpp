@@ -20,16 +20,15 @@ Kit::Kit()
 
 // Desarrollo del constructor paremetrizado
 Kit::Kit(string nom, string cod){
-	nombre = cod;
+	nombre = nom;
 	codigo = cod;
 	caracteristica = "";
 	precio = 0;
 }
 
 // Desarrollo del destructor
-Kit::~Kit(){
+Kit::~Kit() {}
 
-}
 
 // Desarrollo de los get's
 string Kit::getID() { return codigo; }
@@ -38,12 +37,12 @@ string Kit::getNombre() { return nombre; }
 string Kit::getCaracteristica() { return caracteristica; }
 double Kit::getPrecio() { return precio; }
 
-
 // Desarrollo de los set's
 void Kit::setCodigo(string cod) { codigo = cod; }
 void Kit::setCaracteristica(string carac) { caracteristica = carac; }
 void Kit::setPrecio(double pre) { precio = pre; }
 void Kit::setNombre(string nom) { nombre = nom; }
+
 
 // Desarrollo del ToString
 string Kit::toString(){
@@ -63,7 +62,7 @@ void Kit::agregar(Componente* com){
 
 // Desarrollo del metodo guardar
 void Kit::guardar(ostream& salida) {
-	Nodo<Componente>* e = empaquetado->getPrimero();
+	Nodo<Componente>* e = Empaquetado->getPrimero();
 	salida << "Kit" << DELIMITA_CAMPO;
 	salida << nombre << DELIMITA_CAMPO;
 	salida << codigo << DELIMITA_CAMPO;
