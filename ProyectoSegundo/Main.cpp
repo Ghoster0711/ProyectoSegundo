@@ -54,6 +54,8 @@ int main() {
 	string prueba = "C:/Users/barra/OneDrive - Universidad Nacional de Costa Rica/2023/Ciclo I 2023/Progra II/Proyectos/PROYECTO_SEGUNDO/pruebaFacturas.txt";
 	Cliente* p1 = new Persona("Joshua Amador Lara", "604830349", "Costa Rica", "Heredia", "josh@gmail.com", "Costarricense");
 	//Cliente* p2 = new Empresa("Microsoft", "1022-1245-567", "Rusia", "Tokyo");
+	Cliente* p2 = new Empresa("Microsoft", "1022-1245-567", "Rusia", "Tokyo");
+
 
 	Componente* c1 = new FuenteDeAudio("1010", "Tornamesa", "HT59J", "AJLJSDLA", 150);
 	Componente* c2 = new Parlante("1010", "Audio", "HT59J", "AJLJSDLA", 150);
@@ -62,6 +64,7 @@ int main() {
 
 
 	Destino* destino = new Destino("010", "Argentina", "Buenos Aires", 17520);
+
 	Fecha* f1 = new Fecha();
 	//Fecha* f2 = new Fecha();
 
@@ -69,6 +72,13 @@ int main() {
 	//Factura* fac2 = new Directo("2222", f2, p2);
 	fac1->ingresarCompra(c1);
 	fac1->ingresarCompra(c2);
+
+	Fecha* fec1 = new Fecha();
+	Fecha* fec2 = new Fecha();
+
+	Factura* fac1 = new EnLinea("1111", fec1, p1, destino);
+	Factura* fac2 = new Directo("2222", fec2, p2);
+
 
 	cout << fac1->toString() << endl;
 	cout << endl;
