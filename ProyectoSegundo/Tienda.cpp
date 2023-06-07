@@ -23,11 +23,24 @@ string Tienda::mostrarElCatalogo(){
 	return Catalogo->toString();
 }
 
+bool Tienda::buscarSuscriptor(string cod)
+{
+	Nodo<Cliente>* e = Suscriptores->getPrimero();
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			if (e->getDato()->getID() == cod)
+				return true;
+		}
+		e = e->getSiguiente();
+	}
+	return false;
+}
+
 bool Tienda::buscarProductoDelCatalogo(string cod){
 	Nodo<Componente>* e = Catalogo->getPrimero();
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
-			if (e->getDato()->getCodigo() == cod)
+			if (e->getDato()->getID() == cod)
 				return true;
 		}
 		e = e->getSiguiente();
@@ -42,7 +55,7 @@ bool Tienda::buscarComponente(string cod) {
 		if (e->getDato() != NULL) {
 			tipo = typeid(*e->getDato()).name();
 			if (tipo != "class Kit" && tipo != "class Dispositivo") {
-				if (e->getDato()->getCodigo() == cod) {
+				if (e->getDato()->getID() == cod) {
 					return true;
 				}
 			}
@@ -65,18 +78,6 @@ string Tienda::mostrarSoloComponentes() {
 		e = e->getSiguiente();
 	}
 	return show.str();
-}
-
-bool Tienda::buscarCliente(string cod){
-	Nodo<Componente>* e = Catalogo->getPrimero();
-	while (e != NULL) {
-		if (e->getDato() != NULL) {
-			if (e->getDato()->getCodigo() == cod)
-				return true;
-		}
-		e = e->getSiguiente();
-	}
-	return false;;
 }
 
 Componente* Tienda::retornarSoloComponentes(string cod) {
@@ -120,15 +121,15 @@ string Tienda::mostrarClientes(){
 
 bool Tienda::ingresarCliente(Cliente* cli){
 	if (cli != NULL) {
-		Suscriptores->ingresar(cli);
+		Suscriptores->ingresar(*cli);
 		return true;
 	}
 	return false;
 }
 
-bool Tienda::eliminarCliente(string cod)
+void Tienda::eliminarCliente(string cod)
 {
-	return Suscriptores->eliminar(cod);
+	Suscriptores->eliminar(cod);
 }
 
 string Tienda::verCatalogo(){
@@ -139,15 +140,14 @@ string Tienda::verCatalogo(){
 
 bool Tienda::ingresarProductosAlCatalogo(Componente* compo){
 	if (compo != NULL) {
-		Catalogo->ingresar(compo);
+		Catalogo->ingresar(*compo);
 		return true;
 	}
 	return false;
 }
 
-bool Tienda::eliminarProducto(string cod) {
-	return Catalogo->eliminar(cod);
-
+void Tienda::eliminarProducto(string cod) {
+	Catalogo->eliminar(cod);
 }
 
 // ------------Reportes---------------
@@ -166,13 +166,13 @@ void Tienda::recuperarArchivoCatalogo(){
 	while (file.good()) {
 		getline(file, op, DELIMITA_CAMPO);
 		if (op == "Fuente de audio")
-			Catalogo->ingresar(FuenteDeAudio::recuperar(file));
+			Catalogo->ingresar(*FuenteDeAudio::recuperar(file));
 		if (op == "Procesador de senal")
-			Catalogo->ingresar(ProcesadorDeSenal::recuperar(file));
+			Catalogo->ingresar(*ProcesadorDeSenal::recuperar(file));
 		if (op == "Parlante")
-			Catalogo->ingresar(Parlante::recuperar(file));
+			Catalogo->ingresar(*Parlante::recuperar(file));
 		if (op == "Kit")
-			Catalogo->ingresar(Kit::recuperar(file)); 
+			Catalogo->ingresar(*Kit::recuperar(file)); 
 	}
 	file.close();
 }
@@ -190,9 +190,9 @@ void Tienda::recuperarArchivoSuscriptores(){
 	while (file.good()) {
 		getline(file, op, DELIMITA_CAMPO);
 		if (op == "Empresa")
-			Suscriptores->ingresar(Empresa::recuperar(file));
+			Suscriptores->ingresar(*Empresa::recuperar(file));
 		if (op == "Persona")
-			Suscriptores->ingresar(Persona::recuperar(file));
+			Suscriptores->ingresar(*Persona::recuperar(file));
 	}
 	file.close();
 }
@@ -204,11 +204,14 @@ void Tienda::recuperarFacturas() {
 
 }
 
+void Tienda::guardarArchivos()
+{
+	guardarCatalogo();
+	guardarSuscriptores();
+	//guardarFacturas();
+}
+
 void Tienda::recuperarDeArchivos(){
 	recuperarArchivoCatalogo();
 	recuperarArchivoSuscriptores();
-}
-
-void mostrarClientes(){
-	
 }

@@ -71,7 +71,7 @@ Componente* EnLinea::clonarComponente(Componente* compo) {
 	return NULL;
 }
 void EnLinea::ingresarCompra(Componente* componente) {
-	carritoDeCompras->ingresar(clonarComponente(componente));
+	carritoDeCompras->ingresar(*clonarComponente(componente));
 }
 
 
