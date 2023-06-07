@@ -1,13 +1,16 @@
 #pragma once
 #include"Cliente.h"
 
-
+// Class Empresa hereda de class Cliente
 class Empresa : public Cliente {
 public:
+	// Constructor
 	Empresa();
+	// Constructor parametrizado
 	Empresa(string, string, string, string);
 	virtual~Empresa();
 
+	// Get's
 	string getID();
 	string getNombre();
 	string getCedula();
@@ -16,6 +19,7 @@ public:
 	string getCorreo();
 	string getNacionalidad();
 
+	// Set´s
 	void setNombre(string);
 	void setCedula(string);
 	void setNombrePais(string);
@@ -23,7 +27,13 @@ public:
 	void setCorreo(string);
 	void setNacionalidad(string);
 
+
+	// Tostring
 	string toString();
+
+	// Guardar en archivos
 	void guardar(ostream&);
+
+	// Para recuperar de archivos
 	static Empresa* recuperar(istream&);
 };

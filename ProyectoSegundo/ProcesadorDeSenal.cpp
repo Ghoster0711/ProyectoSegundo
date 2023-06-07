@@ -1,9 +1,11 @@
 #include "ProcesadorDeSenal.h"
 #include "Utiles.h"
 
+// Delimitadores que se utilizaran en archivos
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'
 
+// Desarrollo del constructor
 ProcesadorDeSenal::ProcesadorDeSenal(string cod, string tipo, string model, string carac, double pre) {
 	codigo = cod;
 	tipoComponente = tipo;
@@ -12,52 +14,36 @@ ProcesadorDeSenal::ProcesadorDeSenal(string cod, string tipo, string model, stri
 	precio = pre;
 }
 
+// Desarrollo del destructor
 ProcesadorDeSenal::~ProcesadorDeSenal() {
 
 }
 
-string ProcesadorDeSenal::getID()
-{
-	return codigo;
-}
-
-string ProcesadorDeSenal::getNombre()
-{
-	return "";
-}
-
-string ProcesadorDeSenal::getCodigo()
-{
-	return codigo;
-}
-
+// Desarrollo de los get's
+string ProcesadorDeSenal::getID() { return codigo; }
+string ProcesadorDeSenal::getNombre() { return ""; }
+string ProcesadorDeSenal::getCodigo() {	return codigo; }
 string ProcesadorDeSenal::getCaracteristica() { return caracteristica; }
-
 double ProcesadorDeSenal::getPrecio() { return precio; }
 
 
-
-void ProcesadorDeSenal::setCodigo(string cod)
-{
-	codigo = cod;
-}
-
-void ProcesadorDeSenal::setCaracteristica(string carac)
-{
-	caracteristica = carac;
-}
-
-void ProcesadorDeSenal::agregar(Componente*) {}
-
+// Desarrollo de los set's
+void ProcesadorDeSenal::setCodigo(string cod) {	codigo = cod; }
+void ProcesadorDeSenal::setCaracteristica(string carac) { caracteristica = carac; }
 void ProcesadorDeSenal::setPrecio(double pre) { precio = pre; }
 
+// Desarrollo del metodo agregar
+void ProcesadorDeSenal::agregar(Componente*) {}
+
+
+// Desarrollo del metodo ToString
 string ProcesadorDeSenal::toString() {
 	stringstream show;
 	show << "Procesador de senal\t" << codigo << "\t" << tipoComponente << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 
-
+// Desarrollo del metodo para guardar
 void ProcesadorDeSenal::guardar(ostream& salida) {
 	salida << "Procesador de senal" << DELIMITA_CAMPO;
 	salida << codigo << DELIMITA_CAMPO;
@@ -67,6 +53,7 @@ void ProcesadorDeSenal::guardar(ostream& salida) {
 	salida << precio << DELIMITA_REGISTRO;
 }
 
+// Desarrollo del metodo para recuperar
 Componente* ProcesadorDeSenal::recuperar(istream& entrada)
 {
 	string  cod, tipo, model, carac, precio;
