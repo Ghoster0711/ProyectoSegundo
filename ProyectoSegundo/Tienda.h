@@ -2,7 +2,7 @@
 #include <fstream>
 #include "Lista.h"
 //Factura
-#include "Factura.h"
+#include"Factura.h"
 #include"EnLinea.h"
 #include"Directo.h"
 // Componentes

@@ -4,7 +4,7 @@
 #include "ProcesadorDeSenal.h"
 #include "Parlante.h"
 #include "Kit.h"
-#include "Lista.h"
+#include"Lista.h"
 
 class Sistema : public Componente {
 protected:
