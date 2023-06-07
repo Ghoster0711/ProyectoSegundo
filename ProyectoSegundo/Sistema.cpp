@@ -2,7 +2,7 @@
 
 
 Sistema::Sistema() {
-	Empaquetado = NULL;
+	Empaquetado = new Lista<Componente>();
 	cantItems = 0;
 }
 Sistema::~Sistema(){

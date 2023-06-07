@@ -8,7 +8,7 @@
 
 class Sistema : public Componente {
 protected:
-	//Lista<Componente>* Empaquetado;
+	Lista<Componente>* Empaquetado;
 	int cantItems;
 public:
 	Sistema();

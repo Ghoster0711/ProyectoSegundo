@@ -154,23 +154,23 @@ inline void Lista<T>::guardarCarritoDeCompras(ostream& salida) {
 	}
 }
 
-//template<class T>
-//inline Lista<Componente>* Lista<T>::recuperarCarritoDeCompras(istream& entrada) {
-//	Lista<Componente>* lista = new Lista<Componente>();
-//	string tipo;
-//	while (entrada.good()) {
-//		getline(entrada, tipo, DELIMITA_CAMPO);
-//		if (tipo == "Fuente de audio") 
-//			lista->ingresar(*FuenteDeAudio::recuperar(entrada));
-//		if (tipo == "Procesador de senal")
-//			lista->ingresar(*ProcesadorDeSenal::recuperar(entrada));
-//		if (tipo == "Parlante")
-//			lista->ingresar(*Parlante::recuperar(entrada));
-//		if (tipo == "Kit")
-//			lista->ingresar(*Kit::recuperar(entrada));
-//	}
-//	return lista;
-//}
+template<class T>
+inline Lista<Componente>* Lista<T>::recuperarCarritoDeCompras(istream& entrada) {
+	Lista<Componente>* lista = new Lista<Componente>();
+	string tipo;
+	while (entrada.good()) {
+		getline(entrada, tipo, DELIMITA_CAMPO);
+		if (tipo == "Fuente de audio") 
+			lista->ingresar(*FuenteDeAudio::recuperar(entrada));
+		if (tipo == "Procesador de senal")
+			lista->ingresar(*ProcesadorDeSenal::recuperar(entrada));
+		if (tipo == "Parlante")
+			lista->ingresar(*Parlante::recuperar(entrada));
+		if (tipo == "Kit")
+			lista->ingresar(*Kit::recuperar(entrada));
+	}
+	return lista;
+}
 
 
 template<class T>
