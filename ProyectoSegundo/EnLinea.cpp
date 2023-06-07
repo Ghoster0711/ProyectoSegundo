@@ -7,7 +7,13 @@ EnLinea::EnLinea() {
 	carritoDeCompras = NULL;
 	destino = NULL;
 }
-EnLinea::EnLinea(string cod, Fecha* fecha, Cliente* cli, Destino* des) : Factura(cod, fecha, cli), destino(des) {}
+EnLinea::EnLinea(string cod, Fecha* fec, Cliente* cli, Destino* des) {
+	codigo = cod;
+	fecha = fec;
+	cliente = clonarCliente(cli);
+	carritoDeCompras = new Lista<Componente>();
+	destino = des;
+}
 EnLinea::~EnLinea() {
 	if (destino != NULL) delete destino;
 }
@@ -33,13 +39,7 @@ void EnLinea::setLista(Lista<Componente>* carrito) { carritoDeCompras = carrito;
 void EnLinea::setDestino(Destino* dest) { destino = dest; }
 
 Destino* EnLinea::clonarDestino(Destino* dest) {
-	string cod, pais, ciud;
-	double cost;
-	cod = dest->getCodigo();
-	pais = dest->getPais();
-	ciud = dest->getCiudad();
-	cost = dest->getCostoTraslado();
-	return new Destino(cod, pais, ciud, cost);
+	return (Destino*) new Destino(*(Destino*)dest);
 }
 
 Cliente* EnLinea::clonarCliente(Cliente* cliente) {
@@ -99,9 +99,9 @@ void EnLinea::guardar(ostream& salida) {
 	destino->guardarDatos(salida);
 }
 
-EnLinea* EnLinea::recuperar(istream& entrada) {
+Factura* EnLinea::recuperar(istream& entrada) {
 	string typeCliente, codigo;
-	EnLinea* factura = new EnLinea();
+	Factura* factura = new EnLinea();
 	Cliente* cliente = NULL;
 	getline(entrada, codigo, DELIMITA_CAMPO);
 	getline(entrada, typeCliente, DELIMITA_CAMPO);
@@ -112,12 +112,12 @@ EnLinea* EnLinea::recuperar(istream& entrada) {
 		cliente = Empresa::recuperar(entrada);
 	}
 	Fecha* fecha = Fecha::recuperarDatos(entrada);
-	//Lista<Componente>* ventas = Lista<Componente>::recuperar(entrada);
+	Lista<Componente>* ventas = Lista<Componente>::recuperarCarritoDeCompras(entrada);
 	Destino* destino = Destino::recuperarDatos(entrada);
 	factura->setCodigo(codigo);
 	factura->setCliente(cliente);
 	factura->setFecha(fecha);
-	//factura->setLista(ventas);
+	factura->setLista(ventas);
 	factura->setDestino(destino);
 	return factura;
 }

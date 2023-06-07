@@ -3,6 +3,8 @@
 #include "Lista.h"
 //Factura
 #include "Factura.h"
+#include"EnLinea.h"
+#include"Directo.h"
 // Componentes
 #include "FuenteDeAudio.h"
 #include "ProcesadorDeSenal.h"

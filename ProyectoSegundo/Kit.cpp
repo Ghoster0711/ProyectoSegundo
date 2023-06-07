@@ -14,6 +14,8 @@ Kit::Kit()
 	codigo = "";
 	caracteristica = "";
 	precio = 0;
+	Empaquetado = NULL;
+	cantItems = 0;
 }
 
 Kit::Kit(string nom, string cod){
@@ -21,18 +23,18 @@ Kit::Kit(string nom, string cod){
 	codigo = cod;
 	caracteristica = "";
 	precio = 0;
+	Empaquetado = new Lista<Componente>();
+	cantItems = 0;
 }
 
-Kit::~Kit(){
-
-}
+Kit::~Kit() {}
 
 string Kit::getCaracteristica() { return caracteristica; }
 
 double Kit::getPrecio() { return precio; }
 
 void Kit::agregar(Componente* com){ 
-	empaquetado->ingresar(*com);
+	Empaquetado->ingresar(*com);
 	cantItems++;
 }
 
@@ -52,7 +54,7 @@ string Kit::toString(){
 	stringstream show;
 	show << "Nombre : " << nombre
 		<< "\tCodigo: " << codigo << endl; 
-	show << empaquetado->toString();
+	show << Empaquetado->toString();
 	return show.str();
 }
 
@@ -77,7 +79,7 @@ string Kit::getCodigo()
 }
 
 void Kit::guardar(ostream& salida) {
-	Nodo<Componente>* e = empaquetado->getPrimero();
+	Nodo<Componente>* e = Empaquetado->getPrimero();
 	salida << "Kit" << DELIMITA_CAMPO;
 	salida << nombre << DELIMITA_CAMPO;
 	salida << codigo << DELIMITA_CAMPO;

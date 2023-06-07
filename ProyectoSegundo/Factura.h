@@ -19,7 +19,6 @@ protected:
 	Lista<Componente>* carritoDeCompras;
 public:
 	Factura();
-	Factura(string, Fecha*, Cliente*);
 	virtual ~Factura();
 
 	virtual string getCodigo() = 0;

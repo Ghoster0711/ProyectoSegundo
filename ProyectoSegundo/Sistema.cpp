@@ -2,10 +2,10 @@
 
 
 Sistema::Sistema(){
-	empaquetado = new Lista<Componente>();
+	Empaquetado = NULL;
 	cantItems = 0;
 }
 
 Sistema::~Sistema(){
-	if (empaquetado != NULL) delete empaquetado;
+	if (Empaquetado != NULL) delete Empaquetado;
 }
