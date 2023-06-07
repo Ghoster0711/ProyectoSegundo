@@ -22,9 +22,19 @@ int menuReportes();
 
 // ------------Directo--------------
 
+void generarVentaDirecta(Tienda*);
+Componente* agregarComponente(Tienda*);
+Componente* agregarSistemaPreconfigurado(Tienda*);
+Componente* agregarNuevoSistemaAMedida(Tienda*);
+
 // ------------En linea-------------
 
+void generarVentaEnLinea(Tienda*);
+
 // ---------Mantenimiento-----------
+
+void mantenimiento(Tienda*);
+
 
 void mostrarClientes(Tienda*);
 

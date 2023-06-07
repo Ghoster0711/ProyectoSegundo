@@ -48,7 +48,7 @@ void Parlante::setPrecio(double pre) { precio = pre; }
 
 string Parlante::toString() {
 	stringstream show;
-	show << "Parlante\t" << codigo << "\t" << tipoComponente << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "Parlante\t\t" << codigo << "\t" << tipoComponente << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

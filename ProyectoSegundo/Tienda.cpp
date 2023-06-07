@@ -54,7 +54,7 @@ bool Tienda::buscarComponente(string cod) {
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
 			tipo = typeid(*e->getDato()).name();
-			if (tipo != "class Kit" && tipo != "class Dispositivo") {
+			if (tipo != "class Kit") {
 				if (e->getDato()->getID() == cod) {
 					return true;
 				}
@@ -65,19 +65,21 @@ bool Tienda::buscarComponente(string cod) {
 	return false;
 }
 
-string Tienda::mostrarSoloComponentes() {
-	stringstream show;
+bool Tienda::buscarKit(string cod) {
 	string tipo;
 	Nodo<Componente>* e = Catalogo->getPrimero();
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
 			tipo = typeid(*e->getDato()).name();
-			if (tipo != "class Kit" && tipo != "class Dispositivo")
-				show << e->getDato()->toString();
+			if (tipo == "class Kit") {
+				if (e->getDato()->getID() == cod) {
+					return true;
+				}
+			}
 		}
 		e = e->getSiguiente();
 	}
-	return show.str();
+	return false;
 }
 
 Componente* Tienda::retornarSoloComponentes(string cod) {
@@ -104,6 +106,59 @@ Componente* Tienda::retornarSoloComponentes(string cod) {
 	}
 	return NULL;
 }
+
+string Tienda::mostrarSoloComponentes() {
+	stringstream show;
+	string tipo;
+	Nodo<Componente>* e = Catalogo->getPrimero();
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			tipo = typeid(*e->getDato()).name();
+			if (tipo != "class Kit" && tipo != "class Dispositivo")
+				show << e->getDato()->toString() << endl;
+		}
+		e = e->getSiguiente();
+	}
+	return show.str();
+}
+
+Componente* Tienda::retornarSoloKits(string cod){
+	string tipo;
+	Nodo<Componente>* e = Catalogo->getPrimero();
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			tipo = typeid(*e->getDato()).name();
+			if (tipo == "class Kit") {
+				if (e->getDato()->getCodigo() == cod) {
+					return (Componente*)new Kit(*(Kit*)e->getDato());
+				}
+			}
+		}
+		e = e->getSiguiente();
+	}
+	return NULL;
+}
+
+string Tienda::mostrarSoloKits(){
+	stringstream show;
+	string tipo;
+	Nodo<Componente>* e = Catalogo->getPrimero();
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			tipo = typeid(*e->getDato()).name();
+			if (tipo == "class Kit")
+				show << e->getDato()->toString() << endl;
+		}
+		e = e->getSiguiente();
+	}
+	return show.str();
+}
+
+bool Tienda::buscarCliente(string)
+{
+	return false;
+}
+
 
 
 
