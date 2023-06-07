@@ -66,7 +66,7 @@ Componente* Directo::clonarComponente(Componente* compo) {
 	return NULL;
 }
 void Directo::ingresarCompra(Componente* componente) {
-	carritoDeCompras->ingresar(clonarComponente(componente));
+	carritoDeCompras->ingresar(*clonarComponente(componente));
 }
 
 string Directo::toString() {

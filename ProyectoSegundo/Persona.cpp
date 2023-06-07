@@ -3,7 +3,7 @@
 Persona::Persona() : Cliente() {}
 
 Persona::Persona(string nom, string ced, string pais, string ciudad, string correo, string nacio)
-	: Cliente(nom, ced, pais, ciudad) {}
+	: Cliente(nom, ced, pais, ciudad), correo(correo), nacionalidad(nacio) {}
 Persona::~Persona() {}
 
 string Persona::getID()
@@ -47,7 +47,8 @@ string Persona::toString() {
 }
 
 void Persona::guardar(ostream& salida) {
-	salida << nombre << DELIMITA_CAMPO
+	salida << "Persona" << DELIMITA_CAMPO
+		   << nombre << DELIMITA_CAMPO
 		   << cedula << DELIMITA_CAMPO
 		   << nombrePais << DELIMITA_CAMPO
 		   << ciudadUbicacion << DELIMITA_CAMPO

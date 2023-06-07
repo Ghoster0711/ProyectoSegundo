@@ -36,7 +36,7 @@ inline Nodo<T>::~Nodo(){
 template<class T>
 inline T* Nodo<T>::getDato()
 {
-	return dato;;
+	return dato;
 }
 
 template<class T>

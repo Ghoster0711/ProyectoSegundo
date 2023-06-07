@@ -123,7 +123,7 @@ void eliminarCliente(Tienda* tienda) {
 	cout << tienda->mostrarClientes();
 	cout << "-------------------------------------------------------" << endl
 		<< "| Ingrese la cedula del cliente a eliminar -> "; cin >> cod;
-	if (tienda->buscarProductoDelCatalogo(cod) == true) {
+	if (tienda->buscarSuscriptor(cod) == true) {
 		tienda->eliminarCliente(cod);
 		cout << "El cliente se elimino con exito!!" << endl;
 	}
@@ -265,5 +265,6 @@ void eliminarProducto(Tienda* tienda) {
 
 void salir(Tienda* tienda){
 	cout << "Muchas Gracias por visitarnos" << endl;
+	tienda->guardarArchivos();
 	delete tienda;
 }

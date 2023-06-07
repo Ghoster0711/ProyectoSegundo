@@ -66,7 +66,7 @@ int main() {
 				case 7:
 					break;
 				}
-			} while (op4 != 6);
+			} while (op4 != 7);
 			break;
 		case 4:
 			do {
@@ -104,16 +104,17 @@ int main() {
 /// Prueba archivos clientes
 //int main() {
 //	string rutaSuscriptores = "../suscriptores.txt";
-//	Cliente* p1 = new Persona("Joshua Amador Lara", "604830349", "josh@gmail.com", "83599692");
-//	Cliente* p2 = new Persona("Jefferson Amador Lara", "119310170", "jeff@gmail.com", "83838674");
-//	Cliente* e1 = new Empresa("Soporte Real", "2039-1240-123", "sreal@gmail.com", "27734146");
-//	Cliente* e2 = new Empresa("Microsoft", "1022-1245-567", "micro@gmail.com", "22118080");
+//	Cliente* p1 = new Persona("Joshua Amador Lara", "604830349", "Costa Rica", "Heredia", "josh@gmail.com", "Costarricense");
+//	Cliente* p2 = new Persona("Jefferson Amador Lara", "119310170", "Costa Rica", "Heredia", "jeff@gmail.com", "Costarricense");
+//	//Cliente* p2 = new Persona("Jefferson Amador Lara", "119310170", "jeff@gmail.com", "83838674");
+//	Cliente* e1 = new Empresa("Soporte Real", "2039-1240-123", "USA", "New York");
+//	Cliente* e2 = new Empresa("Microsoft", "1022-1245-567", "Rusia", "Tokyo");
 //	Tienda* tienda = new Tienda();
 //
-//	tienda->getSuscriptores()->ingresar(p1);
-//	tienda->getSuscriptores()->ingresar(p2);
-//	tienda->getSuscriptores()->ingresar(e1);
-//	tienda->getSuscriptores()->ingresar(e2);
+//	tienda->getSuscriptores()->ingresar(*p1);
+//	tienda->getSuscriptores()->ingresar(*p2);
+//	tienda->getSuscriptores()->ingresar(*e1);
+//	tienda->getSuscriptores()->ingresar(*e2);
 //
 //	cout << tienda->getSuscriptores()->toString();
 //	cout << endl << endl << endl;

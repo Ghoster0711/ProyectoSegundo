@@ -32,7 +32,7 @@ string Kit::getCaracteristica() { return caracteristica; }
 double Kit::getPrecio() { return precio; }
 
 void Kit::agregar(Componente* com){ 
-	empaquetado->ingresar(com);
+	empaquetado->ingresar(*com);
 	cantItems++;
 }
 
