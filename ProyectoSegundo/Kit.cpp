@@ -17,7 +17,7 @@ Kit::Kit()
 }
 
 Kit::Kit(string nom, string cod){
-	nombre = cod;
+	nombre = nom;
 	codigo = cod;
 	caracteristica = "";
 	precio = 0;

@@ -1,9 +1,5 @@
 #pragma once
 #include "Componente.h"
-#include "FuenteDeAudio.h"
-#include "ProcesadorDeSenal.h"
-#include "Parlante.h"
-#include "Kit.h"
 #include"Lista.h"
 
 class Sistema : public Componente {
