@@ -68,17 +68,16 @@ int main() {
 	Fecha* f1 = new Fecha();
 	//Fecha* f2 = new Fecha();
 
-	Factura* fac1 = new EnLinea("1111", f1, p1, destino);
-	//Factura* fac2 = new Directo("2222", f2, p2);
-	fac1->ingresarCompra(c1);
-	fac1->ingresarCompra(c2);
+	
 
 	Fecha* fec1 = new Fecha();
-	Fecha* fec2 = new Fecha();
+	//Fecha* fec2 = new Fecha();
 
 	Factura* fac1 = new EnLinea("1111", fec1, p1, destino);
-	Factura* fac2 = new Directo("2222", fec2, p2);
+	//Factura* fac2 = new Directo("2222", fec2, p2);
 
+	fac1->ingresarCompra(c1);
+	fac1->ingresarCompra(c2);
 
 	cout << fac1->toString() << endl;
 	cout << endl;
