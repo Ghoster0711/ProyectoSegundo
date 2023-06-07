@@ -1,7 +1,10 @@
 #include "Sistema.h"
 
 
-Sistema::Sistema() {}
+Sistema::Sistema() {
+	Empaquetado = NULL;
+	cantItems = 0;
+}
 Sistema::~Sistema(){
 	if (Empaquetado != NULL) delete Empaquetado;
 }
