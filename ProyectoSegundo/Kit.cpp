@@ -14,8 +14,6 @@ Kit::Kit()
 	codigo = "";
 	caracteristica = "";
 	precio = 0;
-	Empaquetado = NULL;
-	cantItems = 0;
 }
 
 Kit::Kit(string nom, string cod){
@@ -23,8 +21,6 @@ Kit::Kit(string nom, string cod){
 	codigo = cod;
 	caracteristica = "";
 	precio = 0;
-	Empaquetado = new Lista<Componente>();
-	cantItems = 0;
 }
 
 Kit::~Kit() {}
