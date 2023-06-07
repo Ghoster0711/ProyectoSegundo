@@ -2,7 +2,9 @@
 #include <fstream>
 #include "Lista.h"
 //Factura
-#include "Factura.h"
+#include"Factura.h"
+#include"EnLinea.h"
+#include"Directo.h"
 // Componentes
 #include "FuenteDeAudio.h"
 #include "ProcesadorDeSenal.h"
@@ -19,13 +21,19 @@ private:
 	Lista<Cliente>* Suscriptores;
 	Lista<Factura>* Ventas;
 public:
+	// Constructor
 	Tienda();
-	virtual ~Tienda();
 
+	// Destructor
+	virtual ~Tienda();
+	
+	
+	// Get's
 	Lista<Componente>* getCatalago();
 	Lista<Cliente>* getSuscriptores();
 	Lista<Factura>* getVentas();
 
+	// Mostrar contenedores 
 	string mostrarElCatalogo();
 	//string mostrarLosSuscriptores();
 	//string mostrarLasVentas();
@@ -72,7 +80,5 @@ public:
 
 	void guardarArchivos();
 	void recuperarDeArchivos();
-
-
 
 };

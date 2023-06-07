@@ -4,10 +4,12 @@
 #include "ProcesadorDeSenal.h"
 #include "Parlante.h"
 
-
+// Delimitadores para archivos
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'
 
+
+// Desarrollo del constructor
 Kit::Kit()
 {
 	nombre = "";
@@ -16,38 +18,33 @@ Kit::Kit()
 	precio = 0;
 }
 
+// Desarrollo del constructor paremetrizado
 Kit::Kit(string nom, string cod){
-	nombre = cod;
+	nombre = nom;
 	codigo = cod;
 	caracteristica = "";
 	precio = 0;
 }
 
-Kit::~Kit(){
+// Desarrollo del destructor
+Kit::~Kit() {}
 
-}
 
+// Desarrollo de los get's
+string Kit::getID() { return codigo; }
+string Kit::getCodigo() { return codigo; }
+string Kit::getNombre() { return nombre; }
 string Kit::getCaracteristica() { return caracteristica; }
-
 double Kit::getPrecio() { return precio; }
 
-void Kit::agregar(Componente* com){ 
-	empaquetado->ingresar(*com);
-	cantItems++;
-}
-
-void Kit::setCodigo(string cod)
-{
-	codigo = cod;
-}
-
-void Kit::setCaracteristica(string carac)
-{
-	caracteristica = carac;
-}
-
+// Desarrollo de los set's
+void Kit::setCodigo(string cod) { codigo = cod; }
+void Kit::setCaracteristica(string carac) { caracteristica = carac; }
 void Kit::setPrecio(double pre) { precio = pre; }
+void Kit::setNombre(string nom) { nombre = nom; }
 
+
+// Desarrollo del ToString
 string Kit::toString(){
 	stringstream show;
 	show << "Nombre : " << nombre
@@ -56,28 +53,16 @@ string Kit::toString(){
 	return show.str();
 }
 
-string Kit::getID()
-{
-	return codigo;
+// Desarrollo del agregar
+void Kit::agregar(Componente* com){ 
+	empaquetado->ingresar(*com);
+	cantItems++;
 }
 
-string Kit::getNombre()
-{
-	return nombre;
-}
 
-void Kit::setNombre(string nom)
-{
-	nombre = nom;
-}
-
-string Kit::getCodigo()
-{
-	return codigo;
-}
-
+// Desarrollo del metodo guardar
 void Kit::guardar(ostream& salida) {
-	Nodo<Componente>* e = empaquetado->getPrimero();
+	Nodo<Componente>* e = Empaquetado->getPrimero();
 	salida << "Kit" << DELIMITA_CAMPO;
 	salida << nombre << DELIMITA_CAMPO;
 	salida << codigo << DELIMITA_CAMPO;
@@ -90,6 +75,7 @@ void Kit::guardar(ostream& salida) {
 	salida << "finKit" << DELIMITA_CAMPO;
 }
 
+// Desarrollo del metodo recuperar
 Componente* Kit::recuperar(istream& entrada){
 	string finkit, nombre, codigo;
 	Componente* kit = new Kit();

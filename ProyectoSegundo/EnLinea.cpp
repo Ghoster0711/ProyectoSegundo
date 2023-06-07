@@ -1,5 +1,6 @@
 #include "EnLinea.h"
 
+// Desarrollo del constructor
 EnLinea::EnLinea() {
 	codigo = "";
 	fecha = NULL;
@@ -7,41 +8,42 @@ EnLinea::EnLinea() {
 	carritoDeCompras = NULL;
 	destino = NULL;
 }
-EnLinea::EnLinea(string cod, Fecha* fecha, Cliente* cli, Destino* des) : Factura(cod, fecha, cli), destino(des) {}
+
+
+// Desarrollo del constructor parametrizado
+EnLinea::EnLinea(string cod, Fecha* fec, Cliente* cli, Destino* des) {
+	codigo = cod;
+	fecha = fec;
+	cliente = clonarCliente(cli);
+	carritoDeCompras = new Lista<Componente>();
+	destino = des;
+}
+
+// Desarrollo destructor
 EnLinea::~EnLinea() {
 	if (destino != NULL) delete destino;
 }
 
+// Desarrollo de los get's
 string EnLinea::getCodigo() { return codigo; }
-
 Fecha* EnLinea::getFecha() { return fecha; }
-
 Cliente* EnLinea::getCliente() { return cliente; }
-
 Lista<Componente>* EnLinea::getCarrito() { return carritoDeCompras; }
-
 Destino* EnLinea::getDestino() { return destino; }
 
+// Desarrollo de los set's
 void EnLinea::setCodigo(string cod) { codigo = cod; }
-
 void EnLinea::setFecha(Fecha* fec) { fecha = fec; }
-
 void EnLinea::setCliente(Cliente* clie) { cliente = clie; }
-
 void EnLinea::setLista(Lista<Componente>* carrito) { carritoDeCompras = carrito; }
-
 void EnLinea::setDestino(Destino* dest) { destino = dest; }
 
+// Desarrollo del metodo clonar destino
 Destino* EnLinea::clonarDestino(Destino* dest) {
-	string cod, pais, ciud;
-	double cost;
-	cod = dest->getCodigo();
-	pais = dest->getPais();
-	ciud = dest->getCiudad();
-	cost = dest->getCostoTraslado();
-	return new Destino(cod, pais, ciud, cost);
+	return (Destino*) new Destino(*(Destino*)dest);
 }
 
+// Desarrollo del metodo clonar cliente
 Cliente* EnLinea::clonarCliente(Cliente* cliente) {
 	string tipo;
 	tipo = typeid(*cliente).name();
@@ -53,9 +55,12 @@ Cliente* EnLinea::clonarCliente(Cliente* cliente) {
 	}
 	return NULL;
 }
+
+
+// Desarrollo del metodo clonar componente
 Componente* EnLinea::clonarComponente(Componente* compo) {
 	string tipo;
-	tipo = typeid(*compo).name();
+	tipo = typeid(compo).name();
 	if (tipo == "class Kit") {
 		return (Componente*)new Kit(*(Kit*)compo);
 	}
@@ -70,11 +75,13 @@ Componente* EnLinea::clonarComponente(Componente* compo) {
 	}
 	return NULL;
 }
+
+// Desarrollo del ingresar compra
 void EnLinea::ingresarCompra(Componente* componente) {
 	carritoDeCompras->ingresar(*clonarComponente(componente));
 }
 
-
+// Desarrollo del ToString
 string EnLinea::toString() {
 	stringstream show;
 	show << "--------------Factura---------------" << endl
@@ -88,6 +95,8 @@ string EnLinea::toString() {
 	return show.str();
 }
 
+
+// Desarrollo del metodo guardar
 void EnLinea::guardar(ostream& salida) {
 	string type = typeid((cliente)).name();
 	salida << "Factura En Linea" << DELIMITA_CAMPO;
@@ -99,9 +108,10 @@ void EnLinea::guardar(ostream& salida) {
 	destino->guardarDatos(salida);
 }
 
-EnLinea* EnLinea::recuperar(istream& entrada) {
+
+Factura* EnLinea::recuperar(istream& entrada) {
 	string typeCliente, codigo;
-	EnLinea* factura = new EnLinea();
+	Factura* factura = new EnLinea();
 	Cliente* cliente = NULL;
 	getline(entrada, codigo, DELIMITA_CAMPO);
 	getline(entrada, typeCliente, DELIMITA_CAMPO);
@@ -112,7 +122,7 @@ EnLinea* EnLinea::recuperar(istream& entrada) {
 		cliente = Empresa::recuperar(entrada);
 	}
 	Fecha* fecha = Fecha::recuperarDatos(entrada);
-	//Lista<Componente>* ventas = Lista<Componente>::recuperar(entrada);
+	//Lista<Componente>* ventas = Lista<Componente>::recuperarCarritoDeCompras(entrada);
 	Destino* destino = Destino::recuperarDatos(entrada);
 	factura->setCodigo(codigo);
 	factura->setCliente(cliente);
