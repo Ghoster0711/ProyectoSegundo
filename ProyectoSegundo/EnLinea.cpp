@@ -98,7 +98,7 @@ void EnLinea::guardar(ostream& salida) {
 	salida << type << DELIMITA_CAMPO;
 	cliente->guardar(salida);
 	carritoDeCompras->guardarCarritoDeCompras(salida);
-	destino->guardarDatos(salida);
+	destino->guardar(salida);
 }
 
 Factura* EnLinea::recuperar(istream& entrada) {
@@ -115,7 +115,7 @@ Factura* EnLinea::recuperar(istream& entrada) {
 	}
 	Fecha* fecha = Fecha::recuperarDatos(entrada);
 	//Lista<Componente>* ventas = Lista<Componente>::recuperarCarritoDeCompras(entrada);
-	Destino* destino = Destino::recuperarDatos(entrada);
+	Destino* destino = Destino::recuperar(entrada);
 	factura->setCodigo(codigo);
 	factura->setCliente(cliente);
 	factura->setFecha(fecha);

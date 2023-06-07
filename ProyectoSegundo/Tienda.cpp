@@ -5,6 +5,7 @@ Tienda::Tienda() {
 	Catalogo = new Lista<Componente>();
 	Suscriptores = new Lista<Cliente>();
 	Ventas = new Lista<Factura>();
+	Destinos = new Lista<Destino>();
 }
 
 Tienda::~Tienda(){
@@ -18,6 +19,8 @@ Lista<Componente>* Tienda::getCatalago() { return Catalogo; }
 Lista<Cliente>* Tienda::getSuscriptores() { return Suscriptores; }
 
 Lista<Factura>* Tienda::getVentas() { return Ventas; }
+
+Lista<Destino>* Tienda::getDestinos() { return Destinos; }
 
 string Tienda::mostrarElCatalogo(){
 	return Catalogo->toString();
@@ -75,6 +78,19 @@ bool Tienda::buscarKit(string cod) {
 				if (e->getDato()->getID() == cod) {
 					return true;
 				}
+			}
+		}
+		e = e->getSiguiente();
+	}
+	return false;
+}
+
+bool Tienda::buscarDestino(string cod) {
+	Nodo<Destino>* e = Destinos->getPrimero();
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			if (e->getDato()->getCodigo() == cod) {
+				return true;
 			}
 		}
 		e = e->getSiguiente();
@@ -152,6 +168,19 @@ string Tienda::mostrarSoloKits(){
 		e = e->getSiguiente();
 	}
 	return show.str();
+}
+
+Destino* Tienda::retornaDestino(string cod) {
+	Nodo<Destino>* e = Destinos->getPrimero();
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			if (e->getDato()->getCodigo() == cod) {
+				return new Destino(*(e->getDato()));
+			}
+		}
+		e = e->getSiguiente();
+	}
+	return NULL;
 }
 
 bool Tienda::buscarCliente(string)
@@ -268,6 +297,20 @@ void Tienda::recuperarFacturas() {
 		if (tipo == "Factura Directo") {
 			Ventas->ingresar(*Directo::recuperar(entrada));
 		}
+	}
+	entrada.close();
+}
+
+void Tienda::guardaDestinos() {
+	Destinos->guardarDestinos();
+}
+void Tienda::recuperarDestinos() {
+	string rutaDestinos = "../destinos.txt";
+	ifstream entrada;
+	entrada.open(rutaDestinos);
+	while (entrada.good()) {
+		if (entrada.good())
+			Destinos->ingresar(*Destino::recuperar(entrada));
 	}
 	entrada.close();
 }

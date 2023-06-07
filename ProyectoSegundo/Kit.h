@@ -2,7 +2,7 @@
 #include <fstream>
 #include "Sistema.h"
 
-class Kit : public Sistema {
+class Kit { //: public Sistema {
 private:
 	string nombre;
 public:
