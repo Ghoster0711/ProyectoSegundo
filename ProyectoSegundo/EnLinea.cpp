@@ -53,9 +53,11 @@ Cliente* EnLinea::clonarCliente(Cliente* cliente) {
 	}
 	return NULL;
 }
+
+
 Componente* EnLinea::clonarComponente(Componente* compo) {
 	string tipo;
-	tipo = typeid(*compo).name();
+	tipo = typeid(compo).name();
 	if (tipo == "class Kit") {
 		return (Componente*)new Kit(*(Kit*)compo);
 	}
@@ -112,12 +114,12 @@ Factura* EnLinea::recuperar(istream& entrada) {
 		cliente = Empresa::recuperar(entrada);
 	}
 	Fecha* fecha = Fecha::recuperarDatos(entrada);
-	Lista<Componente>* ventas = Lista<Componente>::recuperarCarritoDeCompras(entrada);
+	//Lista<Componente>* ventas = Lista<Componente>::recuperarCarritoDeCompras(entrada);
 	Destino* destino = Destino::recuperarDatos(entrada);
 	factura->setCodigo(codigo);
 	factura->setCliente(cliente);
 	factura->setFecha(fecha);
-	factura->setLista(ventas);
+	//factura->setLista(ventas);
 	factura->setDestino(destino);
 	return factura;
 }

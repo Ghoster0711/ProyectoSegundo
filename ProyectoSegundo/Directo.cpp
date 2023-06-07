@@ -105,10 +105,10 @@ Factura* Directo::recuperar(istream& entrada) {
 		cliente = Empresa::recuperar(entrada);
 	}
 	Fecha* fecha = Fecha::recuperarDatos(entrada);
-	Lista<Componente>* ventas = Lista<Componente>::recuperarCarritoDeCompras(entrada);
+	//Lista<Componente>* ventas = Lista<Componente>::recuperarCarritoDeCompras(entrada);
 	factura->setCodigo(codigo);
 	factura->setCliente(cliente);
 	factura->setFecha(fecha);
-	factura->setLista(ventas);
+	//factura->setLista(ventas);
 	return factura;
 }

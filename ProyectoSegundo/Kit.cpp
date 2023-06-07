@@ -29,53 +29,35 @@ Kit::Kit(string nom, string cod){
 
 Kit::~Kit() {}
 
+string Kit::getID() { return codigo;}
+
+string Kit::getNombre() { return nombre; }
+
 string Kit::getCaracteristica() { return caracteristica; }
 
 double Kit::getPrecio() { return precio; }
 
-void Kit::agregar(Componente* com){ 
+void Kit::setCodigo(string cod) { codigo = cod; }
+
+void Kit::setNombre(string nom){ nombre = nom; }
+
+void Kit::setCaracteristica(string carac) { caracteristica = carac; }
+
+void Kit::setPrecio(double pre) { precio = pre; }
+
+string Kit::getCodigo() { return codigo; }
+
+void Kit::agregar(Componente* com) {
 	Empaquetado->ingresar(*com);
 	cantItems++;
 }
 
-void Kit::setCodigo(string cod)
-{
-	codigo = cod;
-}
-
-void Kit::setCaracteristica(string carac)
-{
-	caracteristica = carac;
-}
-
-void Kit::setPrecio(double pre) { precio = pre; }
-
-string Kit::toString(){
+string Kit::toString() {
 	stringstream show;
 	show << "Nombre : " << nombre
-		<< "\tCodigo: " << codigo << endl; 
-	show << Empaquetado->toString();
+		<< "\tCodigo: " << codigo << endl;
+	//show << Empaquetado->toString();
 	return show.str();
-}
-
-string Kit::getID()
-{
-	return codigo;
-}
-
-string Kit::getNombre()
-{
-	return nombre;
-}
-
-void Kit::setNombre(string nom)
-{
-	nombre = nom;
-}
-
-string Kit::getCodigo()
-{
-	return codigo;
 }
 
 void Kit::guardar(ostream& salida) {

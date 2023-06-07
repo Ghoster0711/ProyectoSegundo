@@ -24,6 +24,8 @@ public:
 	void agregar(Componente*);
 
 	string toString();
+
 	void guardar(ostream&);
+
 	static Componente* recuperar(istream&);
 };

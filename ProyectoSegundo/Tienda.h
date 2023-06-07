@@ -75,6 +75,4 @@ public:
 	void guardarArchivos();
 	void recuperarDeArchivos();
 
-
-
 };
