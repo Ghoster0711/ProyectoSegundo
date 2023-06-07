@@ -73,7 +73,7 @@ string Tienda::mostrarSoloComponentes() {
 		if (e->getDato() != NULL) {
 			tipo = typeid(*e->getDato()).name();
 			if (tipo != "class Kit" && tipo != "class Dispositivo")
-				show << e->getDato()->toString();
+				show << e->getDato()->toString() << endl;
 		}
 		e = e->getSiguiente();
 	}

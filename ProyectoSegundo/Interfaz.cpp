@@ -198,7 +198,7 @@ Componente* crearComponente() {
 	
 	return NULL;
 }
-Componente* crearSistemaPreconfigurado(Tienda* tienda) {
+Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 	// Comodines
 	Componente* kit = new Kit();
 	string codK, cod, nom;
@@ -216,6 +216,7 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) {
 		cout << "------------------------------------------------------" << endl
 			<< "| (s) Volver.                                         |" << endl
 			<< "-------------------------------------------------------" << endl
+			<< tienda->mostrarSoloComponentes() << endl
 			<< "| Ingrese el codigo del producto a agregar -> "; cin >> cod; // Solicita que ingrese el codigo del componente
 		// Verifica que cod se diferente a la opcion de para volver
 		if (cod != "s") {

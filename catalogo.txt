@@ -1,4 +1,9 @@
+Kit	Premium	S01J	Parlante	4668	Parlante	TQ931	300W 4 canales	395
+Fuente de audio	4459	Tornamesa	LE978	Unidad basica 33/45 RPM	180
 Fuente de audio	4746	Unidad CD	OA966	Unidad basica	100
+Parlante	2186	Audifono	TP788	Circumaural bajos profundos	90
+Parlante	6870	Audifono	HT856	Inalambrico bajos profundos	120
+finKit	Fuente de audio	4746	Unidad CD	OA966	Unidad basica	100
 Fuente de audio	6653	Unidad CD	VG953	Proteccion de salto	150
 Fuente de audio	6168	Unidad CD	UK404	Múltiples velocidades	175
 Fuente de audio	6797	Unidad CD	SE381	Soporte SACD	200
@@ -27,7 +32,7 @@ Procesador de senal	1665	Mezclador	EA934	2 canales digitales	85
 Procesador de senal	3951	Mezclador	XO640	4 canales analogicos	130
 Procesador de senal	2687	Mezclador	UR549	4 canales digitales	150
 Procesador de senal	6432	Mezclador	IU702	8 canales (digital/analogico)	325
-Parlante	7652	Parlante	CQ811	200W	235.00 
+Parlante	7652	Parlante	CQ811	200W	235
 Parlante	0988	Parlante	NZ586	400W	275
 Parlante	2127	Parlante	LV428	400W perfil plano	315
 Parlante	4011	Parlante	OL625	400W inalambrico	355
