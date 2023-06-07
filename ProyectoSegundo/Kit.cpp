@@ -17,67 +17,47 @@ Kit::Kit()
 }
 
 Kit::Kit(string nom, string cod){
-	nombre = cod;
+	nombre = nom;
 	codigo = cod;
 	caracteristica = "";
 	precio = 0;
 }
 
-Kit::~Kit(){
+Kit::~Kit() {}
 
-}
+string Kit::getID() { return codigo;}
+
+string Kit::getNombre() { return nombre; }
 
 string Kit::getCaracteristica() { return caracteristica; }
 
 double Kit::getPrecio() { return precio; }
 
-void Kit::agregar(Componente* com){ 
-	empaquetado->ingresar(*com);
-	cantItems++;
-}
+void Kit::setCodigo(string cod) { codigo = cod; }
 
-void Kit::setCodigo(string cod)
-{
-	codigo = cod;
-}
+void Kit::setNombre(string nom){ nombre = nom; }
 
-void Kit::setCaracteristica(string carac)
-{
-	caracteristica = carac;
-}
+void Kit::setCaracteristica(string carac) { caracteristica = carac; }
 
 void Kit::setPrecio(double pre) { precio = pre; }
 
-string Kit::toString(){
+string Kit::getCodigo() { return codigo; }
+
+void Kit::agregar(Componente* com) {
+	Empaquetado->ingresar(*com);
+	cantItems++;
+}
+
+string Kit::toString() {
 	stringstream show;
 	show << "Nombre : " << nombre
-		<< "\tCodigo: " << codigo << endl; 
-	show << empaquetado->toString();
+		<< "\tCodigo: " << codigo << endl;
+	//show << Empaquetado->toString();
 	return show.str();
 }
 
-string Kit::getID()
-{
-	return codigo;
-}
-
-string Kit::getNombre()
-{
-	return nombre;
-}
-
-void Kit::setNombre(string nom)
-{
-	nombre = nom;
-}
-
-string Kit::getCodigo()
-{
-	return codigo;
-}
-
 void Kit::guardar(ostream& salida) {
-	Nodo<Componente>* e = empaquetado->getPrimero();
+	Nodo<Componente>* e = Empaquetado->getPrimero();
 	salida << "Kit" << DELIMITA_CAMPO;
 	salida << nombre << DELIMITA_CAMPO;
 	salida << codigo << DELIMITA_CAMPO;

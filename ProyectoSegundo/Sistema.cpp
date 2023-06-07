@@ -1,11 +1,10 @@
 #include "Sistema.h"
 
 
-Sistema::Sistema(){
-	empaquetado = new Lista<Componente>();
+Sistema::Sistema() {
+	Empaquetado = new Lista<Componente>();
 	cantItems = 0;
 }
-
 Sistema::~Sistema(){
-	if (empaquetado != NULL) delete empaquetado;
+	if (Empaquetado != NULL) delete Empaquetado;
 }

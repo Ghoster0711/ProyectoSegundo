@@ -27,6 +27,6 @@ public:
 	string toString();
 
 	void guardar(ostream&);
-	static Directo* recuperar(istream&);
+	static Factura* recuperar(istream&);
 
 };

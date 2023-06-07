@@ -256,17 +256,31 @@ void Tienda::guardarFacturas() {
 	Ventas->guardarVentas();
 }
 void Tienda::recuperarFacturas() {
-
+	string rutaVentas = "../ventas.txt";
+	ifstream entrada;
+	string tipo;
+	entrada.open(rutaVentas);
+	while (entrada.good()) {
+		getline(entrada, tipo, DELIMITA_CAMPO);
+		if (tipo == "Factura En Linea") {
+			Ventas->ingresar(*EnLinea::recuperar(entrada));
+		}
+		if (tipo == "Factura Directo") {
+			Ventas->ingresar(*Directo::recuperar(entrada));
+		}
+	}
+	entrada.close();
 }
 
 void Tienda::guardarArchivos()
 {
 	guardarCatalogo();
 	guardarSuscriptores();
-	//guardarFacturas();
+	guardarFacturas();
 }
 
 void Tienda::recuperarDeArchivos(){
 	recuperarArchivoCatalogo();
 	recuperarArchivoSuscriptores();
+	recuperarFacturas();
 }

@@ -30,5 +30,5 @@ public:
 	string toString();
 
 	void guardar(ostream&);
-	static EnLinea* recuperar(istream&);
+	static Factura* recuperar(istream&);
 };
