@@ -3,7 +3,7 @@
 
 // -----------MENUS-------------
 int menu(){
-	int op;
+	int op = 0;
 	cout << "------------MENU----------" << endl
 		<< "| (1) Venta Directa.     |" << endl
 		<< "| (2) Venta en linea.    |" << endl
@@ -16,31 +16,31 @@ int menu(){
 }
 
 int menudirecto(){
-	int op;
+	int op = 0;
 	cout << "------------------------------------------------" << endl
 		<< "| Que desea ingresar a su carrito de compras   |" << endl
 		<< "| (1) Componente.                              |" << endl
 		<< "| (2) Sistema Preconfigurado.                  |" << endl
 		<< "| (3) Crear Configurado a la medida.           |" << endl
-		<< "| (4) Volver.                                  |" << endl
+		<< "| (4) Finalizar.                               |" << endl
 		<< "------------------------------------------------" << endl
 		<< "| Ingrese una opcion -> "; cin >> op;
 	return op;
 }
 
 int menuEnLinea(){
-	int op;
+	int op = 0;
 	cout << "------------------------------------------------" << endl
 		<< "| Que desea ingresar a su carrito de compras   |" << endl
 		<< "| (1) Sistema Preconfigurado.                  |" << endl
-		<< "| (2) Volver.                                  |" << endl
+		<< "| (2) Finalizar.                                  |" << endl
 		<< "------------------------------------------------" << endl
 		<< "| Ingrese una opcion -> "; cin >> op;
 	return op;
 }
 
 int menuMantenimiento(){
-	int op;
+	int op = 0;
 	cout << "-----------------------------------------" << endl
 		<< "| (1) Ver Lista de clientes.             |" << endl
 		<< "| (2) Ingreso de nuevos clientes         |" << endl
@@ -56,7 +56,7 @@ int menuMantenimiento(){
 }
 
 int menuReportes() {
-	int op;
+	int op = 0;
 	cout << "---------------------------------------" << endl
 		<< "| (1) Reporte equipos mas vendidos     |" << endl
 		<< "| (2) Reportes ventas                  |" << endl
@@ -68,11 +68,113 @@ int menuReportes() {
 
 // -----------DIRECTO-----------
 
+void generarVentaDirecta(Tienda* tienda){
+	int op = 0;
+	do {
+		system("cls");
+		op = menudirecto();
+		switch (op) {
+		case 1:
+			agregarComponente(tienda);
+			break;
+		case 2:
+			agregarSistemaPreconfigurado(tienda);
+			break;
+		case 3:
+			agregarNuevoSistemaAMedida(tienda);
+			break;
+		case 4:
+			// Falta 
+			break;
+		}
+	} while (op != 4);
+}
+
+Componente* agregarComponente(Tienda* tienda){
+	string cod;
+	cout << tienda->mostrarSoloComponentes();
+	cout << "--------------------------------------------------------------------------" << endl
+		<< "| Seleccione el componente deseado por su codigo -> "; cin >> cod;
+	if (tienda->buscarComponente(cod) == true) {
+		return tienda->retornarSoloComponentes(cod);
+	}
+	else {
+		cout << "No se pudo agregar el componente!!" << endl;
+		system("pause");
+	}
+	return NULL;
+}
+
+Componente* agregarSistemaPreconfigurado(Tienda* tienda){
+	string cod;
+	cout << tienda->mostrarSoloKits();
+	cout << "-----------------------------------------------------------" << endl
+		<< "| Seleccione el kit deseado por su codigo -> "; cin >> cod;
+	if (tienda->buscarCliente(cod) == true) {
+		return tienda->retornarSoloKits(cod);
+	}
+	else {
+		cout << "No se pudo agregar el Sistema Preconfigurado" << endl;
+		system("pause");
+	}
+	return NULL;
+}
+
+Componente* agregarNuevoSistemaAMedida(Tienda* tienda){
+	// Falta
+	return NULL;
+}
 
 // -----------EN LINEA----------
 
+void generarVentaEnLinea(Tienda* tienda){
+	int op = 0;
+	do {
+		system("cls");
+		op = menuEnLinea();
+		switch (op)
+		{
+		case 1:
+			agregarSistemaPreconfigurado(tienda);
+			break;
+		case 2:
+			// Falta
+			break;
+		}
+	} while (op != 2);
+}
 
 // ---------MANTENIMIENTO-------
+
+void mantenimiento(Tienda* tienda) {
+	int op = 0;
+	do {
+		system("cls");
+		op = menuMantenimiento();
+		switch (op) {
+		case 1:
+			mostrarClientes(tienda);
+			break;
+		case 2:
+			ingresoSuscriptores(tienda);
+			break;
+		case 3:
+			eliminarCliente(tienda);
+			break;
+		case 4:
+			verCatalogo(tienda);
+			break;
+		case 5:
+			ingresoProductos(tienda);
+			break;
+		case 6:
+			eliminarProducto(tienda);
+			break;
+		case 7:
+			break;
+		}
+	} while (op != 7);
+}
 
 void mostrarClientes(Tienda* tienda) {
 	cout << tienda->mostrarClientes();
@@ -269,3 +371,5 @@ void salir(Tienda* tienda){
 	tienda->guardarArchivos();
 	delete tienda;
 }
+
+

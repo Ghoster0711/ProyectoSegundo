@@ -5,68 +5,20 @@
 
 int main() {
 	Tienda* tienda = new Tienda();
-	int op, op2, op3, op4, op5;
+	int op, op5;
 	tienda->recuperarDeArchivos();
 	do {
 		system("cls");
 		op = menu();
 		switch (op) {
 		case 1:
-			do {
-				system("cls");
-				op2 = menudirecto();
-				switch (op2){
-				case 1:
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-				case 4:
-					break;
-				}
-			} while (op2 != 4);
+			generarVentaDirecta(tienda);
 			break;
 		case 2:
-			do {
-				system("cls");
-				op3 = menuEnLinea();
-				switch (op3)
-				{
-				case 1:
-					break;
-				case 2:
-					break;
-				}
-			} while (op3 != 2);
+			generarVentaEnLinea(tienda);
 			break;
 		case 3:
-			do {
-				system("cls");
-				op4 = menuMantenimiento();
-				switch (op4){
-				case 1:
-					mostrarClientes(tienda);
-					break;
-				case 2:
-					ingresoSuscriptores(tienda);
-					break;
-				case 3:
-					eliminarCliente(tienda);
-					break;
-				case 4:
-					verCatalogo(tienda);
-					break;
-				case 5:
-					ingresoProductos(tienda);
-					break;
-				case 6:
-					eliminarProducto(tienda);
-					break;
-				case 7:
-					break;
-				}
-			} while (op4 != 7);
+			mantenimiento(tienda);
 			break;
 		case 4:
 			do {

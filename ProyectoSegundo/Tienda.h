@@ -33,8 +33,11 @@ public:
 	bool buscarSuscriptor(string);
 	bool buscarProductoDelCatalogo(string);
 	bool buscarComponente(string);
+	bool buscarKit(string);
 	Componente* retornarSoloComponentes(string);
 	string mostrarSoloComponentes();
+	Componente* retornarSoloKits(string);
+	string mostrarSoloKits();
 
 	bool buscarCliente(string);
 
