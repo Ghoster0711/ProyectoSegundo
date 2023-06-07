@@ -3,11 +3,17 @@
 #include<sstream>
 #include<string>
 #include<fstream>
+
+
+// Delimitadores para guardar en los archivos
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'
 
 using namespace std;
 
+
+
+// Abstract class
 class Cliente {
 protected:
 	string nombre;
@@ -15,12 +21,17 @@ protected:
 	string nombrePais;
 	string ciudadUbicacion;
 public:
+	// Constructor
 	Cliente();
+
+	// Constructor parametrizado
 	Cliente(string, string, string, string);
+
+	// Destructor
 	virtual ~Cliente();
 
 	//Get's 
-	virtual string getID() = 0;
+	virtual string getID() = 0; // Este metodo va a devolver el atributo con el que se identifica cada objeto
 	virtual string getNombre() = 0;
 	virtual string getCedula() = 0;
 	virtual string getNombrePais() = 0;
@@ -36,7 +47,9 @@ public:
 	virtual void setCorreo(string) = 0;
 	virtual void setNacionalidad(string) = 0;
 
+	// ToString
 	virtual string toString() = 0;
-
+	
+	// Guardar en archivos
 	virtual void guardar(ostream&) = 0;
 };
