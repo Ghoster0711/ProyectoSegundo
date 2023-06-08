@@ -46,4 +46,5 @@ public:
 
 	// Metodo que se encarga de recuperar de archivo
 	static Factura* recuperar(istream&);
+	static void recuperarCarrito(istream&, Factura*);
 };
