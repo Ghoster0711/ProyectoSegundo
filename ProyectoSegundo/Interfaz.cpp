@@ -302,7 +302,7 @@ Componente* crearComponente() {
 }
 Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 	// Comodines
-	Componente* kit = new Kit();
+	//Componente* kit = new Kit();
 	string codK, cod, nom;
 	char op;
 	// Ingreso del nombre y codigo del kit
@@ -328,7 +328,7 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 				cout << "Se encontro el Componente desea agregarlo (s/n) "; cin >> op;
 				// Si lo quiere agregar se encargar de agregarlo
 				if (op == 's') {
-					kit->agregar(tienda->retornarSoloComponentes(cod));
+					//kit->agregar(tienda->retornarSoloComponentes(cod));
 				}
 			}
 			else
@@ -338,11 +338,11 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 	// Pregunta si lo quiere agregar y lo agrega
 	cout << "Agregar el kit al catalogo? s/n "; cin >> op;
 	if (op == 's') {
-		kit->setCodigo(codK);
-		kit->setNombre(nom);
-		return (Componente*)new Kit(*(Kit*)kit);
+		//kit->setCodigo(codK);
+		//kit->setNombre(nom);
+		//return (Componente*)new Kit(*(Kit*)kit);
 	}
-	delete kit;
+	//delete kit;
 
 	return NULL;
 }

@@ -1,10 +1,6 @@
 #pragma once
 #include "Nodo.h"
-//#include "Componente.h"
-//#include "FuenteDeAudio.h"
-//#include "ProcesadorDeSenal.h"
-//#include "Parlante.h"
-//#include "Kit.h"
+
 
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'
@@ -27,7 +23,7 @@ public:
 	void guardarSuscriptores();
 	void guardarVentas();
 	void guardarCarritoDeCompras(ostream&);
-	//static Lista<Componente>* recuperarCarritoDeCompras(istream&);
+	void guardarDestinos();
 
 	string toString();
 };
@@ -153,6 +149,20 @@ inline void Lista<T>::guardarCarritoDeCompras(ostream& salida) {
 	}
 }
 
+template<class T>
+inline void Lista<T>::guardarDestinos() {
+	string rutaDestinos = "../traslados.txt";
+	Nodo<T>* e = primero;
+	ofstream salida;
+	salida.open(rutaDestinos);
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			e->getDato()->guardar(salida);
+		}
+		e = e->getSiguiente();
+	}
+	salida.close();
+}
 
 
 template<class T>

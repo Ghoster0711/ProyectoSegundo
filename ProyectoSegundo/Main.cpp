@@ -51,50 +51,52 @@
 
 /// Prueba Archivos Facturas
 int main() {
-	string prueba = "C:/Users/barra/OneDrive - Universidad Nacional de Costa Rica/2023/Ciclo I 2023/Progra II/Proyectos/PROYECTO_SEGUNDO/pruebaFacturas.txt";
-	Cliente* p1 = new Persona("Joshua Amador Lara", "604830349", "Costa Rica", "Heredia", "josh@gmail.com", "Costarricense");
+	//string prueba = "C:/Users/barra/OneDrive - Universidad Nacional de Costa Rica/2023/Ciclo I 2023/Progra II/Proyectos/PROYECTO_SEGUNDO/pruebaFacturas.txt";
+	//Cliente* p1 = new Persona("Joshua Amador Lara", "604830349", "Costa Rica", "Heredia", "josh@gmail.com", "Costarricense");
+	////Cliente* p2 = new Empresa("Microsoft", "1022-1245-567", "Rusia", "Tokyo");
 	//Cliente* p2 = new Empresa("Microsoft", "1022-1245-567", "Rusia", "Tokyo");
-	Cliente* p2 = new Empresa("Microsoft", "1022-1245-567", "Rusia", "Tokyo");
 
 
-	Componente* c1 = new FuenteDeAudio("1010", "Tornamesa", "HT59J", "AJLJSDLA", 150);
-	Componente* c2 = new Parlante("1010", "Audio", "HT59J", "AJLJSDLA", 150);
-	Componente* c3 = new ProcesadorDeSenal("1010", "Parlante", "HT59J", "AJLJSDLA", 150);
-	Componente* c4 = new FuenteDeAudio("1010", "Microfono", "HT59J", "AJLJSDLA", 150);
+	//Componente* c1 = new FuenteDeAudio("1010", "Tornamesa", "HT59J", "AJLJSDLA", 150);
+	//Componente* c2 = new Parlante("1010", "Audio", "HT59J", "AJLJSDLA", 150);
+	//Componente* c3 = new ProcesadorDeSenal("1010", "Parlante", "HT59J", "AJLJSDLA", 150);
+	//Componente* c4 = new FuenteDeAudio("1010", "Microfono", "HT59J", "AJLJSDLA", 150);
 
 
-	Destino* destino = new Destino("010", "Argentina", "Buenos Aires", 17520);
+	//Destino* destino = new Destino("010", "Argentina", "Buenos Aires", 17520);
 
-	Fecha* f1 = new Fecha();
-	//Fecha* f2 = new Fecha();
+	//Fecha* f1 = new Fecha();
+	////Fecha* f2 = new Fecha();
 
+	//
+
+	//Fecha* fec1 = new Fecha();
+	////Fecha* fec2 = new Fecha();
+
+	//Factura* fac1 = new EnLinea("1111", fec1, p1, destino);
+	////Factura* fac2 = new Directo("2222", fec2, p2);
+
+	//fac1->ingresarCompra(c1);
+	//fac1->ingresarCompra(c2);
+
+	//cout << fac1->toString() << endl;
+	//cout << endl;
+
+	//system("pause");
+
+	//cout << "Guardando archivos..." << endl;
+	//ofstream salida;
+	//salida.open(prueba);
+	//fac1->guardar(salida);
+
+	//salida.close();
+
+
+	Tienda* tienda = new Tienda();
+	tienda->recuperarArchivoDestinos();
+	cout << tienda->getDestinos()->toString() << endl;
 	
-
-	Fecha* fec1 = new Fecha();
-	//Fecha* fec2 = new Fecha();
-
-	Factura* fac1 = new EnLinea("1111", fec1, p1, destino);
-	//Factura* fac2 = new Directo("2222", fec2, p2);
-
-	fac1->ingresarCompra(c1);
-	fac1->ingresarCompra(c2);
-
-	cout << fac1->toString() << endl;
-	cout << endl;
-
-	system("pause");
-
-	cout << "Guardando archivos..." << endl;
-	ofstream salida;
-	salida.open(prueba);
-	fac1->guardar(salida);
-
-	salida.close();
-	
-	
-
-
-
+	delete tienda;
 	system("pause");
 	return 0;
 }

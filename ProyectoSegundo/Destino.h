@@ -44,9 +44,10 @@ public:
 	// ToString
 	string toString();
 
+
 	// Metodo para guardar en archivo
-	void guardarDatos(ostream&); 
+	void guardar(ostream&); 
 
 	// Metodo para recuperar de archivo
-	static Destino* recuperarDatos(istream&);
+	static Destino* recuperar(istream&);
 };

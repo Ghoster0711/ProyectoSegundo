@@ -13,6 +13,8 @@
 // Clientes
 #include "Empresa.h"
 #include "Persona.h"
+//Destino
+#include"Destino.h"
 
 
 class Tienda {
@@ -20,6 +22,7 @@ private:
 	Lista<Componente>* Catalogo;
 	Lista<Cliente>* Suscriptores;
 	Lista<Factura>* Ventas;
+	Lista<Destino>* Destinos;
 public:
 	// Constructor
 	Tienda();
@@ -32,22 +35,27 @@ public:
 	Lista<Componente>* getCatalago();
 	Lista<Cliente>* getSuscriptores();
 	Lista<Factura>* getVentas();
+	Lista<Destino>* getDestinos();
 
 	// Mostrar contenedores 
 	string mostrarElCatalogo();
 	//string mostrarLosSuscriptores();
 	//string mostrarLasVentas();
+	//string mostrasDestinos();
 	
 	bool buscarSuscriptor(string);
 	bool buscarProductoDelCatalogo(string);
 	bool buscarComponente(string);
 	bool buscarKit(string);
+	bool buscarCliente(string);
+	bool buscarDestino(string);
+
 	Componente* retornarSoloComponentes(string);
 	string mostrarSoloComponentes();
 	Componente* retornarSoloKits(string);
 	string mostrarSoloKits();
-
-	bool buscarCliente(string);
+	Destino* retornaDestino(string);
+	
 
 
 // -------------Directo---------------
@@ -77,6 +85,8 @@ public:
 	void guardarFacturas();
 	void recuperarFacturas();
 
+	void guardaDestinos();
+	void recuperarArchivoDestinos();
 
 	void guardarArchivos();
 	void recuperarDeArchivos();

@@ -48,7 +48,7 @@ void Kit::setNombre(string nom) { nombre = nom; }
 string Kit::toString(){
 	stringstream show;
 	show << "Nombre : " << nombre
-		<< "\tCodigo: " << codigo << endl; 
+		<< "\tCodigo: " << codigo << endl;
 	show << Empaquetado->toString();
 	return show.str();
 }
@@ -96,4 +96,5 @@ Componente* Kit::recuperar(istream& entrada){
 		}
 	}
 	return kit;
+	return NULL;
 }
