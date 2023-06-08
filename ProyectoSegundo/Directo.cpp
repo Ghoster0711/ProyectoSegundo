@@ -1,43 +1,45 @@
 #include "Directo.h"
 
+// Desarrollo del constructor
 Directo::Directo() {
 	codigo = "";
 	fecha = NULL;
 	cliente = NULL;
 	carritoDeCompras = NULL;
 }
-Directo::Directo(string cod, Fecha* fec, Cliente* cli) {
+
+// Desarrollo del constructor parametrizado
+Directo::Directo(string cod, Fecha* fecha, Cliente* cli) {
 	codigo = cod;
-	fecha = fec;
+	fecha = fecha;
 	cliente = clonarCliente(cli);
 	carritoDeCompras = new Lista<Componente>();
 }
+
+// Desarrollo destructor
 Directo::~Directo() {}
 
+// Desarrollo de los get's
 string Directo::getCodigo() { return codigo; }
-
 Fecha* Directo::getFecha() { return fecha; }
-
 Cliente* Directo::getCliente() { return cliente; }
-
 Lista<Componente>* Directo::getCarrito() { return carritoDeCompras; }
-
 Destino* Directo::getDestino() { return NULL; }
 
+// Desarrollo de los set's
 void Directo::setCodigo(string cod) { codigo = cod; }
-
 void Directo::setFecha(Fecha* fec) { fecha = fec; }
-
 void Directo::setCliente(Cliente* clie) { cliente = clie; }
-
 void Directo::setLista(Lista<Componente>* carrito) { carritoDeCompras = carrito; }
-
 void Directo::setDestino(Destino* dest) {}
 
-Destino* Directo::clonarDestino(Destino*) {
-	return NULL;
+
+// Desarrollo de clonar destino
+Destino* Directo::clonarDestino(Destino* dest) { 
+	return new Destino(*dest); 
 }
 
+// Desarrollo de clonar cliente
 Cliente* Directo::clonarCliente(Cliente* cliente) {
 	string tipo;
 	tipo = typeid(*cliente).name();
@@ -49,6 +51,8 @@ Cliente* Directo::clonarCliente(Cliente* cliente) {
 	}
 	return NULL;
 }
+
+// Desarrollo de clonar componente
 Componente* Directo::clonarComponente(Componente* compo) {
 	string tipo;
 	tipo = typeid(*compo).name();
@@ -66,10 +70,13 @@ Componente* Directo::clonarComponente(Componente* compo) {
 	}
 	return NULL;
 }
+
+// Desarrollo de ingresar al componente
 void Directo::ingresarCompra(Componente* componente) {
 	carritoDeCompras->ingresar(*clonarComponente(componente));
 }
 
+// Desarrollo del ToString
 string Directo::toString() {
 	stringstream show;
 	show << "--------------Factura---------------" << endl
@@ -82,33 +89,49 @@ string Directo::toString() {
 	return show.str();
 }
 
+// Desarrollo del metodo guardar 
 void Directo::guardar(ostream& salida) {
-	string type = typeid((cliente)).name();
 	salida << "Factura Directo" << DELIMITA_CAMPO;
 	salida << codigo << DELIMITA_CAMPO;
 	fecha->guardarDatos(salida);
-	salida << type << DELIMITA_CAMPO;
 	cliente->guardar(salida);
 	carritoDeCompras->guardarCarritoDeCompras(salida);
+	salida << "finCarrito" << DELIMITA_CAMPO;
 }
 
+
+// Desarrollo del metodo recuperar
 Factura* Directo::recuperar(istream& entrada) {
 	string typeCliente, codigo;
 	Factura* factura = new Directo();
 	Cliente* cliente = NULL;
 	getline(entrada, codigo, DELIMITA_CAMPO);
+	Fecha* fecha = Fecha::recuperarDatos(entrada);
 	getline(entrada, typeCliente, DELIMITA_CAMPO);
-	if (typeCliente == "class Persona") {
+	if (typeCliente == "Persona") {
 		cliente = Persona::recuperar(entrada);
 	}
-	if (typeCliente == "class Empresa") {
+	if (typeCliente == "Empresa") {
 		cliente = Empresa::recuperar(entrada);
 	}
-	Fecha* fecha = Fecha::recuperarDatos(entrada);
-	//Lista<Componente>* ventas = Lista<Componente>::recuperarCarritoDeCompras(entrada);
+	recuperarCarrito(entrada, factura);
 	factura->setCodigo(codigo);
 	factura->setCliente(cliente);
 	factura->setFecha(fecha);
-	//factura->setLista(ventas);
 	return factura;
+}
+
+void Directo::recuperarCarrito(istream& entrada, Factura* fac){
+	string op;
+	while (op != "finCarrito") {
+		getline(entrada, op, DELIMITA_CAMPO);
+		if (op == "Fuente de audio")
+			fac->getCarrito()->ingresar(*FuenteDeAudio::recuperar(entrada));
+		if (op == "Procesador de senal")
+			fac->getCarrito()->ingresar(*ProcesadorDeSenal::recuperar(entrada));
+		if (op == "Parlante")
+			fac->getCarrito()->ingresar(*Parlante::recuperar(entrada));
+		if (op == "Kit")
+			fac->getCarrito()->ingresar(*Kit::recuperar(entrada));
+	}
 }

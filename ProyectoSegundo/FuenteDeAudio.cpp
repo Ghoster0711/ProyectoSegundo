@@ -1,10 +1,11 @@
 #include "FuenteDeAudio.h"
 #include "Utiles.h"
 
-
+// Delimitadores para la parte de archivos
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'
 
+// Desarrollo del constructor parametrizado
 FuenteDeAudio::FuenteDeAudio(string cod, string tipo, string model, string carac, double pre) {
 	codigo = cod;
 	tipoComponente = tipo;
@@ -13,43 +14,29 @@ FuenteDeAudio::FuenteDeAudio(string cod, string tipo, string model, string carac
 	precio = pre;
 }
 
+// Desarrollo del Destructor
 FuenteDeAudio::~FuenteDeAudio() {}
 
-string FuenteDeAudio::getID()
-{
-	return codigo;
-}
-
-string FuenteDeAudio::getCodigo()
-{
-	return codigo;
-}
-
+// Desarrollo de los get's
+string FuenteDeAudio::getID() {	return codigo; }
+string FuenteDeAudio::getCodigo() {	return codigo; }
 string FuenteDeAudio::getCaracteristica() { return caracteristica; }
-
 double FuenteDeAudio::getPrecio() { return precio; }
 
-
+// Desarrollo de los set's
 void FuenteDeAudio::agregar(Componente*){}
-
-void FuenteDeAudio::setCodigo(string cod)
-{
-	codigo = cod;
-}
-
-void FuenteDeAudio::setCaracteristica(string carac)
-{
-	caracteristica = carac;
-}
-
+void FuenteDeAudio::setCodigo(string cod) {	codigo = cod; }
+void FuenteDeAudio::setCaracteristica(string carac) { caracteristica = carac; }
 void FuenteDeAudio::setPrecio(double pre) { precio = pre; }
 
+// Desarrollo del ToString
 string FuenteDeAudio::toString() {
 	stringstream show;
 	show << "Fuente de audio\t\t" << codigo << "\t" << tipoComponente << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 
+// Desarrollo del metodo guardar
 void FuenteDeAudio::guardar(ostream& salida) {
 	salida << "Fuente de audio" << DELIMITA_CAMPO;
 	salida << codigo << DELIMITA_CAMPO;
@@ -59,7 +46,8 @@ void FuenteDeAudio::guardar(ostream& salida) {
 	salida << precio << DELIMITA_REGISTRO;
 }
 
-Componente* FuenteDeAudio::recuperar(istream& entrada) {
+// Desarrollo del metodo recuperar
+Componente* FuenteDeAudio::recuperar(istream& entrada){
 	string cod, tipo, model, carac, precio;
 	getline(entrada, cod, DELIMITA_CAMPO);
 	getline(entrada, tipo, DELIMITA_CAMPO);

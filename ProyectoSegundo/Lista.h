@@ -1,10 +1,6 @@
 #pragma once
 #include "Nodo.h"
-#include "Componente.h"
-#include "FuenteDeAudio.h"
-#include "ProcesadorDeSenal.h"
-#include "Parlante.h"
-#include "Kit.h"
+
 
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'
@@ -28,7 +24,6 @@ public:
 	void guardarVentas();
 	void guardarCarritoDeCompras(ostream&);
 	void guardarDestinos();
-	static Lista<Componente>* recuperarCarritoDeCompras(istream&);
 
 	string toString();
 };
@@ -95,7 +90,6 @@ inline void Lista<T>::guardarCatalogo(){
 	string rutaCatalogo = "../catalogo.txt";
 	ofstream file;
 	file.open(rutaCatalogo);
-
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
 			tipo = typeid(*e->getDato()).name();
@@ -169,24 +163,6 @@ inline void Lista<T>::guardarDestinos() {
 	}
 	salida.close();
 }
-
-//template<class T>
-//inline Lista<Componente>* Lista<T>::recuperarCarritoDeCompras(istream& entrada) {
-//	Lista<Componente>* lista = new Lista<Componente>();
-//	string tipo;
-//	while (entrada.good()) {
-//		getline(entrada, tipo, DELIMITA_CAMPO);
-//		if (tipo == "Fuente de audio") 
-//			lista->ingresar(*FuenteDeAudio::recuperar(entrada));
-//		if (tipo == "Procesador de senal")
-//			lista->ingresar(*ProcesadorDeSenal::recuperar(entrada));
-//		if (tipo == "Parlante")
-//			lista->ingresar(*Parlante::recuperar(entrada));
-//		if (tipo == "Kit")
-//			lista->ingresar(*Kit::recuperar(entrada));
-//	}
-//	return lista;
-//}
 
 
 template<class T>

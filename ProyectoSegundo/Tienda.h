@@ -24,14 +24,20 @@ private:
 	Lista<Factura>* Ventas;
 	Lista<Destino>* Destinos;
 public:
+	// Constructor
 	Tienda();
-	virtual ~Tienda();
 
+	// Destructor
+	virtual ~Tienda();
+	
+	
+	// Get's
 	Lista<Componente>* getCatalago();
 	Lista<Cliente>* getSuscriptores();
 	Lista<Factura>* getVentas();
 	Lista<Destino>* getDestinos();
 
+	// Mostrar contenedores 
 	string mostrarElCatalogo();
 	//string mostrarLosSuscriptores();
 	//string mostrarLasVentas();

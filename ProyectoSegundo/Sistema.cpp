@@ -1,10 +1,12 @@
 #include "Sistema.h"
 
-
-Sistema::Sistema() {
+// Desarrollo del constructor
+Sistema::Sistema(){
 	Empaquetado = new Lista<Componente>();
 	cantItems = 0;
 }
-Sistema::~Sistema() {
+
+// Desarrollo del destructor
+Sistema::~Sistema(){
 	if (Empaquetado != NULL) delete Empaquetado;
 }

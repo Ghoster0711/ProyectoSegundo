@@ -1,5 +1,6 @@
 #include "EnLinea.h"
 
+// Desarrollo del constructor
 EnLinea::EnLinea() {
 	codigo = "";
 	fecha = NULL;
@@ -7,6 +8,9 @@ EnLinea::EnLinea() {
 	carritoDeCompras = NULL;
 	destino = NULL;
 }
+
+
+// Desarrollo del constructor parametrizado
 EnLinea::EnLinea(string cod, Fecha* fec, Cliente* cli, Destino* des) {
 	codigo = cod;
 	fecha = fec;
@@ -14,34 +18,32 @@ EnLinea::EnLinea(string cod, Fecha* fec, Cliente* cli, Destino* des) {
 	carritoDeCompras = new Lista<Componente>();
 	destino = des;
 }
+
+// Desarrollo destructor
 EnLinea::~EnLinea() {
 	if (destino != NULL) delete destino;
 }
 
+// Desarrollo de los get's
 string EnLinea::getCodigo() { return codigo; }
-
 Fecha* EnLinea::getFecha() { return fecha; }
-
 Cliente* EnLinea::getCliente() { return cliente; }
-
 Lista<Componente>* EnLinea::getCarrito() { return carritoDeCompras; }
-
 Destino* EnLinea::getDestino() { return destino; }
 
+// Desarrollo de los set's
 void EnLinea::setCodigo(string cod) { codigo = cod; }
-
 void EnLinea::setFecha(Fecha* fec) { fecha = fec; }
-
 void EnLinea::setCliente(Cliente* clie) { cliente = clie; }
-
 void EnLinea::setLista(Lista<Componente>* carrito) { carritoDeCompras = carrito; }
-
 void EnLinea::setDestino(Destino* dest) { destino = dest; }
 
+// Desarrollo del metodo clonar destino
 Destino* EnLinea::clonarDestino(Destino* dest) {
 	return (Destino*) new Destino(*(Destino*)dest);
 }
 
+// Desarrollo del metodo clonar cliente
 Cliente* EnLinea::clonarCliente(Cliente* cliente) {
 	string tipo;
 	tipo = typeid(*cliente).name();
@@ -55,6 +57,7 @@ Cliente* EnLinea::clonarCliente(Cliente* cliente) {
 }
 
 
+// Desarrollo del metodo clonar componente
 Componente* EnLinea::clonarComponente(Componente* compo) {
 	string tipo;
 	tipo = typeid(compo).name();
@@ -72,11 +75,13 @@ Componente* EnLinea::clonarComponente(Componente* compo) {
 	}
 	return NULL;
 }
+
+// Desarrollo del ingresar compra
 void EnLinea::ingresarCompra(Componente* componente) {
 	carritoDeCompras->ingresar(*clonarComponente(componente));
 }
 
-
+// Desarrollo del ToString
 string EnLinea::toString() {
 	stringstream show;
 	show << "--------------Factura---------------" << endl
@@ -90,36 +95,52 @@ string EnLinea::toString() {
 	return show.str();
 }
 
+
+// Desarrollo del metodo guardar
 void EnLinea::guardar(ostream& salida) {
-	string type = typeid((cliente)).name();
 	salida << "Factura En Linea" << DELIMITA_CAMPO;
 	salida	<< codigo << DELIMITA_CAMPO;
 	fecha->guardarDatos(salida);
-	salida << type << DELIMITA_CAMPO;
 	cliente->guardar(salida);
+	destino->guardarDatos(salida);
 	carritoDeCompras->guardarCarritoDeCompras(salida);
-	destino->guardar(salida);
 }
+
 
 Factura* EnLinea::recuperar(istream& entrada) {
 	string typeCliente, codigo;
 	Factura* factura = new EnLinea();
 	Cliente* cliente = NULL;
 	getline(entrada, codigo, DELIMITA_CAMPO);
+	Fecha* fecha = Fecha::recuperarDatos(entrada);
 	getline(entrada, typeCliente, DELIMITA_CAMPO);
-	if (typeCliente == "class Persona") {
+	if (typeCliente == "Persona") {
 		cliente = Persona::recuperar(entrada);
 	}
-	if (typeCliente == "class Empresa") {
+	if (typeCliente == "Empresa") {
 		cliente = Empresa::recuperar(entrada);
 	}
-	Fecha* fecha = Fecha::recuperarDatos(entrada);
-	//Lista<Componente>* ventas = Lista<Componente>::recuperarCarritoDeCompras(entrada);
-	Destino* destino = Destino::recuperar(entrada);
+	Destino* destino = Destino::recuperarDatos(entrada);
+	recuperarCarrito(entrada, factura);
 	factura->setCodigo(codigo);
 	factura->setCliente(cliente);
 	factura->setFecha(fecha);
 	//factura->setLista(ventas);
 	factura->setDestino(destino);
 	return factura;
+}
+
+void EnLinea::recuperarCarrito(istream& entrada, Factura* fac) {
+	string op;
+	while (op != "finCarrito") {
+		getline(entrada, op, DELIMITA_CAMPO);
+		if (op == "Fuente de audio")
+			fac->getCarrito()->ingresar(*FuenteDeAudio::recuperar(entrada));
+		if (op == "Procesador de senal")
+			fac->getCarrito()->ingresar(*ProcesadorDeSenal::recuperar(entrada));
+		if (op == "Parlante")
+			fac->getCarrito()->ingresar(*Parlante::recuperar(entrada));
+		if (op == "Kit")
+			fac->getCarrito()->ingresar(*Kit::recuperar(entrada));
+	}
 }
