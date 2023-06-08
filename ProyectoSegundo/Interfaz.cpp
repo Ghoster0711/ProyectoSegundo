@@ -69,7 +69,13 @@ int menuReportes() {
 // -----------DIRECTO-----------
 
 void generarVentaDirecta(Tienda* tienda){
+	string codigo;
 	int op = 0;
+	codigo = tienda->getVentas()->getCantidad() + 1;
+	// hablada para fecha, cliente
+	// para cliente buscar cliente si existe no hay problema si no, agregarlo de una vez 
+	// tienda->ingresarCliente(crearCliente())
+	Factura* factura = new Directo(codigo, fecha, cliente);
 	do {
 		system("cls");
 		op = menudirecto();
