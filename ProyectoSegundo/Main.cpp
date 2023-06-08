@@ -93,7 +93,7 @@ int main() {
 
 
 	Tienda* tienda = new Tienda();
-	tienda->recuperarDestinos();
+	tienda->recuperarArchivoDestinos();
 	cout << tienda->getDestinos()->toString() << endl;
 	
 	delete tienda;

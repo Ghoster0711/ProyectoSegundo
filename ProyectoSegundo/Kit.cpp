@@ -11,67 +11,67 @@
 Kit::Kit()
 {
 	nombre = "";
-	/*codigo = "";
+	codigo = "";
 	caracteristica = "";
-	precio = 0;*/
+	precio = 0;
 }
 
 Kit::Kit(string nom, string cod){
 	nombre = nom;
-	/*codigo = cod;
+	codigo = cod;
 	caracteristica = "";
-	precio = 0;*/
+	precio = 0;
 }
 
 Kit::~Kit() {}
 
-//string Kit::getID() { return codigo;}
+string Kit::getID() { return codigo;}
 
 string Kit::getNombre() { return nombre; }
 
-//string Kit::getCaracteristica() { return caracteristica; }
+string Kit::getCaracteristica() { return caracteristica; }
 
-//double Kit::getPrecio() { return precio; }
+double Kit::getPrecio() { return precio; }
 
-//void Kit::setCodigo(string cod) { codigo = cod; }
+void Kit::setCodigo(string cod) { codigo = cod; }
 
 void Kit::setNombre(string nom){ nombre = nom; }
 
-//void Kit::setCaracteristica(string carac) { caracteristica = carac; }
+void Kit::setCaracteristica(string carac) { caracteristica = carac; }
 
-//void Kit::setPrecio(double pre) { precio = pre; }
+void Kit::setPrecio(double pre) { precio = pre; }
 
-//string Kit::getCodigo() { return codigo; }
+string Kit::getCodigo() { return codigo; }
 
 void Kit::agregar(Componente* com) {
-	//Empaquetado->ingresar(*com);
-	//cantItems++;
+	Empaquetado->ingresar(*com);
+	cantItems++;
 }
 
 string Kit::toString() {
 	stringstream show;
-	show << "Nombre : " << nombre;
-		//<< "\tCodigo: " << codigo << endl;
-	//show << Empaquetado->toString();
+	show << "Nombre : " << nombre
+		<< "\tCodigo: " << codigo << endl;
+	show << Empaquetado->toString();
 	return show.str();
 }
 
 void Kit::guardar(ostream& salida) {
-	//Nodo<Componente>* e = Empaquetado->getPrimero();
+	Nodo<Componente>* e = Empaquetado->getPrimero();
 	salida << "Kit" << DELIMITA_CAMPO;
 	salida << nombre << DELIMITA_CAMPO;
-	//salida << codigo << DELIMITA_CAMPO;
-	/*while (e != NULL) {
+	salida << codigo << DELIMITA_CAMPO;
+	while (e != NULL) {
 		if (e->getDato() != NULL) {
 			e->getDato()->guardar(salida);
 		}
 		e = e->getSiguiente();
-	}*/
+	}
 	salida << "finKit" << DELIMITA_CAMPO;
 }
 
 Componente* Kit::recuperar(istream& entrada){
-	/*string finkit, nombre, codigo;
+	string finkit, nombre, codigo;
 	Componente* kit = new Kit();
 	getline(entrada, nombre, DELIMITA_CAMPO);
 	getline(entrada, codigo, DELIMITA_CAMPO);
@@ -89,6 +89,6 @@ Componente* Kit::recuperar(istream& entrada){
 			kit->agregar(Parlante::recuperar(entrada));
 		}
 	}
-	return kit;*/
+	return kit;
 	return NULL;
 }
