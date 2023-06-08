@@ -11,7 +11,7 @@ Directo::Directo() {
 // Desarrollo del constructor parametrizado
 Directo::Directo(string cod, Fecha* fecha, Cliente* cli) {
 	codigo = cod;
-	fecha = fec;
+	fecha = fecha;
 	cliente = clonarCliente(cli);
 	carritoDeCompras = new Lista<Componente>();
 }
@@ -91,37 +91,47 @@ string Directo::toString() {
 
 // Desarrollo del metodo guardar 
 void Directo::guardar(ostream& salida) {
-	string type = typeid((cliente)).name();
 	salida << "Factura Directo" << DELIMITA_CAMPO;
 	salida << codigo << DELIMITA_CAMPO;
 	fecha->guardarDatos(salida);
-	salida << type << DELIMITA_CAMPO;
 	cliente->guardar(salida);
 	carritoDeCompras->guardarCarritoDeCompras(salida);
+	salida << "finCarrito" << DELIMITA_CAMPO;
 }
 
 
 // Desarrollo del metodo recuperar
-Directo* Directo::recuperar(istream& entrada) {
-	return NULL;
-}
 Factura* Directo::recuperar(istream& entrada) {
 	string typeCliente, codigo;
 	Factura* factura = new Directo();
 	Cliente* cliente = NULL;
 	getline(entrada, codigo, DELIMITA_CAMPO);
+	Fecha* fecha = Fecha::recuperarDatos(entrada);
 	getline(entrada, typeCliente, DELIMITA_CAMPO);
-	if (typeCliente == "class Persona") {
+	if (typeCliente == "Persona") {
 		cliente = Persona::recuperar(entrada);
 	}
-	if (typeCliente == "class Empresa") {
+	if (typeCliente == "Empresa") {
 		cliente = Empresa::recuperar(entrada);
 	}
-	Fecha* fecha = Fecha::recuperarDatos(entrada);
-	//Lista<Componente>* ventas = Lista<Componente>::recuperarCarritoDeCompras(entrada);
+	recuperarCarrito(entrada, factura);
 	factura->setCodigo(codigo);
 	factura->setCliente(cliente);
 	factura->setFecha(fecha);
-	//factura->setLista(ventas);
 	return factura;
+}
+
+void Directo::recuperarCarrito(istream& entrada, Factura* fac){
+	string op;
+	while (op != "finCarrito") {
+		getline(entrada, op, DELIMITA_CAMPO);
+		if (op == "Fuente de audio")
+			fac->getCarrito()->ingresar(*FuenteDeAudio::recuperar(entrada));
+		if (op == "Procesador de senal")
+			fac->getCarrito()->ingresar(*ProcesadorDeSenal::recuperar(entrada));
+		if (op == "Parlante")
+			fac->getCarrito()->ingresar(*Parlante::recuperar(entrada));
+		if (op == "Kit")
+			fac->getCarrito()->ingresar(*Kit::recuperar(entrada));
+	}
 }

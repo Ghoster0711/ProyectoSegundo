@@ -2,7 +2,7 @@
 
 // Desarrollo del constructor
 Sistema::Sistema(){
-	empaquetado = new Lista<Componente>();
+	Empaquetado = new Lista<Componente>();
 	cantItems = 0;
 }
 

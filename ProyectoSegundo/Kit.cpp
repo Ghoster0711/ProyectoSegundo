@@ -49,13 +49,13 @@ string Kit::toString(){
 	stringstream show;
 	show << "Nombre : " << nombre
 		<< "\tCodigo: " << codigo << endl; 
-	show << empaquetado->toString();
+	show << Empaquetado->toString();
 	return show.str();
 }
 
 // Desarrollo del agregar
 void Kit::agregar(Componente* com){ 
-	empaquetado->ingresar(*com);
+	Empaquetado->ingresar(*com);
 	cantItems++;
 }
 

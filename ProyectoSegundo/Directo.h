@@ -44,9 +44,7 @@ public:
 	void guardar(ostream&);
   
 	// Metodo que se encarga de recuperar de archivo !Revisar si se usa!
-	static Directo* recuperar(istream&);
-
 	static Factura* recuperar(istream&);
-
+	static void recuperarCarrito(istream&, Factura*);
 
 };
