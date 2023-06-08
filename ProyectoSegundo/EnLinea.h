@@ -11,7 +11,7 @@ public:
 	EnLinea();
 	
 	// Construtor parametrizado
-	EnLinea(string, Fecha*, Cliente*, Destino*);
+	EnLinea(string, Cliente*, Destino*);
 	
 	// Destructor
 	virtual ~EnLinea();

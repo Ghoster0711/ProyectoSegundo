@@ -11,9 +11,9 @@ EnLinea::EnLinea() {
 
 
 // Desarrollo del constructor parametrizado
-EnLinea::EnLinea(string cod, Fecha* fec, Cliente* cli, Destino* des) {
+EnLinea::EnLinea(string cod, Cliente* cli, Destino* des) {
 	codigo = cod;
-	fecha = fec;
+	fecha = new Fecha();
 	cliente = clonarCliente(cli);
 	carritoDeCompras = new Lista<Componente>();
 	destino = des;

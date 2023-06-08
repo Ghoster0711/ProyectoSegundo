@@ -68,14 +68,13 @@ int menuReportes() {
 
 // -----------DIRECTO-----------
 
-void generarVentaDirecta(Tienda* tienda){
+void generarVentaDirecta(Tienda* tienda) {
 	string codigo;
 	int op = 0;
 	codigo = tienda->getVentas()->getCantidad() + 1;
-	// hablada para fecha, cliente
-	// para cliente buscar cliente si existe no hay problema si no, agregarlo de una vez 
-	// tienda->ingresarCliente(crearCliente())
-	Factura* factura = new Directo(codigo, fecha, cliente);
+	cout << "Ingrese la informacion del cliente" << endl;
+	Cliente* cliente = crearCliente();
+	Factura* factura = new Directo(codigo, cliente);
 	do {
 		system("cls");
 		op = menudirecto();
@@ -90,10 +89,15 @@ void generarVentaDirecta(Tienda* tienda){
 			agregarNuevoSistemaAMedida(tienda);
 			break;
 		case 4:
-			// Falta 
+			cout << "Generando Factura..." << endl;
+			tienda->getVentas()->ingresar(*factura);
+			cout << factura->toString() << endl;  //Calcular el precio total de la compra 
+			cout << "¡Muchas Gracias Por Su Compra!" << endl;
 			break;
 		}
+		system("pause");
 	} while (op != 4);
+
 }
 
 Componente* agregarComponente(Tienda* tienda){

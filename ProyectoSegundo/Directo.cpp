@@ -9,9 +9,9 @@ Directo::Directo() {
 }
 
 // Desarrollo del constructor parametrizado
-Directo::Directo(string cod, Fecha* fecha, Cliente* cli) {
+Directo::Directo(string cod, Cliente* cli) {
 	codigo = cod;
-	fecha = fecha;
+	fecha = new Fecha();
 	cliente = clonarCliente(cli);
 	carritoDeCompras = new Lista<Componente>();
 }
