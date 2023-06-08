@@ -90,14 +90,13 @@ int main() {
 	//fac1->guardar(salida);
 
 	//salida.close();
-	
+
+
 	Tienda* tienda = new Tienda();
 	tienda->recuperarDestinos();
 	cout << tienda->getDestinos()->toString() << endl;
 	
-
-
-
+	delete tienda;
 	system("pause");
 	return 0;
 }

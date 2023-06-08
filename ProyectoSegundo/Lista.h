@@ -157,7 +157,7 @@ inline void Lista<T>::guardarCarritoDeCompras(ostream& salida) {
 
 template<class T>
 inline void Lista<T>::guardarDestinos() {
-	string rutaDestinos = "../destinos.txt";
+	string rutaDestinos = "../traslados.txt";
 	Nodo<T>* e = primero;
 	ofstream salida;
 	salida.open(rutaDestinos);

@@ -12,6 +12,7 @@ Tienda::~Tienda(){
 	if (Catalogo != NULL) delete Catalogo;
 	if (Suscriptores != NULL) delete Suscriptores;
 	if (Ventas != NULL) delete Ventas;
+	if (Destinos != NULL) delete Destinos;
 }
 
 Lista<Componente>* Tienda::getCatalago() { return Catalogo; }
@@ -304,13 +305,14 @@ void Tienda::recuperarFacturas() {
 void Tienda::guardaDestinos() {
 	Destinos->guardarDestinos();
 }
-void Tienda::recuperarDestinos() {
-	string rutaDestinos = "../destinos.txt";
+void Tienda::recuperarArchivoDestinos() {
+	string rutaDestinos = "../traslados.txt";
 	ifstream entrada;
 	entrada.open(rutaDestinos);
 	while (entrada.good()) {
-		if (entrada.good())
+		if (entrada.good()) {
 			Destinos->ingresar(*Destino::recuperar(entrada));
+		}
 	}
 	entrada.close();
 }

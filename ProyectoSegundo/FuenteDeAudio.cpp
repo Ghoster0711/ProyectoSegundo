@@ -59,7 +59,7 @@ void FuenteDeAudio::guardar(ostream& salida) {
 	salida << precio << DELIMITA_REGISTRO;
 }
 
-Componente* FuenteDeAudio::recuperar(istream& entrada){
+Componente* FuenteDeAudio::recuperar(istream& entrada) {
 	string cod, tipo, model, carac, precio;
 	getline(entrada, cod, DELIMITA_CAMPO);
 	getline(entrada, tipo, DELIMITA_CAMPO);

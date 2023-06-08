@@ -36,16 +36,11 @@ void Destino::guardar(ostream& salida) {
 		<< costoTraslado << DELIMITA_REGISTRO;
 }
 Destino* Destino::recuperar(istream& entrada) {
-	Destino* destino = new Destino();
 	string cod, pais, ciudad, costo;
 	getline(entrada, cod, DELIMITA_CAMPO);
 	getline(entrada, pais, DELIMITA_CAMPO);
 	getline(entrada, ciudad, DELIMITA_CAMPO);
 	getline(entrada, costo, DELIMITA_REGISTRO);
-	double cost = convierteDouble(costo);
-	destino->setCodigo(cod);
-	destino->setPais(pais);
-	destino->setCiudad(ciudad);
-	destino->setCostoTraslado(cost);
-	return destino;
+
+	return new Destino(cod, pais, ciudad, convierteDouble(costo));
 }

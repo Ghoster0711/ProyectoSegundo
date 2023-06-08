@@ -80,7 +80,7 @@ public:
 	void recuperarFacturas();
 
 	void guardaDestinos();
-	void recuperarDestinos();
+	void recuperarArchivoDestinos();
 
 	void guardarArchivos();
 	void recuperarDeArchivos();
