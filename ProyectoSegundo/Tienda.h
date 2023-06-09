@@ -39,15 +39,12 @@ public:
 
 	// Mostrar contenedores 
 	string mostrarElCatalogo();
-	//string mostrarLosSuscriptores();
-	//string mostrarLasVentas();
 	string mostrasDestinos();
 	
 	bool buscarSuscriptor(string);
 	bool buscarProductoDelCatalogo(string);
 	bool buscarComponente(string);
 	bool buscarKit(string);
-	bool buscarCliente(string);
 	bool buscarDestino(string);
 
 	Componente* retornarSoloComponentes(string);

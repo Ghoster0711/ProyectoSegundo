@@ -1,113 +1,14 @@
 #include "Tienda.h"
-#include "Interfaz.h"
+#include"Interfaz.h"
 #include"Factura.h"
 #include"fstream"
 
 
 int main() {
 	Tienda* tienda = new Tienda();
-	int op, op5;
-	//tienda->recuperarDeArchivos();
-	tienda->recuperarArchivoCatalogo();
-	tienda->recuperarArchivoDestinos();
-	tienda->recuperarArchivoSuscriptores();
-	do {
-		system("cls");
-		op = menu();
-		switch (op) {
-		case 1:
-			system("cls");
-			generarVentaDirecta(tienda);
-			break;
-		case 2:
-			system("cls");
-			generarVentaEnLinea(tienda);
-			break;
-		case 3:
-			mantenimiento(tienda);
-			break;
-		case 4:
-			do {
-				system("cls");
-				op5 = menuReportes();
-				switch (op5) {
-				case 1:
-					
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-				}
-			} while (op5 != 3);
-			break;
-		case 5:
-			salir(tienda);
-			break;
-		}
-	} while (op != 5);
-
-
-
-
-	system("pause");
+	MAIN(tienda);
 	return 0;
 }
-
-/// Prueba Archivos Facturas
-//int main() {
-//	//string prueba = "C:/Users/barra/OneDrive - Universidad Nacional de Costa Rica/2023/Ciclo I 2023/Progra II/Proyectos/PROYECTO_SEGUNDO/pruebaFacturas.txt";
-//	//Cliente* p1 = new Persona("Joshua Amador Lara", "604830349", "Costa Rica", "Heredia", "josh@gmail.com", "Costarricense");
-//	////Cliente* p2 = new Empresa("Microsoft", "1022-1245-567", "Rusia", "Tokyo");
-//	//Cliente* p2 = new Empresa("Microsoft", "1022-1245-567", "Rusia", "Tokyo");
-//
-//
-//	//Componente* c1 = new FuenteDeAudio("1010", "Tornamesa", "HT59J", "AJLJSDLA", 150);
-//	//Componente* c2 = new Parlante("1010", "Audio", "HT59J", "AJLJSDLA", 150);
-//	//Componente* c3 = new ProcesadorDeSenal("1010", "Parlante", "HT59J", "AJLJSDLA", 150);
-//	//Componente* c4 = new FuenteDeAudio("1010", "Microfono", "HT59J", "AJLJSDLA", 150);
-//
-//
-//	//Destino* destino = new Destino("010", "Argentina", "Buenos Aires", 17520);
-//
-//	//Fecha* f1 = new Fecha();
-//	////Fecha* f2 = new Fecha();
-//
-//	//
-//
-//	//Fecha* fec1 = new Fecha();
-//	////Fecha* fec2 = new Fecha();
-//
-//	//Factura* fac1 = new EnLinea("1111", fec1, p1, destino);
-//	////Factura* fac2 = new Directo("2222", fec2, p2);
-//
-//	//fac1->ingresarCompra(c1);
-//	//fac1->ingresarCompra(c2);
-//
-//	//cout << fac1->toString() << endl;
-//	//cout << endl;
-//
-//	//system("pause");
-//
-//	//cout << "Guardando archivos..." << endl;
-//	//ofstream salida;
-//	//salida.open(prueba);
-//	//fac1->guardar(salida);
-//
-//	//salida.close();
-//
-//
-//	Tienda* t = new Tienda();
-//	t->recuperarArchivoDestinos();
-//	cout << t->getDestinos()->toString();
-//
-//	system("pause");
-//	return 0;
-//}
-
-
-
-
 
 /// Prueba archivos clientes
 //int main() {

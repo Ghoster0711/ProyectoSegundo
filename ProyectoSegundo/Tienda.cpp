@@ -203,15 +203,6 @@ Cliente* Tienda::retornaSuscriptor(string cedula) {
 	return NULL;
 }
 
-
-bool Tienda::buscarCliente(string)
-{
-	return false;
-}
-
-
-
-
 // -------------Directo---------------
 
 // -------------En Linea--------------
