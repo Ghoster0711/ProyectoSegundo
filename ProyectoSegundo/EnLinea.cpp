@@ -85,13 +85,16 @@ void EnLinea::ingresarCompra(Componente* componente) {
 string EnLinea::toString() {
 	stringstream show;
 	show << "--------------Factura---------------" << endl
-		<< "| Codigo de factura: " << codigo << endl
-		<< "| Fecha: " << fecha->toString() << endl
-		<< "| Cliente: " << cliente->toString() << endl
-		<< "| Destino: " << destino->toString() << endl
+		<< "Codigo de factura: " << codigo << endl
+		<< "Fecha: " << fecha->toString() << endl
+		<< "-------INFORMACION DEL CLIENTE------" << endl
+		<< cliente->toString() << endl
 		<< "-------INFORMACION DE LA COMPRA------" << endl
 		<< carritoDeCompras->toString() << endl
+		<< "-------INFORMACION DEL DESTINO------" << endl
+		<< destino->toString() << endl
 		<< "-------------------------------------" << endl;
+
 	return show.str();
 }
 

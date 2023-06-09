@@ -26,7 +26,9 @@ Lista<Destino>* Tienda::getDestinos() { return Destinos; }
 string Tienda::mostrarElCatalogo(){
 	return Catalogo->toString();
 }
-
+string Tienda::mostrasDestinos() {
+	return Destinos->toString();
+}
 bool Tienda::buscarSuscriptor(string cod)
 {
 	Nodo<Cliente>* e = Suscriptores->getPrimero();
@@ -183,6 +185,24 @@ Destino* Tienda::retornaDestino(string cod) {
 	}
 	return NULL;
 }
+Cliente* Tienda::retornaSuscriptor(string cedula) {
+	string tipo;
+	Nodo<Cliente>* e = Suscriptores->getPrimero();
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			if (e->getDato()->getID() == cedula) {
+				tipo = typeid(*e->getDato()).name();
+				if (tipo == "class Persona")
+					return (Cliente*) new Persona(*(Persona*)(e->getDato()));
+				if (tipo == "class Empresa")
+					return (Cliente*) new Empresa(*(Empresa*)(e->getDato()));
+			}
+		}
+		e = e->getSiguiente();
+	}
+	return NULL;
+}
+
 
 bool Tienda::buscarCliente(string)
 {
@@ -244,7 +264,7 @@ void Tienda::guardarCatalogo()
 }
 
 void Tienda::recuperarArchivoCatalogo(){
-	string rutaCatalogo = "../catalogo.txt";
+	string rutaCatalogo = "../CatalogoS.txt";
 	ifstream file;
 	string op;
 	file.open(rutaCatalogo);

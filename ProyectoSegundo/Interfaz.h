@@ -8,6 +8,7 @@
 #include "ProcesadorDeSenal.h"
 #include "Parlante.h"
 #include "Kit.h"
+#include"Exepciones.h"
 using namespace std;
 
 

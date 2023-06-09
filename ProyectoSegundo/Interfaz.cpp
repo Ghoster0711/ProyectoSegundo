@@ -1,4 +1,4 @@
-#include "Interfaz.h"
+#include"Interfaz.h"
 
 
 // -----------MENUS-------------
@@ -6,7 +6,7 @@ int menu(){
 	int op = 0;
 	cout << "------------MENU----------" << endl
 		<< "| (1) Venta Directa.     |" << endl
-		<< "| (2) Venta en linea.    |" << endl
+		<< "| (2) Venta en Linea.    |" << endl
 		<< "| (3) Mantenimiento.     |" << endl
 		<< "| (4) Reportes.          |" << endl
 		<< "| (5) Salir.             |" << endl
@@ -33,7 +33,7 @@ int menuEnLinea(){
 	cout << "------------------------------------------------" << endl
 		<< "| Que desea ingresar a su carrito de compras   |" << endl
 		<< "| (1) Sistema Preconfigurado.                  |" << endl
-		<< "| (2) Finalizar.                                  |" << endl
+		<< "| (2) Finalizar.                               |" << endl
 		<< "------------------------------------------------" << endl
 		<< "| Ingrese una opcion -> "; cin >> op;
 	return op;
@@ -41,13 +41,14 @@ int menuEnLinea(){
 
 int menuMantenimiento(){
 	int op = 0;
+	cout << "MENU ->  (3) Mantenimiento." << endl << endl;
 	cout << "-----------------------------------------" << endl
-		<< "| (1) Ver Lista de clientes.             |" << endl
-		<< "| (2) Ingreso de nuevos clientes         |" << endl
+		<< "| (1) Ver Lista de Clientes.             |" << endl
+		<< "| (2) Ingreso de Nuevos Clientes         |" << endl
 		<< "| (3) Eliminar Cliente                   |" << endl
-		<< "| (4) Ver lista del catalogo             |" << endl
-		<< "| (5) Ingresar productos al catalogo     |" << endl
-		<< "| (6) Eliminar productos del catálogo    |" << endl
+		<< "| (4) Ver Lista del Catalogo             |" << endl
+		<< "| (5) Ingresar Productos al Catalogo     |" << endl
+		<< "| (6) Eliminar Productos del Catalogo    |" << endl
 		<< "| (7) Volver.                            |" << endl
 		<< "------------------------------------------" << endl
 		<< "| Ingrese una opcion -> "; cin >> op;
@@ -57,9 +58,10 @@ int menuMantenimiento(){
 
 int menuReportes() {
 	int op = 0;
+	cout << "MENU ->  (4) Reportes." << endl << endl;
 	cout << "---------------------------------------" << endl
-		<< "| (1) Reporte equipos mas vendidos     |" << endl
-		<< "| (2) Reportes ventas                  |" << endl
+		<< "| (1) Reporte Equipos mas Vendidos     |" << endl
+		<< "| (2) Reportes Ventas                  |" << endl
 		<< "| (3) Volver.                          |" << endl
 		<< "----------------------------------------" << endl
 		<< "| Ingrese una opcion -> "; cin >> op;
@@ -69,11 +71,40 @@ int menuReportes() {
 // -----------DIRECTO-----------
 
 void generarVentaDirecta(Tienda* tienda) {
-	string codigo;
+	string codigo,cedula;
 	int op = 0;
-	codigo = tienda->getVentas()->getCantidad() + 1;
+	Cliente* cliente = NULL;
+	codigo = to_string(tienda->getVentas()->getCantidad() + 1);
+	cout << "MENU ->  (1) Venta Directa." << endl << endl;
 	cout << "Ingrese la informacion del cliente" << endl;
-	Cliente* cliente = crearCliente();
+	cout << "Posee el cliente una suscripcion en la tienda?" << endl;
+	cout << "| (1) Si" << endl;
+	cout << "| (2) No" << endl;
+	cout << "| Ingrese una opcion -> "; cin >> op;
+	cout << endl;
+	do {
+		if (op == 1) {
+			cout << "Ingrese la cedula -> "; cin >> cedula;
+			cout << endl;
+			if (tienda->buscarSuscriptor(cedula) == true) {
+				cout << "Cliente suscrito encontrado!!" << endl << endl;
+				cliente = tienda->retornaSuscriptor(cedula);
+				op = 3;
+			}
+			else {
+				cout << "Cliente no suscrito!!" << endl;
+				op = 2;
+			}
+		}
+		if (op == 2) {
+			cout << "Por favor ingrese la informacion del cliente" << endl;
+			cout << endl;
+			cliente = crearCliente();
+			cout << "Liso!!" << endl;
+			op = 3;
+		}
+		system("pause");
+	} while (op != 3);
 	Factura* factura = new Directo(codigo, cliente);
 	do {
 		system("cls");
@@ -91,13 +122,14 @@ void generarVentaDirecta(Tienda* tienda) {
 		case 4:
 			cout << "Generando Factura..." << endl;
 			tienda->getVentas()->ingresar(*factura);
-			cout << factura->toString() << endl;  //Calcular el precio total de la compra 
-			cout << "¡Muchas Gracias Por Su Compra!" << endl;
+			cout << factura->toString() << endl;				//Calcular el precio total de la compra 
+			cout << "Muchas Gracias Por Su Compra!!" << endl;
 			break;
 		}
 		system("pause");
 	} while (op != 4);
-
+	//delete cliente;
+	//delete factura;
 }
 
 Componente* agregarComponente(Tienda* tienda){
@@ -138,9 +170,38 @@ Componente* agregarNuevoSistemaAMedida(Tienda* tienda){
 // -----------EN LINEA----------
 
 void generarVentaEnLinea(Tienda* tienda){
+	string codigo, cedula, destino;
 	int op = 0;
+	Cliente* cliente = NULL;
+	codigo = tienda->getVentas()->getCantidad() + 1;
+	cout << "MENU ->  (2) Venta en Linea." << endl << endl;
+	cout << "Ingrese la cedula -> "; cin >> cedula;
+	cout << endl;
+	if (tienda->buscarSuscriptor(cedula) == true) {
+		cout << "Cliente suscrito encontrado!" << endl << endl;
+		cliente = tienda->retornaSuscriptor(cedula);
+	}
+	else {
+		cout << "Cliente no suscrito!" << endl;
+		cout << "Por favor ingrese la informacion del cliente" << endl;
+		cout << endl;
+		cliente = crearCliente();
+		tienda->ingresarCliente(cliente);
+		cout << "Liso!!" << endl << endl;
+	
+	}
+	system("pause");
+	Factura* factura = new Directo(codigo, cliente);
+	cout << tienda->mostrasDestinos();
+	cout << "Digite el codigo del Destino ->"; cin >> destino;
+	if (tienda->buscarDestino(destino) == true) {
+		factura->setDestino(tienda->retornaDestino(destino));
+		cout << "Liso!!" << endl;
+	}
+	else {
+		cout << "Ese codigo no existe en el menu de destinos" << endl;
+	}
 	do {
-		system("cls");
 		op = menuEnLinea();
 		switch (op)
 		{
@@ -152,6 +213,9 @@ void generarVentaEnLinea(Tienda* tienda){
 			break;
 		}
 	} while (op != 2);
+	
+
+
 }
 
 // ---------MANTENIMIENTO-------
@@ -163,21 +227,33 @@ void mantenimiento(Tienda* tienda) {
 		op = menuMantenimiento();
 		switch (op) {
 		case 1:
+			system("cls");
+			cout << "MENU ->  (3) Mantenimiento -> (1) Ver Lista de Clientes" << endl << endl;
 			mostrarClientes(tienda);
 			break;
 		case 2:
+			system("cls");
+			cout << "MENU ->  (3) Mantenimiento -> (2) Ingreso de Nuevos Clientes" << endl << endl;
 			ingresoSuscriptores(tienda);
 			break;
 		case 3:
+			system("cls");
+			cout << "MENU ->  (3) Mantenimiento -> (3) Eliminar Cliente" << endl << endl;
 			eliminarCliente(tienda);
 			break;
 		case 4:
+			system("cls");
+			cout << "MENU ->  (3) Mantenimiento -> (4) Ver Lista del Catalogo" << endl << endl;
 			verCatalogo(tienda);
 			break;
 		case 5:
+			system("cls");
+			cout << "MENU ->  (3) Mantenimiento -> (5) Ingresar Productos al Catalogo" << endl << endl;
 			ingresoProductos(tienda);
 			break;
 		case 6:
+			system("cls");
+			cout << "MENU ->  (3) Mantenimiento -> (6) Eliminar Productos del Catalogo" << endl << endl;
 			eliminarProducto(tienda);
 			break;
 		case 7:
@@ -187,6 +263,7 @@ void mantenimiento(Tienda* tienda) {
 }
 
 void mostrarClientes(Tienda* tienda) {
+	cout << "Listado de clientes suscritos" << endl;
 	cout << tienda->mostrarClientes();
 	system("pause");
 }
@@ -200,11 +277,13 @@ void ingresoSuscriptores(Tienda* tienda) {
 
 Cliente* crearCliente(){
 	int op;
+	cout << "Que tipo de Cliente desea ingresar?" << endl;
 	cout << "----------------------------------" << endl
 		<< "| (1) Empresa.                    |" << endl
 		<< "| (2) Persona.                    |" << endl
 		<< "-----------------------------------" << endl
-		<< "| Que desea ingresar ->"; cin >> op;
+		<< "| Que desea ingresar -> "; cin >> op;
+	cout << endl;
 	if (op == 1)
 		return crearEmpresa();
 	if (op == 2)
@@ -216,9 +295,9 @@ Cliente* crearPersona() {
 	cout << "Ingrese el nombre -> "; cin >> nom;
 	cout << "Ingrese la cedula -> "; cin >> ced;
 	cout << "Ingrese el Pais -> "; cin >> pais;
-	cout << "Ingrese la Ciudad de Ubicacion: "; cin >> ciudadUbicacion;
-	cout << "Ingrese el Correo: "; cin >> correo;
-	cout << "Ingrese la Nacionalidad: "; cin >> nacionalidad;
+	cout << "Ingrese la Ciudad de Ubicacion ->"; cin >> ciudadUbicacion;
+	cout << "Ingrese el Correo ->"; cin >> correo;
+	cout << "Ingrese la Nacionalidad ->"; cin >> nacionalidad;
 	return new Persona(nom, ced, pais, ciudadUbicacion, correo, nacionalidad);
 }
 Cliente* crearEmpresa(){

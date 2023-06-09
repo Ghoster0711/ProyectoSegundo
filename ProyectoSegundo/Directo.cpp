@@ -80,9 +80,10 @@ void Directo::ingresarCompra(Componente* componente) {
 string Directo::toString() {
 	stringstream show;
 	show << "--------------Factura---------------" << endl
-		<< "| Codigo de factura: " << codigo << endl
-		<< "| Fecha: " << fecha->toString() << endl
-		<< "| Cliente: " << cliente->toString() << endl
+		<< "Codigo de factura: " << codigo << endl
+		<< "Fecha: " << fecha->toString() << endl
+		<< "-------INFORMACION DEL CLIENTE------" << endl
+		<< cliente->toString() << endl
 		<< "-------INFORMACION DE LA COMPRA------" << endl
 		<< carritoDeCompras->toString() << endl
 		<< "-------------------------------------" << endl;

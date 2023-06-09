@@ -1,0 +1,2 @@
+Factura Directo	1	Fecha	8	6	2023	Persona	sia	ewc	fwsdec	bt	rt	rt
+finCarrito	
