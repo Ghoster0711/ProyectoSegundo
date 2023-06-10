@@ -58,41 +58,41 @@ Cliente* EnLinea::clonarCliente(Cliente* cliente) {
 
 
 // Desarrollo del metodo clonar componente
-Componente* EnLinea::clonarComponente(Componente* compo) {
-	string tipo;
-	tipo = typeid(compo).name();
-	if (tipo == "class Kit") {
-		return (Componente*)new Kit(*(Kit*)compo);
-	}
-	if (tipo == "class UnidadCD") {
-		return (Componente*)new UnidadCD(*(UnidadCD*)compo);
-	}
-	if (tipo == "class Tornamesa") {
-		return (Componente*)new Tornamesa(*(Tornamesa*)compo);
-	}
-	if (tipo == "class Radio") {
-		return (Componente*)new Radio(*(Radio*)compo);
-	}
-	if (tipo == "class UnidadBluetooth") {
-		return (Componente*)new UnidadBluetooth(*(UnidadBluetooth*)compo);
-	}
-	if (tipo == "class Microfono") {
-		return (Componente*)new Microfono(*(Microfono*)compo);
-	}
-	if (tipo == "class Amplificador") {
-		return (Componente*)new Amplificador(*(Amplificador*)compo);
-	}
-	if (tipo == "class Mezclador") {
-		return (Componente*)new Mezclador(*(Mezclador*)compo);
-	}
-	if (tipo == "class Altavoz") {
-		return (Componente*)new Altavoz(*(Altavoz*)compo);
-	}
-	if (tipo == "class Audifono") {
-		return (Componente*)new Audifono(*(Audifono*)compo);
-	}
-	return NULL;
-}
+//Componente* EnLinea::clonarComponente(Componente* compo) {
+//	string tipo;
+//	tipo = typeid(compo).name();
+//	if (tipo == "class Kit") {
+//		return (Componente*)new Kit(*(Kit*)compo);
+//	}
+//	if (tipo == "class UnidadCD") {
+//		return (Componente*)new UnidadCD(*(UnidadCD*)compo);
+//	}
+//	if (tipo == "class Tornamesa") {
+//		return (Componente*)new Tornamesa(*(Tornamesa*)compo);
+//	}
+//	if (tipo == "class Radio") {
+//		return (Componente*)new Radio(*(Radio*)compo);
+//	}
+//	if (tipo == "class UnidadBluetooth") {
+//		return (Componente*)new UnidadBluetooth(*(UnidadBluetooth*)compo);
+//	}
+//	if (tipo == "class Microfono") {
+//		return (Componente*)new Microfono(*(Microfono*)compo);
+//	}
+//	if (tipo == "class Amplificador") {
+//		return (Componente*)new Amplificador(*(Amplificador*)compo);
+//	}
+//	if (tipo == "class Mezclador") {
+//		return (Componente*)new Mezclador(*(Mezclador*)compo);
+//	}
+//	if (tipo == "class Altavoz") {
+//		return (Componente*)new Altavoz(*(Altavoz*)compo);
+//	}
+//	if (tipo == "class Audifono") {
+//		return (Componente*)new Audifono(*(Audifono*)compo);
+//	}
+//	return NULL;
+//}
 
 // Desarrollo del ingresar compra
 void EnLinea::ingresarCompra(Componente* componente) {
@@ -130,7 +130,7 @@ void EnLinea::guardar(ostream& salida) {
 	carritoDeCompras->guardarCarritoDeCompras(salida);
 }
 
-
+//Desarrollo del metodo para recuperar datos del archivo 
 Factura* EnLinea::recuperar(istream& entrada) {
 	string typeCliente, codigo;
 	Factura* factura = new EnLinea();
@@ -153,6 +153,7 @@ Factura* EnLinea::recuperar(istream& entrada) {
 	return factura;
 }
 
+//Desarrollo del metodo para recuperar el carrito de compras del cliente, del archivo 
 void EnLinea::recuperarCarrito(istream& entrada, Factura* fac) {
 	string op;
 	while (op != "finCarrito") {

@@ -1,8 +1,10 @@
 #include"Interfaz.h"
 
 
-// -----------MENUS-------------
-int menu(){
+// -------------------------------------MENUS-----------------------------------------------
+
+//Menu principal de la tienda
+int menu() {  
 	int op = 0;
 	cout << "------------MENU----------" << endl
 		<< "| (1) Venta Directa.     |" << endl
@@ -15,7 +17,8 @@ int menu(){
 	return op;
 }
 
-int menudirecto(){
+//Menu de componentes que el cliente puede comprar en venta directa
+int menudirecto() {  
 	int op = 0;
 	cout << "------------------------------------------------" << endl
 		<< "| Que desea ingresar a su carrito de compras   |" << endl
@@ -29,7 +32,8 @@ int menudirecto(){
 	return op;
 }
 
-int menuEnLinea(){
+//Menu de componentes que el cliente puede comprar en venta en linea 
+int menuEnLinea() {  
 	int op = 0;
 	cout << "------------------------------------------------" << endl
 		<< "| Que desea ingresar a su carrito de compras   |" << endl
@@ -41,7 +45,8 @@ int menuEnLinea(){
 	return op;
 }
 
-int menuMantenimiento(){
+//Menu para area de mantenimiento de la tienda
+int menuMantenimiento() {  
 	int op = 0;
 	cout << "MENU ->  (3) Mantenimiento." << endl << endl;
 	cout << "-----------------------------------------" << endl
@@ -58,7 +63,8 @@ int menuMantenimiento(){
 
 }
 
-int menuReportes() {
+//Menu para el area de reportes de la tienda
+int menuReportes() {   
 	int op = 0;
 	cout << "MENU ->  (4) Reportes." << endl << endl;
 	cout << "---------------------------------------" << endl
@@ -70,10 +76,11 @@ int menuReportes() {
 	return op;
 }
 
-// -----------DIRECTO-----------
+// --------------------------------------DIRECTO-----------------------------------------------
 
-void generarVentaDirecta(Tienda* tienda) {
-	string codigo,cedula;
+//Desarrollo del metodo para generar una venta en modalidad directa 
+void generarVentaDirecta(Tienda* tienda) {  
+	string codigo,cedula; 
 	int op = 0;
 	bool acceso = false;
 	Cliente* cliente = NULL;
@@ -81,7 +88,7 @@ void generarVentaDirecta(Tienda* tienda) {
 	do {
 		try {
 			cout << "MENU ->  (1) Venta Directa." << endl << endl;
-			cout << "Posee el cliente una suscripcion en la tienda?" << endl;
+			cout << "Posee el cliente una suscripcion en la tienda?" << endl;  
 			cout << "| (1) Si" << endl;
 			cout << "| (2) No" << endl;
 			cout << "| Ingrese una opcion -> "; cin >> op;
@@ -136,7 +143,7 @@ void generarVentaDirecta(Tienda* tienda) {
 		case 3:
 			factura->ingresarCompra(agregarNuevoSistemaAMedida(tienda));
 			break;
-		case 4:
+		case 4:  //Se genera la factura de la compra realizada 
 			if (factura->getCarrito()->getPrimero() != NULL) {
 				cout << endl;
 				cout << "Generando Factura..." << endl;
@@ -158,10 +165,9 @@ void generarVentaDirecta(Tienda* tienda) {
 		}
 		system("pause");
 	} while (op != 5);
-	//delete cliente;
-	//delete factura;
 }
 
+//Desarrollo de metodo para agregar un unico componente, al carrito de compras del cliente 
 Componente* agregarComponente(Tienda* tienda){
 	string cod;
 	cout << tienda->mostrarSoloComponentes();
@@ -177,6 +183,7 @@ Componente* agregarComponente(Tienda* tienda){
 	return NULL;
 }
 
+//Desarrollo de metodo para agregar sistema preconfigurado, al carrito de compras del cliente
 Componente* agregarSistemaPreconfigurado(Tienda* tienda){
 	string cod;
 	cout << tienda->mostrarSoloKits();
@@ -192,13 +199,15 @@ Componente* agregarSistemaPreconfigurado(Tienda* tienda){
 	return NULL;
 }
 
+//Desarrollo de metodo para agregar sistema hecho a la medida, al carrito de compras del cliente
 Componente* agregarNuevoSistemaAMedida(Tienda* tienda){
 	// Falta
 	return NULL;
 }
 
-// -----------EN LINEA----------
+// -------------------------------------EN LINEA---------------------------------------------------
 
+//Desarrollo del metodo para generar una venta en modalidad en linea 
 void generarVentaEnLinea(Tienda* tienda){
 	string codigo, cedula, destino;
 	int op = 0;
@@ -270,8 +279,9 @@ void generarVentaEnLinea(Tienda* tienda){
 
 }
 
-// ---------MANTENIMIENTO-------
+// ----------------------------------MANTENIMIENTO-------------------------------------------------
 
+//Desarrollo de metodo que maneja el menu del area de mantenimiento 
 void mantenimiento(Tienda* tienda) {
 	int op = 0;
 	do {
@@ -314,12 +324,14 @@ void mantenimiento(Tienda* tienda) {
 	} while (op != 7);
 }
 
+//Desarrollo de metodo que despliega la lista de clientes 
 void mostrarClientes(Tienda* tienda) {
 	cout << "Listado de clientes suscritos" << endl;
 	cout << tienda->mostrarClientes();
 	system("pause");
 }
 
+//Desarrollo de metodo para suscribir un nuevo cliente 
 void ingresoSuscriptores(Tienda* tienda) {
 	if (tienda->ingresarCliente(crearCliente()) == true)
 		cout << "Se ingreso con exito!!" << endl;
@@ -328,6 +340,7 @@ void ingresoSuscriptores(Tienda* tienda) {
 	system("pause");
 }
 
+//Desarrollo de metodos para ingresar los datos del nuevo cliente a suscribir 
 Cliente* crearCliente(){
 	int op;
 	bool acceso = false;
@@ -376,6 +389,7 @@ Cliente* crearEmpresa(){
 	return new Empresa(nom, ced, pais, ciudad);
 }
 
+//Desarrollo de metodo para desescribir un cliente de la tienda 
 void eliminarCliente(Tienda* tienda) {
 	string cod;
 	cout << tienda->mostrarClientes();
@@ -390,11 +404,13 @@ void eliminarCliente(Tienda* tienda) {
 	system("pause");
 }
 
+//Desarrollo de metodo que despliega la lista de componentes que existen en la tienda 
 void verCatalogo(Tienda* tienda) {
 	cout << tienda->verCatalogo();
 	system("pause");
 }
 
+//Desarrollo de metodo para ingresar un nuevo componente a la tienda 
 void ingresoProductos(Tienda* tienda){
 
 	if (tienda->ingresarProductosAlCatalogo(crearProducto(tienda)) == true)
@@ -403,6 +419,7 @@ void ingresoProductos(Tienda* tienda){
 		cout << "No se pudo ingresar por favor intentelo de nuevo!!" << endl;
 }
 
+//Desarrollo de metodos para ingresar los datos del nuevo componente en la tienda 
 Componente* crearProducto(Tienda* tienda) {
 	int op;
 	cout << "-------------------------------------" << endl
@@ -550,6 +567,7 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 	return NULL;
 }
 
+//Desarrollo de metodo para eliminar un componente de la tienda 
 void eliminarProducto(Tienda* tienda) {
 	string cod;
 	cout << tienda->mostrarElCatalogo();
@@ -565,8 +583,9 @@ void eliminarProducto(Tienda* tienda) {
 }
 
 
-// ----------REPORTES-----------
+// ---------------------------------------REPORTES---------------------------------------------------
 
+//Desarrollo de metodo que maneja el menu del area de reportes 
 void reportes(Tienda* tienda) {
 	int op = 0;
 	do {
@@ -589,15 +608,20 @@ void reportes(Tienda* tienda) {
 	} while (op != 3);
 }
 
+//Desarrollo de metodo que despliega la lista de los equipos mas vendidos de la tienda 
 void reporteEquiposMasVendidos(Tienda* tienda){}
+
+//Desarrollo de metodo que......
 void reporteVentas(Tienda* tienda){}
 
+//Desarrollo de metodo para dar la despedida del programa 
 void salir(Tienda* tienda){
 	cout << "Muchas Gracias por visitarnos" << endl;
 	tienda->guardarArchivos();
 	delete tienda;
 }
 
+//Desarrollo de metodo que maneja el menu principal de la tienda 
 void MAIN(Tienda* tienda) {
 	int op;
 	//tienda->recuperarDeArchivos();

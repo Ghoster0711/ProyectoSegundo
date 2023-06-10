@@ -5,8 +5,8 @@
 
 
 int main() {
-	Tienda* tienda = new Tienda();
-	MAIN(tienda);
+	Tienda* tienda = new Tienda();  //Creacion de la tienda 
+	MAIN(tienda);  
 	return 0;
 }
 
