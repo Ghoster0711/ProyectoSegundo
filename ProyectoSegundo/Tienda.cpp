@@ -273,7 +273,7 @@ void Tienda::guardarCatalogo()
 }
 
 void Tienda::recuperarArchivoCatalogo(){
-	string rutaCatalogo = "../CatalogoS.txt";
+	string rutaCatalogo = "../catalogo.txt";
 	ifstream file;
 	string op;
 	file.open(rutaCatalogo);

@@ -1,2 +1,3 @@
-Factura Directo	1	Fecha	9	6	2023	Persona	5	5	5	5	5	5
+Factura Directo	1	Fecha	9	6	2023	Persona	Joshua Amador Lara	604830349	Costa Rica	Heredia	josh@gmail.com	Costarricense
+Amplificador	9180	IR302	80W	90
 finCarrito	

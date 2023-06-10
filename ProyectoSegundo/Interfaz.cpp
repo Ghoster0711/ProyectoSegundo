@@ -73,6 +73,7 @@ int menuReportes() {
 void generarVentaDirecta(Tienda* tienda) {
 	string codigo,cedula;
 	int op = 0;
+	char op2;
 	bool acceso = false;
 	Cliente* cliente = NULL;
 	codigo = to_string(tienda->getVentas()->getCantidad() + 1);
@@ -127,17 +128,21 @@ void generarVentaDirecta(Tienda* tienda) {
 			factura->ingresarCompra(agregarComponente(tienda));
 			break;
 		case 2:
-			agregarSistemaPreconfigurado(tienda);
+			factura->ingresarCompra(agregarSistemaPreconfigurado(tienda));
 			break;
 		case 3:
-			agregarNuevoSistemaAMedida(tienda);
+			factura->ingresarCompra(agregarNuevoSistemaAMedida(tienda));
 			break;
 		case 4:
 			cout << endl;
-			cout << "Generando Factura..." << endl;
-			tienda->getVentas()->ingresar(*factura);
-			cout << factura->toString() << endl;				//Calcular el precio total de la compra 
-			cout << "Muchas Gracias Por Su Compra!!" << endl;
+			cout << "Quiere generar la factura? s/n "; cin >> op2;
+			if (op2 == 's') {
+				tienda->getVentas()->ingresar(*factura);
+				cout << factura->toString() << endl;				//Calcular el precio total de la compra 
+				cout << "Muchas Gracias Por Su Compra!!" << endl;
+			}
+			else
+				cout << "No se realizo la compra...." << endl;
 			break;
 		}
 		system("pause");
