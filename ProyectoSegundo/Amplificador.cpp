@@ -32,7 +32,6 @@ void Amplificador::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string Amplificador::toString() {
 	stringstream show;
-	show << "----------------------------------------------------------------------------------------------" << endl;
 	show << "| Procesador de senal\t" << codigo << "\t" << "Amplificador" << "\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }

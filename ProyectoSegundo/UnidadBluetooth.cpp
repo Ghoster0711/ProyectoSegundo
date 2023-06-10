@@ -32,7 +32,6 @@ void UnidadBluetooth::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string UnidadBluetooth::toString() {
 	stringstream show;
-	show << "----------------------------------------------------------------------------------------------" << endl;
 	show << "| Fuente de audio\t" << codigo << "\t" << "Unidad Bluetooth" << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
