@@ -22,7 +22,8 @@ int menudirecto(){
 		<< "| (1) Componente.                              |" << endl
 		<< "| (2) Sistema Preconfigurado.                  |" << endl
 		<< "| (3) Crear Configurado a la medida.           |" << endl
-		<< "| (4) Finalizar.                               |" << endl
+		<< "| (4) Generar Factura.                         |" << endl
+		<< "| (5) Cancelar Compra.                         |" << endl
 		<< "------------------------------------------------" << endl
 		<< "| Ingrese una opcion -> "; cin >> op;
 	return op;
@@ -33,7 +34,8 @@ int menuEnLinea(){
 	cout << "------------------------------------------------" << endl
 		<< "| Que desea ingresar a su carrito de compras   |" << endl
 		<< "| (1) Sistema Preconfigurado.                  |" << endl
-		<< "| (2) Finalizar.                               |" << endl
+		<< "| (2) Generar Factura.                         |" << endl
+		<< "| (3) Cancelar Compra.                         |" << endl
 		<< "------------------------------------------------" << endl
 		<< "| Ingrese una opcion -> "; cin >> op;
 	return op;
@@ -100,12 +102,12 @@ void generarVentaDirecta(Tienda* tienda) {
 			cout << "Ingrese la cedula -> "; cin >> cedula;
 			cout << endl;
 			if (tienda->buscarSuscriptor(cedula) == true) {
-				cout << "Cliente suscrito encontrado!!" << endl << endl;
+				cout << "Cliente suscrito encontrado!! " << endl << endl;
 				cliente = tienda->retornaSuscriptor(cedula);
 				op = 3;
 			}
 			else {
-				cout << "Cliente no suscrito!!" << endl;
+				cout << "Cliente no suscrito!! " << endl;
 				op = 2;
 			}
 		}
@@ -121,27 +123,41 @@ void generarVentaDirecta(Tienda* tienda) {
 	Factura* factura = new Directo(codigo, cliente);
 	do {
 		system("cls");
+		cout << "MENU ->  (1) Venta Directa." << endl << endl;
+		cout << "Cliente suscrito encontrado!! " << endl << endl;
 		op = menudirecto();
 		switch (op) {
 		case 1:
 			factura->ingresarCompra(agregarComponente(tienda));
 			break;
 		case 2:
-			agregarSistemaPreconfigurado(tienda);
+			factura->ingresarCompra(agregarSistemaPreconfigurado(tienda));
 			break;
 		case 3:
-			agregarNuevoSistemaAMedida(tienda);
+			factura->ingresarCompra(agregarNuevoSistemaAMedida(tienda));
 			break;
 		case 4:
+			if (factura->getCarrito()->getPrimero() != NULL) {
+				cout << endl;
+				cout << "Generando Factura..." << endl;
+				tienda->getVentas()->ingresar(*factura);
+				cout << factura->toString() << endl;	   //Calcular el precio total de la compra 
+				cout << "Muchas Gracias Por Su Compra!!" << endl;
+				op = 5;
+			}
+			else {
+				cout << endl;
+				cout << "No se ha generado la Factura..." << endl;
+				cout << "Aun no se ha ingresado algo al carrito de compras!!" << endl << endl;
+			}
+			break;
+		case 5:
 			cout << endl;
-			cout << "Generando Factura..." << endl;
-			tienda->getVentas()->ingresar(*factura);
-			cout << factura->toString() << endl;				//Calcular el precio total de la compra 
-			cout << "Muchas Gracias Por Su Compra!!" << endl;
+			cout << "Cancelando la Compra..." << endl << endl;
 			break;
 		}
 		system("pause");
-	} while (op != 4);
+	} while (op != 5);
 	//delete cliente;
 	//delete factura;
 }
@@ -153,11 +169,10 @@ Componente* agregarComponente(Tienda* tienda){
 		<< "| Seleccione el componente deseado por su codigo -> "; cin >> cod;
 	if (tienda->buscarComponente(cod) == true) {
 		return tienda->retornarSoloComponentes(cod);
-		cout << "Componente encontrado y agregado!!" << endl;
+		cout << "Componente encontrado y agregado!!" << endl << endl;
 	}
 	else {
-		cout << "Componente no encontrado!!" << endl;
-		system("pause");
+		cout << "Componente no encontrado!!" << endl << endl;
 	}
 	return NULL;
 }
@@ -169,11 +184,10 @@ Componente* agregarSistemaPreconfigurado(Tienda* tienda){
 		<< "| Seleccione el kit deseado por su codigo -> "; cin >> cod; 
 	if (tienda->buscarKit(cod) == true) {
 		return tienda->retornarSoloKits(cod);
-		cout << "Sistema Preconfigurado encontrado y agregado!!" << endl;
+		cout << "Sistema Preconfigurado encontrado y agregado!!" << endl << endl;
 	}
 	else {
-		cout << "Sistema Preconfigurado no encontrado!!" << endl;
-		system("pause");
+		cout << "Sistema Preconfigurado no encontrado!!" << endl << endl;
 	}
 	return NULL;
 }
@@ -188,17 +202,18 @@ Componente* agregarNuevoSistemaAMedida(Tienda* tienda){
 void generarVentaEnLinea(Tienda* tienda){
 	string codigo, cedula, destino;
 	int op = 0;
+	bool acceso = false;
 	Cliente* cliente = NULL;
-	codigo = tienda->getVentas()->getCantidad() + 1;
+	codigo = to_string(tienda->getVentas()->getCantidad() + 1);
 	cout << "MENU ->  (2) Venta en Linea." << endl << endl;
 	cout << "Ingrese la cedula -> "; cin >> cedula;
 	cout << endl;
 	if (tienda->buscarSuscriptor(cedula) == true) {
-		cout << "Cliente suscrito encontrado!" << endl << endl;
+		cout << "Cliente suscrito encontrado!! " << endl << endl;
 		cliente = tienda->retornaSuscriptor(cedula);
 	}
 	else {
-		cout << "Cliente no suscrito!" << endl;
+		cout << "Cliente no suscrito!! " << endl;
 		cout << "Por favor ingrese la informacion del cliente" << endl;
 		cout << endl;
 		cliente = crearCliente();
@@ -206,29 +221,52 @@ void generarVentaEnLinea(Tienda* tienda){
 		cout << "Liso!!" << endl << endl;
 	
 	}
-	system("pause");
 	Factura* factura = new Directo(codigo, cliente);
-	cout << tienda->mostrasDestinos();
-	cout << "Digite el codigo del Destino ->"; cin >> destino;
-	if (tienda->buscarDestino(destino) == true) {
-		factura->setDestino(tienda->retornaDestino(destino));
-		cout << "Destino encontrado!!" << endl;
-	}
-	else {
-		cout << "Destino no encontrado!!" << endl;
-	}
 	do {
+		system("pause");
+		cout << "MENU ->  (2) Venta en Linea." << endl << endl;
+		cout << "Cliente suscrito encontrado!! " << endl << endl;
+		cout << tienda->mostrasDestinos();
+		cout << "Digite el codigo del Destino ->"; cin >> destino;
+		if (tienda->buscarDestino(destino) == true) {
+			factura->setDestino(tienda->retornaDestino(destino));
+			cout << "Destino encontrado!!" << endl << endl;
+			acceso = true;
+		}
+		else {
+			cout << "Destino no encontrado!!" << endl << endl;
+		}
+	} while (acceso != true);
+	do {
+		system("cls");
 		op = menuEnLinea();
 		switch (op)
 		{
 		case 1:
-			agregarSistemaPreconfigurado(tienda);
+			factura->ingresarCompra(agregarSistemaPreconfigurado(tienda));
 			break;
 		case 2:
-			// Falta
+			if (factura->getCarrito()->getPrimero() != NULL) {
+				cout << endl;
+				cout << "Generando Factura..." << endl;
+				tienda->getVentas()->ingresar(*factura);
+				cout << factura->toString() << endl;	   //Calcular el precio total de la compra 
+				cout << "Muchas Gracias Por Su Compra!!" << endl;
+				op = 3;
+			}
+			else {
+				cout << endl;
+				cout << "No se ha generado la Factura..." << endl;
+				cout << "Aun no se ha ingresado algo al carrito de compras!!" << endl << endl;
+			}
+			break;
+		case 3:
+			cout << endl;
+			cout << "Cancelando la Compra..." << endl << endl;
 			break;
 		}
-	} while (op != 2);
+		system("pause");
+	} while (op != 3);
 
 }
 
@@ -351,7 +389,6 @@ void eliminarCliente(Tienda* tienda) {
 		cout << "La cedula que se ingreso no coincide con ningun con los que se encuentran!!" << endl;
 	system("pause");
 }
-
 
 void verCatalogo(Tienda* tienda) {
 	cout << tienda->verCatalogo();
@@ -538,7 +575,7 @@ void reportes(Tienda* tienda) {
 		switch (op) {
 		case 1:
 			system("cls");
-			cout << "MENU ->  (4) Reportes (1) Reporte Equipos mas Vendidos" << endl << endl;
+			cout << "MENU ->  (4) Reportes -> (1) Reporte Equipos mas Vendidos" << endl << endl;
 			reporteEquiposMasVendidos(tienda);
 			break;
 		case 2:

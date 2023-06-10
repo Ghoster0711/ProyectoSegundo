@@ -96,7 +96,10 @@ Componente* EnLinea::clonarComponente(Componente* compo) {
 
 // Desarrollo del ingresar compra
 void EnLinea::ingresarCompra(Componente* componente) {
-	carritoDeCompras->ingresar(*clonarComponente(componente));
+	if (componente != NULL) {
+		carritoDeCompras->ingresar(*componente);
+	}
+	//carritoDeCompras->ingresar(*clonarComponente(componente));
 }
 
 // Desarrollo del ToString
