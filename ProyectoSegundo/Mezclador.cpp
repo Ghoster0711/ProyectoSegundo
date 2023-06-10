@@ -32,7 +32,8 @@ void Mezclador::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string Mezclador::toString() {
 	stringstream show;
-	show << "Procesador de senal\t" << codigo << "\t" << "Mezclador" << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "----------------------------------------------------------------------------------------------" << endl;
+	show << "| Procesador de senal\t" << codigo << "\t" << "Mezclador" << "\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

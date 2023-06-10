@@ -32,7 +32,8 @@ void Tornamesa::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string Tornamesa::toString() {
 	stringstream show;
-	show << "Fuente de audio\t\t" << codigo << "\t" << "Tornamesa" << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "----------------------------------------------------------------------------------------------" << endl;
+	show << "| Fuente de audio\t" << codigo << "\t" << "Tornamesa" << "\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

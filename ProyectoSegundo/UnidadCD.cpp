@@ -32,7 +32,8 @@ void UnidadCD::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string UnidadCD::toString() {
 	stringstream show;
-	show << "Fuente de audio\t\t" << codigo << "\t" << "Unidad CD" << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "----------------------------------------------------------------------------------------------" << endl;
+	show << "| Fuente de audio\t" << codigo << "\t" << "Unidad CD" << "\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

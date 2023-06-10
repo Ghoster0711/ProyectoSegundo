@@ -32,7 +32,8 @@ void Altavoz::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string Altavoz::toString() {
 	stringstream show;
-	show << "Parlante\t\t" << codigo << "\t" << "Altavoz" << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "----------------------------------------------------------------------------------------------" << endl;
+	show << "| Parlante\t\t" << codigo << "\t" << "Altavoz" << "\t\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 
