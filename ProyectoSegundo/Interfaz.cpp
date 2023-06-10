@@ -380,47 +380,95 @@ Componente* crearProducto(Tienda* tienda) {
 	return NULL;
 }
 Componente* crearComponente() {
-	string tipo, model, carac, cod;
+	string model, carac, cod;
 	double precio;
 	int op;
-	system("cls");
-	cout << "------------------------------------" << endl
-		<< "| (1) Fuente de audio               |" << endl
-		<< "| (2) Procesador de senal           |" << endl
-		<< "| (3) Parlante                      |" << endl
-		<< "-------------------------------------" << endl
-		<< "| Que desea agregar al sistema -> "; cin >> op;
-
-	if (op == 1) {
-		cout << "| Ingrese el codigo del componente -> "; cin >> cod;
-		cout << "| Ingrese el tipo de componente -> "; cin >> tipo;
-		cout << "| Ingrese el modelo del componente -> "; cin >> model;
-		cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
-		cout << "| Ingresel el precio del componente -> "; cin >> precio;
-		return new FuenteDeAudio(cod,tipo, model, carac, precio);
-	}
-	if (op == 2) {
-		cout << "| Ingrese el codigo del componente -> "; cin >> cod;
-		cout << "| Ingrese el tipo de componente -> "; cin >> tipo;
-		cout << "| Ingrese el modelo del componente -> "; cin >> model;
-		cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
-		cout << "| Ingresel el precio del componente -> "; cin >> precio;
-		return new ProcesadorDeSenal(cod, tipo, model, carac, precio);
-	}
-	if (op == 3) {
-		cout << "| Ingrese el codigo del componente -> "; cin >> cod;
-		cout << "| Ingrese el tipo de componente -> "; cin >> tipo;
-		cout << "| Ingrese el modelo del componente -> "; cin >> model;
-		cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
-		cout << "| Ingresel el precio del componente -> "; cin >> precio;
-		return new Parlante(cod, tipo, model, carac, precio);
-	}
-	
+	do {
+		system("cls");
+		cout << "-------------------------------------------" << endl
+			<< "| (1) Unidad CD (Fuente de audio)         |" << endl
+			<< "| (2) Tornamesa (Fuente de audio)         |" << endl
+			<< "| (3) Radio (Fuente de audio)             |" << endl
+			<< "| (4) Unidad Bluetooth (Fuente de audio)  |" << endl
+			<< "| (5) Microfono (Procesador de senal)     |" << endl
+			<< "| (6) Amplificador (Procesador de senal)  |" << endl
+			<< "| (7) Mezclador (Procesador de senal)     |" << endl
+			<< "| (8) Altavoz (Parlante)                  |" << endl
+			<< "| (9) Audifonos (Parlante)                |" << endl
+			<< "| (10) Volver                             |" << endl
+			<< "-------------------------------------------" << endl
+			<< "| Que desea agregar al sistema -> "; cin >> op;
+		switch (op) {
+		case 1:
+			cout << "| Ingrese el codigo del componente -> "; cin >> cod;
+			cout << "| Ingrese el modelo del componente -> "; cin >> model;
+			cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
+			cout << "| Ingresel el precio del componente -> "; cin >> precio;
+			return new UnidadCD(cod, model, carac, precio);
+			break;
+		case 2:
+			cout << "| Ingrese el codigo del componente -> "; cin >> cod;
+			cout << "| Ingrese el modelo del componente -> "; cin >> model;
+			cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
+			cout << "| Ingresel el precio del componente -> "; cin >> precio;
+			return new Tornamesa(cod, model, carac, precio);
+			break;
+		case 3:
+			cout << "| Ingrese el codigo del componente -> "; cin >> cod;
+			cout << "| Ingrese el modelo del componente -> "; cin >> model;
+			cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
+			cout << "| Ingresel el precio del componente -> "; cin >> precio;
+			return new Radio(cod, model, carac, precio);
+			break;
+		case 4:
+			cout << "| Ingrese el codigo del componente -> "; cin >> cod;
+			cout << "| Ingrese el modelo del componente -> "; cin >> model;
+			cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
+			cout << "| Ingresel el precio del componente -> "; cin >> precio;
+			return new UnidadBluetooth(cod, model, carac, precio);
+			break;
+		case 5:
+			cout << "| Ingrese el codigo del componente -> "; cin >> cod;
+			cout << "| Ingrese el modelo del componente -> "; cin >> model;
+			cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
+			cout << "| Ingresel el precio del componente -> "; cin >> precio;
+			return new Microfono(cod, model, carac, precio);
+			break;
+		case 6:
+			cout << "| Ingrese el codigo del componente -> "; cin >> cod;
+			cout << "| Ingrese el modelo del componente -> "; cin >> model;
+			cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
+			cout << "| Ingresel el precio del componente -> "; cin >> precio;
+			return new Amplificador(cod, model, carac, precio);
+			break;
+		case 7:
+			cout << "| Ingrese el codigo del componente -> "; cin >> cod;
+			cout << "| Ingrese el modelo del componente -> "; cin >> model;
+			cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
+			cout << "| Ingresel el precio del componente -> "; cin >> precio;
+			return new Mezclador(cod, model, carac, precio);
+			break;
+		case 8:
+			cout << "| Ingrese el codigo del componente -> "; cin >> cod;
+			cout << "| Ingrese el modelo del componente -> "; cin >> model;
+			cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
+			cout << "| Ingresel el precio del componente -> "; cin >> precio;
+			return new Altavoz(cod, model, carac, precio);
+			break;
+		case 9:
+			cout << "| Ingrese el codigo del componente -> "; cin >> cod;
+			cout << "| Ingrese el modelo del componente -> "; cin >> model;
+			cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
+			cout << "| Ingresel el precio del componente -> "; cin >> precio;
+			return new Audifono(cod, model, carac, precio);
+			break;
+		}
+	} while (op != 10);
 	return NULL;
 }
 Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 	// Comodines
-	//Componente* kit = new Kit();
+	Componente* kit = new Kit();
 	string codK, cod, nom;
 	char op;
 	// Ingreso del nombre y codigo del kit
@@ -446,7 +494,7 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 				cout << "Se encontro el Componente desea agregarlo (s/n) "; cin >> op;
 				// Si lo quiere agregar se encargar de agregarlo
 				if (op == 's') {
-					//kit->agregar(tienda->retornarSoloComponentes(cod));
+					kit->agregar(tienda->retornarSoloComponentes(cod));
 				}
 			}
 			else
@@ -456,11 +504,11 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 	// Pregunta si lo quiere agregar y lo agrega
 	cout << "Agregar el kit al catalogo? s/n "; cin >> op;
 	if (op == 's') {
-		//kit->setCodigo(codK);
-		//kit->setNombre(nom);
-		//return (Componente*)new Kit(*(Kit*)kit);
+		kit->setCodigo(codK);
+		kit->setNombre(nom);
+		return (Componente*)new Kit(*(Kit*)kit);
 	}
-	//delete kit;
+	delete kit;
 
 	return NULL;
 }

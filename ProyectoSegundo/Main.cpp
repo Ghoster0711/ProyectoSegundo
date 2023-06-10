@@ -10,6 +10,59 @@ int main() {
 	return 0;
 }
 
+// //Prueba Archivos Facturas
+////int main() {
+//	//string prueba = "C:/Users/barra/OneDrive - Universidad Nacional de Costa Rica/2023/Ciclo I 2023/Progra II/Proyectos/PROYECTO_SEGUNDO/pruebaFacturas.txt";
+//	//Cliente* p1 = new Persona("Joshua Amador Lara", "604830349", "Costa Rica", "Heredia", "josh@gmail.com", "Costarricense");
+//	////Cliente* p2 = new Empresa("Microsoft", "1022-1245-567", "Rusia", "Tokyo");
+//	//Cliente* p2 = new Empresa("Microsoft", "1022-1245-567", "Rusia", "Tokyo");
+//
+//
+//	//Componente* c1 = new FuenteDeAudio("1010", "Tornamesa", "HT59J", "AJLJSDLA", 150);
+//	//Componente* c2 = new Parlante("1010", "Audio", "HT59J", "AJLJSDLA", 150);
+//	//Componente* c3 = new ProcesadorDeSenal("1010", "Parlante", "HT59J", "AJLJSDLA", 150);
+//	//Componente* c4 = new FuenteDeAudio("1010", "Microfono", "HT59J", "AJLJSDLA", 150);
+//
+//
+//	//Destino* destino = new Destino("010", "Argentina", "Buenos Aires", 17520);
+//
+//	//Fecha* f1 = new Fecha();
+//	////Fecha* f2 = new Fecha();
+//
+//	//
+//
+//	//Fecha* fec1 = new Fecha();
+//	////Fecha* fec2 = new Fecha();
+//
+//	//Factura* fac1 = new EnLinea("1111", fec1, p1, destino);
+//	////Factura* fac2 = new Directo("2222", fec2, p2);
+//
+//	//fac1->ingresarCompra(c1);
+//	//fac1->ingresarCompra(c2);
+//
+//	//cout << fac1->toString() << endl;
+//	//cout << endl;
+//
+//	//system("pause");
+//
+//	//cout << "Guardando archivos..." << endl;
+//	//ofstream salida;
+//	//salida.open(prueba);
+//	//fac1->guardar(salida);
+//
+//	//salida.close();
+//
+//
+//	Tienda* tienda = new Tienda();
+//	tienda->recuperarArchivoDestinos();
+//	cout << tienda->getDestinos()->toString() << endl;
+//	
+//	delete tienda;
+//	system("pause");
+//	return 0;
+//}
+
+
 /// Prueba archivos clientes
 //int main() {
 //	string rutaSuscriptores = "../suscriptores.txt";
@@ -56,25 +109,25 @@ int main() {
 //	return 0;
 //}
 
-
-
-
-///Prueba archivos catalogo
+//
+//
+//
+////Prueba archivos catalogo
 //int main() {
 //	Tienda* tienda = new Tienda();
-//	Lista<Componente>* catalogo = new Lista<Componente>();
+//	/*Lista<Componente>* catalogo = new Lista<Componente>();
 //
-//	Componente* c1 = new FuenteDeAudio("1010", "Tornamesa", "HT59J", "AJLJSDLA", 150);
-//	Componente* c2 = new Parlante("1010", "Audio", "HT59J", "AJLJSDLA", 150);
-//	Componente* c3 = new ProcesadorDeSenal("1010", "Parlante", "HT59J", "AJLJSDLA", 150);
-//	Componente* c4 = new FuenteDeAudio("1010", "Microfono", "HT59J", "AJLJSDLA", 150);
+//	Componente* c1 = new Tornamesa("1010", "HT59J", "AJLJSDLA", 150);
+//	Componente* c2 = new Audifono("1010", "HT59J", "AJLJSDLA", 150);
+//	Componente* c3 = new Amplificador("1010", "HT59J", "AJLJSDLA", 150);
+//	Componente* c4 = new Microfono("1010", "HT59J", "AJLJSDLA", 150);
 //
 //	Componente* c5 = new Kit();
 //
-//	c5->agregar(new FuenteDeAudio("1010", "Tornamesa", "HT59J", "AJLJSDLA", 150));
-//	c5->agregar(new Parlante("1010", "Audio", "HT59J", "AJLJSDLA", 150));
-//	c5->agregar(new ProcesadorDeSenal("1010", "Parlante", "HT59J", "AJLJSDLA", 150) );
-//	c5->agregar(new FuenteDeAudio("1010", "Microfono", "HT59J", "AJLJSDLA", 150));
+//	c5->agregar(new Tornamesa("1010", "HT59J", "AJLJSDLA", 150));
+//	c5->agregar(new Audifono("1010", "HT59J", "AJLJSDLA", 150));
+//	c5->agregar(new Amplificador("1010", "HT59J", "AJLJSDLA", 150));
+//	c5->agregar(new Microfono("1010", "HT59J", "AJLJSDLA", 150));
 //
 //	c5->setCodigo("30303");
 //	c5->setNombre("Pro");
@@ -82,11 +135,11 @@ int main() {
 //	system("pause");
 //	system("cls");
 //
-//	tienda->getCatalago()->ingresar(c5);
-//	tienda->getCatalago()->ingresar(c1);
-//	tienda->getCatalago()->ingresar(c2);
-//	tienda->getCatalago()->ingresar(c3);
-//	tienda->getCatalago()->ingresar(c4);
+//	tienda->getCatalago()->ingresar(*c5);
+//	tienda->getCatalago()->ingresar(*c1);
+//	tienda->getCatalago()->ingresar(*c2);
+//	tienda->getCatalago()->ingresar(*c3);
+//	tienda->getCatalago()->ingresar(*c4);
 //
 //
 //
@@ -97,9 +150,9 @@ int main() {
 //	cout << "guardando en archivos" << endl;
 //	tienda->getCatalago()->guardarCatalogo();
 //
-//	delete tienda;
+//	delete tienda;*/
 //
-//	tienda = new Tienda();
+//	//tienda = new Tienda();
 //
 //	tienda->recuperarArchivoCatalogo();
 //
