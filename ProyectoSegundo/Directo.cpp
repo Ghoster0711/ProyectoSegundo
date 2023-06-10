@@ -142,7 +142,7 @@ Factura* Directo::recuperar(istream& entrada) {
 	return factura;
 }
 
-//Desarrollo del metodo para recuperar el carrito de compras del cliente 
+//Desarrollo del metodo para recuperar el carrito de compras del cliente, del archivo 
 void Directo::recuperarCarrito(istream& entrada, Factura* fac){
 	string op;
 	while (op != "finCarrito") {
