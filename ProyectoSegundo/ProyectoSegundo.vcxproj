@@ -127,11 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Altavoz.h" />
+    <ClInclude Include="Amplificador.h" />
+    <ClInclude Include="Audifono.h" />
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="Componente.h" />
     <ClInclude Include="Directo.h" />
     <ClInclude Include="EnLinea.h" />
     <ClInclude Include="Interfaz.h" />
+    <ClInclude Include="Mezclador.h" />
+    <ClInclude Include="Microfono.h" />
+    <ClInclude Include="Radio.h" />
     <ClInclude Include="Sistema.h" />
     <ClInclude Include="Destino.h" />
     <ClInclude Include="Empresa.h" />
@@ -146,26 +152,35 @@
     <ClInclude Include="Persona.h" />
     <ClInclude Include="ProcesadorDeSenal.h" />
     <ClInclude Include="Tienda.h" />
+    <ClInclude Include="Tornamesa.h" />
+    <ClInclude Include="UnidadBluetooth.h" />
+    <ClInclude Include="UnidadCD.h" />
     <ClInclude Include="Utiles.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Altavoz.cpp" />
+    <ClCompile Include="Amplificador.cpp" />
+    <ClCompile Include="Audifono.cpp" />
     <ClCompile Include="Cliente.cpp" />
     <ClCompile Include="Directo.cpp" />
     <ClCompile Include="EnLinea.cpp" />
     <ClCompile Include="Interfaz.cpp" />
+    <ClCompile Include="Mezclador.cpp" />
+    <ClCompile Include="MIcrofono.cpp" />
+    <ClCompile Include="Radio.cpp" />
     <ClCompile Include="Sistema.cpp" />
     <ClCompile Include="Destino.cpp" />
     <ClCompile Include="Empresa.cpp" />
     <ClCompile Include="Excepciones.cpp" />
     <ClCompile Include="Factura.cpp" />
     <ClCompile Include="Fecha.cpp" />
-    <ClCompile Include="FuenteDeAudio.cpp" />
     <ClCompile Include="Kit.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Parlante.cpp" />
     <ClCompile Include="Persona.cpp" />
-    <ClCompile Include="ProcesadorDeSenal.cpp" />
     <ClCompile Include="Tienda.cpp" />
+    <ClCompile Include="Tornamesa.cpp" />
+    <ClCompile Include="UnidadBluetooth.cpp" />
+    <ClCompile Include="UnidadCD.cpp" />
     <ClCompile Include="Utiles.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

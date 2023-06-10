@@ -7,8 +7,17 @@
 #include"Directo.h"
 // Componentes
 #include "FuenteDeAudio.h"
+#include "UnidadCD.h"
+#include "Tornamesa.h"
+#include "Radio.h"
+#include "UnidadBluetooth.h"
+#include "Microfono.h"
 #include "ProcesadorDeSenal.h"
+#include "Amplificador.h"
+#include "Mezclador.h"
 #include "Parlante.h"
+#include "Altavoz.h"
+#include "Audifono.h"
 #include "Kit.h"
 // Clientes
 #include "Empresa.h"
@@ -39,15 +48,12 @@ public:
 
 	// Mostrar contenedores 
 	string mostrarElCatalogo();
-	//string mostrarLosSuscriptores();
-	//string mostrarLasVentas();
-	//string mostrasDestinos();
+	string mostrasDestinos();
 	
 	bool buscarSuscriptor(string);
 	bool buscarProductoDelCatalogo(string);
 	bool buscarComponente(string);
 	bool buscarKit(string);
-	bool buscarCliente(string);
 	bool buscarDestino(string);
 
 	Componente* retornarSoloComponentes(string);
@@ -55,12 +61,13 @@ public:
 	Componente* retornarSoloKits(string);
 	string mostrarSoloKits();
 	Destino* retornaDestino(string);
-	
+	Cliente* retornaSuscriptor(string);
 
 
 // -------------Directo---------------
 
 // -------------En Linea--------------
+
 
 // -----------Mantenimiento-----------
 

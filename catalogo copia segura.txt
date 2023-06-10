@@ -1,0 +1,47 @@
+Parlante	6870	Audifono	HT856	Inalambrico bajos profundos	120
+Parlante	2186	Audifono	TP788	Circumaural bajos profundos	90
+Parlante	2474	Audifono	HE757	Basico (inalambrico)	60
+Parlante	1154	Audifono	VT518	Basico (circumaural)	45
+Parlante	7755	Audifono	EO771	Basico (supraural. diadema)	40
+Parlante	1104	Audifono	YN192	Basico (intraural)	20
+Parlante	6402	Parlante	FD238	280W subwoofer	435
+Parlante	4668	Parlante	TQ931	300W 4 canales	395
+Parlante	4011	Parlante	OL625	400W inalambrico	355
+Parlante	2127	Parlante	LV428	400W perfil plano	315
+Parlante	0988	Parlante	NZ586	400W	275
+Parlante	7652	Parlante	CQ811	200W	235
+Procesador de senal	6432	Mezclador	IU702	8 canales (digital/analogico)	325
+Procesador de senal	2687	Mezclador	UR549	4 canales digitales	150
+Procesador de senal	3951	Mezclador	XO640	4 canales analogicos	130
+Procesador de senal	1665	Mezclador	EA934	2 canales digitales	85
+Procesador de senal	3244	Mezclador	JL664	2 canales analogicos	70
+Procesador de senal	9781	Amplificador	ZU516	400W	190
+Procesador de senal	8140	Amplificador	AG226	220W	165
+Procesador de senal	0593	Amplificador	WU205	200W	140
+Procesador de senal	1432	Amplificador	CV136	100W	115
+Procesador de senal	9180	Amplificador	IR302	80W	90
+Fuente de audio	8871	Microfono	QU632	Inalambrico Bluetooth	100
+Fuente de audio	0448	Microfono	KC176	Inalambrico rango ampliado	180
+Fuente de audio	7407	Microfono	HR568	Inalambrico	120
+Fuente de audio	3127	Microfono	SD353	Alambrico omnidireccional	95
+Fuente de audio	5857	Microfono	UT654	Alambrico	90
+Fuente de audio	6903	Unidad Bluetooth	WG255	Receptor FM	90
+Fuente de audio	1622	Unidad Bluetooth	WI307	Multicanal	100
+Fuente de audio	6113	Unidad Bluetooth	NA107	Basico	70
+Fuente de audio	2496	Radio	TE655	Sintonizador programable	280
+Fuente de audio	6587	Radio	IL414	Sintonizador automatico	220
+Fuente de audio	7156	Radio	BR101	Onda corta	300
+Fuente de audio	4431	Radio	LR506	Basico AM/FM	90
+Fuente de audio	8038	Tornamesa	NQ233	Brazo automatico	320
+Fuente de audio	3899	Tornamesa	ED991	Soporte 78 RPM	230
+Fuente de audio	4459	Tornamesa	LE978	Unidad basica 33/45 RPM	180
+Fuente de audio	6797	Unidad CD	SE381	Soporte SACD	200
+Fuente de audio	6168	Unidad CD	UK404	Múltiples velocidades	175
+Fuente de audio	6653	Unidad CD	VG953	Proteccion de salto	150
+Fuente de audio	4746	Unidad CD	OA966	Unidad basica	100
+Kit	Premium	S01J	Parlante	6870	Audifono	HT856	Inalambrico bajos profundos	120
+Parlante	2186	Audifono	TP788	Circumaural bajos profundos	90
+Fuente de audio	4746	Unidad CD	OA966	Unidad basica	100
+Fuente de audio	4459	Tornamesa	LE978	Unidad basica 33/45 RPM	180
+Parlante	4668	Parlante	TQ931	300W 4 canales	395
+finKit	

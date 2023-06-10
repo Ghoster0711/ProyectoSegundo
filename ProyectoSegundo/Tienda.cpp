@@ -26,7 +26,9 @@ Lista<Destino>* Tienda::getDestinos() { return Destinos; }
 string Tienda::mostrarElCatalogo(){
 	return Catalogo->toString();
 }
-
+string Tienda::mostrasDestinos() {
+	return Destinos->toString();
+}
 bool Tienda::buscarSuscriptor(string cod)
 {
 	Nodo<Cliente>* e = Suscriptores->getPrimero();
@@ -105,16 +107,34 @@ Componente* Tienda::retornarSoloComponentes(string cod) {
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
 			tipo = typeid(*e->getDato()).name();
-			if (tipo != "class Kit" && tipo != "class Dispositivo") {
+			if (tipo != "class Kit") {
 				if (e->getDato()->getCodigo() == cod) {
-					if (tipo == "class FuenteDeAudio") {
-						return (Componente*)new FuenteDeAudio(*(FuenteDeAudio*)e->getDato());
+					if (tipo == "class UnidadCD") {
+						return (Componente*)new UnidadCD(*(UnidadCD*)e->getDato());
 					}
-					if (tipo == "class Parlante") {
-						return (Componente*)new Parlante(*(Parlante*)e->getDato());
+					if (tipo == "class Tornamesa") {
+						return (Componente*)new Tornamesa(*(Tornamesa*)e->getDato());
 					}
-					if (tipo == "class ProcesadorDeSenal") {
-						return (Componente*)new ProcesadorDeSenal(*(ProcesadorDeSenal*)e->getDato());
+					if (tipo == "class Radio") {
+						return (Componente*)new Radio(*(Radio*)e->getDato());
+					}
+					if (tipo == "class UnidadBluetooth") {
+						return (Componente*)new UnidadBluetooth(*(UnidadBluetooth*)e->getDato());
+					}
+					if (tipo == "class Microfono") {
+						return (Componente*)new Microfono(*(Microfono*)e->getDato());
+					}
+					if (tipo == "class Amplificador") {
+						return (Componente*)new Amplificador(*(Amplificador*)e->getDato());
+					}
+					if (tipo == "class Mezclador") {
+						return (Componente*)new Mezclador(*(Mezclador*)e->getDato());
+					}
+					if (tipo == "class Altavoz") {
+						return (Componente*)new Altavoz(*(Altavoz*)e->getDato());
+					}
+					if (tipo == "class Audifono") {
+						return (Componente*)new Audifono(*(Audifono*)e->getDato());
 					}
 				}
 			}
@@ -183,14 +203,23 @@ Destino* Tienda::retornaDestino(string cod) {
 	}
 	return NULL;
 }
-
-bool Tienda::buscarCliente(string)
-{
-	return false;
+Cliente* Tienda::retornaSuscriptor(string cedula) {
+	string tipo;
+	Nodo<Cliente>* e = Suscriptores->getPrimero();
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			if (e->getDato()->getID() == cedula) {
+				tipo = typeid(*e->getDato()).name();
+				if (tipo == "class Persona")
+					return (Cliente*) new Persona(*(Persona*)(e->getDato()));
+				if (tipo == "class Empresa")
+					return (Cliente*) new Empresa(*(Empresa*)(e->getDato()));
+			}
+		}
+		e = e->getSiguiente();
+	}
+	return NULL;
 }
-
-
-
 
 // -------------Directo---------------
 
@@ -244,20 +273,43 @@ void Tienda::guardarCatalogo()
 }
 
 void Tienda::recuperarArchivoCatalogo(){
-	string rutaCatalogo = "../catalogo.txt";
+	string rutaCatalogo = "../CatalogoS.txt";
 	ifstream file;
 	string op;
 	file.open(rutaCatalogo);
 	while (file.good()) {
+		
 		getline(file, op, DELIMITA_CAMPO);
-		if (op == "Fuente de audio")
-			Catalogo->ingresar(*FuenteDeAudio::recuperar(file));
-		if (op == "Procesador de senal")
-			Catalogo->ingresar(*ProcesadorDeSenal::recuperar(file));
-		if (op == "Parlante")
-			Catalogo->ingresar(*Parlante::recuperar(file));
-		if (op == "Kit")
-			Catalogo->ingresar(*Kit::recuperar(file)); 
+		if (op == "Unidad CD") {
+			Catalogo->ingresar(*UnidadCD::recuperar(file));
+		}
+		if (op == "Tornamesa") {
+			Catalogo->ingresar(*Tornamesa::recuperar(file));
+		}
+		if (op == "Radio") {
+			Catalogo->ingresar(*Radio::recuperar(file));
+		}
+		if (op == "Unidad Bluetooth") {
+			Catalogo->ingresar(*UnidadBluetooth::recuperar(file));
+		}
+		if (op == "Microfono") {
+			Catalogo->ingresar(*Microfono::recuperar(file));
+		}
+		if (op == "Amplificador") {
+			Catalogo->ingresar(*Amplificador::recuperar(file));
+		}
+		if (op == "Mezclador") {
+			Catalogo->ingresar(*Mezclador::recuperar(file));
+		}
+		if (op == "Altavoz") {
+			Catalogo->ingresar(*Altavoz::recuperar(file));
+		}
+		if (op == "Audifono") {
+			Catalogo->ingresar(*Audifono::recuperar(file));
+		}
+		if (op == "Kit") {
+			Catalogo->ingresar(*Kit::recuperar(file));
+		}
 	}
 	file.close();
 }
@@ -273,6 +325,7 @@ void Tienda::recuperarArchivoSuscriptores(){
 	string op;
 	file.open(rutaSuscriptores);
 	while (file.good()) {
+		cout << "Cicli \n";
 		getline(file, op, DELIMITA_CAMPO);
 		if (op == "Empresa")
 			Suscriptores->ingresar(*Empresa::recuperar(file));
@@ -317,8 +370,7 @@ void Tienda::recuperarArchivoDestinos() {
 	entrada.close();
 }
 
-void Tienda::guardarArchivos()
-{
+void Tienda::guardarArchivos(){
 	guardarCatalogo();
 	guardarSuscriptores();
 	guardarFacturas();

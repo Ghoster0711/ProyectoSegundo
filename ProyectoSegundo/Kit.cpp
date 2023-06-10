@@ -1,8 +1,18 @@
 #include "Kit.h"
 #include "Utiles.h"
 #include "FuenteDeAudio.h"
+#include "UnidadCD.h"
+#include "Tornamesa.h"
+#include "Radio.h"
+#include "UnidadBluetooth.h"
+#include "Microfono.h"
 #include "ProcesadorDeSenal.h"
+#include "Amplificador.h"
+#include "Mezclador.h"
 #include "Parlante.h"
+#include "Altavoz.h"
+#include "Audifono.h"
+
 
 // Delimitadores para archivos
 #define DELIMITA_CAMPO '\t'
@@ -77,24 +87,41 @@ void Kit::guardar(ostream& salida) {
 
 // Desarrollo del metodo recuperar
 Componente* Kit::recuperar(istream& entrada){
-	string finkit, nombre, codigo;
+	string op = "g", nombre, codigo;
 	Componente* kit = new Kit();
 	getline(entrada, nombre, DELIMITA_CAMPO);
 	getline(entrada, codigo, DELIMITA_CAMPO);
 	kit->setCodigo(codigo);
 	kit->setNombre(nombre);
-	while (finkit != "finKit") {
-		getline(entrada, finkit, DELIMITA_CAMPO);
-		if (finkit == "Fuente de audio") {
-			kit->agregar(FuenteDeAudio::recuperar(entrada));
+	while (op != "finKit") {
+		getline(entrada, op, DELIMITA_CAMPO);
+		if (op == "Unidad CD") {
+			kit->agregar(UnidadCD::recuperar(entrada));
 		}
-		if (finkit == "Procesador de senal") {
-			kit->agregar(ProcesadorDeSenal::recuperar(entrada));
+		if (op == "Tornamesa") {
+			kit->agregar(Tornamesa::recuperar(entrada));
 		}
-		if (finkit == "Parlante") {
-			kit->agregar(Parlante::recuperar(entrada));
+		if (op == "Radio") {
+			kit->agregar(Radio::recuperar(entrada));
+		}
+		if (op == "Unidad Bluetooth") {
+			kit->agregar(UnidadBluetooth::recuperar(entrada));
+		}
+		if (op == "Microfono") {
+			kit->agregar(Microfono::recuperar(entrada));
+		}
+		if (op == "Amplificador") {
+			kit->agregar(Amplificador::recuperar(entrada));
+		}
+		if (op == "Mezclador") {
+			kit->agregar(Mezclador::recuperar(entrada));
+		}
+		if (op == "Altavoz") {
+			kit->agregar(Altavoz::recuperar(entrada));
+		}
+		if (op == "Audifono") {
+			kit->agregar(Audifono::recuperar(entrada));
 		}
 	}
 	return kit;
-	return NULL;
 }
