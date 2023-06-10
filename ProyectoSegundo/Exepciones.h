@@ -23,3 +23,9 @@ class ExcepcionNoExiteModelo : public Excepciones {
 	virtual ~ExcepcionNoExiteModelo();
 	string toString() const;
 };
+
+class ExcepcionNoExiteSuscriptor : public Excepciones {
+	ExcepcionNoExiteSuscriptor();
+	virtual ~ExcepcionNoExiteSuscriptor();
+	string toString() const;
+};

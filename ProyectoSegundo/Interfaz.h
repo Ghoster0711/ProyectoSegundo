@@ -8,6 +8,7 @@
 #include "ProcesadorDeSenal.h"
 #include "Parlante.h"
 #include "Kit.h"
+#include"Exepciones.h"
 using namespace std;
 
 
@@ -56,5 +57,8 @@ void eliminarProducto(Tienda*);
 
 
 // ------------Reportes-------------
-
+void reportes(Tienda*);
+void reporteEquiposMasVendidos(Tienda*);
+void reporteVentas(Tienda*);
 void salir(Tienda*);
+void MAIN(Tienda*);

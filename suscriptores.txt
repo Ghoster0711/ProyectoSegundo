@@ -1,4 +1,1 @@
-Persona	Joshua Amador Lara	604830349	Costa Rica	Heredia	josh@gmail.com	Costarricense
-Persona	Jefferson Amador Lara	119310170	Costa Rica	Heredia	jeff@gmail.com	Costarricense
-Empresa	Soporte Real	2039-1240-123	USA	New York
-Empresa	Microsoft	1022-1245-567	Rusia	Tokyo
+Persona	1111	2222	cr	heredia	hdwidc	cwecfew

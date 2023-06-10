@@ -15,3 +15,9 @@ ExcepcionNoExiteModelo::~ExcepcionNoExiteModelo() {}
 string ExcepcionNoExiteModelo::toString() const {
 	return "ERROR: El modelo no existe. \n";
 }
+
+ExcepcionNoExiteSuscriptor::ExcepcionNoExiteSuscriptor() : Excepciones() {}
+ExcepcionNoExiteSuscriptor::~ExcepcionNoExiteSuscriptor() {}
+string ExcepcionNoExiteSuscriptor::toString() const {
+	return "ERROR: El cliente no esta suscrito. \n";
+}
