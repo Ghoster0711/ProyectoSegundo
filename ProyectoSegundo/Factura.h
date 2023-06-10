@@ -6,10 +6,19 @@
 #include "Empresa.h"
 #include "Destino.h"
 #include "Fecha.h"
+#include "FuenteDeAudio.h"
+#include "UnidadCD.h"
+#include "Tornamesa.h"
+#include "Radio.h"
+#include "UnidadBluetooth.h"
+#include "Microfono.h"
+#include "ProcesadorDeSenal.h"
+#include "Amplificador.h"
+#include "Mezclador.h"
+#include "Parlante.h"
+#include "Altavoz.h"
+#include "Audifono.h"
 #include "Kit.h"
-#include"FuenteDeAudio.h"
-#include"Parlante.h"
-#include"ProcesadorDeSenal.h"
 
 class Factura {
 protected:

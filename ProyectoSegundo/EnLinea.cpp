@@ -64,14 +64,32 @@ Componente* EnLinea::clonarComponente(Componente* compo) {
 	if (tipo == "class Kit") {
 		return (Componente*)new Kit(*(Kit*)compo);
 	}
-	if (tipo == "class FuenteDeAudio") {
-		return (Componente*)new FuenteDeAudio(*(FuenteDeAudio*)compo);
+	if (tipo == "class UnidadCD") {
+		return (Componente*)new UnidadCD(*(UnidadCD*)compo);
 	}
-	if (tipo == "class ProcesadorDeSenal") {
-		return (Componente*)new ProcesadorDeSenal(*(ProcesadorDeSenal*)compo);
+	if (tipo == "class Tornamesa") {
+		return (Componente*)new Tornamesa(*(Tornamesa*)compo);
 	}
-	if (tipo == "class Parlante") {
-		return (Componente*)new Parlante(*(Parlante*)compo);
+	if (tipo == "class Radio") {
+		return (Componente*)new Radio(*(Radio*)compo);
+	}
+	if (tipo == "class UnidadBluetooth") {
+		return (Componente*)new UnidadBluetooth(*(UnidadBluetooth*)compo);
+	}
+	if (tipo == "class Microfono") {
+		return (Componente*)new Microfono(*(Microfono*)compo);
+	}
+	if (tipo == "class Amplificador") {
+		return (Componente*)new Amplificador(*(Amplificador*)compo);
+	}
+	if (tipo == "class Mezclador") {
+		return (Componente*)new Mezclador(*(Mezclador*)compo);
+	}
+	if (tipo == "class Altavoz") {
+		return (Componente*)new Altavoz(*(Altavoz*)compo);
+	}
+	if (tipo == "class Audifono") {
+		return (Componente*)new Audifono(*(Audifono*)compo);
 	}
 	return NULL;
 }
@@ -133,12 +151,33 @@ void EnLinea::recuperarCarrito(istream& entrada, Factura* fac) {
 	string op;
 	while (op != "finCarrito") {
 		getline(entrada, op, DELIMITA_CAMPO);
-		if (op == "Fuente de audio")
-			fac->getCarrito()->ingresar(*FuenteDeAudio::recuperar(entrada));
-		if (op == "Procesador de senal")
-			fac->getCarrito()->ingresar(*ProcesadorDeSenal::recuperar(entrada));
-		if (op == "Parlante")
-			fac->getCarrito()->ingresar(*Parlante::recuperar(entrada));
+		if (op == "Unidad CD") {
+			fac->getCarrito()->ingresar(*UnidadCD::recuperar(entrada));
+		}
+		if (op == "Tornamesa") {
+			fac->getCarrito()->ingresar(*Tornamesa::recuperar(entrada));
+		}
+		if (op == "Radio") {
+			fac->getCarrito()->ingresar(*Radio::recuperar(entrada));
+		}
+		if (op == "Unidad Bluetooth") {
+			fac->getCarrito()->ingresar(*UnidadBluetooth::recuperar(entrada));
+		}
+		if (op == "Microfono") {
+			fac->getCarrito()->ingresar(*Microfono::recuperar(entrada));
+		}
+		if (op == "Amplificador") {
+			fac->getCarrito()->ingresar(*Amplificador::recuperar(entrada));
+		}
+		if (op == "Mezclador") {
+			fac->getCarrito()->ingresar(*Mezclador::recuperar(entrada));
+		}
+		if (op == "Altavoz") {
+			fac->getCarrito()->ingresar(*Altavoz::recuperar(entrada));
+		}
+		if (op == "Audifono") {
+			fac->getCarrito()->ingresar(*Audifono::recuperar(entrada));
+		}
 		if (op == "Kit")
 			fac->getCarrito()->ingresar(*Kit::recuperar(entrada));
 	}

@@ -75,6 +75,33 @@
     <ClInclude Include="Interfaz.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UnidadCD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tornamesa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Radio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UnidadBluetooth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Amplificador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mezclador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Altavoz.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Audifono.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microfono.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sistema.cpp">
@@ -83,19 +110,10 @@
     <ClCompile Include="Factura.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FuenteDeAudio.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Kit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Parlante.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ProcesadorDeSenal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Tienda.cpp">
@@ -132,6 +150,33 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Interfaz.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnidadCD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tornamesa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Radio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnidadBluetooth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Amplificador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mezclador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Altavoz.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Audifono.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MIcrofono.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
