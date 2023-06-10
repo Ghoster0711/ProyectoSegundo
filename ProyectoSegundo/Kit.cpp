@@ -57,9 +57,8 @@ void Kit::setNombre(string nom) { nombre = nom; }
 // Desarrollo del ToString
 string Kit::toString(){
 	stringstream show;
-	show << "----------------------------------------------------------------------------------------------" << endl;
 	show << "| Nombre del Kit: " << nombre	<< "\tCodigo del kit: " << codigo << endl;
-	show << Empaquetado->toString();
+	show << Empaquetado->toStringKit();
 	return show.str();
 }
 

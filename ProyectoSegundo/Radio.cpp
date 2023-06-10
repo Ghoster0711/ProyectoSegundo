@@ -32,7 +32,6 @@ void Radio::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string Radio::toString() {
 	stringstream show;
-	show << "----------------------------------------------------------------------------------------------" << endl;
 	show << "| Fuente de audio\t" << codigo << "\t" << "Radio" << "\t\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }

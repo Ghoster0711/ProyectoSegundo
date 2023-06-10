@@ -31,12 +31,12 @@ void Persona::setNacionalidad(string nacio) { nacionalidad; }
 // Desarrollo del ToString
 string Persona::toString() {
 	stringstream s;
-	s << "Nombre: " << nombre << endl
-		<< "Cedula: " << cedula << endl
-		<< "Pais: " << nombrePais << endl
-		<< "Ciudad de Ubicacion: " << ciudadUbicacion << endl
-		<< "Correo: " << correo << endl
-		<< "Nacionalidad: " << nacionalidad << endl;
+	s << "| Nombre: " << nombre << endl
+		<< "| Cedula: " << cedula << endl
+		<< "| Pais: " << nombrePais << endl
+		<< "| Ciudad de Ubicacion: " << ciudadUbicacion << endl
+		<< "| Correo: " << correo << endl
+		<< "| Nacionalidad: " << nacionalidad;
 	return s.str();
 }
 

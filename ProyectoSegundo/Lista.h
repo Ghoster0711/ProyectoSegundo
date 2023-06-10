@@ -26,6 +26,7 @@ public:
 	void guardarDestinos();
 
 	string toString();
+	string toStringKit();
 };
 
 template<class T>
@@ -167,6 +168,21 @@ inline void Lista<T>::guardarDestinos() {
 
 template<class T>
 inline string Lista<T>::toString(){
+	stringstream show;
+	Nodo<T>* pExt = primero;
+	while (pExt != NULL) {
+		if (pExt->getDato() != NULL) {
+			show << "-------------------------------------------------------------------------------------------------------------------" << endl;
+			show << pExt->getDato()->toString() << endl;
+		}
+		pExt = pExt->getSiguiente();
+	}
+	show << "-------------------------------------------------------------------------------------------------------------------" << endl;
+	return show.str();
+}
+
+template<class T>
+inline string Lista<T>::toStringKit() {
 	stringstream show;
 	Nodo<T>* pExt = primero;
 	while (pExt != NULL) {

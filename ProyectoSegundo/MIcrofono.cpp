@@ -32,7 +32,6 @@ void Microfono::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string Microfono::toString() {
 	stringstream show;
-	show << "----------------------------------------------------------------------------------------------" << endl;
 	show << "| Fuente de audio\t" << codigo << "\t" << "Microfono" << "\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
