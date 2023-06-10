@@ -87,7 +87,7 @@ template<class T>
 inline void Lista<T>::guardarCatalogo(){
 	Nodo<T>* e = primero;
 	string tipo;
-	string rutaCatalogo = "../catalogo.txt";
+	string rutaCatalogo = "../CatalogoS.txt";
 	ofstream file;
 	file.open(rutaCatalogo);
 	while (e != NULL) {

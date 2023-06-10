@@ -9,7 +9,7 @@ public:
 	Directo();
 
 	// Constructor parametrizado
-	Directo(string, Fecha*, Cliente*);
+	Directo(string, Cliente*);
 
 	// Destructor
 	virtual ~Directo();

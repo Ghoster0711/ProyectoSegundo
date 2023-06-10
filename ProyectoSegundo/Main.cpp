@@ -1,51 +1,12 @@
 #include "Tienda.h"
-#include "Interfaz.h"
+#include"Interfaz.h"
 #include"Factura.h"
 #include"fstream"
 
 
 int main() {
 	Tienda* tienda = new Tienda();
-	int op, op5;
-	tienda->recuperarDeArchivos();
-	do {
-		system("cls");
-		op = menu();
-		switch (op) {
-		case 1:
-			generarVentaDirecta(tienda);
-			break;
-		case 2:
-			generarVentaEnLinea(tienda);
-			break;
-		case 3:
-			mantenimiento(tienda);
-			break;
-		case 4:
-			do {
-				system("cls");
-				op5 = menuReportes();
-				switch (op5) {
-				case 1:
-					
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-				}
-			} while (op5 != 3);
-			break;
-		case 5:
-			salir(tienda);
-			break;
-		}
-	} while (op != 5);
-
-
-
-
-	system("pause");
+	MAIN(tienda);
 	return 0;
 }
 
@@ -100,9 +61,6 @@ int main() {
 //	system("pause");
 //	return 0;
 //}
-
-
-
 
 
 /// Prueba archivos clientes

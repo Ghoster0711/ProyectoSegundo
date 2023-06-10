@@ -48,15 +48,12 @@ public:
 
 	// Mostrar contenedores 
 	string mostrarElCatalogo();
-	//string mostrarLosSuscriptores();
-	//string mostrarLasVentas();
-	//string mostrasDestinos();
+	string mostrasDestinos();
 	
 	bool buscarSuscriptor(string);
 	bool buscarProductoDelCatalogo(string);
 	bool buscarComponente(string);
 	bool buscarKit(string);
-	bool buscarCliente(string);
 	bool buscarDestino(string);
 
 	Componente* retornarSoloComponentes(string);
@@ -64,12 +61,13 @@ public:
 	Componente* retornarSoloKits(string);
 	string mostrarSoloKits();
 	Destino* retornaDestino(string);
-	
+	Cliente* retornaSuscriptor(string);
 
 
 // -------------Directo---------------
 
 // -------------En Linea--------------
+
 
 // -----------Mantenimiento-----------
 
