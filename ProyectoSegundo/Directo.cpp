@@ -5,7 +5,7 @@ Directo::Directo() {
 	codigo = "";
 	fecha = NULL;
 	cliente = NULL;
-	carritoDeCompras = NULL;
+	carritoDeCompras = new Lista<Componente>();
 }
 
 // Desarrollo del constructor parametrizado
@@ -17,7 +17,11 @@ Directo::Directo(string cod, Cliente* cli) {
 }
 
 // Desarrollo destructor
-Directo::~Directo() {}
+Directo::~Directo() {
+	if (fecha != NULL) delete fecha;
+	if (cliente != NULL) delete cliente;
+	delete carritoDeCompras;
+}
 
 // Desarrollo de los get's
 string Directo::getCodigo() { return codigo; }
@@ -98,21 +102,29 @@ void Directo::ingresarCompra(Componente* componente) {
 
 // Desarrollo del ToString
 string Directo::toString() {
+	double subtotal = carritoDeCompras->obtenerPrecios();
+	double adicional = subtotal * 0.35;
+	double total = subtotal + adicional;
 	stringstream show;
-	show << "--------------Factura---------------" << endl
-		<< "Codigo de factura: " << codigo << endl
-		<< "Fecha: " << fecha->toString() << endl
-		<< "-------INFORMACION DEL CLIENTE------" << endl
+	show << "------------------------------------------------Factura------------------------------------------------------------" << endl
+		<< "| Codigo de factura: " << codigo << endl
+		<< "| Fecha: " << fecha->toString() << endl
+		<< "-----------------------------------------INFORMACION DEL CLIENTE---------------------------------------------------" << endl
 		<< cliente->toString() << endl
-		<< "-------INFORMACION DE LA COMPRA------" << endl
+		<< "----------------------------------------INFORMACION DE LA COMPRA---------------------------------------------------" << endl
 		<< carritoDeCompras->toString() << endl
-		<< "-------------------------------------" << endl;
+		<< "-------------------------------------------------------------------------------------------------------------------" << endl
+		<< "| Subtotal a Pagar: " << subtotal << endl
+		<< "| Adicional (35%): " << adicional << endl
+		<< "-------------------------------------------------------------------------------------------------------------------" << endl
+		<< "| Total a pagar: " << total << endl
+		<< "-------------------------------------------------------------------------------------------------------------------" << endl;
 	return show.str();
 }
 
 // Desarrollo del metodo guardar 
 void Directo::guardar(ostream& salida) {
-	salida << "Factura Directo" << DELIMITA_CAMPO;
+	salida << "Directo" << DELIMITA_CAMPO;
 	salida << codigo << DELIMITA_CAMPO;
 	fecha->guardarDatos(salida);
 	cliente->guardar(salida);

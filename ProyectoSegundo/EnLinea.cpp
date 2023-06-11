@@ -5,7 +5,7 @@ EnLinea::EnLinea() {
 	codigo = "";
 	fecha = NULL;
 	cliente = NULL;
-	carritoDeCompras = NULL;
+	carritoDeCompras = new Lista<Componente>();
 	destino = NULL;
 }
 
@@ -21,7 +21,10 @@ EnLinea::EnLinea(string cod, Cliente* cli, Destino* des) {
 
 // Desarrollo destructor
 EnLinea::~EnLinea() {
+	if (fecha != NULL) delete fecha;
+	if (cliente != NULL) delete cliente;
 	if (destino != NULL) delete destino;
+	delete carritoDeCompras;
 }
 
 // Desarrollo de los get's
@@ -101,17 +104,26 @@ void EnLinea::ingresarCompra(Componente* componente) {
 
 // Desarrollo del ToString
 string EnLinea::toString() {
+	double subtotal = carritoDeCompras->obtenerPrecios();
+	double adicional = subtotal * 0.35;
+	double total = subtotal + adicional + destino->getCostoTraslado();
 	stringstream show;
-	show << "--------------Factura---------------" << endl
-		<< "Codigo de factura: " << codigo << endl
-		<< "Fecha: " << fecha->toString() << endl
-		<< "-------INFORMACION DEL CLIENTE------" << endl
+	show << "--------------------------------------------------Factura----------------------------------------------------------" << endl
+		<< "| Codigo de factura: " << codigo << endl
+		<< "| Fecha: " << fecha->toString() << endl
+		<< "-------------------------------------------INFORMACION DEL CLIENTE-------------------------------------------------" << endl
 		<< cliente->toString() << endl
-		<< "-------INFORMACION DE LA COMPRA------" << endl
-		<< carritoDeCompras->toString() << endl
-		<< "-------INFORMACION DEL DESTINO------" << endl
+		<< "-------------------------------------------INFORMACION DEL DESTINO-------------------------------------------------" << endl
 		<< destino->toString() << endl
-		<< "-------------------------------------" << endl;
+		<< "-------------------------------------------INFORMACION DE LA COMPRA------------------------------------------------" << endl
+		<< carritoDeCompras->toString() << endl
+		<< "-------------------------------------------------------------------------------------------------------------------" << endl
+		<< "| Subtotal a Pagar: " << subtotal << endl
+		<< "| Adicional: " << adicional << endl
+		<< "| Precio de envio: " << destino->getCostoTraslado() << endl
+		<< "-------------------------------------------------------------------------------------------------------------------" << endl
+		<< "| Total a pagar: " << total << endl
+		<< "-------------------------------------------------------------------------------------------------------------------" << endl;		
 
 	return show.str();
 }
@@ -119,7 +131,7 @@ string EnLinea::toString() {
 
 // Desarrollo del metodo guardar
 void EnLinea::guardar(ostream& salida) {
-	salida << "Factura En Linea" << DELIMITA_CAMPO;
+	salida << "EnLinea" << DELIMITA_CAMPO;
 	salida	<< codigo << DELIMITA_CAMPO;
 	fecha->guardarDatos(salida);
 	cliente->guardar(salida);

@@ -22,6 +22,7 @@ string UnidadCD::getID() { return codigo; }
 string UnidadCD::getCodigo() { return codigo; }
 string UnidadCD::getCaracteristica() { return caracteristica; }
 double UnidadCD::getPrecio() { return precio; }
+double UnidadCD::obtenerPrecios() { return precio; }
 
 // Desarrollo de los set's
 void UnidadCD::agregar(Componente*) {}

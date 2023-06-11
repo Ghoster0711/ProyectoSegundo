@@ -27,6 +27,7 @@ public:
 
 	string toString();
 	string toStringKit();
+	double obtenerPrecios();
 };
 
 template<class T>
@@ -192,4 +193,18 @@ inline string Lista<T>::toStringKit() {
 		pExt = pExt->getSiguiente();
 	}
 	return show.str();
+}
+
+template<class T>
+inline double Lista<T>::obtenerPrecios()
+{
+	double precios = 0;
+	Nodo<T>* pExt = primero;
+	while (pExt != NULL) {
+		if (pExt->getDato() != NULL) {
+			precios = precios + pExt->getDato()->obtenerPrecios();
+		}
+		pExt = pExt->getSiguiente();
+	}
+	return precios;
 }

@@ -15,6 +15,7 @@ public:
 	string getCodigo();
 	string getCaracteristica();
 	double getPrecio();
+	double obtenerPrecios();
 
 	// Set's
 	void setNombre(string) {}

@@ -27,8 +27,8 @@ protected:
 	Cliente* cliente;
 	Lista<Componente>* carritoDeCompras;
 public:
-	Factura();
-	virtual ~Factura();
+	//Factura();
+	//virtual ~Factura();
 
 	virtual string getCodigo() = 0;
 	virtual Fecha* getFecha() = 0;
