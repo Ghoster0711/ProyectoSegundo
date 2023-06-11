@@ -30,10 +30,10 @@ void Empresa::setNacionalidad(string){}
 // Desarrollo del ToString
 string Empresa::toString() {
 	stringstream s;
-	 s  << "Nombre: " << nombre << endl
-		<< "Cedula: " << cedula << endl
-		<< "Pais: " << nombrePais << endl
-		<< "Ciudad de Ubicacion: " << ciudadUbicacion << endl;
+	 s  << "| Nombre: " << nombre << endl
+		<< "| Cedula: " << cedula << endl
+		<< "| Pais: " << nombrePais << endl
+		<< "| Ciudad de Ubicacion: " << ciudadUbicacion;
 	return s.str();
 }
 

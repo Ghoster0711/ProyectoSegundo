@@ -1,9 +1,8 @@
 #pragma once
 #include "Nodo.h"
-
-
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'
+
 
 template<class T>
 class Lista {
@@ -26,6 +25,8 @@ public:
 	void guardarDestinos();
 
 	string toString();
+	string toStringKit();
+	double obtenerPrecios();
 };
 
 template<class T>
@@ -171,9 +172,38 @@ inline string Lista<T>::toString(){
 	Nodo<T>* pExt = primero;
 	while (pExt != NULL) {
 		if (pExt->getDato() != NULL) {
+			show << "-------------------------------------------------------------------------------------------------------------------" << endl;
+			show << pExt->getDato()->toString() << endl;
+		}
+		pExt = pExt->getSiguiente();
+	}
+	show << "-------------------------------------------------------------------------------------------------------------------" << endl;
+	return show.str();
+}
+
+template<class T>
+inline string Lista<T>::toStringKit() {
+	stringstream show;
+	Nodo<T>* pExt = primero;
+	while (pExt != NULL) {
+		if (pExt->getDato() != NULL) {
 			show << pExt->getDato()->toString() << endl;
 		}
 		pExt = pExt->getSiguiente();
 	}
 	return show.str();
+}
+
+template<class T>
+inline double Lista<T>::obtenerPrecios()
+{
+	double precios = 0;
+	Nodo<T>* pExt = primero;
+	while (pExt != NULL) {
+		if (pExt->getDato() != NULL) {
+			precios = precios + pExt->getDato()->obtenerPrecios();
+		}
+		pExt = pExt->getSiguiente();
+	}
+	return precios;
 }

@@ -22,6 +22,7 @@ string UnidadBluetooth::getID() { return codigo; }
 string UnidadBluetooth::getCodigo() { return codigo; }
 string UnidadBluetooth::getCaracteristica() { return caracteristica; }
 double UnidadBluetooth::getPrecio() { return precio; }
+double UnidadBluetooth::obtenerPrecios() { return precio; }
 
 // Desarrollo de los set's
 void UnidadBluetooth::agregar(Componente*) {}
@@ -32,7 +33,7 @@ void UnidadBluetooth::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string UnidadBluetooth::toString() {
 	stringstream show;
-	show << "Fuente de audio\t\t" << codigo << "\t" << "Unidad Bluetooth" << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "| Fuente de audio\t" << codigo << "\t" << "Unidad Bluetooth" << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

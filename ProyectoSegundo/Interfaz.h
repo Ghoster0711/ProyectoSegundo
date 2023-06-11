@@ -62,3 +62,7 @@ void reporteEquiposMasVendidos(Tienda*);
 void reporteVentas(Tienda*);
 void salir(Tienda*);
 void MAIN(Tienda*);
+
+
+// ------------Extras---------------
+bool ingresarAlKit(int&, int&, int&, string&, string, Componente&, Tienda*);

@@ -22,6 +22,7 @@ string Microfono::getID() { return codigo; }
 string Microfono::getCodigo() { return codigo; }
 string Microfono::getCaracteristica() { return caracteristica; }
 double Microfono::getPrecio() { return precio; }
+double Microfono::obtenerPrecios() { return precio; }
 
 // Desarrollo de los set's
 void Microfono::agregar(Componente*) {}
@@ -32,7 +33,7 @@ void Microfono::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string Microfono::toString() {
 	stringstream show;
-	show << "Fuente de audio\t\t" << codigo << "\t" << "Microfono" << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "| Fuente de audio\t" << codigo << "\t" << "Microfono" << "\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

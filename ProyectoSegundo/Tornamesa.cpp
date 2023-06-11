@@ -22,6 +22,7 @@ string Tornamesa::getID() { return codigo; }
 string Tornamesa::getCodigo() { return codigo; }
 string Tornamesa::getCaracteristica() { return caracteristica; }
 double Tornamesa::getPrecio() { return precio; }
+double Tornamesa::obtenerPrecios() { return precio; }
 
 // Desarrollo de los set's
 void Tornamesa::agregar(Componente*) {}
@@ -32,7 +33,7 @@ void Tornamesa::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string Tornamesa::toString() {
 	stringstream show;
-	show << "Fuente de audio\t\t" << codigo << "\t" << "Tornamesa" << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "| Fuente de audio\t" << codigo << "\t" << "Tornamesa" << "\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 
