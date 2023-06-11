@@ -232,22 +232,29 @@ void generarVentaEnLinea(Tienda* tienda){
 	}
 	Factura* factura = new Directo(codigo, cliente);
 	do {
-		system("pause");
+		system("cls");
 		cout << "MENU ->  (2) Venta en Linea." << endl << endl;
 		cout << "Cliente suscrito encontrado!! " << endl << endl;
 		cout << tienda->mostrasDestinos();
 		cout << "Digite el codigo del Destino ->"; cin >> destino;
 		if (tienda->buscarDestino(destino) == true) {
 			factura->setDestino(tienda->retornaDestino(destino));
+			cout << endl;
 			cout << "Destino encontrado!!" << endl << endl;
+			system("pause");
 			acceso = true;
 		}
 		else {
 			cout << "Destino no encontrado!!" << endl << endl;
+			cout << "Por favor digite nuevamente el codigo..." << endl;
+			system("pause");
 		}
 	} while (acceso != true);
 	do {
 		system("cls");
+		cout << "MENU ->  (2) Venta en Linea." << endl << endl;
+		cout << "Cliente suscrito encontrado!! " << endl << endl;
+		cout << "Destino encontrado!!" << endl << endl;
 		op = menuEnLinea();
 		switch (op)
 		{

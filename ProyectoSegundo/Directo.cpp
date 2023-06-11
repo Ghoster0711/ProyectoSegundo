@@ -52,42 +52,42 @@ Cliente* Directo::clonarCliente(Cliente* cliente) {
 	return NULL;
 }
 
-// Desarrollo de clonar componente
-//Componente* Directo::clonarComponente(Componente* compo) {
-//	string tipo;
-//	tipo = typeid(*compo).name();
-//	if (tipo == "class Kit") {
-//		return (Componente*)new Kit(*(Kit*)compo);
-//	}
-//	if (tipo == "class UnidadCD") {
-//		return (Componente*)new UnidadCD(*(UnidadCD*)compo);
-//	}
-//	if (tipo == "class Tornamesa") {
-//		return (Componente*)new Tornamesa(*(Tornamesa*)compo);
-//	}
-//	if (tipo == "class Radio") {
-//		return (Componente*)new Radio(*(Radio*)compo);
-//	}
-//	if (tipo == "class UnidadBluetooth") {
-//		return (Componente*)new UnidadBluetooth(*(UnidadBluetooth*)compo);
-//	}
-//	if (tipo == "class Microfono") {
-//		return (Componente*)new Microfono(*(Microfono*)compo);
-//	}
-//	if (tipo == "class Amplificador") {
-//		return (Componente*)new Amplificador(*(Amplificador*)compo);
-//	}
-//	if (tipo == "class Mezclador") {
-//		return (Componente*)new Mezclador(*(Mezclador*)compo);
-//	}
-//	if (tipo == "class Altavoz") {
-//		return (Componente*)new Altavoz(*(Altavoz*)compo);
-//	}
-//	if (tipo == "class Audifono") {
-//		return (Componente*)new Audifono(*(Audifono*)compo);
-//	}
-//	return NULL;
-//}
+ //Desarrollo de clonar componente
+Componente* Directo::clonarComponente(Componente* compo) {
+	string tipo;
+	tipo = typeid(*compo).name();
+	if (tipo == "class Kit") {
+		return (Componente*)new Kit(*(Kit*)compo);
+	}
+	if (tipo == "class UnidadCD") {
+		return (Componente*)new UnidadCD(*(UnidadCD*)compo);
+	}
+	if (tipo == "class Tornamesa") {
+		return (Componente*)new Tornamesa(*(Tornamesa*)compo);
+	}
+	if (tipo == "class Radio") {
+		return (Componente*)new Radio(*(Radio*)compo);
+	}
+	if (tipo == "class UnidadBluetooth") {
+		return (Componente*)new UnidadBluetooth(*(UnidadBluetooth*)compo);
+	}
+	if (tipo == "class Microfono") {
+		return (Componente*)new Microfono(*(Microfono*)compo);
+	}
+	if (tipo == "class Amplificador") {
+		return (Componente*)new Amplificador(*(Amplificador*)compo);
+	}
+	if (tipo == "class Mezclador") {
+		return (Componente*)new Mezclador(*(Mezclador*)compo);
+	}
+	if (tipo == "class Altavoz") {
+		return (Componente*)new Altavoz(*(Altavoz*)compo);
+	}
+	if (tipo == "class Audifono") {
+		return (Componente*)new Audifono(*(Audifono*)compo);
+	}
+	return NULL;
+}
 
 // Desarrollo de ingresar al componente
 void Directo::ingresarCompra(Componente* componente) {
