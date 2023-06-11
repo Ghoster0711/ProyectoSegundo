@@ -46,6 +46,7 @@ string Kit::getCodigo() { return codigo; }
 string Kit::getNombre() { return nombre; }
 string Kit::getCaracteristica() { return caracteristica; }
 double Kit::getPrecio() { return precio; }
+double Kit::obtenerPrecios() { return Empaquetado->obtenerPrecios(); }
 
 // Desarrollo de los set's
 void Kit::setCodigo(string cod) { codigo = cod; }
@@ -57,9 +58,8 @@ void Kit::setNombre(string nom) { nombre = nom; }
 // Desarrollo del ToString
 string Kit::toString(){
 	stringstream show;
-	show << "Nombre : " << nombre
-		<< "\tCodigo: " << codigo << endl;
-	show << Empaquetado->toString();
+	show << "| Nombre del Kit: " << nombre	<< "\tCodigo del kit: " << codigo << endl;
+	show << Empaquetado->toStringKit();
 	return show.str();
 }
 

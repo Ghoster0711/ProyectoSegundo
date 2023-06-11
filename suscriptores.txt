@@ -1,6 +1,4 @@
-
 Empresa	Microsoft	1022-1245-567	Rusia	Tokyo
 Empresa	Soporte Real	2039-1240-123	USA	New York
 Persona	Jefferson Amador Lara	119310170	Costa Rica	Heredia	jeff@gmail.com	Costarricense
 Persona	Joshua Amador Lara	604830349	Costa Rica	Heredia	josh@gmail.com	Costarricense
-

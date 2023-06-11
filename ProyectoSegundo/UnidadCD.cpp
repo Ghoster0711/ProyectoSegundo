@@ -22,6 +22,7 @@ string UnidadCD::getID() { return codigo; }
 string UnidadCD::getCodigo() { return codigo; }
 string UnidadCD::getCaracteristica() { return caracteristica; }
 double UnidadCD::getPrecio() { return precio; }
+double UnidadCD::obtenerPrecios() { return precio; }
 
 // Desarrollo de los set's
 void UnidadCD::agregar(Componente*) {}
@@ -32,7 +33,7 @@ void UnidadCD::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string UnidadCD::toString() {
 	stringstream show;
-	show << "Fuente de audio\t\t" << codigo << "\t" << "Unidad CD" << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "| Fuente de audio\t" << codigo << "\t" << "Unidad CD" << "\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

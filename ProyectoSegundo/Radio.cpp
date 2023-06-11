@@ -22,6 +22,7 @@ string Radio::getID() { return codigo; }
 string Radio::getCodigo() { return codigo; }
 string Radio::getCaracteristica() { return caracteristica; }
 double Radio::getPrecio() { return precio; }
+double Radio::obtenerPrecios() { return precio; }
 
 // Desarrollo de los set's
 void Radio::agregar(Componente*) {}
@@ -32,7 +33,7 @@ void Radio::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string Radio::toString() {
 	stringstream show;
-	show << "Fuente de audio\t\t" << codigo << "\t" << "Radio" << "\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "| Fuente de audio\t" << codigo << "\t" << "Radio" << "\t\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

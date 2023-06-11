@@ -22,6 +22,7 @@ string Audifono::getID() { return codigo; }
 string Audifono::getCodigo() { return codigo; }
 string Audifono::getCaracteristica() { return caracteristica; }
 double Audifono::getPrecio() { return precio; }
+double Audifono::obtenerPrecios() {	return precio; }
 
 // Desarrollo de los set's
 void Audifono::agregar(Componente*) {}
@@ -32,7 +33,7 @@ void Audifono::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string Audifono::toString() {
 	stringstream show;
-	show << "Parlante\t\t" << codigo << "\t" << "Audifono" << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "| Parlante\t\t" << codigo << "\t" << "Audifono" << "\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 

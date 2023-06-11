@@ -24,6 +24,7 @@ public:
 	virtual string getCodigo() = 0;
 	virtual string getCaracteristica() = 0;
 	virtual double getPrecio() = 0;
+	virtual double obtenerPrecios() = 0;
 
 
 	// Set's

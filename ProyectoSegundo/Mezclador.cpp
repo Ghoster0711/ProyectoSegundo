@@ -22,6 +22,7 @@ string Mezclador::getID() { return codigo; }
 string Mezclador::getCodigo() { return codigo; }
 string Mezclador::getCaracteristica() { return caracteristica; }
 double Mezclador::getPrecio() { return precio; }
+double Mezclador::obtenerPrecios() { return precio; }
 
 // Desarrollo de los set's
 void Mezclador::agregar(Componente*) {}
@@ -32,7 +33,7 @@ void Mezclador::setPrecio(double pre) { precio = pre; }
 // Desarrollo del ToString
 string Mezclador::toString() {
 	stringstream show;
-	show << "Procesador de senal\t" << codigo << "\t" << "Mezclador" << "\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
+	show << "| Procesador de senal\t" << codigo << "\t" << "Mezclador" << "\t\t" << modelo << "\t" << caracteristica << "\t" << precio << "\t";
 	return show.str();
 }
 
