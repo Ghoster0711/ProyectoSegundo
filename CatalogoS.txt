@@ -39,3 +39,12 @@ Unidad CD	6797	SE381	Soporte SACD	200
 Unidad CD	6168	UK404	Múltiples velocidades	175
 Unidad CD	6653	VG953	Proteccion de salto	150
 Unidad CD	4746	OA966	Unidad basica	100
+Kit	Premium	SB07JA	Unidad CD	4746	OA966	Unidad basica	100
+Tornamesa	4459	LE978	Unidad basica 33/45 RPM	180
+Radio	4431	LR506	Basico AM/FM	90
+Unidad Bluetooth	6113	NA107	Basico	70
+Microfono	5857	UT654	Alambrico	90
+Amplificador	9180	IR302	80W	90
+Mezclador	3244	JL664	2 canales analogicos	70
+Altavoz	6402	FD238	280W subwoofer	435
+finKit	

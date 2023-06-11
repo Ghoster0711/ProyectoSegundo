@@ -91,9 +91,8 @@ Componente* Directo::clonarComponente(Componente* compo) {
 
 // Desarrollo de ingresar al componente
 void Directo::ingresarCompra(Componente* componente) {
-	if (componente != NULL) {
+	if (componente != NULL)
 		carritoDeCompras->ingresar(*componente);
-	}
 }
 
 // Desarrollo del ToString
