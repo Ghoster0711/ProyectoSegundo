@@ -18,14 +18,14 @@ public:
 	string toString() const;
 };
 
-class ExcepcionNoExiteModelo : public Excepciones {
+class ExcepcionNoExiteModelo : public Excepciones {  //Clase Derivada: Excepcion de que el modelo del componente digitado no existe 
 	ExcepcionNoExiteModelo();
 	virtual ~ExcepcionNoExiteModelo();
 	string toString() const;
 };
 
-class ExcepcionNoExiteSuscriptor : public Excepciones {
-	ExcepcionNoExiteSuscriptor();
+class ExcepcionNoExiteSuscriptor : public Excepciones {   //Clase Derivada: Excepcion de que no existe un suscriptor con el numero 
+	ExcepcionNoExiteSuscriptor();                         //de cedula digitado 
 	virtual ~ExcepcionNoExiteSuscriptor();
 	string toString() const;
 };

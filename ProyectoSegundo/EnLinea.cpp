@@ -96,7 +96,10 @@ Componente* EnLinea::clonarComponente(Componente* compo) {
 
 // Desarrollo del ingresar compra
 void EnLinea::ingresarCompra(Componente* componente) {
-	carritoDeCompras->ingresar(*clonarComponente(componente));
+	if (componente != NULL) {
+		carritoDeCompras->ingresar(*componente);
+	}
+	//carritoDeCompras->ingresar(*clonarComponente(componente));
 }
 
 // Desarrollo del ToString
@@ -127,7 +130,7 @@ void EnLinea::guardar(ostream& salida) {
 	carritoDeCompras->guardarCarritoDeCompras(salida);
 }
 
-
+//Desarrollo del metodo para recuperar datos del archivo 
 Factura* EnLinea::recuperar(istream& entrada) {
 	string typeCliente, codigo;
 	Factura* factura = new EnLinea();
@@ -150,6 +153,7 @@ Factura* EnLinea::recuperar(istream& entrada) {
 	return factura;
 }
 
+//Desarrollo del metodo para recuperar el carrito de compras del cliente, del archivo 
 void EnLinea::recuperarCarrito(istream& entrada, Factura* fac) {
 	string op;
 	while (op != "finCarrito") {

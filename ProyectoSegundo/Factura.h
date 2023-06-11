@@ -20,12 +20,12 @@
 #include "Audifono.h"
 #include "Kit.h"
 
-class Factura {
+class Factura {   //Clase Abstracta 
 protected:
-	string codigo;
+	string codigo;   //Codigo de la factura 
 	Fecha* fecha;
 	Cliente* cliente;
-	Lista<Componente>* carritoDeCompras;
+	Lista<Componente>* carritoDeCompras;   //Lista de componentes que el cliente desea comprar 
 public:
 	Factura();
 	virtual ~Factura();

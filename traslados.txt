@@ -1,10 +1,3 @@
-091	Costa Rica (local)	fuera de la GAM	80
-090	Costa Rica (local)	GAM	50
-060	Italia	Milan	250
-050	Inglaterra	Londres	200
-040	Francia	Paris	200
-032	EEUU	New York	100
-031	EEUU	California	150
 030	Canada	Ontario	160
 020	Brasil	Brasilia	150
 010	Argentina	Buenos Aires	175
