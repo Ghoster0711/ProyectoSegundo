@@ -56,7 +56,7 @@ Cliente* Directo::clonarCliente(Cliente* cliente) {
 	return NULL;
 }
 
-// Desarrollo de clonar componente
+ //Desarrollo de clonar componente
 Componente* Directo::clonarComponente(Componente* compo) {
 	string tipo;
 	tipo = typeid(*compo).name();
@@ -97,7 +97,6 @@ Componente* Directo::clonarComponente(Componente* compo) {
 void Directo::ingresarCompra(Componente* componente) {
 	if (componente != NULL)
 		carritoDeCompras->ingresar(*componente);
-		
 }
 
 // Desarrollo del ToString
@@ -154,6 +153,7 @@ Factura* Directo::recuperar(istream& entrada) {
 	return factura;
 }
 
+//Desarrollo del metodo para recuperar el carrito de compras del cliente, del archivo 
 void Directo::recuperarCarrito(istream& entrada, Factura* fac){
 	string op;
 	while (op != "finCarrito") {

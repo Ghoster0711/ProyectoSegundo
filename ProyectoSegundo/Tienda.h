@@ -46,27 +46,24 @@ public:
 	Lista<Factura>* getVentas();
 	Lista<Destino>* getDestinos();
 
-	// Mostrar contenedores 
+	//Desarrollo de metodos para mostrar contenedores 
 	string mostrarElCatalogo();
 	string mostrasDestinos();
+	string mostrarSoloComponentes();
 	
+	//Desarrollo de metodos para buscar objetos 
 	bool buscarSuscriptor(string);
 	bool buscarProductoDelCatalogo(string);
 	bool buscarComponente(string);
 	bool buscarKit(string);
 	bool buscarDestino(string);
 
+	//Desarrollo de metodos que retornan objetos 
 	Componente* retornarSoloComponentes(string);
-	string mostrarSoloComponentes();
 	Componente* retornarSoloKits(string);
 	string mostrarSoloKits();
 	Destino* retornaDestino(string);
 	Cliente* retornaSuscriptor(string);
-
-
-// -------------Directo---------------
-
-// -------------En Linea--------------
 
 
 // -----------Mantenimiento-----------
@@ -82,19 +79,23 @@ public:
 
 	// ------------Archivos---------------
 
-
+	//Desarrollo de metodos para guardar y recuperar el catalago de componentes del archivo 
 	void guardarCatalogo();
 	void recuperarArchivoCatalogo();
 
+	//Desarrollo de metodos para guardar y recuperar los suscriptores del archivo 
 	void guardarSuscriptores();
 	void recuperarArchivoSuscriptores();
 
+	//Desarrollo de metodos para guardar y recuperar las facturas del archivo
 	void guardarFacturas();
 	void recuperarFacturas();
 
+	//Desarrollo de metodos para guardar y recuperar los destinos del archivo
 	void guardaDestinos();
 	void recuperarArchivoDestinos();
 
+	//Desarrollo de metodos para guardar y recuperar todos los archivos en general de la tienda 
 	void guardarArchivos();
 	void recuperarDeArchivos();
 

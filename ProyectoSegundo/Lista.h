@@ -1,9 +1,8 @@
 #pragma once
 #include "Nodo.h"
-
-
 #define DELIMITA_CAMPO '\t'
 #define DELIMITA_REGISTRO '\n'
+
 
 template<class T>
 class Lista {
