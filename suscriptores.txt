@@ -1,3 +1,0 @@
-Persona	Jimena	3333	Colombia	Medellin	jimena@	colombiana
-Empresa	Microsoft	2222	Canada	Toronto
-Persona	Sianny	1111	CostaRica	Heredia	barrantes@	costarricense
