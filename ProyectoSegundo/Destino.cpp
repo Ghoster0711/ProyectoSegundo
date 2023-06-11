@@ -34,10 +34,10 @@ void Destino::setCostoTraslado(double cost) { costoTraslado = cost; }
 // Desarrollo del ToString
 string Destino::toString() {
 	stringstream s;
-	s   << "Codigo: " << codigo << endl
-		<< "Pais: " << pais << endl
-		<< "Ciudad: " << ciudad << endl
-		<< "Costo de Traslado: " << costoTraslado << endl;
+	s   << "| Codigo: " << codigo << endl
+		<< "| Pais: " << pais << endl
+		<< "| Ciudad: " << ciudad << endl
+		<< "| Costo de Traslado: " << costoTraslado << endl;
 	return s.str();
 }
 

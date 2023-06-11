@@ -46,6 +46,7 @@ string Kit::getCodigo() { return codigo; }
 string Kit::getNombre() { return nombre; }
 string Kit::getCaracteristica() { return caracteristica; }
 double Kit::getPrecio() { return precio; }
+double Kit::obtenerPrecios() { return Empaquetado->obtenerPrecios(); }
 
 // Desarrollo de los set's
 void Kit::setCodigo(string cod) { codigo = cod; }

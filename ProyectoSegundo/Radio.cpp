@@ -22,6 +22,7 @@ string Radio::getID() { return codigo; }
 string Radio::getCodigo() { return codigo; }
 string Radio::getCaracteristica() { return caracteristica; }
 double Radio::getPrecio() { return precio; }
+double Radio::obtenerPrecios() { return precio; }
 
 // Desarrollo de los set's
 void Radio::agregar(Componente*) {}

@@ -64,7 +64,7 @@ int menuMantenimiento() {
 }
 
 //Menu para el area de reportes de la tienda
-int menuReportes() {   
+int menuReportes() {  
 	int op = 0;
 	cout << "MENU ->  (4) Reportes." << endl << endl;
 	cout << "---------------------------------------" << endl
@@ -500,6 +500,8 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 	// Comodines
 	Componente* kit = new Kit();
 	string codK, cod, nom;
+	int contadorA = 0, contadorM = 0, contadorP = 0;
+	string type;
 	char op;
 	// Ingreso del nombre y codigo del kit
 	cout << "--------------------------------------------" << endl;
@@ -524,8 +526,17 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 				// Pregunta que si quiere agregarlo al kit
 				cout << "Se encontro el Componente desea agregarlo (s/n) "; cin >> op;
 				// Si lo quiere agregar se encargar de agregarlo
+				type = typeid(*tienda->retornarSoloComponentes(cod)).name();
 				if (op == 's') {
-					kit->agregar(tienda->retornarSoloComponentes(cod));
+					if (ingresarAlKit(contadorP, contadorM, contadorA, type, cod, *kit, tienda) == true) {
+						cout << "Se ingreso correctamente " << endl;
+						system("pause");
+					}
+					else { 
+						cout << "No se puede ingresar mas " << type << endl; 
+						system("pause");
+					}
+					//kit->agregar(tienda->retornarSoloComponentes(cod));
 				}
 			}
 			else
@@ -591,6 +602,7 @@ void reporteEquiposMasVendidos(Tienda* tienda){}
 //Desarrollo de metodo que......
 void reporteVentas(Tienda* tienda){}
 
+
 //Desarrollo de metodo para dar la despedida del programa 
 void salir(Tienda* tienda){
 	cout << "Muchas Gracias por visitarnos" << endl;
@@ -598,13 +610,13 @@ void salir(Tienda* tienda){
 	delete tienda;
 }
 
+
+// --------------Extras-------------------
+
 //Desarrollo de metodo que maneja el menu principal de la tienda 
 void MAIN(Tienda* tienda) {
 	int op;
-	//tienda->recuperarDeArchivos();
-	tienda->recuperarArchivoCatalogo();
-	tienda->recuperarArchivoDestinos();
-	tienda->recuperarArchivoSuscriptores();
+	tienda->recuperarDeArchivos();
 	do {
 		system("cls");
 		op = menu();
@@ -629,4 +641,36 @@ void MAIN(Tienda* tienda) {
 		}
 	} while (op != 5);
 	system("pause");
+}
+
+bool ingresarAlKit(int& contadorP, int& contadorM, int& contadorA, string& type, string cod, Componente& kit, Tienda* tienda) {
+	if (type == "class Mezclador" && contadorM == 0) {
+		type = "mezcladores";
+		kit.agregar(tienda->retornarSoloComponentes(cod));
+		contadorM = 1;
+		return true;
+	}
+	if (type == "class Amplificador" && contadorA == 0) {
+		type = "amplificadores";
+		kit.agregar(tienda->retornarSoloComponentes(cod));
+		contadorA = 1;
+		return true;
+	}
+	if (type == "class Altavoz" || type == "class Audifono" && contadorP == 0) {
+		kit.agregar(tienda->retornarSoloComponentes(cod));
+		contadorP = 1;
+		return true;
+	}
+	if (type != "class Mezclador" && type != "class Amplificador" && type != "class Altavoz" && type != "class Audifono") {
+		kit.agregar(tienda->retornarSoloComponentes(cod));
+		return true;
+	}
+	if(type == "class Audifono" || type == "class Altavoz")
+		type = "altavoces o audifonos.";
+	if (type == "class Mezclador")
+		type = "mezcladores.";
+	if (type == "class Amplificador")
+		type = "amplificadores";
+
+	return false;
 }

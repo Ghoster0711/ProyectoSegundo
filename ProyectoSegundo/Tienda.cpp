@@ -325,7 +325,6 @@ void Tienda::recuperarArchivoSuscriptores(){
 	string op;
 	file.open(rutaSuscriptores);
 	while (file.good()) {
-		cout << "Cicli \n";
 		getline(file, op, DELIMITA_CAMPO);
 		if (op == "Empresa")
 			Suscriptores->ingresar(*Empresa::recuperar(file));
@@ -345,10 +344,10 @@ void Tienda::recuperarFacturas() {
 	entrada.open(rutaVentas);
 	while (entrada.good()) {
 		getline(entrada, tipo, DELIMITA_CAMPO);
-		if (tipo == "Factura En Linea") {
+		if (tipo == "EnLinea") {
 			Ventas->ingresar(*EnLinea::recuperar(entrada));
 		}
-		if (tipo == "Factura Directo") {
+		if (tipo == "Directo") {
 			Ventas->ingresar(*Directo::recuperar(entrada));
 		}
 	}
@@ -358,6 +357,7 @@ void Tienda::recuperarFacturas() {
 void Tienda::guardaDestinos() {
 	Destinos->guardarDestinos();
 }
+
 void Tienda::recuperarArchivoDestinos() {
 	string rutaDestinos = "../traslados.txt";
 	ifstream entrada;
@@ -374,10 +374,18 @@ void Tienda::guardarArchivos(){
 	guardarCatalogo();
 	guardarSuscriptores();
 	guardarFacturas();
+	guardaDestinos();
 }
 
 void Tienda::recuperarDeArchivos(){
 	recuperarArchivoCatalogo();
 	recuperarArchivoSuscriptores();
 	recuperarFacturas();
+	recuperarArchivoDestinos();
+	cout << Catalogo->toString() << endl << endl
+		<< Suscriptores->toString() << endl << endl
+		<< Ventas->toString() << endl << endl
+		<< Destinos->toString() << endl << endl;
+	system("pause");
+
 }

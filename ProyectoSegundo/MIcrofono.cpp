@@ -22,6 +22,7 @@ string Microfono::getID() { return codigo; }
 string Microfono::getCodigo() { return codigo; }
 string Microfono::getCaracteristica() { return caracteristica; }
 double Microfono::getPrecio() { return precio; }
+double Microfono::obtenerPrecios() { return precio; }
 
 // Desarrollo de los set's
 void Microfono::agregar(Componente*) {}

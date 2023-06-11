@@ -15,9 +15,10 @@ public:
 	string getCodigo();
 	string getCaracteristica();
 	double getPrecio();
+	double obtenerPrecios();
 
 	// Set's
-	void setNombre(string) {}
+	void setNombre(string){}
 	void setCodigo(string);
 	void setCaracteristica(string);
 	void setPrecio(double);

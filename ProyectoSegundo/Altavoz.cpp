@@ -22,12 +22,14 @@ string Altavoz::getID() { return codigo; }
 string Altavoz::getCodigo() { return codigo; }
 string Altavoz::getCaracteristica() { return caracteristica; }
 double Altavoz::getPrecio() { return precio; }
+double Altavoz::obtenerPrecios() { return precio;}
 
 // Desarrollo de los set's
 void Altavoz::agregar(Componente*) {}
 void Altavoz::setCodigo(string cod) { codigo = cod; }
 void Altavoz::setCaracteristica(string carac) { caracteristica = carac; }
 void Altavoz::setPrecio(double pre) { precio = pre; }
+
 
 // Desarrollo del ToString
 string Altavoz::toString() {
