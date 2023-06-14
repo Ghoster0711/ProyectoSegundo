@@ -20,12 +20,12 @@
 
 
 // Desarrollo del constructor
-Kit::Kit()
-{
+Kit::Kit(){
 	nombre = "";
 	codigo = "";
 	caracteristica = "";
 	precio = 0;
+	unidades = 0;
 }
 
 // Desarrollo del constructor paremetrizado
@@ -34,6 +34,7 @@ Kit::Kit(string nom, string cod){
 	codigo = cod;
 	caracteristica = "";
 	precio = 0;
+	unidades = 0;
 }
 
 // Desarrollo del destructor
@@ -46,21 +47,33 @@ string Kit::getCodigo() { return codigo; }
 string Kit::getNombre() { return nombre; }
 string Kit::getCaracteristica() { return caracteristica; }
 double Kit::getPrecio() { return precio; }
-double Kit::obtenerPrecios() { return Empaquetado->obtenerPrecios(); }
+double Kit::obtenerPrecios() {
+	if (precio != 0)
+		return precio * unidades;
+	else
+		return Empaquetado->obtenerPrecios() * unidades;
+}
+int Kit::getUnidades() { return unidades; }
 
 // Desarrollo de los set's
 void Kit::setCodigo(string cod) { codigo = cod; }
 void Kit::setCaracteristica(string carac) { caracteristica = carac; }
 void Kit::setPrecio(double pre) { precio = pre; }
 void Kit::setNombre(string nom) { nombre = nom; }
-
+void Kit::setUnidades(int uni) { unidades = uni; }
 
 // Desarrollo del ToString
 string Kit::toString(){
 	stringstream show;
-	show << "| Nombre del Kit: " << nombre	<< "\tCodigo del kit: " << codigo << endl;
+	show << "| Nombre del Kit: " << nombre	<< "\tCodigo del kit: " << codigo << "\t" << "Unidades: " << unidades;
+	show << endl;
 	show << Empaquetado->toStringKit();
 	return show.str();
+}
+
+// Desarrollo del ToString para los kits
+string Kit::toStringKits() {
+	return "";
 }
 
 // Desarrollo del agregar
@@ -76,6 +89,7 @@ void Kit::guardar(ostream& salida) {
 	salida << "Kit" << DELIMITA_CAMPO;
 	salida << nombre << DELIMITA_CAMPO;
 	salida << codigo << DELIMITA_CAMPO;
+	salida << unidades << DELIMITA_CAMPO;
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
 			e->getDato()->guardar(salida);
@@ -87,10 +101,13 @@ void Kit::guardar(ostream& salida) {
 
 // Desarrollo del metodo recuperar
 Componente* Kit::recuperar(istream& entrada){
-	string op = "g", nombre, codigo;
+	string op = "g", nombre, codigo, unidades;
 	Componente* kit = new Kit();
 	getline(entrada, nombre, DELIMITA_CAMPO);
 	getline(entrada, codigo, DELIMITA_CAMPO);
+	getline(entrada, unidades, DELIMITA_CAMPO);
+	int valorUnidades = convierteInt(unidades);
+	kit->setUnidades(valorUnidades);
 	kit->setCodigo(codigo);
 	kit->setNombre(nombre);
 	while (op != "finKit") {

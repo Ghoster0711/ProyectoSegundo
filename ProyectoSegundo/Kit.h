@@ -24,18 +24,21 @@ public:
 	string getCaracteristica();
 	double getPrecio();
 	double obtenerPrecios();
+	int getUnidades();
 
 	// Set's
 	void setNombre(string);
 	void setCodigo(string);
 	void setCaracteristica(string);
 	void setPrecio(double);
+	void setUnidades(int);
 	
 	// Metodo para agregar componente
 	void agregar(Componente*);
 
 	// ToString
 	string toString();
+	string toStringKits();
 
 	// Metodo para guardar en archivo
 	void guardar(ostream&);

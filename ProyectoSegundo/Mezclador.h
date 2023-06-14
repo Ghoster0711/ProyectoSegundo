@@ -4,7 +4,7 @@
 class Mezclador : public ProcesadorDeSenal {
 public:
 	// Construtor parmetrizado 
-	Mezclador(string, string, string, double);
+	Mezclador(string, string, string, double, int);
 
 	// Destructor
 	virtual ~Mezclador();
@@ -16,15 +16,18 @@ public:
 	string getCaracteristica();
 	double getPrecio();
 	double obtenerPrecios();
+	int getUnidades();
 
 	// Set's
 	void setNombre(string) {}
 	void setCodigo(string);
 	void setCaracteristica(string);
 	void setPrecio(double);
+	void setUnidades(int);
 
 	// ToString
 	string toString();
+	string toStringKits();
 
 	// Metodo para agregar
 	void agregar(Componente*);

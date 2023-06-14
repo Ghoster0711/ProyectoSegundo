@@ -148,6 +148,7 @@ string Tienda::mostrarSoloComponentes() {
 	stringstream show;
 	string tipo;
 	Nodo<Componente>* e = Catalogo->getPrimero();
+	show << "|     Categoria     |    Codigo    |   Tipo de Componente   |      Modelo      |       Caracteristica       |      Precio       |     Unidades   |" << endl;
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
 			tipo = typeid(*e->getDato()).name();
@@ -180,6 +181,7 @@ string Tienda::mostrarSoloKits(){
 	stringstream show;
 	string tipo;
 	Nodo<Componente>* e = Catalogo->getPrimero();
+	show << "|     Categoria     |    Codigo    |   Tipo de Componente   |      Modelo      |       Caracteristica       |      Precio       |     Unidades   |" << endl;
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
 			tipo = typeid(*e->getDato()).name();
@@ -248,6 +250,7 @@ void Tienda::eliminarCliente(string cod)
 
 string Tienda::verCatalogo(){
 	stringstream show;
+	show << "|     Categoria     |    Codigo    |   Tipo de Componente   |      Modelo      |       Caracteristica       |      Precio       |     Unidades   |" << endl;
 	show << Catalogo->toString();
 	return show.str();
 }
@@ -387,10 +390,7 @@ void Tienda::recuperarDeArchivos(){
 	recuperarArchivoSuscriptores();
 	recuperarFacturas();
 	recuperarArchivoDestinos();
-	cout << Catalogo->toString() << endl << endl
-		<< Suscriptores->toString() << endl << endl
-		<< Ventas->toString() << endl << endl
-		<< Destinos->toString() << endl << endl;
+	cout << Destinos->toString() << endl << endl;
 	system("pause");
 
 }

@@ -1,1 +1,13 @@
-
+Directo	1	Fecha	0	0	0
+Persona	Joshua Amador Lara	604830349	Costa Rica	Heredia	josh@gmail.com	Costarricense
+Audifono	6870	HT856	Inalambrico bajos profundos	120	3
+finCarrito	Directo	2	Fecha	0	0	0
+Persona	Joshua Amador Lara	604830349	Costa Rica	Heredia	josh@gmail.com	Costarricense
+Audifono	6870	HT856	Inalambrico bajos profundos	120	3
+finCarrito	Directo	3	Fecha	0	0	0
+Persona	Joshua Amador Lara	604830349	Costa Rica	Heredia	josh@gmail.com	Costarricense
+Audifono	6870	HT856	Inalambrico bajos profundos	120	2
+finCarrito	Directo	4	Fecha	0	13	6
+Persona	Joshua Amador Lara	604830349	Costa Rica	Heredia	josh@gmail.com	Costarricense
+Audifono	6870	HT856	Inalambrico bajos profundos	120	3
+finCarrito	

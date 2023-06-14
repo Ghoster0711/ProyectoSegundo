@@ -4,7 +4,7 @@
 class Microfono : public FuenteDeAudio {
 public:
 	// Construtor parmetrizado 
-	Microfono(string, string, string, double);
+	Microfono(string, string, string, double, int);
 
 	// Destructor
 	virtual ~Microfono();
@@ -16,15 +16,18 @@ public:
 	string getCaracteristica();
 	double getPrecio();
 	double obtenerPrecios();
+	int getUnidades();
 
 	// Set's
 	void setNombre(string) {}
 	void setCodigo(string);
 	void setCaracteristica(string);
 	void setPrecio(double);
+	void setUnidades(int);
 
 	// ToString
 	string toString();
+	string toStringKits();
 
 	// Metodo para agregar
 	void agregar(Componente*);
