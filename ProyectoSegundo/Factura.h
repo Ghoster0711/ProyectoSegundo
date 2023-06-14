@@ -51,5 +51,8 @@ public:
 
 	virtual void guardar(ostream&) = 0;
 
+	virtual double precioBrutoDeLaFactura() = 0;
+	virtual double precioNetoDeLaFactura() = 0;
+
 };
 

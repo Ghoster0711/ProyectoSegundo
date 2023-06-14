@@ -77,6 +77,9 @@ public:
 
 	// ------------Reportes---------------
 
+
+	string reporteTotalesBrutos();
+
 	// ------------Archivos---------------
 
 	//Desarrollo de metodos para guardar y recuperar el catalago de componentes del archivo 

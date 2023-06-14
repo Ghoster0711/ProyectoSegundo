@@ -47,4 +47,7 @@ public:
 	static Factura* recuperar(istream&);
 	static void recuperarCarrito(istream&, Factura*);
 
+	double precioBrutoDeLaFactura();
+	double precioNetoDeLaFactura();
+
 };

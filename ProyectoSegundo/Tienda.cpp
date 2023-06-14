@@ -269,6 +269,11 @@ void Tienda::eliminarProducto(string cod) {
 
 // ------------Reportes---------------
 
+string Tienda::reporteTotalesBrutos() {
+	stringstream s;
+	s << "Total Bruto: " << Ventas->subtotalesDeFacturas() << endl;
+}
+
 // ------------Archivos---------------
 void Tienda::guardarCatalogo()
 {

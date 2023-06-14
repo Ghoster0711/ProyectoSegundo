@@ -619,7 +619,12 @@ void reportes(Tienda* tienda) {
 void reporteEquiposMasVendidos(Tienda* tienda){}
 
 //Desarrollo de metodo que......
-void reporteVentas(Tienda* tienda){}
+void reporteVentas(Tienda* tienda){
+	cout << "------------------Reporte de Ventas--------------------" << endl;
+	cout << tienda->reporteTotalesBrutos() << endl;
+
+
+}
 
 
 //Desarrollo de metodo para dar la despedida del programa 
