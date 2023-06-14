@@ -26,6 +26,7 @@ double Tornamesa::getPrecio() { return precio; }
 double Tornamesa::obtenerPrecios() { return precio * unidades; }
 int Tornamesa::getUnidades() { return unidades; }
 
+
 // Desarrollo de los set's
 void Tornamesa::agregar(Componente*) {}
 void Tornamesa::setCodigo(string cod) { codigo = cod; }

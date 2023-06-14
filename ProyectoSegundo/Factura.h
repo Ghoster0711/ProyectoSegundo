@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <sstream>
+#include<cmath>
 #include"Lista.h"
 #include "Persona.h"
 #include "Empresa.h"
@@ -53,6 +54,7 @@ public:
 
 	virtual double precioBrutoDeLaFactura() = 0;
 	virtual double precioNetoDeLaFactura() = 0;
+	virtual double ganaciasDeLaFactura() = 0;
 
 };
 

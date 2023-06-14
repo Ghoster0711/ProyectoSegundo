@@ -26,6 +26,8 @@ double Audifono::getPrecio() { return precio; }
 double Audifono::obtenerPrecios() {	return precio * unidades; }
 int Audifono::getUnidades() { return unidades; }
 
+
+
 // Desarrollo de los set's
 void Audifono::agregar(Componente*) {}
 void Audifono::setCodigo(string cod) { codigo = cod; }

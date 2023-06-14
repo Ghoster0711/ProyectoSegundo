@@ -618,12 +618,13 @@ void reportes(Tienda* tienda) {
 //Desarrollo de metodo que despliega la lista de los equipos mas vendidos de la tienda 
 void reporteEquiposMasVendidos(Tienda* tienda){}
 
-//Desarrollo de metodo que......
+//Desarrollo de metodo de reportes de totales brutos, netos y ganancias de la tienda 
 void reporteVentas(Tienda* tienda){
 	cout << "------------------Reporte de Ventas--------------------" << endl;
 	cout << tienda->reporteTotalesBrutos() << endl;
-
-
+	cout << tienda->reporteTotalesNetos() << endl;
+	cout << tienda->reporteDeGanancias() << endl;
+	system("pause");
 }
 
 
