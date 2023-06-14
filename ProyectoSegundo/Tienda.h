@@ -64,13 +64,15 @@ public:
 	string mostrarSoloKits();
 	Destino* retornaDestino(string);
 	Cliente* retornaSuscriptor(string);
-
+	Cliente* retornaCliente(string);
 
 // -----------Mantenimiento-----------
 
 	string mostrarClientes();
 	bool ingresarCliente(Cliente*);
 	void eliminarCliente(string);
+
+
 	string verCatalogo();
 	bool ingresarProductosAlCatalogo(Componente*);
 	void eliminarProducto(string);

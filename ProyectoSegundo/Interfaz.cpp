@@ -53,10 +53,11 @@ int menuMantenimiento() {
 		<< "| (1) Ver Lista de Clientes.             |" << endl
 		<< "| (2) Ingreso de Nuevos Clientes         |" << endl
 		<< "| (3) Eliminar Cliente                   |" << endl
-		<< "| (4) Ver Lista del Catalogo             |" << endl
-		<< "| (5) Ingresar Productos al Catalogo     |" << endl
-		<< "| (6) Eliminar Productos del Catalogo    |" << endl
-		<< "| (7) Volver.                            |" << endl
+		<< "| (4) Modificar Cliente                  |" << endl
+		<< "| (5) Ver Lista del Catalogo             |" << endl
+		<< "| (6) Ingresar Productos al Catalogo     |" << endl
+		<< "| (7) Eliminar Productos del Catalogo    |" << endl
+		<< "| (8) Volver.                            |" << endl
 		<< "------------------------------------------" << endl
 		<< "| Ingrese una opcion -> "; cin >> op;
 	return op;
@@ -199,7 +200,7 @@ Componente* agregarSistemaPreconfigurado(Tienda* tienda){
 		<< "| Seleccione el kit deseado por su codigo -> "; cin >> cod; 
 	if (tienda->buscarKit(cod) == true) {
 		cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
-		aux = tienda->retornarSoloComponentes(cod);
+		aux = tienda->retornarSoloKits(cod);
 		aux->setUnidades(cant);
 		cout << "Sistema Preconfigurado encontrado y agregado!!" << endl << endl;
 		return aux;
@@ -327,23 +328,28 @@ void mantenimiento(Tienda* tienda) {
 			break;
 		case 4:
 			system("cls");
-			cout << "MENU ->  (3) Mantenimiento -> (4) Ver Lista del Catalogo" << endl << endl;
-			verCatalogo(tienda);
+			cout << "MENU ->  (3) Mantenimiento -> (4) Modificar Cliente" << endl << endl;
+			modificarCliente(tienda);
 			break;
 		case 5:
 			system("cls");
-			cout << "MENU ->  (3) Mantenimiento -> (5) Ingresar Productos al Catalogo" << endl << endl;
-			ingresoProductos(tienda);
+			cout << "MENU ->  (3) Mantenimiento -> (5) Ver Lista del Catalogo" << endl << endl;
+			verCatalogo(tienda);
 			break;
 		case 6:
 			system("cls");
-			cout << "MENU ->  (3) Mantenimiento -> (6) Eliminar Productos del Catalogo" << endl << endl;
-			eliminarProducto(tienda);
+			cout << "MENU ->  (3) Mantenimiento -> (6) Ingresar Productos al Catalogo" << endl << endl;
+			ingresoProductos(tienda);
 			break;
 		case 7:
+			system("cls");
+			cout << "MENU ->  (3) Mantenimiento -> (7) Eliminar Productos del Catalogo" << endl << endl;
+			eliminarProducto(tienda);
+			break;
+		case 8:
 			break;
 		}
-	} while (op != 7);
+	} while (op != 8);
 }
 
 //Desarrollo de metodo que despliega la lista de clientes 
@@ -424,6 +430,106 @@ void eliminarCliente(Tienda* tienda) {
 	else
 		cout << "La cedula que se ingreso no coincide con ningun con los que se encuentran!!" << endl;
 	system("pause");
+}
+
+void modificarCliente(Tienda* tienda) {
+	string cedula,tipo;
+	Cliente* cliente = NULL;
+	cout << "Ingrese la cedula -> "; cin >> cedula;
+	if (tienda->buscarSuscriptor(cedula) == true) {
+		cliente = tienda->retornaCliente(cedula);
+		tipo = typeid(*tienda->retornaCliente(cedula)).name();
+		if (tipo == "class Persona")
+			modificarClientePersona(tienda, cliente);
+		if (tipo == "class Empresa")
+			modificarClienteEmpresa(tienda, cliente);
+		cliente = NULL;
+	}
+	else {
+		cout << "Cliente no encontrado!!" << endl;
+		system("pause");
+	}
+}
+
+void modificarClientePersona(Tienda* tienda, Cliente* cliente) {
+	int op;
+	string dato;
+	do {
+		system("cls");
+		cout << "MENU ->  (3) Mantenimiento -> (4) Modificar Cliente" << endl << endl;
+		cout << cliente->toString() << endl << endl;
+		cout << "(1) Modificar Nombre" << endl;
+		cout << "(2) Modificar Pais" << endl;
+		cout << "(3) Modificar Ciudad" << endl;
+		cout << "(4) Modificar Correo" << endl;
+		cout << "(5) Modificar Nacionalidad" << endl;
+		cout << "(6) Volver" << endl;
+		cout << "| Ingrese una opcion -> "; cin >> op;
+		cout << endl;
+		switch (op) {
+		case 1:
+			cout << "Digite el nuevo nombre ->"; cin >> dato;
+			cliente->setNombre(dato);
+			break;
+		case 2:
+			cout << "Digite el nuevo pais ->"; cin >> dato;
+			cliente->setNombrePais(dato);
+			break;
+		case 3:
+			cout << "Digite la nueva ciudad ->"; cin >> dato;
+			cliente->setCiudadUbicacion(dato);
+			break;
+		case 4:
+			cout << "Digite el nuevo correo ->"; cin >> dato;
+			cliente->setCorreo(dato);
+			break;
+		case 5:
+			cout << "Digite el nueva nacionalidad ->"; cin >> dato;
+			cliente->setNacionalidad(dato);
+			break;
+		case 6:
+			break;
+		default:
+			cout << "Opcion digitada fuera de rango" << endl;
+			system("pause");
+		}
+	} while (op != 6);
+	
+}
+
+void modificarClienteEmpresa(Tienda* tienda,Cliente* cliente) {
+	int op;
+	string dato;
+	do {
+		system("cls");
+		cout << "MENU ->  (3) Mantenimiento -> (4) Modificar Cliente" << endl << endl;
+		cout << cliente->toString() << endl << endl;
+		cout << "(1) Modificar Nombre" << endl;
+		cout << "(2) Modificar Pais" << endl;
+		cout << "(3) Modificar Ciudad" << endl;
+		cout << "(4) Volver" << endl;
+		cout << "| Ingrese una opcion -> "; cin >> op;
+		cout << endl;
+		switch (op) {
+		case 1:
+			cout << "Digite el nuevo nombre ->"; cin >> dato;
+			cliente->setNombre(dato);
+			break;
+		case 2:
+			cout << "Digite el nuevo pais ->"; cin >> dato;
+			cliente->setNombrePais(dato);
+			break;
+		case 3:
+			cout << "Digite la nueva ciudad ->"; cin >> dato;
+			cliente->setCiudadUbicacion(dato);
+			break;
+		case 4:
+			break;
+		default:
+			cout << "Opcion digitada fuera de rango" << endl;
+			system("pause");
+		}
+	} while (op != 4);
 }
 
 //Desarrollo de metodo que despliega la lista de componentes que existen en la tienda 

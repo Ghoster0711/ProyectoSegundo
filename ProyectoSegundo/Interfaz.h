@@ -46,6 +46,10 @@ Cliente* crearEmpresa();
 
 void eliminarCliente(Tienda*);
 
+void modificarCliente(Tienda*);
+void modificarClientePersona(Tienda*,Cliente*);
+void modificarClienteEmpresa(Tienda*, Cliente*);
+
 void verCatalogo(Tienda*);
 
 void ingresoProductos(Tienda*);

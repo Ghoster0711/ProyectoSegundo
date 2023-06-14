@@ -1,17 +1,15 @@
 			-9.25596e+61
 			-9.25596e+61
-			-9.25596e+61
-			-9.25596e+61
-010	Argentina	Buenos Aires	175
-030	Canada	Ontario	160
-020	Brasil	Brasilia	150
-031	EEUU	California	150
-032	EEUU	New York	100
-040	Francia	Paris	200
-050	Inglaterra	Londres	200
-060	Italia	Milan	250
-090	Costa Rica (local)	GAM	50
 091	Costa Rica (local)	fuera de la GAM	80
-			-9.25596e+61
+090	Costa Rica (local)	GAM	50
+060	Italia	Milan	250
+050	Inglaterra	Londres	200
+040	Francia	Paris	200
+032	EEUU	New York	100
+031	EEUU	California	150
+020	Brasil	Brasilia	150
+030	Canada	Ontario	160
+010	Argentina	Buenos Aires	175
+
 			-9.25596e+61
 			-9.25596e+61

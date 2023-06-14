@@ -223,6 +223,18 @@ Cliente* Tienda::retornaSuscriptor(string cedula) {
 	return NULL;
 }
 
+Cliente* Tienda::retornaCliente(string cedula) {
+	Nodo<Cliente>* e = Suscriptores->getPrimero();
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			if (e->getDato()->getID() == cedula) {
+				return e->getDato();
+			}
+		}
+		e = e->getSiguiente();
+	}
+	return NULL;
+}
 // -------------Directo---------------
 
 // -------------En Linea--------------
@@ -243,8 +255,7 @@ bool Tienda::ingresarCliente(Cliente* cli){
 	return false;
 }
 
-void Tienda::eliminarCliente(string cod)
-{
+void Tienda::eliminarCliente(string cod){
 	Suscriptores->eliminar(cod);
 }
 
