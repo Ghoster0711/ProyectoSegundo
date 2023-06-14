@@ -201,3 +201,10 @@ void EnLinea::recuperarCarrito(istream& entrada, Factura* fac) {
 			fac->getCarrito()->ingresar(*Kit::recuperar(entrada));
 	}
 }
+
+double EnLinea::precioBrutoDeLaFactura() {
+	double subtotal = carritoDeCompras->obtenerPrecios();
+	double adicional = subtotal * 0.35;
+	double total = subtotal + adicional + destino->getCostoTraslado();
+	return total;
+}

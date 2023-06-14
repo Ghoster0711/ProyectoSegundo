@@ -189,3 +189,14 @@ void Directo::recuperarCarrito(istream& entrada, Factura* fac){
 			fac->getCarrito()->ingresar(*Kit::recuperar(entrada));
 	}
 }
+
+double Directo::precioBrutoDeLaFactura() {
+	double subtotal = carritoDeCompras->obtenerPrecios();
+	double adicional = subtotal * 0.35;
+	double total = subtotal + adicional;
+	return total;
+}
+
+double Directo::precioNetoDeLaFactura() {
+
+}
