@@ -82,7 +82,7 @@ int menuReportes() {
 void generarVentaDirecta(Tienda* tienda) {  
 	string codigo,cedula; 
 	int op = 0;
-	char op2;
+	//char op2;
 	bool acceso = false;
 	Cliente* cliente = NULL;
 	codigo = to_string(tienda->getVentas()->getCantidad() + 1);
@@ -170,13 +170,18 @@ void generarVentaDirecta(Tienda* tienda) {
 
 //Desarrollo de metodo para agregar un unico componente, al carrito de compras del cliente 
 Componente* agregarComponente(Tienda* tienda){
+	int cant;
 	string cod;
+	Componente* aux = NULL;
 	cout << tienda->mostrarSoloComponentes();
 	cout << "--------------------------------------------------------------------------" << endl
 		<< "| Seleccione el componente deseado por su codigo -> "; cin >> cod;
 	if (tienda->buscarComponente(cod) == true) {
-		return tienda->retornarSoloComponentes(cod);
+		cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
+		aux = tienda->retornarSoloComponentes(cod);
+		aux->setUnidades(cant);
 		cout << "Componente encontrado y agregado!!" << endl << endl;
+		return aux;
 	}
 	else {
 		cout << "Componente no encontrado!!" << endl << endl;
@@ -186,13 +191,18 @@ Componente* agregarComponente(Tienda* tienda){
 
 //Desarrollo de metodo para agregar sistema preconfigurado, al carrito de compras del cliente
 Componente* agregarSistemaPreconfigurado(Tienda* tienda){
+	int cant;
 	string cod;
+	Componente* aux = NULL;
 	cout << tienda->mostrarSoloKits();
 	cout << "-----------------------------------------------------------" << endl
 		<< "| Seleccione el kit deseado por su codigo -> "; cin >> cod; 
 	if (tienda->buscarKit(cod) == true) {
-		return tienda->retornarSoloKits(cod);
+		cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
+		aux = tienda->retornarSoloComponentes(cod);
+		aux->setUnidades(cant);
 		cout << "Sistema Preconfigurado encontrado y agregado!!" << endl << endl;
+		return aux;
 	}
 	else {
 		cout << "Sistema Preconfigurado no encontrado!!" << endl << endl;
@@ -202,7 +212,12 @@ Componente* agregarSistemaPreconfigurado(Tienda* tienda){
 
 //Desarrollo de metodo para agregar sistema hecho a la medida, al carrito de compras del cliente
 Componente* agregarNuevoSistemaAMedida(Tienda* tienda){
-	return crearSistemaPreconfigurado(tienda);
+	Componente* aux = NULL;
+	int cant;
+	aux = crearSistemaPreconfigurado(tienda);
+	cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
+	aux->setUnidades(cant);
+	return aux;
 }
 
 // -------------------------------------EN LINEA---------------------------------------------------
@@ -443,7 +458,7 @@ Componente* crearProducto(Tienda* tienda) {
 Componente* crearComponente() {
 	string model, carac, cod;
 	double precio;
-	int op;
+	int op = 0, cant = 0;
 	do {
 		system("cls");
 		cout << "-------------------------------------------" << endl
@@ -463,34 +478,35 @@ Componente* crearComponente() {
 		cout << "| Ingrese el codigo del componente -> "; cin >> cod;
 		cout << "| Ingrese el modelo del componente -> "; cin >> model;
 		cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
-		cout << "| Ingresel el precio del componente -> "; cin >> precio;
+		cout << "| Ingrese el precio del componente -> "; cin >> precio;
+		cout << "| Ingrese la cantidad -> "; cin >> cant;
 		switch (op) {
 		case 1:
-			return new UnidadCD(cod, model, carac, precio);
+			return new UnidadCD(cod, model, carac, precio, cant);
 			break;
 		case 2:
-			return new Tornamesa(cod, model, carac, precio);
+			return new Tornamesa(cod, model, carac, precio, cant);
 			break;
 		case 3:
-			return new Radio(cod, model, carac, precio);
+			return new Radio(cod, model, carac, precio, cant);
 			break;
 		case 4:
-			return new UnidadBluetooth(cod, model, carac, precio);
+			return new UnidadBluetooth(cod, model, carac, precio, cant);
 			break;
 		case 5:
-			return new Microfono(cod, model, carac, precio);
+			return new Microfono(cod, model, carac, precio, cant);
 			break;
 		case 6:
-			return new Amplificador(cod, model, carac, precio);
+			return new Amplificador(cod, model, carac, precio, cant);
 			break;
 		case 7:
-			return new Mezclador(cod, model, carac, precio);
+			return new Mezclador(cod, model, carac, precio, cant);
 			break;
 		case 8:
-			return new Altavoz(cod, model, carac, precio);
+			return new Altavoz(cod, model, carac, precio, cant);
 			break;
 		case 9:
-			return new Audifono(cod, model, carac, precio);
+			return new Audifono(cod, model, carac, precio, cant);
 			break;
 		}
 	} while (op != 10);
@@ -500,7 +516,7 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 	// Comodines
 	Componente* kit = new Kit();
 	string codK, cod, nom;
-	int contadorA = 0, contadorM = 0, contadorP = 0;
+	int contadorA = 0, contadorM = 0, contadorP = 0, cant;
 	string type;
 	char op;
 	// Ingreso del nombre y codigo del kit
@@ -508,6 +524,8 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 	cout << "| Ingrese el nombre del Kit -> "; cin >> nom;
 	cout << "--------------------------------------------" << endl;
 	cout << "| Ingrese el codigo del Kit -> "; cin >> codK;
+	cout << "--------------------------------------------" << endl;
+	cout << "| Ingrese la cantidad de kits -> "; cin >> cant;
 	// Ciclo para agregar componentes al kit
 	do {
 		system("cls");
@@ -548,6 +566,7 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 	if (op == 's') {
 		kit->setCodigo(codK);
 		kit->setNombre(nom);
+		kit->setUnidades(cant);
 		return (Componente*)new Kit(*(Kit*)kit);
 	}
 	delete kit;
