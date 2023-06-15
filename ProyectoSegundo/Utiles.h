@@ -7,3 +7,4 @@ using namespace std;
 
 int convierteInt(std::string);  //Metodo para convertir un string a un int 
 double convierteDouble(std::string);  //Metodo para convertir un string a un double 
+string espaciado(string);
