@@ -1,48 +1,49 @@
-Kit	Premium	SB07JA	20	Altavoz	6402	FD238	280W subwoofer	435	3244
-Amplificador	9180	IR302	80W	90	20
-Microfono	5857	UT654	Alambrico	90	20
-Unidad Bluetooth	6113	NA107	Basico	70	20
-Radio	4431	LR506	Basico AM/FM	90	20
-Tornamesa	4459	LE978	Unidad basica 33/45 RPM	180	20
-Unidad CD	4746	OA966	Unidad basica	100	20
-finKit	Unidad CD	4746	OA966	Unidad basica	100	20
-Unidad CD	6653	VG953	Proteccion de salto	150	20
-Unidad CD	6168	UK404	Múltiples velocidades	175	20
-Unidad CD	6797	SE381	Soporte SACD	200	20
-Tornamesa	4459	LE978	Unidad basica 33/45 RPM	180	20
-Tornamesa	3899	ED991	Soporte 78 RPM	230	20
-Tornamesa	8038	NQ233	Brazo automatico	320	20
-Radio	4431	LR506	Basico AM/FM	90	20
-Radio	7156	BR101	Onda corta	300	20
-Radio	6587	IL414	Sintonizador automatico	220	20
-Radio	2496	TE655	Sintonizador programable	280	20
-Unidad Bluetooth	6113	NA107	Basico	70	20
-Unidad Bluetooth	1622	WI307	Multicanal	100	20
-Unidad Bluetooth	6903	WG255	Receptor FM	90	20
-Microfono	5857	UT654	Alambrico	90	20
-Microfono	3127	SD353	Alambrico omnidireccional	95	20
-Microfono	7407	HR568	Inalambrico	120	20
-Microfono	0448	KC176	Inalambrico rango ampliado	180	20
-Microfono	8871	QU632	Inalambrico Bluetooth	100	20
-Amplificador	9180	IR302	80W	90	20
-Amplificador	1432	CV136	100W	115	20
-Amplificador	0593	WU205	200W	140	20
-Amplificador	8140	AG226	220W	165	20
-Amplificador	9781	ZU516	400W	190	20
-Mezclador	3244	JL664	2 canales analogicos	70	20
-Mezclador	1665	EA934	2 canales digitales	85	20
-Mezclador	3951	XO640	4 canales analogicos	130	20
-Mezclador	2687	UR549	4 canales digitales	150	20
-Mezclador	6432	IU702	8 canales (digital/analogico)	325	20
-Altavoz	7652	CQ811	200W	235	20
-Altavoz	0988	NZ586	400W	275	20
-Altavoz	2127	LV428	400W perfil plano	315	20
-Altavoz	4011	OL625	400W inalambrico	355	20
-Altavoz	4668	TQ931	300W 4 canales	395	20
-Altavoz	6402	FD238	280W subwoofer	435	20
-Audifono	1104	YN192	Basico (intraural)	20	20
-Audifono	7755	EO771	Basico (supraural. diadema)	40	20
-Audifono	1154	VT518	Basico (circumaural)	45	20
-Audifono	2474	HE757	Basico (inalambrico)	60	20
-Audifono	2186	TP788	Circumaural bajos profundos	90	20
 Audifono	6870	HT856	Inalambrico bajos profundos	120	20
+Audifono	2186	TP788	Circumaural bajos profundos	90	20
+Audifono	2474	HE757	Basico (inalambrico)	60	20
+Audifono	1154	VT518	Basico (circumaural)	45	20
+Audifono	7755	EO771	Basico (supraural. diadema)	40	20
+Audifono	1104	YN192	Basico (intraural)	20	20
+Altavoz	6402	FD238	280W subwoofer	435	20
+Altavoz	4668	TQ931	300W 4 canales	395	20
+Altavoz	4011	OL625	400W inalambrico	355	20
+Altavoz	2127	LV428	400W perfil plano	315	20
+Altavoz	0988	NZ586	400W	275	20
+Altavoz	7652	CQ811	200W	235	20
+Mezclador	6432	IU702	8 canales (digital/analogico)	325	20
+Mezclador	2687	UR549	4 canales digitales	150	20
+Mezclador	3951	XO640	4 canales analogicos	130	20
+Mezclador	1665	EA934	2 canales digitales	85	20
+Mezclador	3244	JL664	2 canales analogicos	70	20
+Amplificador	9781	ZU516	400W	190	20
+Amplificador	8140	AG226	220W	165	20
+Amplificador	0593	WU205	200W	140	20
+Amplificador	1432	CV136	100W	115	20
+Amplificador	9180	IR302	80W	90	20
+Microfono	8871	QU632	Inalambrico Bluetooth	100	20
+Microfono	0448	KC176	Inalambrico rango ampliado	180	20
+Microfono	7407	HR568	Inalambrico	120	20
+Microfono	3127	SD353	Alambrico omnidireccional	95	20
+Microfono	5857	UT654	Alambrico	90	20
+Unidad Bluetooth	6903	WG255	Receptor FM	90	20
+Unidad Bluetooth	1622	WI307	Multicanal	100	20
+Unidad Bluetooth	6113	NA107	Basico	70	20
+Radio	2496	TE655	Sintonizador programable	280	20
+Radio	6587	IL414	Sintonizador automatico	220	20
+Radio	7156	BR101	Onda corta	300	20
+Radio	4431	LR506	Basico AM/FM	90	20
+Tornamesa	8038	NQ233	Brazo automatico	320	20
+Tornamesa	3899	ED991	Soporte 78 RPM	230	20
+Tornamesa	4459	LE978	Unidad basica 33/45 RPM	180	20
+Unidad CD	6797	SE381	Soporte SACD	200	20
+Unidad CD	6168	UK404	Múltiples velocidades	175	20
+Unidad CD	6653	VG953	Proteccion de salto	150	20
+Unidad CD	4746	OA966	Unidad basica	100	20
+Kit	Premium	SB07JA	20	Unidad CD	4746	OA966	Unidad basica	100	20
+Tornamesa	4459	LE978	Unidad basica 33/45 RPM	180	20
+Radio	4431	LR506	Basico AM/FM	90	20
+Unidad Bluetooth	6113	NA107	Basico	70	20
+Microfono	5857	UT654	Alambrico	90	20
+Amplificador	9180	IR302	80W	90	20
+Altavoz	6402	FD238	280W subwoofer	435	3244
+finKit	
