@@ -227,11 +227,7 @@ double EnLinea::ganaciasDeLaFactura() {
 	double total = subtotal - precioBrutoDeLaFactura();
 	return abs(total);
 }
-}
 
-double EnLinea::precioNetoDeLaFactura() {
-	return 0.0;
-}
 
 
 bool EnLinea::existenciaDeProducto(string cod) {

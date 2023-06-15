@@ -210,6 +210,8 @@ double Directo::ganaciasDeLaFactura() {
 	double subtotal = carritoDeCompras->obtenerPrecios();
 	double total = subtotal - precioBrutoDeLaFactura();
 	return abs(total);
+}
+
 bool Directo::existenciaDeProducto(string cod) {
 	Nodo<Componente>* pExt = carritoDeCompras->getPrimero();
 	while (pExt != NULL) {

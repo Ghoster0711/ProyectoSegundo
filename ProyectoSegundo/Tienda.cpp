@@ -328,10 +328,20 @@ void Tienda::eliminarProducto(string cod) {
 
 string Tienda::reporteTotalesBrutos() {
 	stringstream s;
-	s << "Total Bruto: " << Ventas->subtotalesDeFacturas() << endl;
+	s << "Total Bruto: " << Ventas->totalBruto() << endl;
+	return s.str();
+}
+string Tienda::reporteTotalesNetos() {
+	stringstream s;
+	s << "Totales Netos: " << Ventas->totalNeto() << endl;
 	return s.str();
 }
 
+string Tienda::reporteDeGanancias() {
+	stringstream s;
+	s << "Total de Ganancias: " << Ventas->ganacias() << endl;
+	return s.str();
+}
 string Tienda::primeroYsegundoMasVendios(){
 	// Comodines
 	string first, second, id;
