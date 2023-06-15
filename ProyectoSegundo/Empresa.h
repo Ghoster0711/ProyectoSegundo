@@ -31,6 +31,10 @@ public:
 	// Tostring
 	string toString();
 
+	// Observer
+	void update(string, ofstream&);
+	void setModel(Lista<Componente>*);
+
 	// Guardar en archivos
 	void guardar(ostream&);
 

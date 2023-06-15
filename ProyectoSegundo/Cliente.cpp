@@ -6,6 +6,7 @@ Cliente::Cliente() {
 	cedula = "";
 	nombrePais = "";
 	ciudadUbicacion = "";
+	model = NULL;
 }
 
 
@@ -15,6 +16,7 @@ Cliente::Cliente(string nom, string ced, string pais, string ciudad) {
 	cedula = ced;
 	nombrePais = pais;
 	ciudadUbicacion = ciudad;
+	model = NULL;
 }
 
 // Desarrollo del destructor

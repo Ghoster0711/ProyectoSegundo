@@ -37,6 +37,15 @@ string Empresa::toString() {
 	return s.str();
 }
 
+void Empresa::update(string des, ofstream& file){
+	file << nombre << "Se le notifica que " << des << endl;
+}
+
+void Empresa::setModel(Lista<Componente>* l)
+{
+	model = l;
+}
+
 // Desarrollo del metodo para guardar
 void Empresa::guardar(ostream& salida) {
 	salida << "Empresa" << DELIMITA_CAMPO

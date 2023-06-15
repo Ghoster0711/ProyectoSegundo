@@ -15,6 +15,27 @@ Tienda::~Tienda(){
 	if (Destinos != NULL) delete Destinos;
 }
 
+void Tienda::notificar(Componente* c, bool elimina){
+	stringstream show;
+	Nodo<Cliente>* pExt = Suscriptores->getPrimero();
+	ofstream file;
+	file.open("../notificaciones.txt", ios::app);
+	if (elimina) {
+		show << "Se a eliminado el siguiente producto: \n" << c->toString();
+	}
+	else
+		show << "Se a agregado el siguiente producto: \n" << c->toString();
+	
+	file << "NUEVA NOTIFICACION\n";
+	while (pExt != NULL) {
+		pExt->getDato()->update(show.str(), file);
+
+		pExt = pExt->getSiguiente();
+	}
+	file.close();
+
+}
+
 Lista<Componente>* Tienda::getCatalago() { return Catalogo; }
 
 Lista<Cliente>* Tienda::getSuscriptores() { return Suscriptores; }
@@ -296,6 +317,7 @@ string Tienda::mostrarClientes(){
 bool Tienda::ingresarCliente(Cliente* cli){
 	if (cli != NULL) {
 		Suscriptores->ingresar(*cli);
+		cli->setModel(Catalogo);
 		return true;
 	}
 	return false;
@@ -315,13 +337,16 @@ string Tienda::verCatalogo(){
 bool Tienda::ingresarProductosAlCatalogo(Componente* compo){
 	if (compo != NULL) {
 		Catalogo->ingresar(*compo);
+		notificar(compo);
 		return true;
 	}
 	return false;
 }
 
 void Tienda::eliminarProducto(string cod) {
+	notificar(retornarProductos(cod), true);
 	Catalogo->eliminar(cod);
+
 }
 
 // ------------Reportes---------------
@@ -464,13 +489,20 @@ void Tienda::recuperarArchivoSuscriptores(){
 	string rutaSuscriptores = "../suscriptores.txt";
 	ifstream file;
 	string op;
+	Cliente* c = NULL;
 	file.open(rutaSuscriptores);
 	while (file.good()) {
 		getline(file, op, DELIMITA_CAMPO);
-		if (op == "Empresa")
-			Suscriptores->ingresar(*Empresa::recuperar(file));
-		if (op == "Persona")
-			Suscriptores->ingresar(*Persona::recuperar(file));
+		if (op == "Empresa") {
+			c = Empresa::recuperar(file);
+			c->setModel(Catalogo);
+			Suscriptores->ingresar(*c);
+		}
+		if (op == "Persona") {
+			c = Persona::recuperar(file);
+			c->setModel(Catalogo);
+			Suscriptores->ingresar(*c);
+		}
 	}
 	file.close();
 }
@@ -524,8 +556,4 @@ void Tienda::recuperarDeArchivos(){
 	recuperarArchivoSuscriptores();
 	recuperarFacturas();
 	recuperarArchivoDestinos();
-	cout << Ventas->toString() << endl << endl;
-	cout << Destinos->toString() << endl << endl;
-	system("pause");
-
 }
