@@ -234,7 +234,6 @@ void generarVentaEnLinea(Tienda* tienda){
 	cout << "Ingrese la cedula -> "; cin >> cedula;
 	cout << endl;
 	if (tienda->buscarSuscriptor(cedula) == true) {
-		cout << "Cliente suscrito encontrado!! " << endl << endl;
 		cliente = tienda->retornaSuscriptor(cedula);
 	}
 	else {
@@ -489,9 +488,6 @@ void modificarClientePersona(Tienda* tienda, Cliente* cliente) {
 			break;
 		case 6:
 			break;
-		default:
-			cout << "Opcion digitada fuera de rango" << endl;
-			system("pause");
 		}
 	} while (op != 6);
 	
