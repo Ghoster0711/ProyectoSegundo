@@ -41,7 +41,6 @@ bool Tienda::buscarSuscriptor(string cod)
 	}
 	return false;
 }
-
 bool Tienda::buscarProductoDelCatalogo(string cod){
 	Nodo<Componente>* e = Catalogo->getPrimero();
 	while (e != NULL) {
@@ -53,7 +52,6 @@ bool Tienda::buscarProductoDelCatalogo(string cod){
 	}
 	return false;
 }
-
 bool Tienda::buscarComponente(string cod) {
 	string tipo;
 	Nodo<Componente>* e = Catalogo->getPrimero();
@@ -70,7 +68,6 @@ bool Tienda::buscarComponente(string cod) {
 	}
 	return false;
 }
-
 bool Tienda::buscarKit(string cod) {
 	string tipo;
 	Nodo<Componente>* e = Catalogo->getPrimero();
@@ -87,7 +84,6 @@ bool Tienda::buscarKit(string cod) {
 	}
 	return false;
 }
-
 bool Tienda::buscarDestino(string cod) {
 	Nodo<Destino>* e = Destinos->getPrimero();
 	while (e != NULL) {
@@ -100,7 +96,16 @@ bool Tienda::buscarDestino(string cod) {
 	}
 	return false;
 }
+Componente* Tienda::retornarProductos(string cod){
+	Nodo<Componente>* pExt = Catalogo->getPrimero();
+	while (pExt != NULL) {
+		if (pExt->getDato()->getID() == cod)
+			return pExt->getDato();
+		pExt = pExt->getSiguiente();
+	}
 
+	return NULL;
+}
 Componente* Tienda::retornarSoloComponentes(string cod) {
 	string tipo;
 	Nodo<Componente>* e = Catalogo->getPrimero();
@@ -143,7 +148,6 @@ Componente* Tienda::retornarSoloComponentes(string cod) {
 	}
 	return NULL;
 }
-
 string Tienda::mostrarSoloComponentes() {
 	stringstream show;
 	string tipo;
@@ -159,7 +163,6 @@ string Tienda::mostrarSoloComponentes() {
 	}
 	return show.str();
 }
-
 Componente* Tienda::retornarSoloKits(string cod){
 	string tipo;
 	Nodo<Componente>* e = Catalogo->getPrimero();
@@ -176,7 +179,6 @@ Componente* Tienda::retornarSoloKits(string cod){
 	}
 	return NULL;
 }
-
 string Tienda::mostrarSoloKits(){
 	stringstream show;
 	string tipo;
@@ -192,7 +194,6 @@ string Tienda::mostrarSoloKits(){
 	}
 	return show.str();
 }
-
 Destino* Tienda::retornaDestino(string cod) {
 	Nodo<Destino>* e = Destinos->getPrimero();
 	while (e != NULL) {
@@ -222,6 +223,51 @@ Cliente* Tienda::retornaSuscriptor(string cedula) {
 	}
 	return NULL;
 }
+void Tienda::restarAUnidades(string cod, int cant) {
+	int cantaux;
+	Nodo<Componente>* e = Catalogo->getPrimero();
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			if (e->getDato()->getID() == cod) {
+				cantaux = e->getDato()->getUnidades() - cant;
+				e->getDato()->setUnidades(cantaux);
+			}
+		}
+		e = e->getSiguiente();
+	}e;
+}
+void Tienda::sumarAUnidades(string cod, int cant) {
+	int cantaux;
+	Nodo<Componente>* e = Catalogo->getPrimero();
+	while (e != NULL) {
+		if (e->getDato() != NULL) {
+			if (e->getDato()->getID() == cod) {
+				cantaux = e->getDato()->getUnidades() + cant;
+				e->getDato()->setUnidades(cantaux);
+			}
+		}
+		e = e->getSiguiente();
+	}e;
+}
+
+
+void Tienda::cancelacionDeCompra(Factura* factura) {
+	Nodo<Componente>* pCarrito = NULL;
+	string id;
+	int unidades;
+	if (factura->getCarrito()->getPrimero() != NULL) {
+		pCarrito = factura->getCarrito()->getPrimero();
+		while (pCarrito != NULL) {
+			if (pCarrito->getDato() != NULL) {
+				id = pCarrito->getDato()->getID();
+				unidades = pCarrito->getDato()->getUnidades();
+				sumarAUnidades(id, unidades);
+				pCarrito = pCarrito->getSiguiente();
+			}
+		}
+	}
+}
+
 
 Cliente* Tienda::retornaCliente(string cedula) {
 	Nodo<Cliente>* e = Suscriptores->getPrimero();
@@ -282,23 +328,76 @@ void Tienda::eliminarProducto(string cod) {
 
 string Tienda::reporteTotalesBrutos() {
 	stringstream s;
-	s << "Totales Brutos: " << Ventas->totalBruto() << endl;
+	s << "Total Bruto: " << Ventas->subtotalesDeFacturas() << endl;
 	return s.str();
 }
 
-string Tienda::reporteTotalesNetos() {
-	stringstream s;
-	s << "Totales Netos: " << Ventas->totalNeto() << endl;
-	return s.str();
-}
+string Tienda::primeroYsegundoMasVendios(){
+	// Comodines
+	string first, second, id;
+	int contador1 = 0, contador2 = 0, contadorAux = 0;
+	
+	// Donde se va a guardar la informacion
+	stringstream show;
 
-string Tienda::reporteDeGanancias() {
-	stringstream s;
-	s << "Total de Ganancias: " << Ventas->ganacias() << endl;
-	return s.str();
+	// Punteros a los primeros de cada lista
+	Nodo<Componente>* aux1 = Catalogo->getPrimero();
+	Nodo<Factura>* aux2 = Ventas->getPrimero();
+
+	// Una verificacion de que ambos punteros sean diferentes de NULL
+	if (aux1 && aux2 != NULL) {
+		
+		// Inicia el ciclo para aux1
+		while (aux1 != NULL) {
+			// Se le asigna el id del elemento de aux1
+			id = aux1->getDato()->getID();
+
+			// Inicia el ciclo para aux2
+			while (aux2 != NULL) {
+				if (aux2->getDato()->existenciaDeProducto(id) == true) {
+					contadorAux = contadorAux + aux2->getDato()->obtenerUnidadesDeProductoBuscado(id);
+				}
+
+				aux2 = aux2->getSiguiente();
+			}
+			aux2 = Ventas->getPrimero();
+			if (contador1 == 0) {
+				contador1 = contadorAux;
+				first = id;
+				second = id;
+			}
+			if (contadorAux > contador1) {
+				contador2 = contador1;
+				contador1 = contadorAux;
+				second = first;
+				first = id;
+			}
+			if (contadorAux < contador1 && contadorAux > contador2) {
+				contador2 = contadorAux;
+				second = id;
+			}
+			contadorAux = 0;
+			aux1 = aux1->getSiguiente();
+		}
+	}
+
+
+
+	show << "----------------Los dos mas Vendidos---------------------" << endl;
+	if(retornarProductos(first) != NULL)
+		show << retornarProductos(first)->toStringKits() << endl;
+	show << "---------------------------------------------------------" << endl;
+	if (retornarProductos(second) != NULL)
+		show << retornarProductos(second)->toStringKits() << endl;
+	show << "---------------------------------------------------------" << endl;
+
+	
+	return show.str();;
 }
 
 // ------------Archivos---------------
+
+
 void Tienda::guardarCatalogo()
 {
 	Catalogo->guardarCatalogo();
@@ -395,9 +494,10 @@ void Tienda::recuperarArchivoDestinos() {
 	ifstream entrada;
 	entrada.open(rutaDestinos);
 	while (entrada.good()) {
-		if (entrada.good()) {
+		string op;
+		getline(entrada, op, DELIMITA_CAMPO);
+		if(op == "Destino")
 			Destinos->ingresar(*Destino::recuperar(entrada));
-		}
 	}
 	entrada.close();
 }
@@ -414,6 +514,7 @@ void Tienda::recuperarDeArchivos(){
 	recuperarArchivoSuscriptores();
 	recuperarFacturas();
 	recuperarArchivoDestinos();
+	cout << Ventas->toString() << endl << endl;
 	cout << Destinos->toString() << endl << endl;
 	system("pause");
 

@@ -163,6 +163,7 @@ void generarVentaDirecta(Tienda* tienda) {
 		case 5:
 			cout << endl;
 			cout << "Cancelando la Compra..." << endl << endl;
+			tienda->cancelacionDeCompra(factura);
 			break;
 		}
 		system("pause");
@@ -181,6 +182,7 @@ Componente* agregarComponente(Tienda* tienda){
 		cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
 		aux = tienda->retornarSoloComponentes(cod);
 		aux->setUnidades(cant);
+		tienda->restarAUnidades(cod, cant);
 		cout << "Componente encontrado y agregado!!" << endl << endl;
 		return aux;
 	}
@@ -202,6 +204,7 @@ Componente* agregarSistemaPreconfigurado(Tienda* tienda){
 		cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
 		aux = tienda->retornarSoloKits(cod);
 		aux->setUnidades(cant);
+		tienda->restarAUnidades(cod, cant);
 		cout << "Sistema Preconfigurado encontrado y agregado!!" << endl << endl;
 		return aux;
 	}
@@ -229,7 +232,9 @@ void generarVentaEnLinea(Tienda* tienda){
 	int op = 0;
 	bool acceso = false;
 	Cliente* cliente = NULL;
+	Factura* factura = new EnLinea();
 	codigo = to_string(tienda->getVentas()->getCantidad() + 1);
+	factura->setCodigo(codigo);
 	cout << "MENU ->  (2) Venta en Linea." << endl << endl;
 	cout << "Ingrese la cedula -> "; cin >> cedula;
 	cout << endl;
@@ -242,10 +247,10 @@ void generarVentaEnLinea(Tienda* tienda){
 		cout << endl;
 		cliente = crearCliente();
 		tienda->ingresarCliente(cliente);
-		cout << "Liso!!" << endl << endl;
+		cout << "Listo!!" << endl << endl;
 	
 	}
-	Factura* factura = new Directo(codigo, cliente);
+	factura->setCliente(cliente);
 	do {
 		system("cls");
 		cout << "MENU ->  (2) Venta en Linea." << endl << endl;
@@ -675,6 +680,37 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 
 	return NULL;
 }
+bool ingresarAlKit(int& contadorP, int& contadorM, int& contadorA, string& type, string cod, Componente& kit, Tienda* tienda) {
+	if (type == "class Mezclador" && contadorM == 0) {
+		type = "mezcladores";
+		kit.agregar(tienda->retornarSoloComponentes(cod));
+		contadorM = 1;
+		return true;
+	}
+	if (type == "class Amplificador" && contadorA == 0) {
+		type = "amplificadores";
+		kit.agregar(tienda->retornarSoloComponentes(cod));
+		contadorA = 1;
+		return true;
+	}
+	if (type == "class Altavoz" || type == "class Audifono" && contadorP == 0) {
+		kit.agregar(tienda->retornarSoloComponentes(cod));
+		contadorP = 1;
+		return true;
+	}
+	if (type != "class Mezclador" && type != "class Amplificador" && type != "class Altavoz" && type != "class Audifono") {
+		kit.agregar(tienda->retornarSoloComponentes(cod));
+		return true;
+	}
+	if(type == "class Audifono" || type == "class Altavoz")
+		type = "altavoces o audifonos.";
+	if (type == "class Mezclador")
+		type = "mezcladores.";
+	if (type == "class Amplificador")
+		type = "amplificadores";
+
+	return false;
+}
 
 //Desarrollo de metodo para eliminar un componente de la tienda 
 void eliminarProducto(Tienda* tienda) {
@@ -705,11 +741,13 @@ void reportes(Tienda* tienda) {
 			system("cls");
 			cout << "MENU ->  (4) Reportes -> (1) Reporte Equipos mas Vendidos" << endl << endl;
 			reporteEquiposMasVendidos(tienda);
+			system("pause");
 			break;
 		case 2:
 			system("cls");
 			cout << "MENU ->  (4) Reportes -> (2) Reportes Ventas " << endl << endl;
 			reporteVentas(tienda);
+			system("pause");
 			break;
 		case 3:
 			break;
@@ -718,7 +756,9 @@ void reportes(Tienda* tienda) {
 }
 
 //Desarrollo de metodo que despliega la lista de los equipos mas vendidos de la tienda 
-void reporteEquiposMasVendidos(Tienda* tienda){}
+void reporteEquiposMasVendidos(Tienda* tienda){
+	cout << tienda->primeroYsegundoMasVendios();
+}
 
 //Desarrollo de metodo de reportes de totales brutos, netos y ganancias de la tienda 
 void reporteVentas(Tienda* tienda){
@@ -770,34 +810,3 @@ void MAIN(Tienda* tienda) {
 	system("pause");
 }
 
-bool ingresarAlKit(int& contadorP, int& contadorM, int& contadorA, string& type, string cod, Componente& kit, Tienda* tienda) {
-	if (type == "class Mezclador" && contadorM == 0) {
-		type = "mezcladores";
-		kit.agregar(tienda->retornarSoloComponentes(cod));
-		contadorM = 1;
-		return true;
-	}
-	if (type == "class Amplificador" && contadorA == 0) {
-		type = "amplificadores";
-		kit.agregar(tienda->retornarSoloComponentes(cod));
-		contadorA = 1;
-		return true;
-	}
-	if (type == "class Altavoz" || type == "class Audifono" && contadorP == 0) {
-		kit.agregar(tienda->retornarSoloComponentes(cod));
-		contadorP = 1;
-		return true;
-	}
-	if (type != "class Mezclador" && type != "class Amplificador" && type != "class Altavoz" && type != "class Audifono") {
-		kit.agregar(tienda->retornarSoloComponentes(cod));
-		return true;
-	}
-	if(type == "class Audifono" || type == "class Altavoz")
-		type = "altavoces o audifonos.";
-	if (type == "class Mezclador")
-		type = "mezcladores.";
-	if (type == "class Amplificador")
-		type = "amplificadores";
-
-	return false;
-}

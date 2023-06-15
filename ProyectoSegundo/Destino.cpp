@@ -43,7 +43,8 @@ string Destino::toString() {
 
 // Desarrollo del metodo guardar
 void Destino::guardar(ostream& salida) {
-	salida << codigo << DELIMITA_CAMPO 
+	salida << "Destino" << DELIMITA_CAMPO
+		<< codigo << DELIMITA_CAMPO 
 		<< pais << DELIMITA_CAMPO 
 		<< ciudad << DELIMITA_CAMPO 
 		<< costoTraslado << DELIMITA_REGISTRO;
@@ -51,7 +52,6 @@ void Destino::guardar(ostream& salida) {
 
 // Desarrollo del metodo recuperar
 Destino* Destino::recuperar(istream& entrada) {
-	Destino* destino = new Destino();
 	string cod, pais, ciudad, costo;
 	getline(entrada, cod, DELIMITA_CAMPO);
 	getline(entrada, pais, DELIMITA_CAMPO);

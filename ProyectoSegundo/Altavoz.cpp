@@ -23,7 +23,7 @@ string Altavoz::getID() { return codigo; }
 string Altavoz::getCodigo() { return codigo; }
 string Altavoz::getCaracteristica() { return caracteristica; }
 double Altavoz::getPrecio() { return precio; }
-double Altavoz::obtenerPrecios() { return precio * unidades;}
+double Altavoz::obtenerPrecios() { return precio;}
 int Altavoz::getUnidades() { return unidades; }
 
 

@@ -23,7 +23,7 @@ string Microfono::getID() { return codigo; }
 string Microfono::getCodigo() { return codigo; }
 string Microfono::getCaracteristica() { return caracteristica; }
 double Microfono::getPrecio() { return precio; }
-double Microfono::obtenerPrecios() { return precio * unidades; }
+double Microfono::obtenerPrecios() { return precio; }
 int Microfono::getUnidades() { return unidades; }
 
 

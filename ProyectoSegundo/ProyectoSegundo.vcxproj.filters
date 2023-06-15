@@ -107,9 +107,6 @@
     <ClCompile Include="Sistema.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Factura.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Kit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

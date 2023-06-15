@@ -56,5 +56,9 @@ public:
 	virtual double precioNetoDeLaFactura() = 0;
 	virtual double ganaciasDeLaFactura() = 0;
 
+	virtual bool existenciaDeProducto(string) = 0;
+	virtual int obtenerUnidadesDeProductoBuscado(string) = 0;
+
+
 };
 

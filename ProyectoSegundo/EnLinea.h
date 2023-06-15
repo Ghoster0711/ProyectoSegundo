@@ -50,6 +50,9 @@ public:
 
 	double precioBrutoDeLaFactura();
 	double precioNetoDeLaFactura();
+
+	bool existenciaDeProducto(string);
+	int obtenerUnidadesDeProductoBuscado(string);
 	double ganaciasDeLaFactura();
 
 };

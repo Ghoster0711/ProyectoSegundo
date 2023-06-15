@@ -23,7 +23,7 @@ string Tornamesa::getID() { return codigo; }
 string Tornamesa::getCodigo() { return codigo; }
 string Tornamesa::getCaracteristica() { return caracteristica; }
 double Tornamesa::getPrecio() { return precio; }
-double Tornamesa::obtenerPrecios() { return precio * unidades; }
+double Tornamesa::obtenerPrecios() { return precio; }
 int Tornamesa::getUnidades() { return unidades; }
 
 

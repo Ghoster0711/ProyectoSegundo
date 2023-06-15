@@ -23,7 +23,7 @@ string Mezclador::getID() { return codigo; }
 string Mezclador::getCodigo() { return codigo; }
 string Mezclador::getCaracteristica() { return caracteristica; }
 double Mezclador::getPrecio() { return precio; }
-double Mezclador::obtenerPrecios() { return precio * unidades; }
+double Mezclador::obtenerPrecios() { return precio; }
 int Mezclador::getUnidades() { return unidades; }
 
 

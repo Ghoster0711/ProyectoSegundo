@@ -48,10 +48,7 @@ string Kit::getNombre() { return nombre; }
 string Kit::getCaracteristica() { return caracteristica; }
 double Kit::getPrecio() { return precio; }
 double Kit::obtenerPrecios() {
-	if (precio != 0)
-		return precio * unidades;
-	else
-		return Empaquetado->obtenerPrecios() * unidades;
+		return Empaquetado->obtenerPreciosKit();
 }
 int Kit::getUnidades() { return unidades; }
 
