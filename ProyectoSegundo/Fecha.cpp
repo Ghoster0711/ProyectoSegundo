@@ -36,8 +36,7 @@ string Fecha::toString() {
 
 //Guardar datos al archivo 
 void Fecha::guardarDatos(ostream& salida) {
-	salida << "Fecha" << DELIMITA_CAMPO
-		<< dia << DELIMITA_CAMPO
+	salida << dia << DELIMITA_CAMPO
 		<< mes << DELIMITA_CAMPO
 		<< anio << DELIMITA_REGISTRO;
 }

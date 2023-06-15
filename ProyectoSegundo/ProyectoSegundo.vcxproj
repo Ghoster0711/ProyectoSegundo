@@ -172,7 +172,6 @@
     <ClCompile Include="Destino.cpp" />
     <ClCompile Include="Empresa.cpp" />
     <ClCompile Include="Excepciones.cpp" />
-    <ClCompile Include="Factura.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Kit.cpp" />
     <ClCompile Include="Main.cpp" />

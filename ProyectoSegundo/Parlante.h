@@ -1,3 +1,14 @@
+/* --------------------------------------------------------------------
+*
+* EIF204 Programación 2
+* Proyecto 2
+*
+* 6 0483 0349 Joshua Yarit Amador Lara.
+* 40 264 0260 Sianny Barrantes Benavides.
+*
+* -------------------------------------------------------------------
+*/
+
 #pragma once
 #include <fstream>
 #include "Componente.h"
@@ -18,15 +29,19 @@ public:
 	virtual string getCaracteristica() = 0;
 	virtual double getPrecio() = 0;
 	virtual double obtenerPrecios() = 0;
+	virtual int getUnidades() = 0;
+
 
 	// Set's
 	virtual void setNombre(string) = 0;
 	virtual void setCodigo(string) = 0;
 	virtual void setCaracteristica(string) = 0;
 	virtual void setPrecio(double) = 0;
+	virtual void setUnidades(int) = 0;
 
 	// ToString
 	virtual string toString() = 0;
+	virtual string toStringKits() = 0;
 
 	// Metodo para agregar
 	virtual void agregar(Componente*) = 0;

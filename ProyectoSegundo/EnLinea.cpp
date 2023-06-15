@@ -3,7 +3,7 @@
 // Desarrollo del constructor
 EnLinea::EnLinea() {
 	codigo = "";
-	fecha = NULL;
+	fecha = new Fecha();
 	cliente = NULL;
 	carritoDeCompras = new Lista<Componente>();
 	destino = NULL;
@@ -140,6 +140,7 @@ void EnLinea::guardar(ostream& salida) {
 	cliente->guardar(salida);
 	destino->guardar(salida);
 	carritoDeCompras->guardarCarritoDeCompras(salida);
+	salida << "finCarrito" << DELIMITA_CAMPO;
 }
 
 //Desarrollo del metodo para recuperar datos del archivo 
@@ -147,8 +148,11 @@ Factura* EnLinea::recuperar(istream& entrada) {
 	string typeCliente, codigo;
 	Factura* factura = new EnLinea();
 	Cliente* cliente = NULL;
+	Fecha* fecha = NULL;
+	Destino* destino = NULL;
+
 	getline(entrada, codigo, DELIMITA_CAMPO);
-	Fecha* fecha = Fecha::recuperarDatos(entrada);
+	fecha = Fecha::recuperarDatos(entrada);
 	getline(entrada, typeCliente, DELIMITA_CAMPO);
 	if (typeCliente == "Persona") {
 		cliente = Persona::recuperar(entrada);
@@ -156,7 +160,7 @@ Factura* EnLinea::recuperar(istream& entrada) {
 	if (typeCliente == "Empresa") {
 		cliente = Empresa::recuperar(entrada);
 	}
-	Destino* destino = Destino::recuperar(entrada);
+	destino = Destino::recuperar(entrada);
 	recuperarCarrito(entrada, factura);
 	factura->setCodigo(codigo);
 	factura->setCliente(cliente);
@@ -200,4 +204,56 @@ void EnLinea::recuperarCarrito(istream& entrada, Factura* fac) {
 		if (op == "Kit")
 			fac->getCarrito()->ingresar(*Kit::recuperar(entrada));
 	}
+}
+
+
+
+double EnLinea::precioBrutoDeLaFactura() {
+	double subtotal = carritoDeCompras->obtenerPrecios();
+	double adicional = subtotal * 0.35;
+	double total = subtotal + adicional + destino->getCostoTraslado();
+	return total;
+}
+
+double EnLinea::precioNetoDeLaFactura() {
+	double subtotal = carritoDeCompras->obtenerPrecios();
+	double adicional = subtotal * 0.35;
+	double total = subtotal - adicional - destino->getCostoTraslado();
+	return total;
+}
+
+double EnLinea::ganaciasDeLaFactura() {
+	double subtotal = carritoDeCompras->obtenerPrecios();
+	double total = subtotal - precioBrutoDeLaFactura();
+	return abs(total);
+}
+
+
+
+bool EnLinea::existenciaDeProducto(string cod) {
+	Nodo<Componente>* pExt = carritoDeCompras->getPrimero();
+	while (pExt != NULL) {
+		if (pExt != NULL) {
+			if (pExt->getDato()->getID() == cod) {
+				cout << cod << endl << endl;
+				cout << pExt->getDato()->getUnidades() << endl;
+				return true;
+			}
+		}
+		pExt = pExt->getSiguiente();
+	}
+	return false;
+}
+
+
+int EnLinea::obtenerUnidadesDeProductoBuscado(string cod) {
+	Nodo<Componente>* pExt = carritoDeCompras->getPrimero();
+	while (pExt != NULL) {
+		if (pExt != NULL) {
+			if (pExt->getDato()->getID() == cod)
+				return pExt->getDato()->getUnidades();
+		}
+		pExt = pExt->getSiguiente();
+	}
+	return 0;
 }

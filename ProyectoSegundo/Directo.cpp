@@ -189,3 +189,52 @@ void Directo::recuperarCarrito(istream& entrada, Factura* fac){
 			fac->getCarrito()->ingresar(*Kit::recuperar(entrada));
 	}
 }
+
+
+
+double Directo::precioBrutoDeLaFactura() {
+	double subtotal = carritoDeCompras->obtenerPrecios();
+	double adicional = subtotal * 0.35;
+	double total = subtotal + adicional;
+	return total;
+}
+
+double Directo::precioNetoDeLaFactura() {
+	double subtotal = carritoDeCompras->obtenerPrecios();
+	double adicional = subtotal * 0.35;
+	double total = subtotal - adicional;
+	return total;
+}
+
+double Directo::ganaciasDeLaFactura() {
+	double subtotal = carritoDeCompras->obtenerPrecios();
+	double total = subtotal - precioBrutoDeLaFactura();
+	return abs(total);
+}
+
+bool Directo::existenciaDeProducto(string cod) {
+	Nodo<Componente>* pExt = carritoDeCompras->getPrimero();
+	while (pExt != NULL) {
+		if (pExt != NULL) {
+			if (pExt->getDato()->getID() == cod) {
+				cout << cod << endl << endl;
+				cout << pExt->getDato()->getUnidades() << endl;
+				return true;
+			}
+		}
+		pExt = pExt->getSiguiente();
+	}
+	return false;
+}
+
+int Directo::obtenerUnidadesDeProductoBuscado(string cod) {
+	Nodo<Componente>* pExt = carritoDeCompras->getPrimero();
+	while (pExt != NULL) {
+		if (pExt != NULL) {
+			if (pExt->getDato()->getID() == cod)
+				return pExt->getDato()->getUnidades();
+		}
+		pExt = pExt->getSiguiente();
+	}
+	return 0;
+}

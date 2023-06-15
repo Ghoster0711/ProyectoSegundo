@@ -40,6 +40,15 @@ string Persona::toString() {
 	return s.str();
 }
 
+void Persona::update(string des, ofstream& file){
+	file << nombre << "Se le notifica que " << des << endl;
+}
+
+void Persona::setModel(Lista<Componente>* l)
+{
+	model = l;
+}
+
 // Desarrollo del metodo para guardar
 void Persona::guardar(ostream& salida) {
 	salida << "Persona" << DELIMITA_CAMPO
