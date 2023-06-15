@@ -126,7 +126,7 @@ void generarVentaDirecta(Tienda* tienda) {
 			cout << "Por favor ingrese la informacion del cliente" << endl;
 			cout << endl;
 			cliente = crearCliente();
-			cout << "Liso!!" << endl;
+			cout << "Listo!!" << endl;
 			op = 3;
 		}
 		system("pause");
@@ -397,6 +397,7 @@ Cliente* crearCliente(){
 	int op;
 	bool acceso = false;
 	do {
+		system("cls");
 		try {
 			cout << "Tipo de Cliente?" << endl;
 			cout << "----------------------------------" << endl
@@ -415,7 +416,7 @@ Cliente* crearCliente(){
 		catch (ExcepcionRango& e) {
 			cout << e.toString() << endl;
 		}
-	} while (acceso = false);
+	} while (acceso == false);
 	if (op == 1)
 		return crearEmpresa();
 	if (op == 2)
