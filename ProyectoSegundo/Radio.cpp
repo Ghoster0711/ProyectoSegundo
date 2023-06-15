@@ -26,6 +26,7 @@ double Radio::getPrecio() { return precio; }
 double Radio::obtenerPrecios() { return precio * unidades; }
 int Radio::getUnidades() { return unidades; }
 
+
 // Desarrollo de los set's
 void Radio::agregar(Componente*) {}
 void Radio::setCodigo(string cod) { codigo = cod; }

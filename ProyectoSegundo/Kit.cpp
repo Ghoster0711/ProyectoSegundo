@@ -55,6 +55,8 @@ double Kit::obtenerPrecios() {
 }
 int Kit::getUnidades() { return unidades; }
 
+
+
 // Desarrollo de los set's
 void Kit::setCodigo(string cod) { codigo = cod; }
 void Kit::setCaracteristica(string carac) { caracteristica = carac; }

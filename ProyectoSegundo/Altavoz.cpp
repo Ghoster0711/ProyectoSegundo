@@ -26,6 +26,7 @@ double Altavoz::getPrecio() { return precio; }
 double Altavoz::obtenerPrecios() { return precio * unidades;}
 int Altavoz::getUnidades() { return unidades; }
 
+
 // Desarrollo de los set's
 void Altavoz::agregar(Componente*) {}
 void Altavoz::setCodigo(string cod) { codigo = cod; }

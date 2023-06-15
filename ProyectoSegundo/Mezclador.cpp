@@ -26,6 +26,8 @@ double Mezclador::getPrecio() { return precio; }
 double Mezclador::obtenerPrecios() { return precio * unidades; }
 int Mezclador::getUnidades() { return unidades; }
 
+
+
 // Desarrollo de los set's
 void Mezclador::agregar(Componente*) {}
 void Mezclador::setCodigo(string cod) { codigo = cod; }

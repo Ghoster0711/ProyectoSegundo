@@ -49,5 +49,5 @@ public:
 
 	double precioBrutoDeLaFactura();
 	double precioNetoDeLaFactura();
-
+	double ganaciasDeLaFactura();
 };

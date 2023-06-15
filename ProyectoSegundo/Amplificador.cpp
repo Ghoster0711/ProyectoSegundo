@@ -26,6 +26,7 @@ double Amplificador::getPrecio() { return precio; }
 double Amplificador::obtenerPrecios() {	return precio * unidades;}
 int Amplificador::getUnidades() { return unidades; }
 
+
 // Desarrollo de los set's
 void Amplificador::agregar(Componente*) {}
 void Amplificador::setCodigo(string cod) { codigo = cod; }

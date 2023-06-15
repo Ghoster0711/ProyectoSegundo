@@ -26,6 +26,9 @@ double Microfono::getPrecio() { return precio; }
 double Microfono::obtenerPrecios() { return precio * unidades; }
 int Microfono::getUnidades() { return unidades; }
 
+
+
+
 // Desarrollo de los set's
 void Microfono::agregar(Componente*) {}
 void Microfono::setCodigo(string cod) { codigo = cod; }

@@ -79,6 +79,8 @@ public:
 
 
 	string reporteTotalesBrutos();
+	string reporteTotalesNetos();
+	string reporteDeGanancias();
 
 	// ------------Archivos---------------
 
