@@ -1,3 +1,14 @@
+/* --------------------------------------------------------------------
+*
+* EIF204 Programación 2
+* Proyecto 2
+*
+* 6 0483 0349 Joshua Yarit Amador Lara.
+* 40 264 0260 Sianny Barrantes Benavides.
+*
+* -------------------------------------------------------------------
+*/
+
 #pragma once
 #include "Factura.h"
 #include "Destino.h"
@@ -36,7 +47,7 @@ public:
 	Componente* clonarComponente(Componente*); // Clonar un componente
 
 	// Metodo que se encarga de agregar un componente al carrito
-	void ingresarCompra(Componente*); // 
+	void ingresarCompra(Componente*);
 
 	// ToString
 	string toString();
@@ -48,9 +59,9 @@ public:
 	static Factura* recuperar(istream&);
 	static void recuperarCarrito(istream&, Factura*);
 
+	// Metodos para la parte de reportes
 	double precioBrutoDeLaFactura();
 	double precioNetoDeLaFactura();
-
 	bool existenciaDeProducto(string);
 	int obtenerUnidadesDeProductoBuscado(string);
 	double ganaciasDeLaFactura();
