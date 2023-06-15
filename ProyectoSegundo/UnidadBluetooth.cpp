@@ -23,8 +23,9 @@ string UnidadBluetooth::getID() { return codigo; }
 string UnidadBluetooth::getCodigo() { return codigo; }
 string UnidadBluetooth::getCaracteristica() { return caracteristica; }
 double UnidadBluetooth::getPrecio() { return precio; }
-double UnidadBluetooth::obtenerPrecios() { return precio * unidades; }
+double UnidadBluetooth::obtenerPrecios() { return precio; }
 int UnidadBluetooth::getUnidades() { return unidades; }
+
 
 // Desarrollo de los set's
 void UnidadBluetooth::agregar(Componente*) {}

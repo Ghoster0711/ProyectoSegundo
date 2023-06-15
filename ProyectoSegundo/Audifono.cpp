@@ -23,8 +23,10 @@ string Audifono::getID() { return codigo; }
 string Audifono::getCodigo() { return codigo; }
 string Audifono::getCaracteristica() { return caracteristica; }
 double Audifono::getPrecio() { return precio; }
-double Audifono::obtenerPrecios() {	return precio * unidades; }
+double Audifono::obtenerPrecios() {	return precio; }
 int Audifono::getUnidades() { return unidades; }
+
+
 
 // Desarrollo de los set's
 void Audifono::agregar(Componente*) {}

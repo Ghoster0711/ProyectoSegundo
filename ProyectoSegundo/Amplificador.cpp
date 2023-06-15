@@ -23,8 +23,9 @@ string Amplificador::getID() { return codigo; }
 string Amplificador::getCodigo() { return codigo; }
 string Amplificador::getCaracteristica() { return caracteristica; }
 double Amplificador::getPrecio() { return precio; }
-double Amplificador::obtenerPrecios() {	return precio * unidades;}
+double Amplificador::obtenerPrecios() {	return precio;}
 int Amplificador::getUnidades() { return unidades; }
+
 
 // Desarrollo de los set's
 void Amplificador::agregar(Componente*) {}

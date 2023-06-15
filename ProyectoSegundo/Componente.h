@@ -28,7 +28,6 @@ public:
 	virtual double obtenerPrecios() = 0;
 	virtual int getUnidades() = 0;
 
-
 	// Set's
 	virtual void setCodigo(string) = 0;
 	virtual void setCaracteristica(string) = 0;
@@ -46,4 +45,6 @@ public:
 	
 	// Para guardar en guardar en archivos
 	virtual void guardar(ostream&) = 0;
+
+	
 };

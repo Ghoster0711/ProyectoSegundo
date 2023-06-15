@@ -41,8 +41,11 @@ public:
 
 	// Metodos para obtener los precios de los elementos que se encuentran en las listas
 	double obtenerPrecios();
+	double obtenerPreciosKit();
 
-	double subtotalesDeFacturas();
+	double totalBruto();
+	double totalNeto();
+	double ganacias();
 
 };
 
@@ -241,6 +244,20 @@ inline double Lista<T>::obtenerPrecios()
 	Nodo<T>* pExt = primero;
 	while (pExt != NULL) {
 		if (pExt->getDato() != NULL) {
+			precios = precios + (pExt->getDato()->obtenerPrecios() * pExt->getDato()->getUnidades());
+		}
+		pExt = pExt->getSiguiente();
+	}
+	return precios;
+}
+
+template<class T>
+inline double Lista<T>::obtenerPreciosKit()
+{
+	double precios = 0;
+	Nodo<T>* pExt = primero;
+	while (pExt != NULL) {
+		if (pExt->getDato() != NULL) {
 			precios = precios + pExt->getDato()->obtenerPrecios();
 		}
 		pExt = pExt->getSiguiente();
@@ -248,15 +265,41 @@ inline double Lista<T>::obtenerPrecios()
 	return precios;
 }
 
-//template<class T>
-//inline double subtotalesDeFacturas() {
-//	double suma = 0;
-//	Nodo<T>* pExt = primero;
-//	while (pExt != NULL) {
-//		if (pExt->getDato() != NULL) {
-//			suma = suma + pExt->getDato()->precioBrutoDeLaFactura();
-//		}
-//		pExt = pExt->getSiguiente();
-//	}
-//	return suma;
-//}
+template<class T>
+inline double Lista<T>::totalBruto() {
+	double suma = 0;
+	Nodo<T>* pExt = primero;
+	while (pExt != NULL) {
+		if (pExt->getDato() != NULL) {
+			suma = suma + pExt->getDato()->precioBrutoDeLaFactura();
+		}
+		pExt = pExt->getSiguiente();
+	}
+	return suma;
+}
+
+template<class T>
+inline double Lista<T>::totalNeto() {
+	double suma = 0;
+	Nodo<T>* pExt = primero;
+	while (pExt != NULL) {
+		if (pExt->getDato() != NULL) {
+			suma = suma + pExt->getDato()->precioNetoDeLaFactura();
+		}
+		pExt = pExt->getSiguiente();
+	}
+	return suma;
+}
+
+template<class T>
+inline double Lista<T>::ganacias() {
+	double suma = 0;
+	Nodo<T>* pExt = primero;
+	while (pExt != NULL) {
+		if (pExt->getDato() != NULL) {
+			suma = suma + pExt->getDato()->ganaciasDeLaFactura();
+		}
+		pExt = pExt->getSiguiente();
+	}
+	return suma;
+}

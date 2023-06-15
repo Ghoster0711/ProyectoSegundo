@@ -53,10 +53,11 @@ int menuMantenimiento() {
 		<< "| (1) Ver Lista de Clientes.             |" << endl
 		<< "| (2) Ingreso de Nuevos Clientes         |" << endl
 		<< "| (3) Eliminar Cliente                   |" << endl
-		<< "| (4) Ver Lista del Catalogo             |" << endl
-		<< "| (5) Ingresar Productos al Catalogo     |" << endl
-		<< "| (6) Eliminar Productos del Catalogo    |" << endl
-		<< "| (7) Volver.                            |" << endl
+		<< "| (4) Modificar Cliente                  |" << endl
+		<< "| (5) Ver Lista del Catalogo             |" << endl
+		<< "| (6) Ingresar Productos al Catalogo     |" << endl
+		<< "| (7) Eliminar Productos del Catalogo    |" << endl
+		<< "| (8) Volver.                            |" << endl
 		<< "------------------------------------------" << endl
 		<< "| Ingrese una opcion -> "; cin >> op;
 	return op;
@@ -162,6 +163,7 @@ void generarVentaDirecta(Tienda* tienda) {
 		case 5:
 			cout << endl;
 			cout << "Cancelando la Compra..." << endl << endl;
+			tienda->cancelacionDeCompra(factura);
 			break;
 		}
 		system("pause");
@@ -180,6 +182,7 @@ Componente* agregarComponente(Tienda* tienda){
 		cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
 		aux = tienda->retornarSoloComponentes(cod);
 		aux->setUnidades(cant);
+		tienda->restarAUnidades(cod, cant);
 		cout << "Componente encontrado y agregado!!" << endl << endl;
 		return aux;
 	}
@@ -199,8 +202,9 @@ Componente* agregarSistemaPreconfigurado(Tienda* tienda){
 		<< "| Seleccione el kit deseado por su codigo -> "; cin >> cod; 
 	if (tienda->buscarKit(cod) == true) {
 		cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
-		aux = tienda->retornarSoloComponentes(cod);
+		aux = tienda->retornarSoloKits(cod);
 		aux->setUnidades(cant);
+		tienda->restarAUnidades(cod, cant);
 		cout << "Sistema Preconfigurado encontrado y agregado!!" << endl << endl;
 		return aux;
 	}
@@ -228,12 +232,13 @@ void generarVentaEnLinea(Tienda* tienda){
 	int op = 0;
 	bool acceso = false;
 	Cliente* cliente = NULL;
+	Factura* factura = new EnLinea();
 	codigo = to_string(tienda->getVentas()->getCantidad() + 1);
+	factura->setCodigo(codigo);
 	cout << "MENU ->  (2) Venta en Linea." << endl << endl;
 	cout << "Ingrese la cedula -> "; cin >> cedula;
 	cout << endl;
 	if (tienda->buscarSuscriptor(cedula) == true) {
-		cout << "Cliente suscrito encontrado!! " << endl << endl;
 		cliente = tienda->retornaSuscriptor(cedula);
 	}
 	else {
@@ -242,10 +247,10 @@ void generarVentaEnLinea(Tienda* tienda){
 		cout << endl;
 		cliente = crearCliente();
 		tienda->ingresarCliente(cliente);
-		cout << "Liso!!" << endl << endl;
+		cout << "Listo!!" << endl << endl;
 	
 	}
-	Factura* factura = new Directo(codigo, cliente);
+	factura->setCliente(cliente);
 	do {
 		system("cls");
 		cout << "MENU ->  (2) Venta en Linea." << endl << endl;
@@ -327,23 +332,28 @@ void mantenimiento(Tienda* tienda) {
 			break;
 		case 4:
 			system("cls");
-			cout << "MENU ->  (3) Mantenimiento -> (4) Ver Lista del Catalogo" << endl << endl;
-			verCatalogo(tienda);
+			cout << "MENU ->  (3) Mantenimiento -> (4) Modificar Cliente" << endl << endl;
+			modificarCliente(tienda);
 			break;
 		case 5:
 			system("cls");
-			cout << "MENU ->  (3) Mantenimiento -> (5) Ingresar Productos al Catalogo" << endl << endl;
-			ingresoProductos(tienda);
+			cout << "MENU ->  (3) Mantenimiento -> (5) Ver Lista del Catalogo" << endl << endl;
+			verCatalogo(tienda);
 			break;
 		case 6:
 			system("cls");
-			cout << "MENU ->  (3) Mantenimiento -> (6) Eliminar Productos del Catalogo" << endl << endl;
-			eliminarProducto(tienda);
+			cout << "MENU ->  (3) Mantenimiento -> (6) Ingresar Productos al Catalogo" << endl << endl;
+			ingresoProductos(tienda);
 			break;
 		case 7:
+			system("cls");
+			cout << "MENU ->  (3) Mantenimiento -> (7) Eliminar Productos del Catalogo" << endl << endl;
+			eliminarProducto(tienda);
+			break;
+		case 8:
 			break;
 		}
-	} while (op != 7);
+	} while (op != 8);
 }
 
 //Desarrollo de metodo que despliega la lista de clientes 
@@ -424,6 +434,103 @@ void eliminarCliente(Tienda* tienda) {
 	else
 		cout << "La cedula que se ingreso no coincide con ningun con los que se encuentran!!" << endl;
 	system("pause");
+}
+
+void modificarCliente(Tienda* tienda) {
+	string cedula,tipo;
+	Cliente* cliente = NULL;
+	cout << "Ingrese la cedula -> "; cin >> cedula;
+	if (tienda->buscarSuscriptor(cedula) == true) {
+		cliente = tienda->retornaCliente(cedula);
+		tipo = typeid(*tienda->retornaCliente(cedula)).name();
+		if (tipo == "class Persona")
+			modificarClientePersona(tienda, cliente);
+		if (tipo == "class Empresa")
+			modificarClienteEmpresa(tienda, cliente);
+		cliente = NULL;
+	}
+	else {
+		cout << "Cliente no encontrado!!" << endl;
+		system("pause");
+	}
+}
+
+void modificarClientePersona(Tienda* tienda, Cliente* cliente) {
+	int op;
+	string dato;
+	do {
+		system("cls");
+		cout << "MENU ->  (3) Mantenimiento -> (4) Modificar Cliente" << endl << endl;
+		cout << cliente->toString() << endl << endl;
+		cout << "(1) Modificar Nombre" << endl;
+		cout << "(2) Modificar Pais" << endl;
+		cout << "(3) Modificar Ciudad" << endl;
+		cout << "(4) Modificar Correo" << endl;
+		cout << "(5) Modificar Nacionalidad" << endl;
+		cout << "(6) Volver" << endl;
+		cout << "| Ingrese una opcion -> "; cin >> op;
+		cout << endl;
+		switch (op) {
+		case 1:
+			cout << "Digite el nuevo nombre ->"; cin >> dato;
+			cliente->setNombre(dato);
+			break;
+		case 2:
+			cout << "Digite el nuevo pais ->"; cin >> dato;
+			cliente->setNombrePais(dato);
+			break;
+		case 3:
+			cout << "Digite la nueva ciudad ->"; cin >> dato;
+			cliente->setCiudadUbicacion(dato);
+			break;
+		case 4:
+			cout << "Digite el nuevo correo ->"; cin >> dato;
+			cliente->setCorreo(dato);
+			break;
+		case 5:
+			cout << "Digite el nueva nacionalidad ->"; cin >> dato;
+			cliente->setNacionalidad(dato);
+			break;
+		case 6:
+			break;
+		}
+	} while (op != 6);
+	
+}
+
+void modificarClienteEmpresa(Tienda* tienda,Cliente* cliente) {
+	int op;
+	string dato;
+	do {
+		system("cls");
+		cout << "MENU ->  (3) Mantenimiento -> (4) Modificar Cliente" << endl << endl;
+		cout << cliente->toString() << endl << endl;
+		cout << "(1) Modificar Nombre" << endl;
+		cout << "(2) Modificar Pais" << endl;
+		cout << "(3) Modificar Ciudad" << endl;
+		cout << "(4) Volver" << endl;
+		cout << "| Ingrese una opcion -> "; cin >> op;
+		cout << endl;
+		switch (op) {
+		case 1:
+			cout << "Digite el nuevo nombre ->"; cin >> dato;
+			cliente->setNombre(dato);
+			break;
+		case 2:
+			cout << "Digite el nuevo pais ->"; cin >> dato;
+			cliente->setNombrePais(dato);
+			break;
+		case 3:
+			cout << "Digite la nueva ciudad ->"; cin >> dato;
+			cliente->setCiudadUbicacion(dato);
+			break;
+		case 4:
+			break;
+		default:
+			cout << "Opcion digitada fuera de rango" << endl;
+			system("pause");
+		}
+	} while (op != 4);
 }
 
 //Desarrollo de metodo que despliega la lista de componentes que existen en la tienda 
@@ -573,6 +680,37 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 
 	return NULL;
 }
+bool ingresarAlKit(int& contadorP, int& contadorM, int& contadorA, string& type, string cod, Componente& kit, Tienda* tienda) {
+	if (type == "class Mezclador" && contadorM == 0) {
+		type = "mezcladores";
+		kit.agregar(tienda->retornarSoloComponentes(cod));
+		contadorM = 1;
+		return true;
+	}
+	if (type == "class Amplificador" && contadorA == 0) {
+		type = "amplificadores";
+		kit.agregar(tienda->retornarSoloComponentes(cod));
+		contadorA = 1;
+		return true;
+	}
+	if (type == "class Altavoz" || type == "class Audifono" && contadorP == 0) {
+		kit.agregar(tienda->retornarSoloComponentes(cod));
+		contadorP = 1;
+		return true;
+	}
+	if (type != "class Mezclador" && type != "class Amplificador" && type != "class Altavoz" && type != "class Audifono") {
+		kit.agregar(tienda->retornarSoloComponentes(cod));
+		return true;
+	}
+	if(type == "class Audifono" || type == "class Altavoz")
+		type = "altavoces o audifonos.";
+	if (type == "class Mezclador")
+		type = "mezcladores.";
+	if (type == "class Amplificador")
+		type = "amplificadores";
+
+	return false;
+}
 
 //Desarrollo de metodo para eliminar un componente de la tienda 
 void eliminarProducto(Tienda* tienda) {
@@ -603,11 +741,13 @@ void reportes(Tienda* tienda) {
 			system("cls");
 			cout << "MENU ->  (4) Reportes -> (1) Reporte Equipos mas Vendidos" << endl << endl;
 			reporteEquiposMasVendidos(tienda);
+			system("pause");
 			break;
 		case 2:
 			system("cls");
 			cout << "MENU ->  (4) Reportes -> (2) Reportes Ventas " << endl << endl;
 			reporteVentas(tienda);
+			system("pause");
 			break;
 		case 3:
 			break;
@@ -616,14 +756,17 @@ void reportes(Tienda* tienda) {
 }
 
 //Desarrollo de metodo que despliega la lista de los equipos mas vendidos de la tienda 
-void reporteEquiposMasVendidos(Tienda* tienda){}
+void reporteEquiposMasVendidos(Tienda* tienda){
+	cout << tienda->primeroYsegundoMasVendios();
+}
 
-//Desarrollo de metodo que......
+//Desarrollo de metodo de reportes de totales brutos, netos y ganancias de la tienda 
 void reporteVentas(Tienda* tienda){
 	cout << "------------------Reporte de Ventas--------------------" << endl;
 	cout << tienda->reporteTotalesBrutos() << endl;
-
-
+	cout << tienda->reporteTotalesNetos() << endl;
+	cout << tienda->reporteDeGanancias() << endl;
+	system("pause");
 }
 
 
@@ -667,34 +810,3 @@ void MAIN(Tienda* tienda) {
 	system("pause");
 }
 
-bool ingresarAlKit(int& contadorP, int& contadorM, int& contadorA, string& type, string cod, Componente& kit, Tienda* tienda) {
-	if (type == "class Mezclador" && contadorM == 0) {
-		type = "mezcladores";
-		kit.agregar(tienda->retornarSoloComponentes(cod));
-		contadorM = 1;
-		return true;
-	}
-	if (type == "class Amplificador" && contadorA == 0) {
-		type = "amplificadores";
-		kit.agregar(tienda->retornarSoloComponentes(cod));
-		contadorA = 1;
-		return true;
-	}
-	if (type == "class Altavoz" || type == "class Audifono" && contadorP == 0) {
-		kit.agregar(tienda->retornarSoloComponentes(cod));
-		contadorP = 1;
-		return true;
-	}
-	if (type != "class Mezclador" && type != "class Amplificador" && type != "class Altavoz" && type != "class Audifono") {
-		kit.agregar(tienda->retornarSoloComponentes(cod));
-		return true;
-	}
-	if(type == "class Audifono" || type == "class Altavoz")
-		type = "altavoces o audifonos.";
-	if (type == "class Mezclador")
-		type = "mezcladores.";
-	if (type == "class Amplificador")
-		type = "amplificadores";
-
-	return false;
-}

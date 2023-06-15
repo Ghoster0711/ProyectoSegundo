@@ -59,18 +59,24 @@ public:
 	bool buscarDestino(string);
 
 	//Desarrollo de metodos que retornan objetos 
+	Componente* retornarProductos(string);
 	Componente* retornarSoloComponentes(string);
 	Componente* retornarSoloKits(string);
 	string mostrarSoloKits();
 	Destino* retornaDestino(string);
 	Cliente* retornaSuscriptor(string);
-
+	Cliente* retornaCliente(string);
+	void restarAUnidades(string, int);
+	void sumarAUnidades(string, int);
+	void cancelacionDeCompra(Factura*);
 
 // -----------Mantenimiento-----------
 
 	string mostrarClientes();
 	bool ingresarCliente(Cliente*);
 	void eliminarCliente(string);
+
+
 	string verCatalogo();
 	bool ingresarProductosAlCatalogo(Componente*);
 	void eliminarProducto(string);
@@ -79,6 +85,9 @@ public:
 
 
 	string reporteTotalesBrutos();
+	string reporteTotalesNetos();
+	string reporteDeGanancias();
+	string primeroYsegundoMasVendios();
 
 	// ------------Archivos---------------
 
