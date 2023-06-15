@@ -45,4 +45,4 @@ Audifono	7755	EO771	Basico (supraural. diadema)	40	20
 Audifono	1154	VT518	Basico (circumaural)	45	20
 Audifono	2474	HE757	Basico (inalambrico)	60	20
 Audifono	2186	TP788	Circumaural bajos profundos	90	20
-Audifono	6870	HT856	Inalambrico bajos profundos	120	20
+Audifono	6870	HT856	Inalambrico bajos profundos	120	40

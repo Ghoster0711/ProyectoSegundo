@@ -57,7 +57,8 @@ int menuMantenimiento() {
 		<< "| (5) Ver Lista del Catalogo             |" << endl
 		<< "| (6) Ingresar Productos al Catalogo     |" << endl
 		<< "| (7) Eliminar Productos del Catalogo    |" << endl
-		<< "| (8) Volver.                            |" << endl
+		<< "| (8) Modificar cantidad de productos    |" << endl
+		<< "| (9) Volver.                            |" << endl
 		<< "------------------------------------------" << endl
 		<< "| Ingrese una opcion -> "; cin >> op;
 	return op;
@@ -89,6 +90,7 @@ void generarVentaDirecta(Tienda* tienda) {
 	codigo = to_string(tienda->getVentas()->getCantidad() + 1);
 	do {
 		try {
+			system("cls");
 			cout << "MENU ->  (1) Venta Directa." << endl << endl;
 			cout << "Posee el cliente una suscripcion en la tienda?" << endl;  
 			cout << "| (1) Si" << endl;
@@ -105,7 +107,7 @@ void generarVentaDirecta(Tienda* tienda) {
 		catch (ExcepcionRango& e) {
 			cout << e.toString() << endl;
 		}
-	} while (acceso = false);
+	} while (acceso == false);
 	do {
 		if (op == 1) {
 			cout << "Ingrese la cedula -> "; cin >> cedula;
@@ -181,10 +183,14 @@ Componente* agregarComponente(Tienda* tienda){
 	if (tienda->buscarComponente(cod) == true) {
 		cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
 		aux = tienda->retornarSoloComponentes(cod);
-		aux->setUnidades(cant);
-		tienda->restarAUnidades(cod, cant);
-		cout << "Componente encontrado y agregado!!" << endl << endl;
-		return aux;
+		if ((aux->getUnidades() - cant) > 0) {
+			aux->setUnidades(cant);
+			tienda->restarAUnidades(cod, cant);
+			cout << "Componente encontrado y agregado!!" << endl << endl;
+			return aux;
+		}
+		else
+			cout << "No hay suficientes productos para vender" << endl;
 	}
 	else {
 		cout << "Componente no encontrado!!" << endl << endl;
@@ -203,10 +209,14 @@ Componente* agregarSistemaPreconfigurado(Tienda* tienda){
 	if (tienda->buscarKit(cod) == true) {
 		cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
 		aux = tienda->retornarSoloKits(cod);
-		aux->setUnidades(cant);
-		tienda->restarAUnidades(cod, cant);
-		cout << "Sistema Preconfigurado encontrado y agregado!!" << endl << endl;
-		return aux;
+		if ((aux->getUnidades() - cant) > 0) {
+			aux->setUnidades(cant);
+			tienda->restarAUnidades(cod, cant);
+			cout << "Sistema Preconfigurado encontrado y agregado!!" << endl << endl;
+			return aux;
+		}
+		else
+			cout << "No hay suficientes productos para vender" << endl;
 	}
 	else {
 		cout << "Sistema Preconfigurado no encontrado!!" << endl << endl;
@@ -229,6 +239,7 @@ Componente* agregarNuevoSistemaAMedida(Tienda* tienda){
 //Desarrollo del metodo para generar una venta en modalidad en linea 
 void generarVentaEnLinea(Tienda* tienda){
 	string codigo, cedula, destino;
+	char option;
 	int op = 0;
 	bool acceso = false;
 	Cliente* cliente = NULL;
@@ -243,11 +254,15 @@ void generarVentaEnLinea(Tienda* tienda){
 	}
 	else {
 		cout << "Cliente no suscrito!! " << endl;
-		cout << "Por favor ingrese la informacion del cliente" << endl;
-		cout << endl;
-		cliente = crearCliente();
-		tienda->ingresarCliente(cliente);
-		cout << "Listo!!" << endl << endl;
+		cout << "Desea ingresar un nuevo cliente?  s/n -> "; cin >> option;
+		if (option == 's') {
+			cout << "Por favor ingrese la informacion del cliente" << endl;
+			cout << endl;
+			cliente = crearCliente();
+			tienda->ingresarCliente(cliente);
+			cout << "Listo!!" << endl << endl;
+		}
+		else return;
 	
 	}
 	factura->setCliente(cliente);
@@ -351,9 +366,14 @@ void mantenimiento(Tienda* tienda) {
 			eliminarProducto(tienda);
 			break;
 		case 8:
+			system("cls");
+			cout << "MENU ->  (3) Mantenimiento -> (8) Modificar cantidad de productos" << endl << endl;
+			modificarProductos(tienda);
+			break;
+		case 9:
 			break;
 		}
-	} while (op != 8);
+	} while (op != 9);
 }
 
 //Desarrollo de metodo que despliega la lista de clientes 
@@ -712,6 +732,25 @@ bool ingresarAlKit(int& contadorP, int& contadorM, int& contadorA, string& type,
 	return false;
 }
 
+void modificarProductos(Tienda* tienda) {
+	string cod;
+	int cant;
+	Componente* aux = NULL;
+	cout << tienda->mostrarElCatalogo();
+	cout << "------------------------------------------------------------" << endl;
+	cout << "| Ingrese el codigo del producto a modificar -> "; cin >> cod;
+	cout << "------------------------------------------------------------" << endl;
+	if (tienda->buscarProductoDelCatalogo(cod) == true) {
+		aux = tienda->retornarProductos(cod);
+		cout << "Ingrese la cantidad de existencia del producto -> "; cin >> cant;
+		aux->setUnidades(cant);
+	}
+	else { 
+		cout << "El codigo ingresado no coincide con los de la tienda!!" << endl; 
+		system("pause");
+	}
+}
+
 //Desarrollo de metodo para eliminar un componente de la tienda 
 void eliminarProducto(Tienda* tienda) {
 	string cod;
@@ -770,6 +809,8 @@ void reporteVentas(Tienda* tienda){
 }
 
 
+
+// -------------------------------------Salir--------------------------------------------------
 //Desarrollo de metodo para dar la despedida del programa 
 void salir(Tienda* tienda){
 	cout << "Muchas Gracias por visitarnos" << endl;
@@ -778,7 +819,7 @@ void salir(Tienda* tienda){
 }
 
 
-// --------------Extras-------------------
+// -------------------------------------Extras--------------------------------------------------
 
 //Desarrollo de metodo que maneja el menu principal de la tienda 
 void MAIN(Tienda* tienda) {

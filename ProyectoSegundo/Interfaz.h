@@ -57,6 +57,8 @@ Componente* crearProducto(Tienda*);
 Componente* crearComponente();
 Componente* crearSistemaPreconfigurado(Tienda*);
 
+void modificarProductos(Tienda*);
+
 void eliminarProducto(Tienda*);
 
 
