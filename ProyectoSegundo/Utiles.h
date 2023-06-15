@@ -16,6 +16,9 @@
 
 using namespace std;
 
+// Convierte de string a numero
 int convierteInt(std::string);  //Metodo para convertir un string a un int 
 double convierteDouble(std::string);  //Metodo para convertir un string a un double 
+
+// Se encarga del espaciodo entre datos
 string espaciado(string);

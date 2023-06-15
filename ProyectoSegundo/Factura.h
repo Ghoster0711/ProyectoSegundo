@@ -39,37 +39,41 @@ protected:
 	Cliente* cliente;
 	Lista<Componente>* carritoDeCompras;   //Lista de componentes que el cliente desea comprar 
 public:
-	//Factura();
-	//virtual ~Factura();
-
+	
+	// Get's  (M.V.P)
 	virtual string getCodigo() = 0;
 	virtual Fecha* getFecha() = 0;
 	virtual Cliente* getCliente() = 0;
 	virtual Lista<Componente>* getCarrito() = 0;
 	virtual Destino* getDestino() = 0;
 
+	// Set's (M.V.P)
 	virtual void setCodigo(string) = 0;
 	virtual void setFecha(Fecha*) = 0;
 	virtual void setCliente(Cliente*) = 0;
 	virtual void setLista(Lista<Componente>*) = 0;
 	virtual void setDestino(Destino*) = 0;
 
+
+	// Metodos de clonacion (M.V.P)
 	virtual Destino* clonarDestino(Destino*) = 0;
 	virtual Cliente* clonarCliente(Cliente*) = 0;
 	virtual Componente* clonarComponente(Componente*) = 0;
 	virtual void ingresarCompra(Componente*) = 0;
 
+	// ToString (M.V.P)
 	virtual string toString() = 0;
 
-	virtual void guardar(ostream&) = 0;
-
+	// Metodos para reportes (M.V.P)
 	virtual double precioBrutoDeLaFactura() = 0;
 	virtual double precioNetoDeLaFactura() = 0;
 	virtual double ganaciasDeLaFactura() = 0;
-
-	virtual bool existenciaDeProducto(string) = 0;
+		virtual bool existenciaDeProducto(string) = 0;
 	virtual int obtenerUnidadesDeProductoBuscado(string) = 0;
 
+
+	// Metodo pra guardar en archivos (M.V.P)
+	virtual void guardar(ostream&) = 0;
 
 };
 

@@ -58,10 +58,11 @@ public:
 	static Factura* recuperar(istream&);
 	static void recuperarCarrito(istream&, Factura*);
 
+
+	// Metodos para la parte de reportes
 	double precioBrutoDeLaFactura();
 	double precioNetoDeLaFactura();
 	double ganaciasDeLaFactura();
-
 	bool existenciaDeProducto(string);
 	int obtenerUnidadesDeProductoBuscado(string);
 };

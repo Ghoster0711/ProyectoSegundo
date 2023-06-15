@@ -27,22 +27,25 @@ private:
 	int mes;
 	int anio;
 public:
+
 	Fecha();
 	Fecha(int, int, int);
 	virtual ~Fecha();
 	
-	//Get's 
+	// Get's 
 	int getDia();
 	int getMes();
 	int getAnio();
 	
-	//Set's 
+	// Set's 
 	void setDia(int);
 	void setMes(int);
 	void setAnio(int);
 
+	// ToString
 	string toString();
 
+	// Metodos para recuperar y guardar en archivos
 	void guardarDatos(ostream&);
 	static Fecha* recuperarDatos(istream&);
 

@@ -47,7 +47,7 @@ public:
 	Componente* clonarComponente(Componente*); // Clonar un componente
 
 	// Metodo que se encarga de agregar un componente al carrito
-	void ingresarCompra(Componente*); // 
+	void ingresarCompra(Componente*);
 
 	// ToString
 	string toString();
@@ -59,9 +59,9 @@ public:
 	static Factura* recuperar(istream&);
 	static void recuperarCarrito(istream&, Factura*);
 
+	// Metodos para la parte de reportes
 	double precioBrutoDeLaFactura();
 	double precioNetoDeLaFactura();
-
 	bool existenciaDeProducto(string);
 	int obtenerUnidadesDeProductoBuscado(string);
 	double ganaciasDeLaFactura();

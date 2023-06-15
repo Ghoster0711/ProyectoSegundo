@@ -54,6 +54,7 @@ public:
 	double obtenerPrecios();
 	double obtenerPreciosKit();
 
+	// Obtiene los datos para los reportes
 	double totalBruto();
 	double totalNeto();
 	double ganacias();
@@ -219,7 +220,7 @@ inline void Lista<T>::guardarDestinos() {
 	file.close(); // Cierra el archivo
 }
 
-
+// Desarrollo del toString
 template<class T>
 inline string Lista<T>::toString(){
 	stringstream show;
@@ -235,6 +236,8 @@ inline string Lista<T>::toString(){
 	return show.str();
 }
 
+
+// Desarrollo del tostring especifico para kits
 template<class T>
 inline string Lista<T>::toStringKit() {
 	stringstream show;
@@ -248,6 +251,8 @@ inline string Lista<T>::toStringKit() {
 	return show.str();
 }
 
+
+// obtiene el precio de los productos
 template<class T>
 inline double Lista<T>::obtenerPrecios()
 {
@@ -255,13 +260,14 @@ inline double Lista<T>::obtenerPrecios()
 	Nodo<T>* pExt = primero;
 	while (pExt != NULL) {
 		if (pExt->getDato() != NULL) {
-			precios = precios + (pExt->getDato()->obtenerPrecios() * pExt->getDato()->getUnidades());
+			precios = precios + (pExt->getDato()->obtenerPrecios() * pExt->getDato()->getUnidades()); // Multiplica el precio por la cantida de unidades
 		}
 		pExt = pExt->getSiguiente();
 	}
 	return precios;
 }
 
+// obtiene los precios de los elementos del kit
 template<class T>
 inline double Lista<T>::obtenerPreciosKit()
 {
@@ -269,7 +275,7 @@ inline double Lista<T>::obtenerPreciosKit()
 	Nodo<T>* pExt = primero;
 	while (pExt != NULL) {
 		if (pExt->getDato() != NULL) {
-			precios = precios + pExt->getDato()->obtenerPrecios();
+			precios = precios + pExt->getDato()->obtenerPrecios(); // obtiene los precios de los productos
 		}
 		pExt = pExt->getSiguiente();
 	}
