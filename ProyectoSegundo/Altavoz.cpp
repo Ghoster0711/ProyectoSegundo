@@ -38,14 +38,14 @@ void Altavoz::setUnidades(int uni) { unidades = uni; }
 // Desarrollo del ToString
 string Altavoz::toString() {
 	stringstream show;
-	show << "| Parlante\t\t " << codigo << "\t\t" << "Altavoz" << "\t\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio << "\t" << unidades;
+	show << "| Parlante\t\t " << codigo << "\t\t" << "Altavoz" << "\t\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio << "\t\t" << unidades;
 	return show.str();
 }
 
 // Desarrollo del ToString para los kits
 string Altavoz::toStringKits() {
 	stringstream show;
-	show << "| Parlante\t\t " << codigo << "\t\t" << "Altavoz" << "\t\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio;
+	show << "| Parlante\t\t " << codigo << "\t\t" << "Altavoz" << "\t\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio;
 	return show.str();
 }
 

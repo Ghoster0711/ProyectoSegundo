@@ -38,14 +38,14 @@ void Mezclador::setUnidades(int uni) { unidades = uni; }
 // Desarrollo del ToString
 string Mezclador::toString() {
 	stringstream show;
-	show << "| Procesador de senal\t " << codigo << "\t\t" << "Mezclador" << "\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio << "\t" << unidades;
+	show << "| Procesador de senal\t " << codigo << "\t\t" << "Mezclador" << "\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio << "\t\t" << unidades;
 	return show.str();
 }
 
 // Desarrollo del ToString para los kits
 string Mezclador::toStringKits() {
 	stringstream show;
-	show << "| Procesador de senal\t " << codigo << "\t\t" << "Mezclador" << "\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio;
+	show << "| Procesador de senal\t " << codigo << "\t\t" << "Mezclador" << "\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio;
 	return show.str();
 }
 

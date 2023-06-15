@@ -173,6 +173,7 @@ string Tienda::mostrarSoloComponentes() {
 	stringstream show;
 	string tipo;
 	Nodo<Componente>* e = Catalogo->getPrimero();
+	show << "--------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 	show << "|     Categoria     |    Codigo    |   Tipo de Componente   |      Modelo      |       Caracteristica       |      Precio       |     Unidades   |" << endl;
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
@@ -204,6 +205,7 @@ string Tienda::mostrarSoloKits(){
 	stringstream show;
 	string tipo;
 	Nodo<Componente>* e = Catalogo->getPrimero();
+	show << "--------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 	show << "|     Categoria     |    Codigo    |   Tipo de Componente   |      Modelo      |       Caracteristica       |      Precio       |     Unidades   |" << endl;
 	while (e != NULL) {
 		if (e->getDato() != NULL) {
@@ -329,6 +331,7 @@ void Tienda::eliminarCliente(string cod){
 
 string Tienda::verCatalogo(){
 	stringstream show;
+	show << "--------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 	show << "|     Categoria     |    Codigo    |   Tipo de Componente   |      Modelo      |       Caracteristica       |      Precio       |     Unidades   |" << endl;
 	show << Catalogo->toString();
 	return show.str();
