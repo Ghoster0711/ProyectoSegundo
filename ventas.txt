@@ -1,14 +1,5 @@
-Directo	6	Fecha	0	0	0
-Persona	Ana solis	2222	Canada	Toronto	ana@	canadiense
-Kit	Premium	SB07JA	3	Unidad CD	4746	OA966	Unidad basica	100	20
-Tornamesa	4459	LE978	Unidad basica 33/45 RPM	180	20
-Radio	4431	LR506	Basico AM/FM	90	20
-Unidad Bluetooth	6113	NA107	Basico	70	20
-Microfono	5857	UT654	Alambrico	90	20
-Amplificador	9180	IR302	80W	90	20
-Altavoz	6402	FD238	280W subwoofer	435	3244
-finKit	finCarrito	Directo	5	Fecha	0	0	0
-Persona	Sianny Barrantes	1111	CR	Heredia	sianny@	costarricense
+Directo	1	Fecha	15	6	2023
+Persona	karen	1111	almenia	Heredia	sianny@	costarricense
 Kit	Premium	SB07JA	2	Unidad CD	4746	OA966	Unidad basica	100	20
 Tornamesa	4459	LE978	Unidad basica 33/45 RPM	180	20
 Radio	4431	LR506	Basico AM/FM	90	20
@@ -16,18 +7,4 @@ Unidad Bluetooth	6113	NA107	Basico	70	20
 Microfono	5857	UT654	Alambrico	90	20
 Amplificador	9180	IR302	80W	90	20
 Altavoz	6402	FD238	280W subwoofer	435	3244
-finKit	Unidad CD	6797	SE381	Soporte SACD	200	3
-Unidad CD	4746	OA966	Unidad basica	100	2
-finCarrito	Directo	4	Fecha	0	0	0
-Persona	Joshua Amador Lara	604830349	Costa Rica	Heredia	josh@gmail.com	Costarricense
-Audifono	6870	HT856	Inalambrico bajos profundos	120	3
-finCarrito	Directo	3	Fecha	0	0	0
-Persona	Joshua Amador Lara	604830349	Costa Rica	Heredia	josh@gmail.com	Costarricense
-Audifono	6870	HT856	Inalambrico bajos profundos	120	2
-finCarrito	Directo	2	Fecha	0	0	0
-Persona	Joshua Amador Lara	604830349	Costa Rica	Heredia	josh@gmail.com	Costarricense
-Audifono	6870	HT856	Inalambrico bajos profundos	120	3
-finCarrito	Directo	1	Fecha	0	0	0
-Persona	Joshua Amador Lara	604830349	Costa Rica	Heredia	josh@gmail.com	Costarricense
-Audifono	6870	HT856	Inalambrico bajos profundos	120	3
-finCarrito	
+finKit	finCarrito	

@@ -40,9 +40,9 @@ void mantenimiento(Tienda*);
 void mostrarClientes(Tienda*);
 
 void ingresoSuscriptores(Tienda*);
-Cliente* crearCliente();
-Cliente* crearPersona();
-Cliente* crearEmpresa();
+Cliente* crearCliente(Tienda*);
+Cliente* crearPersona(Tienda*);
+Cliente* crearEmpresa(Tienda*);
 
 void eliminarCliente(Tienda*);
 

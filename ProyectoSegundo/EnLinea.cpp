@@ -214,7 +214,7 @@ double EnLinea::precioBrutoDeLaFactura() {
 double EnLinea::precioNetoDeLaFactura() {
 	double subtotal = carritoDeCompras->obtenerPrecios();
 	double adicional = subtotal * 0.35;
-	double total = subtotal - adicional - destino->getCostoTraslado();
+	double total = subtotal;
 	return total;
 }
 

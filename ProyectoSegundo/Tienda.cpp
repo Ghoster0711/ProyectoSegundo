@@ -412,9 +412,9 @@ void Tienda::guardarArchivos(){
 void Tienda::recuperarDeArchivos(){
 	recuperarArchivoCatalogo();
 	recuperarArchivoSuscriptores();
-	recuperarFacturas();
+	//recuperarFacturas();
 	recuperarArchivoDestinos();
-	cout << Destinos->toString() << endl << endl;
+	//cout << Destinos->toString() << endl << endl;
 	system("pause");
 
 }

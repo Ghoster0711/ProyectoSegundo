@@ -123,7 +123,7 @@ void generarVentaDirecta(Tienda* tienda) {
 		if (op == 2) {
 			cout << "Por favor ingrese la informacion del cliente" << endl;
 			cout << endl;
-			cliente = crearCliente();
+			cliente = crearCliente(tienda);
 			cout << "Liso!!" << endl;
 			op = 3;
 		}
@@ -240,7 +240,7 @@ void generarVentaEnLinea(Tienda* tienda){
 		cout << "Cliente no suscrito!! " << endl;
 		cout << "Por favor ingrese la informacion del cliente" << endl;
 		cout << endl;
-		cliente = crearCliente();
+		cliente = crearCliente(tienda);
 		tienda->ingresarCliente(cliente);
 		cout << "Liso!!" << endl << endl;
 	
@@ -360,7 +360,7 @@ void mostrarClientes(Tienda* tienda) {
 
 //Desarrollo de metodo para suscribir un nuevo cliente 
 void ingresoSuscriptores(Tienda* tienda) {
-	if (tienda->ingresarCliente(crearCliente()) == true)
+	if (tienda->ingresarCliente(crearCliente(tienda)) == true)
 		cout << "Se ingreso con exito!!" << endl;
 	else
 		cout << "No se pudo ingresar por favor intentelo de nuevo" << endl;
@@ -368,7 +368,7 @@ void ingresoSuscriptores(Tienda* tienda) {
 }
 
 //Desarrollo de metodos para ingresar los datos del nuevo cliente a suscribir 
-Cliente* crearCliente(){
+Cliente* crearCliente(Tienda* tienda){
 	int op;
 	bool acceso = false;
 	do {
@@ -392,22 +392,34 @@ Cliente* crearCliente(){
 		}
 	} while (acceso = false);
 	if (op == 1)
-		return crearEmpresa();
+		return crearEmpresa(tienda);
 	if (op == 2)
-		return crearPersona();
+		return crearPersona(tienda);
 	return NULL;
 }
-Cliente* crearPersona() {
+Cliente* crearPersona(Tienda* tienda) {
 	string nom, ced, correo, ciudadUbicacion, nacionalidad, pais;
+	bool acceso = false;
 	cout << "Ingrese el nombre -> "; cin >> nom;
-	cout << "Ingrese la cedula -> "; cin >> ced;
+	do {
+		cout << "Ingrese la cedula -> "; cin >> ced;
+		if (tienda->buscarSuscriptor(ced) == true) {
+			cout << endl;
+			cout << "Ya existe un cliente con esa cedula!!" << endl;
+			cout << "Vuelva a ingresar la cedula..." << endl;
+			cout << endl;
+			acceso = false;
+		}
+		else
+			acceso = true;
+	} while (acceso != true);
 	cout << "Ingrese el Pais -> "; cin >> pais;
 	cout << "Ingrese la Ciudad de Ubicacion ->"; cin >> ciudadUbicacion;
 	cout << "Ingrese el Correo ->"; cin >> correo;
 	cout << "Ingrese la Nacionalidad ->"; cin >> nacionalidad;
 	return new Persona(nom, ced, pais, ciudadUbicacion, correo, nacionalidad);
 }
-Cliente* crearEmpresa(){
+Cliente* crearEmpresa(Tienda* tienda){
 	string nom, ced, pais, ciudad;
 	cout << "Ingrese el nombre de la empresa -> "; cin >> nom;
 	cout << "Ingrese la cedula juridica-> "; cin >> ced;
@@ -445,7 +457,7 @@ void modificarCliente(Tienda* tienda) {
 		cliente = NULL;
 	}
 	else {
-		cout << "Cliente no encontrado!!" << endl;
+		cout << "Cliente no encontrado!!" << endl << endl;
 		system("pause");
 	}
 }
