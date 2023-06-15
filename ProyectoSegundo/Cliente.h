@@ -3,6 +3,8 @@
 #include<sstream>
 #include<string>
 #include<fstream>
+#include"Componente.h"
+#include"Lista.h"
 
 
 // Delimitadores para guardar en los archivos
@@ -20,6 +22,7 @@ protected:
 	string cedula;
 	string nombrePais;
 	string ciudadUbicacion;
+	Lista<Componente>* model;
 public:
 	// Constructor
 	Cliente();
@@ -49,6 +52,10 @@ public:
 
 	// ToString
 	virtual string toString() = 0;
+
+	// Observer
+	virtual void update(string, ofstream&) = 0;
+	virtual void setModel(Lista<Componente>*) = 0;
 	
 	// Guardar en archivos
 	virtual void guardar(ostream&) = 0;

@@ -1,5 +1,5 @@
-Empresa	Microsoft	1022-1245-567	Rusia	Tokyo
-Persona	602810506	602810506	CR	CR	ss	ss
-Empresa	Soporte Real	3333	USA	New York
-Persona	karen	1111	almenia	Heredia	sianny@	costarricense
 Persona	Ana solis	2222	Canada	Toronto	ana@	canadiense
+Persona	karen	1111	almenia	Heredia	sianny@	costarricense
+Empresa	Soporte Real	3333	USA	New York
+Persona	602810506	602810506	CR	CR	ss	ss
+Empresa	Microsoft	1022-1245-567	Rusia	Tokyo

@@ -39,7 +39,10 @@ public:
 	// Destructor
 	virtual ~Tienda();
 	
-	
+	// algo
+	void notificar(Componente*, bool = false );
+
+
 	// Get's
 	Lista<Componente>* getCatalago();
 	Lista<Cliente>* getSuscriptores();
