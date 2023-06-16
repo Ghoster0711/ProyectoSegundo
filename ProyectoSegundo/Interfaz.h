@@ -12,6 +12,7 @@
 #pragma once
 #include <iostream>
 #include <sstream>
+#include <Windows.h>
 #include "Tienda.h"
 #include "Persona.h"
 #include "Empresa.h"

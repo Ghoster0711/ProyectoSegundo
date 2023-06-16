@@ -4,7 +4,7 @@
 * Proyecto 2
 *
 * 6 0483 0349 Joshua Yarit Amador Lara.
-* 40 264 0260 Sianny Barrantes Benavides.
+* 4 0264 0260 Sianny Barrantes Benavides.
 *
 * -------------------------------------------------------------------
 */

@@ -125,7 +125,7 @@ void generarVentaDirecta(Tienda* tienda) {
 		if (op == 2) {
 			cout << "Por favor ingrese la informacion del cliente" << endl;
 			cout << endl;
-			cliente = crearCliente();
+			cliente = crearCliente(tienda);
 			cout << "Listo!!" << endl;
 			op = 3;
 		}
@@ -258,7 +258,7 @@ void generarVentaEnLinea(Tienda* tienda){
 		if (option == 's') {
 			cout << "Por favor ingrese la informacion del cliente" << endl;
 			cout << endl;
-			cliente = crearCliente();
+			cliente = crearCliente(tienda);
 			tienda->ingresarCliente(cliente);
 			cout << "Listo!!" << endl << endl;
 		}
@@ -426,9 +426,8 @@ Cliente* crearCliente(Tienda* tienda){
 Cliente* crearPersona(Tienda* tienda) {
 	string nom, ced, correo, ciudadUbicacion, nacionalidad, pais;
 	bool acceso = false;
-	cout << "Ingrese el nombre -> "; cin >> nom;
 	do {
-		cout << "Ingrese la cedula -> "; cin >> ced;
+		cout << "Ingrese la cedula -> "; ced = recibirGetline();
 		if (tienda->buscarSuscriptor(ced) == true) {
 			cout << endl;
 			cout << "Ya existe un cliente con esa cedula!!" << endl;
@@ -439,17 +438,30 @@ Cliente* crearPersona(Tienda* tienda) {
 		else
 			acceso = true;
 	} while (acceso != true);
-	cout << "Ingrese el Pais -> "; cin >> pais;
-	cout << "Ingrese la Ciudad de Ubicacion ->"; cin >> ciudadUbicacion;
-	cout << "Ingrese el Correo ->"; cin >> correo;
-	cout << "Ingrese la Nacionalidad ->"; cin >> nacionalidad;
+	cout << "Ingrese el nombre -> "; nom = recibirGetline();
+	cout << "Ingrese el Pais -> "; pais = recibirGetline();
+	cout << "Ingrese la Ciudad de Ubicacion ->"; ciudadUbicacion = recibirGetline();
+	cout << "Ingrese el Correo ->"; correo = recibirGetline();
+	cout << "Ingrese la Nacionalidad ->"; nacionalidad = recibirGetline();
 	return new Persona(nom, ced, pais, ciudadUbicacion, correo, nacionalidad);
 }
 
 Cliente* crearEmpresa(Tienda* tienda){
 	string nom, ced, pais, ciudad;
-	cout << "Ingrese el nombre de la empresa -> "; nom = recibirGetline();
+	bool acceso = false;
+	do {
 	cout << "Ingrese la cedula juridica-> "; ced = recibirGetline();
+		if (tienda->buscarSuscriptor(ced) == true) {
+			cout << endl;
+			cout << "Ya existe un cliente con esa cedula!!" << endl;
+			cout << "Vuelva a ingresar la cedula..." << endl;
+			cout << endl;
+			acceso = false;
+		}
+		else
+			acceso = true;
+	} while (acceso != true);
+	cout << "Ingrese el nombre de la empresa -> "; nom = recibirGetline();
 	cout << "Ingrese el pais de la empresa-> "; pais = recibirGetline();
 	cout << "Ingrese la ciudad de ubicacion-> "; ciudad = recibirGetline();
 	return new Empresa(nom, ced, pais, ciudad);
@@ -837,6 +849,8 @@ void salir(Tienda* tienda){
 
 //Desarrollo de metodo que maneja el menu principal de la tienda 
 void MAIN(Tienda* tienda) {
+	HWND hwnd = GetConsoleWindow(); // Obtén el identificador de la ventana de la consola
+	ShowWindow(hwnd, SW_MAXIMIZE); // Maximiza la ventana
 	int op;
 	tienda->recuperarDeArchivos();
 	do {
