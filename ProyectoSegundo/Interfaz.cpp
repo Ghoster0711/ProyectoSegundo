@@ -13,7 +13,7 @@ int menu() {
 		<< "| (4) Reportes.          |" << endl
 		<< "| (5) Salir.             |" << endl
 		<< "--------------------------" << endl;
-	cout << "| Ingrese una opcion -> ";	cin >> op;
+	cout << "| Ingrese una opcion -> ";	op = entradaInt();
 	return op;
 }
 
@@ -28,7 +28,7 @@ int menudirecto() {
 		<< "| (4) Generar Factura.                         |" << endl
 		<< "| (5) Cancelar Compra.                         |" << endl
 		<< "------------------------------------------------" << endl
-		<< "| Ingrese una opcion -> "; cin >> op;
+		<< "| Ingrese una opcion -> "; op = entradaInt();
 	return op;
 }
 
@@ -41,7 +41,7 @@ int menuEnLinea() {
 		<< "| (2) Generar Factura.                         |" << endl
 		<< "| (3) Cancelar Compra.                         |" << endl
 		<< "------------------------------------------------" << endl
-		<< "| Ingrese una opcion -> "; cin >> op;
+		<< "| Ingrese una opcion -> "; op = entradaInt();
 	return op;
 }
 
@@ -60,7 +60,7 @@ int menuMantenimiento() {
 		<< "| (8) Modificar cantidad de productos    |" << endl
 		<< "| (9) Volver.                            |" << endl
 		<< "------------------------------------------" << endl
-		<< "| Ingrese una opcion -> "; cin >> op;
+		<< "| Ingrese una opcion -> "; op = entradaInt();
 	return op;
 
 }
@@ -74,7 +74,7 @@ int menuReportes() {
 		<< "| (2) Reportes Ventas                  |" << endl
 		<< "| (3) Volver.                          |" << endl
 		<< "----------------------------------------" << endl
-		<< "| Ingrese una opcion -> "; cin >> op;
+		<< "| Ingrese una opcion -> "; op = entradaInt();
 	return op;
 }
 
@@ -95,7 +95,7 @@ void generarVentaDirecta(Tienda* tienda) {
 			cout << "Posee el cliente una suscripcion en la tienda?" << endl;  
 			cout << "| (1) Si" << endl;
 			cout << "| (2) No" << endl;
-			cout << "| Ingrese una opcion -> "; cin >> op;
+			cout << "| Ingrese una opcion -> "; op = entradaInt();
 			cout << endl;
 			if (op != 1 && op != 2) {
 				throw(ExcepcionRango());
@@ -110,7 +110,7 @@ void generarVentaDirecta(Tienda* tienda) {
 	} while (acceso == false);
 	do {
 		if (op == 1) {
-			cout << "Ingrese la cedula -> "; cin >> cedula;
+			cout << "Ingrese la cedula -> "; cedula = recibirGetline();
 			cout << endl;
 			if (tienda->buscarSuscriptor(cedula) == true) {
 				cout << "Cliente suscrito encontrado!! " << endl << endl;
@@ -179,9 +179,9 @@ Componente* agregarComponente(Tienda* tienda){
 	Componente* aux = NULL;
 	cout << tienda->mostrarSoloComponentes();
 	cout << "--------------------------------------------------------------------------" << endl
-		<< "| Seleccione el componente deseado por su codigo -> "; cin >> cod;
+		<< "| Seleccione el componente deseado por su codigo -> "; cod = recibirGetline();
 	if (tienda->buscarComponente(cod) == true) {
-		cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
+		cout << "| Ingrese la cantidad de componentes que desea -> "; cant = entradaInt();
 		aux = tienda->retornarSoloComponentes(cod);
 		if ((aux->getUnidades() - cant) > 0) {
 			aux->setUnidades(cant);
@@ -205,9 +205,9 @@ Componente* agregarSistemaPreconfigurado(Tienda* tienda){
 	Componente* aux = NULL;
 	cout << tienda->mostrarSoloKits();
 	cout << "-----------------------------------------------------------" << endl
-		<< "| Seleccione el kit deseado por su codigo -> "; cin >> cod; 
+		<< "| Seleccione el kit deseado por su codigo -> "; cod = recibirGetline(); 
 	if (tienda->buscarKit(cod) == true) {
-		cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
+		cout << "| Ingrese la cantidad de componentes que desea -> "; cant = entradaInt();
 		aux = tienda->retornarSoloKits(cod);
 		if ((aux->getUnidades() - cant) > 0) {
 			aux->setUnidades(cant);
@@ -229,7 +229,7 @@ Componente* agregarNuevoSistemaAMedida(Tienda* tienda){
 	Componente* aux = NULL;
 	int cant;
 	aux = crearSistemaPreconfigurado(tienda);
-	cout << "| Ingrese la cantidad de componentes que desea -> "; cin >> cant;
+	cout << "| Ingrese la cantidad de componentes que desea -> "; cant = entradaInt();
 	aux->setUnidades(cant);
 	return aux;
 }
@@ -247,14 +247,14 @@ void generarVentaEnLinea(Tienda* tienda){
 	codigo = to_string(tienda->getVentas()->getCantidad() + 1);
 	factura->setCodigo(codigo);
 	cout << "MENU ->  (2) Venta en Linea." << endl << endl;
-	cout << "Ingrese la cedula -> "; cin >> cedula;
+	cout << "Ingrese la cedula -> "; cedula = recibirGetline();
 	cout << endl;
 	if (tienda->buscarSuscriptor(cedula) == true) {
 		cliente = tienda->retornaSuscriptor(cedula);
 	}
 	else {
 		cout << "Cliente no suscrito!! " << endl;
-		cout << "Desea ingresar un nuevo cliente?  s/n -> "; cin >> option;
+		cout << "Desea ingresar un nuevo cliente?  s/n -> "; option = entradaSN();
 		if (option == 's') {
 			cout << "Por favor ingrese la informacion del cliente" << endl;
 			cout << endl;
@@ -271,7 +271,7 @@ void generarVentaEnLinea(Tienda* tienda){
 		cout << "MENU ->  (2) Venta en Linea." << endl << endl;
 		cout << "Cliente suscrito encontrado!! " << endl << endl;
 		cout << tienda->mostrasDestinos();
-		cout << "Digite el codigo del Destino ->"; cin >> destino;
+		cout << "Digite el codigo del Destino ->"; destino = recibirGetline();
 		if (tienda->buscarDestino(destino) == true) {
 			factura->setDestino(tienda->retornaDestino(destino));
 			cout << endl;
@@ -404,7 +404,7 @@ Cliente* crearCliente(){
 			<< "| (1) Empresa.                    |" << endl
 			<< "| (2) Persona.                    |" << endl
 			<< "-----------------------------------" << endl
-			<< "| Que desea ingresar -> "; cin >> op;
+			<< "| Que desea ingresar -> "; op = entradaInt();
 			cout << endl;
 			if (op != 1 && op != 2) {
 				throw(ExcepcionRango());
@@ -425,20 +425,20 @@ Cliente* crearCliente(){
 }
 Cliente* crearPersona() {
 	string nom, ced, correo, ciudadUbicacion, nacionalidad, pais;
-	cout << "Ingrese el nombre -> "; cin >> nom;
-	cout << "Ingrese la cedula -> "; cin >> ced;
-	cout << "Ingrese el Pais -> "; cin >> pais;
-	cout << "Ingrese la Ciudad de Ubicacion ->"; cin >> ciudadUbicacion;
-	cout << "Ingrese el Correo ->"; cin >> correo;
-	cout << "Ingrese la Nacionalidad ->"; cin >> nacionalidad;
+	cout << "Ingrese el nombre -> "; nom = recibirGetline();
+	cout << "Ingrese la cedula -> "; ced = recibirGetline();
+	cout << "Ingrese el Pais -> "; pais = recibirGetline();
+	cout << "Ingrese la Ciudad de Ubicacion ->"; ciudadUbicacion = recibirGetline();
+	cout << "Ingrese el Correo ->"; correo = recibirGetline();
+	cout << "Ingrese la Nacionalidad ->"; nacionalidad = recibirGetline();
 	return new Persona(nom, ced, pais, ciudadUbicacion, correo, nacionalidad);
 }
 Cliente* crearEmpresa(){
 	string nom, ced, pais, ciudad;
-	cout << "Ingrese el nombre de la empresa -> "; cin >> nom;
-	cout << "Ingrese la cedula juridica-> "; cin >> ced;
-	cout << "Ingrese el pais de la empresa-> "; cin >> pais;
-	cout << "Ingrese la ciudad de ubicacion-> "; cin >> ciudad;
+	cout << "Ingrese el nombre de la empresa -> "; nom = recibirGetline();
+	cout << "Ingrese la cedula juridica-> "; ced = recibirGetline();
+	cout << "Ingrese el pais de la empresa-> "; pais = recibirGetline();
+	cout << "Ingrese la ciudad de ubicacion-> "; ciudad = recibirGetline();
 	return new Empresa(nom, ced, pais, ciudad);
 }
 
@@ -447,7 +447,7 @@ void eliminarCliente(Tienda* tienda) {
 	string cod;
 	cout << tienda->mostrarClientes();
 	cout << "-------------------------------------------------------" << endl
-		<< "| Ingrese la cedula del cliente a eliminar -> "; cin >> cod;
+		<< "| Ingrese la cedula del cliente a eliminar -> "; cod = recibirGetline();
 	if (tienda->buscarSuscriptor(cod) == true) {
 		tienda->eliminarCliente(cod);
 		cout << "El cliente se elimino con exito!!" << endl;
@@ -460,7 +460,7 @@ void eliminarCliente(Tienda* tienda) {
 void modificarCliente(Tienda* tienda) {
 	string cedula,tipo;
 	Cliente* cliente = NULL;
-	cout << "Ingrese la cedula -> "; cin >> cedula;
+	cout << "Ingrese la cedula -> "; cedula = recibirGetline();
 	if (tienda->buscarSuscriptor(cedula) == true) {
 		cliente = tienda->retornaCliente(cedula);
 		tipo = typeid(*tienda->retornaCliente(cedula)).name();
@@ -489,27 +489,27 @@ void modificarClientePersona(Tienda* tienda, Cliente* cliente) {
 		cout << "(4) Modificar Correo" << endl;
 		cout << "(5) Modificar Nacionalidad" << endl;
 		cout << "(6) Volver" << endl;
-		cout << "| Ingrese una opcion -> "; cin >> op;
+		cout << "| Ingrese una opcion -> "; op = entradaInt();
 		cout << endl;
 		switch (op) {
 		case 1:
-			cout << "Digite el nuevo nombre ->"; cin >> dato;
+			cout << "Digite el nuevo nombre ->"; dato = recibirGetline();
 			cliente->setNombre(dato);
 			break;
 		case 2:
-			cout << "Digite el nuevo pais ->"; cin >> dato;
+			cout << "Digite el nuevo pais ->"; dato = recibirGetline();
 			cliente->setNombrePais(dato);
 			break;
 		case 3:
-			cout << "Digite la nueva ciudad ->"; cin >> dato;
+			cout << "Digite la nueva ciudad ->"; dato = recibirGetline();
 			cliente->setCiudadUbicacion(dato);
 			break;
 		case 4:
-			cout << "Digite el nuevo correo ->"; cin >> dato;
+			cout << "Digite el nuevo correo ->"; dato = recibirGetline();
 			cliente->setCorreo(dato);
 			break;
 		case 5:
-			cout << "Digite el nueva nacionalidad ->"; cin >> dato;
+			cout << "Digite el nueva nacionalidad ->"; dato = recibirGetline();
 			cliente->setNacionalidad(dato);
 			break;
 		case 6:
@@ -530,19 +530,19 @@ void modificarClienteEmpresa(Tienda* tienda,Cliente* cliente) {
 		cout << "(2) Modificar Pais" << endl;
 		cout << "(3) Modificar Ciudad" << endl;
 		cout << "(4) Volver" << endl;
-		cout << "| Ingrese una opcion -> "; cin >> op;
+		cout << "| Ingrese una opcion -> "; op = entradaInt();
 		cout << endl;
 		switch (op) {
 		case 1:
-			cout << "Digite el nuevo nombre ->"; cin >> dato;
+			cout << "Digite el nuevo nombre ->"; dato = recibirGetline();
 			cliente->setNombre(dato);
 			break;
 		case 2:
-			cout << "Digite el nuevo pais ->"; cin >> dato;
+			cout << "Digite el nuevo pais ->"; dato = recibirGetline();
 			cliente->setNombrePais(dato);
 			break;
 		case 3:
-			cout << "Digite la nueva ciudad ->"; cin >> dato;
+			cout << "Digite la nueva ciudad ->"; dato = recibirGetline();
 			cliente->setCiudadUbicacion(dato);
 			break;
 		case 4:
@@ -576,7 +576,7 @@ Componente* crearProducto(Tienda* tienda) {
 		<< "| (1) Componente.                    |" << endl
 		<< "| (2) Sistema Preconfigurado.        |" << endl
 		<< "--------------------------------------" << endl
-		<< "| Que desea ingresar ->"; cin >> op;
+		<< "| Que desea ingresar ->"; op = entradaInt();
 	if (op == 1)
 			return crearComponente();
 	if (op == 2)
@@ -601,13 +601,13 @@ Componente* crearComponente() {
 			<< "| (9) Audifonos (Parlante)                |" << endl
 			<< "| (10) Volver                             |" << endl
 			<< "-------------------------------------------" << endl
-			<< "| Que desea agregar al sistema -> "; cin >> op;
+			<< "| Que desea agregar al sistema -> "; op = entradaInt();
 		cout << "-------------------------------------------" << endl;
-		cout << "| Ingrese el codigo del componente -> "; cin >> cod;
-		cout << "| Ingrese el modelo del componente -> "; cin >> model;
-		cout << "| Ingrese la caracteristica del componente -> "; cin >> carac;
-		cout << "| Ingrese el precio del componente -> "; cin >> precio;
-		cout << "| Ingrese la cantidad -> "; cin >> cant;
+		cout << "| Ingrese el codigo del componente -> "; cod = recibirGetline();
+		cout << "| Ingrese el modelo del componente -> "; model = recibirGetline();
+		cout << "| Ingrese la caracteristica del componente -> "; carac = recibirGetline();
+		cout << "| Ingrese el precio del componente -> "; precio = entradaDouble();
+		cout << "| Ingrese la cantidad -> "; cant = entradaInt();
 		switch (op) {
 		case 1:
 			return new UnidadCD(cod, model, carac, precio, cant);
@@ -649,11 +649,11 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 	char op;
 	// Ingreso del nombre y codigo del kit
 	cout << "--------------------------------------------" << endl;
-	cout << "| Ingrese el nombre del Kit -> "; cin >> nom;
+	cout << "| Ingrese el nombre del Kit -> "; nom = recibirGetline();
 	cout << "--------------------------------------------" << endl;
-	cout << "| Ingrese el codigo del Kit -> "; cin >> codK;
+	cout << "| Ingrese el codigo del Kit -> "; codK = recibirGetline();
 	cout << "--------------------------------------------" << endl;
-	cout << "| Ingrese la cantidad de kits -> "; cin >> cant;
+	cout << "| Ingrese la cantidad de kits -> "; cant = entradaInt();
 	// Ciclo para agregar componentes al kit
 	do {
 		system("cls");
@@ -664,13 +664,13 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 			<< "-------------------------------------------------------" << endl
 			<< "| (s) Volver.                                         |" << endl
 			<< "-------------------------------------------------------" << endl
-			<< "| Ingrese el codigo del producto a agregar -> "; cin >> cod; // Solicita que ingrese el codigo del componente
+			<< "| Ingrese el codigo del producto a agregar -> "; cod = recibirGetline(); // Solicita que ingrese el codigo del componente
 		// Verifica que cod se diferente a la opcion de para volver
 		if (cod != "s") {
 			// Verifica que el componente exista en el sistema
 			if (tienda->buscarComponente(cod) == true) {
 				// Pregunta que si quiere agregarlo al kit
-				cout << "Se encontro el Componente desea agregarlo (s/n) "; cin >> op;
+				cout << "Se encontro el Componente desea agregarlo (s/n) "; op = entradaSN();
 				// Si lo quiere agregar se encargar de agregarlo
 				type = typeid(*tienda->retornarSoloComponentes(cod)).name();
 				if (op == 's') {
@@ -690,7 +690,7 @@ Componente* crearSistemaPreconfigurado(Tienda* tienda) { // Falta corregir
 		}
 	} while (cod != "s");
 	// Pregunta si lo quiere agregar y lo agrega
-	cout << "Agregar el kit? s/n "; cin >> op;
+	cout << "Agregar el kit? s/n "; op = entradaSN();
 	if (op == 's') {
 		kit->setCodigo(codK);
 		kit->setNombre(nom);
@@ -739,11 +739,11 @@ void modificarProductos(Tienda* tienda) {
 	Componente* aux = NULL;
 	cout << tienda->mostrarElCatalogo();
 	cout << "------------------------------------------------------------" << endl;
-	cout << "| Ingrese el codigo del producto a modificar -> "; cin >> cod;
+	cout << "| Ingrese el codigo del producto a modificar -> "; cod = recibirGetline();
 	cout << "------------------------------------------------------------" << endl;
 	if (tienda->buscarProductoDelCatalogo(cod) == true) {
 		aux = tienda->retornarProductos(cod);
-		cout << "Ingrese la cantidad de existencia del producto -> "; cin >> cant;
+		cout << "Ingrese la cantidad de existencia del producto -> "; cant = entradaInt();
 		aux->setUnidades(cant);
 	}
 	else { 
@@ -757,7 +757,7 @@ void eliminarProducto(Tienda* tienda) {
 	string cod;
 	cout << tienda->mostrarElCatalogo();
 	cout << "-------------------------------------------------------" << endl
-		<< "| Ingrese el codigo del producto a eliminar -> "; cin >> cod;
+		<< "| Ingrese el codigo del producto a eliminar -> "; cod = recibirGetline();
 	if (tienda->buscarProductoDelCatalogo(cod) == true) {
 		tienda->eliminarProducto(cod);
 		cout << "El producto se elimino con exito!!" << endl;

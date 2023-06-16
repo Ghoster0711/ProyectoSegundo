@@ -22,3 +22,10 @@ double convierteDouble(std::string);  //Metodo para convertir un string a un dou
 
 // Se encarga del espaciodo entre datos
 string espaciado(string);
+
+void ignorar();
+string recibirGetline();
+int entradaInt();
+double entradaDouble();
+char entradaSN();
+
