@@ -35,3 +35,76 @@ string espaciado(string dato) {
 
 	return show.str();
 }
+
+
+void ignorar() {
+	cin.ignore();
+}
+string recibirGetline() {
+	string s;
+	cin.ignore();
+	getline(cin, s);
+	return s;
+}
+int entradaInt() {
+	int num;
+	bool acceso = true;
+	do {
+		try {
+			cin >> num;
+			if (cin.fail()) {
+				cin.clear();
+				cin.ignore();
+				acceso = false;
+				throw "Error: entrada no válida, la entrada debe ser un numero, vuelva a ingresar";
+			}
+			else
+				acceso = true;
+
+		}
+		catch (const char* error) {
+			cerr << error << endl;
+		}
+	} while (acceso != true);
+	return num;
+}
+double entradaDouble() {
+	double num;
+	bool acceso = true;
+	do {
+		try {
+			cin >> num;
+			if (cin.fail()) {
+				cin.clear();
+				cin.ignore();
+				acceso = false;
+				throw "Error: entrada no válida, la entrada debe ser un numero vuelva a ingresar";
+			}
+			else
+				acceso = true;
+		}
+		catch (const char* error) {
+			cerr << error << endl;
+		}
+	} while (acceso != true);
+	return num;
+}
+char entradaSN() {
+	char input;
+	bool acceso = true;
+	do {
+		try {
+			cin >> input;
+			if (input != 's' && input != 'n') {
+				acceso = false;
+				throw "Error: entrada no válida debe ser s o n, vuelva a ingresar";
+			}
+			else
+				acceso = true;
+		}
+		catch (const char* error) {
+			cerr << error << endl;
+		}
+	} while (acceso != true);
+	return input;
+}
