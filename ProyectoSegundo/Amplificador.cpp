@@ -23,7 +23,7 @@ string Amplificador::getID() { return codigo; }
 string Amplificador::getCodigo() { return codigo; }
 string Amplificador::getCaracteristica() { return caracteristica; }
 double Amplificador::getPrecio() { return precio; }
-double Amplificador::obtenerPrecios() {	return precio * unidades;}
+double Amplificador::obtenerPrecios() {	return precio;}
 int Amplificador::getUnidades() { return unidades; }
 
 
@@ -38,14 +38,14 @@ void Amplificador::setUnidades(int uni) { unidades = uni; }
 // Desarrollo del ToString
 string Amplificador::toString() {
 	stringstream show;
-	show << "| Procesador de senal\t " << codigo << "\t\t" << "Amplificador" << "\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio << "\t" << unidades;
+	show << "| Procesador de senal\t " << codigo << "\t\t" << "Amplificador" << "\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio << "\t\t" << unidades;
 	return show.str();
 }
 
 // Desarrollo del ToString para los kits
 string Amplificador::toStringKits() {
 	stringstream show;
-	show << "| Procesador de senal\t " << codigo << "\t\t" << "Amplificador" << "\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio;
+	show << "| Procesador de senal\t " << codigo << "\t\t" << "Amplificador" << "\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio;
 	return show.str();
 }
 

@@ -23,7 +23,7 @@ string Audifono::getID() { return codigo; }
 string Audifono::getCodigo() { return codigo; }
 string Audifono::getCaracteristica() { return caracteristica; }
 double Audifono::getPrecio() { return precio; }
-double Audifono::obtenerPrecios() {	return precio * unidades; }
+double Audifono::obtenerPrecios() {	return precio; }
 int Audifono::getUnidades() { return unidades; }
 
 
@@ -38,14 +38,14 @@ void Audifono::setUnidades(int uni) { unidades = uni; }
 // Desarrollo del ToString
 string Audifono::toString() {
 	stringstream show;
-	show << "| Parlante\t\t " << codigo << "\t\t" << "Audifono" << "\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio << "\t" << unidades;
+	show << "| Parlante\t\t " << codigo << "\t\t" << "Audifono" << "\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio << "\t\t" << unidades;
 	return show.str();
 }
 
 // Desarrollo del ToString para los kits
 string Audifono::toStringKits() {
 	stringstream show;
-	show << "| Parlante\t\t " << codigo << "\t\t" << "Audifono" << "\t\t" << modelo << "\t" << caracteristica << "\t\t\t" << precio;
+	show << "| Parlante\t\t " << codigo << "\t\t" << "Audifono" << "\t\t" << modelo << "\t" << caracteristica << espaciado(caracteristica) << precio;
 	return show.str();
 }
 

@@ -23,7 +23,7 @@ string UnidadBluetooth::getID() { return codigo; }
 string UnidadBluetooth::getCodigo() { return codigo; }
 string UnidadBluetooth::getCaracteristica() { return caracteristica; }
 double UnidadBluetooth::getPrecio() { return precio; }
-double UnidadBluetooth::obtenerPrecios() { return precio * unidades; }
+double UnidadBluetooth::obtenerPrecios() { return precio; }
 int UnidadBluetooth::getUnidades() { return unidades; }
 
 
@@ -37,14 +37,14 @@ void UnidadBluetooth::setUnidades(int uni) { unidades = uni; }
 // Desarrollo del ToString
 string UnidadBluetooth::toString() {
 	stringstream show;
-	show << "| Fuente de audio\t " << codigo << "\t\t" << "Unidad Bluetooth" << "\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio << "\t" << unidades;
+	show << "| Fuente de audio\t " << codigo << "\t\t" << "Unidad Bluetooth" << "\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio << "\t\t" << unidades;
 	return show.str();
 }
 
 // Desarrollo del ToString para los kits
 string UnidadBluetooth::toStringKits() {
 	stringstream show;
-	show << "| Fuente de audio\t " << codigo << "\t\t" << "Unidad Bluetooth" << "\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio;
+	show << "| Fuente de audio\t " << codigo << "\t\t" << "Unidad Bluetooth" << "\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio;
 	return show.str();
 }
 

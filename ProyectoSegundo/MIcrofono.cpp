@@ -23,7 +23,7 @@ string Microfono::getID() { return codigo; }
 string Microfono::getCodigo() { return codigo; }
 string Microfono::getCaracteristica() { return caracteristica; }
 double Microfono::getPrecio() { return precio; }
-double Microfono::obtenerPrecios() { return precio * unidades; }
+double Microfono::obtenerPrecios() { return precio; }
 int Microfono::getUnidades() { return unidades; }
 
 
@@ -39,13 +39,13 @@ void Microfono::setUnidades(int uni) { unidades = uni; }
 // Desarrollo del ToString
 string Microfono::toString() {
 	stringstream show;
-	show << "| Fuente de audio\t " << codigo << "\t\t" << "Microfono" << "\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio << "\t" << unidades;
+	show << "| Fuente de audio\t " << codigo << "\t\t" << "Microfono" << "\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio << "\t\t" << unidades;
 	return show.str();
 }
 
 string Microfono::toStringKits() {
 	stringstream show;
-	show << "| Fuente de audio\t " << codigo << "\t\t" << "Microfono" << "\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio;
+	show << "| Fuente de audio\t " << codigo << "\t\t" << "Microfono" << "\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio;
 	return show.str();
 }
 

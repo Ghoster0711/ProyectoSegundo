@@ -1,3 +1,14 @@
+/* --------------------------------------------------------------------
+*
+* EIF204 Programación 2
+* Proyecto 2
+*
+* 6 0483 0349 Joshua Yarit Amador Lara.
+* 40 264 0260 Sianny Barrantes Benavides.
+*
+* -------------------------------------------------------------------
+*/
+
 #pragma once
 #include "Factura.h"
 
@@ -47,7 +58,11 @@ public:
 	static Factura* recuperar(istream&);
 	static void recuperarCarrito(istream&, Factura*);
 
+
+	// Metodos para la parte de reportes
 	double precioBrutoDeLaFactura();
 	double precioNetoDeLaFactura();
 	double ganaciasDeLaFactura();
+	bool existenciaDeProducto(string);
+	int obtenerUnidadesDeProductoBuscado(string);
 };

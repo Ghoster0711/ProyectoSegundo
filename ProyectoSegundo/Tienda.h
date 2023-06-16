@@ -1,3 +1,14 @@
+/* --------------------------------------------------------------------
+*
+* EIF204 Programación 2
+* Proyecto 2
+*
+* 6 0483 0349 Joshua Yarit Amador Lara.
+* 40 264 0260 Sianny Barrantes Benavides.
+*
+* -------------------------------------------------------------------
+*/
+
 #pragma once
 #include <fstream>
 #include "Lista.h"
@@ -39,7 +50,10 @@ public:
 	// Destructor
 	virtual ~Tienda();
 	
-	
+	// algo
+	void notificar(Componente*, bool = false );
+
+
 	// Get's
 	Lista<Componente>* getCatalago();
 	Lista<Cliente>* getSuscriptores();
@@ -59,12 +73,16 @@ public:
 	bool buscarDestino(string);
 
 	//Desarrollo de metodos que retornan objetos 
+	Componente* retornarProductos(string);
 	Componente* retornarSoloComponentes(string);
 	Componente* retornarSoloKits(string);
 	string mostrarSoloKits();
 	Destino* retornaDestino(string);
 	Cliente* retornaSuscriptor(string);
 	Cliente* retornaCliente(string);
+	void restarAUnidades(string, int);
+	void sumarAUnidades(string, int);
+	void cancelacionDeCompra(Factura*);
 
 // -----------Mantenimiento-----------
 
@@ -83,6 +101,7 @@ public:
 	string reporteTotalesBrutos();
 	string reporteTotalesNetos();
 	string reporteDeGanancias();
+	string primeroYsegundoMasVendios();
 
 	// ------------Archivos---------------
 

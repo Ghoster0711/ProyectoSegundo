@@ -23,7 +23,7 @@ string Tornamesa::getID() { return codigo; }
 string Tornamesa::getCodigo() { return codigo; }
 string Tornamesa::getCaracteristica() { return caracteristica; }
 double Tornamesa::getPrecio() { return precio; }
-double Tornamesa::obtenerPrecios() { return precio * unidades; }
+double Tornamesa::obtenerPrecios() { return precio; }
 int Tornamesa::getUnidades() { return unidades; }
 
 
@@ -37,14 +37,14 @@ void Tornamesa::setUnidades(int uni) { unidades = uni; }
 // Desarrollo del ToString
 string Tornamesa::toString() {
 	stringstream show;
-	show << "| Fuente de audio\t " << codigo << "\t\t" << "Tornamesa" << "\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio << "\t" << unidades;
+	show << "| Fuente de audio\t " << codigo << "\t\t" << "Tornamesa" << "\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio << "\t\t" << unidades;
 	return show.str();
 }
 
 // Desarrollo del ToString para los kits
 string Tornamesa::toStringKits() {
 	stringstream show;
-	show << "| Fuente de audio\t " << codigo << "\t\t" << "Tornamesa" << "\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio;
+	show << "| Fuente de audio\t " << codigo << "\t\t" << "Tornamesa" << "\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio;
 	return show.str();
 }
 

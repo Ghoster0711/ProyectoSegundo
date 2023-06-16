@@ -23,7 +23,7 @@ string UnidadCD::getID() { return codigo; }
 string UnidadCD::getCodigo() { return codigo; }
 string UnidadCD::getCaracteristica() { return caracteristica; }
 double UnidadCD::getPrecio() { return precio; }
-double UnidadCD::obtenerPrecios() { return precio * unidades; }
+double UnidadCD::obtenerPrecios() { return precio; }
 int UnidadCD::getUnidades(){ return unidades; }
 
 // Desarrollo de los set's
@@ -36,14 +36,14 @@ void UnidadCD::setUnidades(int uni) { unidades = uni; }
 // Desarrollo del ToString
 string UnidadCD::toString() {
 	stringstream show;
-	show << "| Fuente de audio\t " << codigo << "\t\t" << "Unidad CD" << "\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio << "\t" << unidades;
+	show << "| Fuente de audio\t " << codigo << "\t\t" << "Unidad CD" << "\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio << "\t\t" << unidades;
 	return show.str();
 }
 
 // Desarrollo del ToString para los kits
 string UnidadCD::toStringKits() {
 	stringstream show;
-	show << "| Fuente de audio\t " << codigo << "\t\t" << "Unidad CD" << "\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio;
+	show << "| Fuente de audio\t " << codigo << "\t\t" << "Unidad CD" << "\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio;
 	return show.str();
 }
 

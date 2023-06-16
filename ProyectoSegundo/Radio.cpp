@@ -23,7 +23,7 @@ string Radio::getID() { return codigo; }
 string Radio::getCodigo() { return codigo; }
 string Radio::getCaracteristica() { return caracteristica; }
 double Radio::getPrecio() { return precio; }
-double Radio::obtenerPrecios() { return precio * unidades; }
+double Radio::obtenerPrecios() { return precio; }
 int Radio::getUnidades() { return unidades; }
 
 
@@ -37,14 +37,14 @@ void Radio::setUnidades(int uni) { unidades = uni; }
 // Desarrollo del ToString
 string Radio::toString() {
 	stringstream show;
-	show << "| Fuente de audio\t " << codigo << "\t\t" << "Radio" << "\t\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio << "\t" << unidades;
+	show << "| Fuente de audio\t " << codigo << "\t\t" << "Radio" << "\t\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio << "\t\t" << unidades;
 	return show.str();
 }
 
 // Desarrollo del ToString para los kits
 string Radio::toStringKits() {
 	stringstream show;
-	show << "| Fuente de audio\t " << codigo << "\t\t" << "Radio" << "\t\t\t" << modelo << "\t\t" << caracteristica << "\t\t\t" << precio;
+	show << "| Fuente de audio\t " << codigo << "\t\t" << "Radio" << "\t\t\t" << modelo << "\t\t" << caracteristica << espaciado(caracteristica) << precio;
 	return show.str();
 }
 

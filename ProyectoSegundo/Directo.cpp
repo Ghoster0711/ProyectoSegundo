@@ -210,3 +210,30 @@ double Directo::ganaciasDeLaFactura() {
 	double total = subtotal - precioBrutoDeLaFactura();
 	return abs(total);
 }
+
+bool Directo::existenciaDeProducto(string cod) {
+	Nodo<Componente>* pExt = carritoDeCompras->getPrimero();
+	while (pExt != NULL) {
+		if (pExt != NULL) {
+			if (pExt->getDato()->getID() == cod) {
+				cout << cod << endl << endl;
+				cout << pExt->getDato()->getUnidades() << endl;
+				return true;
+			}
+		}
+		pExt = pExt->getSiguiente();
+	}
+	return false;
+}
+
+int Directo::obtenerUnidadesDeProductoBuscado(string cod) {
+	Nodo<Componente>* pExt = carritoDeCompras->getPrimero();
+	while (pExt != NULL) {
+		if (pExt != NULL) {
+			if (pExt->getDato()->getID() == cod)
+				return pExt->getDato()->getUnidades();
+		}
+		pExt = pExt->getSiguiente();
+	}
+	return 0;
+}
