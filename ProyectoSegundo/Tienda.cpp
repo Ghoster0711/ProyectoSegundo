@@ -559,4 +559,6 @@ void Tienda::recuperarDeArchivos(){
 	recuperarArchivoSuscriptores();
 	recuperarFacturas();
 	recuperarArchivoDestinos();
+	system("pause");
+
 }

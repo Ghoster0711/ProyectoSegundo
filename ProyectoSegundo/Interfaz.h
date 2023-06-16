@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------
 *
-* EIF204 Programación 2
+* EIF204 ProgramaciÃ³n 2
 * Proyecto 2
 *
 * 6 0483 0349 Joshua Yarit Amador Lara.
@@ -55,13 +55,13 @@ void mostrarClientes(Tienda*);
 void ingresoSuscriptores(Tienda*);
 
 // Realiza la parte de ingresar un cliente
-Cliente* crearCliente();
+Cliente* crearCliente(Tienda*);
 
 // Crea una persona a ingresar
-Cliente* crearPersona();
+Cliente* crearPersona(Tienda*);
 
 // Crea una empresa a ingresar
-Cliente* crearEmpresa();
+Cliente* crearEmpresa(Tienda*);
 
 // Elimina un cliente
 void eliminarCliente(Tienda*);

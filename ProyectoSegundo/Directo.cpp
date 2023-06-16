@@ -201,8 +201,7 @@ double Directo::precioBrutoDeLaFactura() {
 
 double Directo::precioNetoDeLaFactura() {
 	double subtotal = carritoDeCompras->obtenerPrecios();
-	double adicional = subtotal * 0.35;
-	double total = subtotal - adicional;
+	double total = subtotal;
 	return total;
 }
 
